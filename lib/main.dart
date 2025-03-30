@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -9,14 +8,12 @@ import 'core/services/get_it_service.dart';
 import 'core/services/prefs_service.dart';
 import 'core/utils/app_routers.dart';
 import 'featuers/home/presentation/Cubits/Language Cubit/language_state.dart';
-import 'firebase_options.dart';
 import 'featuers/home/presentation/Cubits/Theme Cubit/theme_cubit.dart';
 import 'generated/l10n.dart';
 import 'featuers/home/presentation/Cubits/Language Cubit/language_cubit.dart'; // Import LanguageCubit
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   setupServiceLocator();
   await PrefsService.init();
 
