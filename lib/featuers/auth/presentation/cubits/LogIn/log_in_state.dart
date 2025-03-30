@@ -1,0 +1,22 @@
+part of 'log_in_cubit.dart';
+
+sealed class LogInState extends Equatable {
+  const LogInState();
+
+  @override
+  List<Object> get props => [];
+}
+
+final class LogInInitial extends LogInState {}
+
+final class LogInLoading extends LogInState {}
+
+final class LogInError extends LogInState {
+  final String message;
+  const LogInError(this.message);
+}
+
+final class LogInSuccess extends LogInState {
+  final UserModel userApiModel;
+  const LogInSuccess(this.userApiModel);
+}

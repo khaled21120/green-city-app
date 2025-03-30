@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "69806751354",
+    "project_id": "chat-b6488",
+    "storage_bucket": "chat-b6488.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:69806751354:android:f7533509943472d64445c3",
+        "android_client_info": {
+          "package_name": "com.example.green_city"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVvaFktM57qvFyfcu6KlQ1-OsxLTWeaP8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
