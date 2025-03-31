@@ -56,7 +56,11 @@ ThemeData darkThemeData = ThemeData(
   ),
   drawerTheme: const DrawerThemeData(backgroundColor: MyColors.scaffold),
   appBarTheme: const AppBarTheme(
-    // titleTextStyle: MyStyle.title20(context),
+    titleTextStyle: TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.w600,
+      color: MyColors.white,
+    ),
     backgroundColor: MyColors.primary,
     elevation: 4,
     foregroundColor: MyColors.white,

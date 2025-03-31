@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:green_city/featuers/home/presentation/views/Profile/profile_page.dart';
-import 'package:green_city/featuers/home/presentation/widgets/drawer.dart';
-import 'package:green_city/generated/l10n.dart';
 
+import '../../../core/themes/light_theme.dart';
+import '../../../generated/l10n.dart';
+import 'views/Profile/profile_page.dart';
 import 'views/chellanges/chellange_page.dart';
+import 'widgets/drawer.dart';
 import 'widgets/home_body.dart';
 
 class HomePage extends StatelessWidget {
@@ -32,9 +33,8 @@ class HomePage extends StatelessWidget {
             Theme.of(context).colorScheme.primary, // Adapts to theme
         tabBackgroundColor:
             Theme.of(context).colorScheme.tertiary, // Light/Dark mode aware
-        color: Theme.of(context).colorScheme.onSurface, // Ensures readability
-        activeColor:
-            Theme.of(context).colorScheme.surface, // Contrast for active tab
+        color: MyColors.black, // Contrast for active tab,
+        activeColor: MyColors.white, // Contrast for active tab
         gap: 5,
         padding: const EdgeInsets.all(20),
         onTabChange: (idx) => pageController.jumpToPage(idx),
@@ -60,5 +60,22 @@ class HomePage extends StatelessWidget {
           const Icon(Icons.search),
           const Icon(Icons.home),
           const Icon(Icons.person),
+        ],
+      ), */
+/*GNav(
+        curve: Curves.easeInOut,
+        backgroundColor:
+            Theme.of(context).colorScheme.primary, // Adapts to theme
+        tabBackgroundColor:
+            Theme.of(context).colorScheme.tertiary, // Light/Dark mode aware
+        color: MyColors.black, // Contrast for active tab,
+        activeColor: MyColors.white, // Contrast for active tab
+        gap: 5,
+        padding: const EdgeInsets.all(20),
+        onTabChange: (idx) => pageController.jumpToPage(idx),
+        tabs: [
+          GButton(icon: Icons.home, text: S.of(context).home),
+          GButton(icon: Icons.event_available, text: S.of(context).activities),
+          GButton(icon: Icons.person, text: S.of(context).profile),
         ],
       ), */

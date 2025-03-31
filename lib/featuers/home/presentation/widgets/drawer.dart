@@ -21,7 +21,7 @@ class MyDrawer extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 30),
               child: Text('Green City', style: MyStyle.title30(context)),
             ),
-
+          
             // FAQs
             MyListTile(
               title: S.of(context).faqs,

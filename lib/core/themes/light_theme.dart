@@ -43,7 +43,11 @@ ThemeData lightThemeData = ThemeData(
   ),
   drawerTheme: const DrawerThemeData(backgroundColor: MyColors.scaffold),
   appBarTheme: const AppBarTheme(
-    titleTextStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+    titleTextStyle: TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.w700,
+      color: MyColors.white,
+    ),
     backgroundColor: MyColors.primary,
     elevation: 4,
     foregroundColor: MyColors.white,

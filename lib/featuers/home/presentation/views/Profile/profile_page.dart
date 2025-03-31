@@ -45,10 +45,10 @@ class _ProfilePageState extends State<ProfilePage> {
             }
           },
           builder: (context, state) {
-            final user =
-                state is ProfileUpdateDataSuccess
-                    ? state.userApiModel
-                    : Helper.getUser();
+            // final user =
+            //     state is ProfileUpdateDataSuccess
+            //         ? state.userApiModel
+            //         : Helper.getUser();
             return ModalProgressHUD(
               inAsyncCall: state is ProfileLoading ? true : false,
               child: SingleChildScrollView(
@@ -61,14 +61,16 @@ class _ProfilePageState extends State<ProfilePage> {
 
                     // User Name
                     Text(
-                      user.name ?? S.of(context).user_name,
+                      // user.name ?? 
+                      S.of(context).user_name,
                       textAlign: TextAlign.center,
                       style: MyStyle.title25(context),
                     ),
 
                     // User Email
                     Text(
-                      user.email ?? S.of(context).email_address,
+                      // user.email ?? 
+                      S.of(context).email_address,
                       textAlign: TextAlign.center,
                       style: MyStyle.title16(context),
                     ),
@@ -77,7 +79,9 @@ class _ProfilePageState extends State<ProfilePage> {
                     // User Details
                     ProfileItem(
                       icon: Icons.phone,
-                      title: user.phone ?? S.of(context).change_phone_number,
+                      title:
+                      //  user.phone ?? 
+                       S.of(context).change_phone_number,
                       onTap: () {
                         Helper.showAlert(
                           context: context,
@@ -96,7 +100,9 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     ProfileItem(
                       icon: Icons.location_on,
-                      title: user.address ?? S.of(context).change_address,
+                      title:
+                      //  user.address ?? 
+                       S.of(context).change_address,
                       onTap: () {
                         Helper.showAlert(
                           context: context,

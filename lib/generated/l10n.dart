@@ -300,6 +300,11 @@ class S {
     return Intl.message('Cancel', name: 'cancel', desc: '', args: []);
   }
 
+  /// `Enter`
+  String get enter {
+    return Intl.message('Enter', name: 'enter', desc: '', args: []);
+  }
+
   /// `Camera`
   String get camera {
     return Intl.message('Camera', name: 'camera', desc: '', args: []);

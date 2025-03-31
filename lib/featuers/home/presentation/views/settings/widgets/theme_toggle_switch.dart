@@ -16,7 +16,7 @@ class ThemeToggleSwitch extends StatelessWidget {
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(S.of(context).dark_mode, style: MyStyle.title16(context)),
+            Text(S.of(context).dark_mode, style: MyStyle.title20(context)),
             Switch.adaptive(
               activeColor: Theme.of(context).colorScheme.secondary,
               inactiveThumbColor: Theme.of(context).colorScheme.primary,

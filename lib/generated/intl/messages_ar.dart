@@ -56,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "email_address": MessageLookupByLibrary.simpleMessage(
       "عنوان البريد الإلكتروني",
     ),
+    "enter": MessageLookupByLibrary.simpleMessage("أدخل"),
     "faqs": MessageLookupByLibrary.simpleMessage("الأسئلة الشائعة"),
     "forget_password": MessageLookupByLibrary.simpleMessage(
       "نسيت كلمة المرور؟",

@@ -15,11 +15,11 @@ import '../../featuers/home/presentation/views/chellanges/widgets/details.dart';
 abstract class AppRouters {
   static final router = GoRouter(
     routes: [
-      GoRoute(path: '/', builder: (context, state) => const SplashPage()),
+      GoRoute(path: '/s', builder: (context, state) => const SplashPage()),
       GoRoute(path: '/login', builder: (context, state) => const LoginPage()),
       GoRoute(path: '/signup', builder: (context, state) => const SignUpPage()),
       GoRoute(path: '/intro', builder: (context, state) => const IntroPage()),
-      GoRoute(path: '/home', builder: (context, state) => const HomePage()),
+      GoRoute(path: '/', builder: (context, state) => const HomePage()),
       GoRoute(path: '/FAQs', builder: (context, state) => const FAQsPage()),
       GoRoute(
         path: '/details',
