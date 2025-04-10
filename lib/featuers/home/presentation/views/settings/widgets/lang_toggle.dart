@@ -11,7 +11,7 @@ class ToggleLanguage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-        var localization = S.of(context);
+    var localization = S.of(context);
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,

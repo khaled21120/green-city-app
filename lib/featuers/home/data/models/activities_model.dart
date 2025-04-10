@@ -6,6 +6,7 @@ class ActivitiesModel extends Equatable {
   final String? actDescription;
   final String? actIntervalDate;
   final String? actstate;
+  final String? imgFile;
   final int? numOfSubscribers;
   final int? numOfRequiredSubscribers;
 
@@ -15,23 +16,27 @@ class ActivitiesModel extends Equatable {
     this.actDescription,
     this.actIntervalDate,
     this.actstate,
+    this.imgFile,
     this.numOfSubscribers,
     this.numOfRequiredSubscribers,
   });
 
-  factory ActivitiesModel.fromJson(Map<String, dynamic> json) => ActivitiesModel(
-    id: json['id'] as String?,
-    actName: json['ActName'] as String?,
-    actDescription: json['ActDescription'] as String?,
-    actIntervalDate: json['actIntervalDate'] as String?,
-    actstate: json['actstate'] as String?,
-    numOfSubscribers: json['NumOfSubscribers'] as int?,
-    numOfRequiredSubscribers: json['NumOfRequiredSubscribers'] as int?,
-  );
+  factory ActivitiesModel.fromJson(Map<String, dynamic> json) =>
+      ActivitiesModel(
+        id: json['id'] as String?,
+        actName: json['ActName'] as String?,
+        imgFile: json['imgFile'] as String?,
+        actDescription: json['ActDescription'] as String?,
+        actIntervalDate: json['actIntervalDate'] as String?,
+        actstate: json['actstate'] as String?,
+        numOfSubscribers: json['NumOfSubscribers'] as int?,
+        numOfRequiredSubscribers: json['NumOfRequiredSubscribers'] as int?,
+      );
 
   Map<String, dynamic> toJson() => {
     'id': id,
     'ActName': actName,
+    'imgFile': imgFile,
     'ActDescription': actDescription,
     'actIntervalDate': actIntervalDate,
     'actstate': actstate,
@@ -45,6 +50,7 @@ class ActivitiesModel extends Equatable {
       id,
       actName,
       actDescription,
+      imgFile,
       actIntervalDate,
       actstate,
       numOfSubscribers,

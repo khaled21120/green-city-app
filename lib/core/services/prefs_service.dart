@@ -1,4 +1,4 @@
-import 'package:green_city/core/constants.dart';
+import 'package:green_city/core/utils/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PrefsService {

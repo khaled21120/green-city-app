@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:green_city/featuers/auth/presentation/cubits/Auth/auth_cubit.dart';
 
-import '../../../../core/constants.dart';
+import '../../../../core/utils/constants.dart';
 import '../../../../core/services/prefs_service.dart';
 import '../../../../core/utils/text_style.dart';
 
@@ -58,9 +58,9 @@ class _SplashBodyState extends State<SplashBody>
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is Authenticated) {
-          GoRouter.of(context).pushReplacement('/home');
+          GoRouter.of(context).goNamed('home');
         } else if (state is UnAuthenticated) {
-          GoRouter.of(context).pushReplacement('/intro');
+          GoRouter.of(context).goNamed('intro');
         }
       },
       child: Column(

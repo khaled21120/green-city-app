@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "about_us": MessageLookupByLibrary.simpleMessage("About Us"),
     "activities": MessageLookupByLibrary.simpleMessage("Activities"),
     "address": MessageLookupByLibrary.simpleMessage("Address"),
+    "all": MessageLookupByLibrary.simpleMessage("All"),
     "already_have_an_account": MessageLookupByLibrary.simpleMessage(
       "Already have an account?",
     ),
@@ -63,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "language": MessageLookupByLibrary.simpleMessage("Language"),
     "message": MessageLookupByLibrary.simpleMessage("Message"),
     "name": MessageLookupByLibrary.simpleMessage("Name"),
+    "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "number_of_participants": MessageLookupByLibrary.simpleMessage(
       "Number of participants is complete",
     ),
@@ -84,7 +86,11 @@ class MessageLookup extends MessageLookupByLibrary {
       "Password does not match",
     ),
     "phone_number": MessageLookupByLibrary.simpleMessage("Phone Number"),
+    "polls": MessageLookupByLibrary.simpleMessage("Polls"),
+    "private": MessageLookupByLibrary.simpleMessage("Private"),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
+    "public": MessageLookupByLibrary.simpleMessage("Public"),
+    "select_date": MessageLookupByLibrary.simpleMessage("Select Date"),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "sign_in": MessageLookupByLibrary.simpleMessage("Sign in"),
     "sign_in_to_continue": MessageLookupByLibrary.simpleMessage(
@@ -102,9 +108,15 @@ class MessageLookup extends MessageLookupByLibrary {
       "Update Your Profile Picture",
     ),
     "user_name": MessageLookupByLibrary.simpleMessage("User Name"),
+    "vote": MessageLookupByLibrary.simpleMessage("Vote"),
     "welcome": MessageLookupByLibrary.simpleMessage("Welcome Back"),
     "welcome_message": MessageLookupByLibrary.simpleMessage(
       "Welcome to Green City Cleaning Department",
     ),
+    "your_announcement_type": MessageLookupByLibrary.simpleMessage(
+      "Your Announcement Type",
+    ),
+    "your_bin_number": MessageLookupByLibrary.simpleMessage("Your Bin Number"),
+    "your_region": MessageLookupByLibrary.simpleMessage("Your Region"),
   };
 }

@@ -444,6 +444,71 @@ class S {
       args: [],
     );
   }
+
+  /// `Polls`
+  String get polls {
+    return Intl.message('Polls', name: 'polls', desc: '', args: []);
+  }
+
+  /// `Vote`
+  String get vote {
+    return Intl.message('Vote', name: 'vote', desc: '', args: []);
+  }
+
+  /// `Select Date`
+  String get select_date {
+    return Intl.message('Select Date', name: 'select_date', desc: '', args: []);
+  }
+
+  /// `Your Announcement Type`
+  String get your_announcement_type {
+    return Intl.message(
+      'Your Announcement Type',
+      name: 'your_announcement_type',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your Bin Number`
+  String get your_bin_number {
+    return Intl.message(
+      'Your Bin Number',
+      name: 'your_bin_number',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your Region`
+  String get your_region {
+    return Intl.message('Your Region', name: 'your_region', desc: '', args: []);
+  }
+
+  /// `Notifications`
+  String get notifications {
+    return Intl.message(
+      'Notifications',
+      name: 'notifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Private`
+  String get private {
+    return Intl.message('Private', name: 'private', desc: '', args: []);
+  }
+
+  /// `Public`
+  String get public {
+    return Intl.message('Public', name: 'public', desc: '', args: []);
+  }
+
+  /// `All`
+  String get all {
+    return Intl.message('All', name: 'all', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:green_city/core/utils/text_felid.dart';
 import 'package:green_city/generated/l10n.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../featuers/auth/data/models/user_model.dart';
-import '../constants.dart';
+import '../utils/constants.dart';
 import '../services/prefs_service.dart';
 import '../utils/modern_button.dart';
 import '../utils/text_style.dart';
@@ -61,7 +62,7 @@ abstract class Helper {
 
   static void showAlert({
     required BuildContext context,
-    required VoidCallback leftFunc,
+    required VoidCallback onTap,
     required String title,
     required TextEditingController controller,
   }) async {
@@ -87,7 +88,7 @@ abstract class Helper {
                   MyTextFelid(controller: controller, label: title),
                   const SizedBox(height: 5),
                   ModernButton(
-                    onTap: leftFunc,
+                    onTap: onTap,
                     title: S.of(context).update,
                     icon: Icons.check_circle_rounded,
                   ),
@@ -119,7 +120,17 @@ abstract class Helper {
     }
   }
 
-  static UserModel getUser() {
+  static void openUrl(BuildContext context, String url) async {
+    final pollLink = Uri.parse(url);
+    if (await canLaunchUrl(pollLink)) {
+      await launchUrl(pollLink);
+    } else {
+      // ignore: use_build_context_synchronously
+      Helper.showSnackBar(context: context, message: 'Could not launch ');
+    }
+  }
+
+  static Future<UserModel> getUser() async{
     final user = PrefsService.getString(Constants.kUserData);
     return UserModel.fromJson(jsonDecode(user!));
   }

@@ -26,11 +26,7 @@ class ModernButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         textStyle: MyStyle.title14(context),
       ),
-      icon: Icon(
-        icon,
-        size: 20,
-        color: Theme.of(context).colorScheme.surface,
-      ),
+      icon: Icon(icon, size: 20, color: Theme.of(context).colorScheme.surface),
       onPressed: onTap,
       label: Text(title),
     );

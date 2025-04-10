@@ -29,12 +29,9 @@ class InfoCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    title,
-                    style: MyStyle.title18(context),
-                  ),
+                  Text(title, style: MyStyle.title18(context)),
                   const SizedBox(height: 5),
-                  Text(description, style: MyStyle.title14(context),),
+                  Text(description, style: MyStyle.title14(context)),
                 ],
               ),
             ),

@@ -1,10 +1,11 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:green_city/core/constants.dart';
+import 'package:green_city/core/utils/constants.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import '../../../../../../core/functions/helper.dart';
-import '../../../../../../core/themes/light_theme.dart';
+import '../../../../core/functions/helper.dart';
+import '../../../../core/themes/light_theme.dart';
 
 class ProfilePicture extends StatefulWidget {
   const ProfilePicture({super.key, this.imageUrl});
@@ -41,12 +42,12 @@ class _ProfilePictureState extends State<ProfilePicture> {
         radius: 70,
         backgroundImage:
             widget.imageUrl != null && widget.imageUrl!.isNotEmpty
-                ? NetworkImage(widget.imageUrl!)
+                ? CachedNetworkImageProvider(widget.imageUrl!)
                 : const AssetImage(Constants.person),
         backgroundColor: MyColors.white,
         child: Align(
           alignment: Alignment.bottomRight,
-      
+
           child: Container(
             decoration: const BoxDecoration(
               shape: BoxShape.circle,

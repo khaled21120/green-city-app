@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:green_city/core/utils/endpoints.dart';
-import 'package:green_city/featuers/auth/domain/repo/auth_repo.dart';
+import 'package:green_city/featuers/auth/data/repo/auth_repo.dart';
 
 import '../../../data/models/user_model.dart';
 
@@ -18,11 +18,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   }) async {
     emit(SignUpLoading());
     final res = await authRepo.signUp(
-      data: {
-        'name': name,
-        'email': email,
-        'password': password,
-      },
+      data: {'name': name, 'email': email, 'password': password},
       endPoint: Endpoints.register,
     );
     res.fold(

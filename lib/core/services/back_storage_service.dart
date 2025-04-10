@@ -44,7 +44,7 @@ class BackendStorageService extends DatabaseService {
   }
 
   @override
-  Future<Map<String, dynamic>> fetchData({
+  Future<Map<String, dynamic>> fetchMapData({
     required String endPoint,
     String? uId,
   }) async {
@@ -88,6 +88,23 @@ class BackendStorageService extends DatabaseService {
       return false;
     } catch (e) {
       return false;
+    }
+  }
+
+  @override
+  Future<List<dynamic>> fetchListData({
+    required String endPoint,
+    String? uId,
+  }) async {
+    try {
+      final res = await dio.get(endPoint);
+      if (res.statusCode == 200) {
+        return res.data as List<dynamic>;
+      } else {
+        throw Exception('Unexpected status code: ${res.statusCode}');
+      }
+    } on DioException catch (dioError) {
+      throw ServerFailure.fromDioException(dioError);
     }
   }
 }

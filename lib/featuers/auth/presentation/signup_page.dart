@@ -5,7 +5,7 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 import '../../../core/functions/helper.dart';
 import '../../../core/services/get_it_service.dart';
-import '../domain/repo/auth_repo.dart';
+import '../data/repo/auth_repo.dart';
 import 'Widgets/gradient_bg.dart';
 import 'Widgets/signup_bottom.dart';
 import 'cubits/SignUp/sign_up_cubit.dart';

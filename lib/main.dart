@@ -17,11 +17,11 @@ void main() async {
   setupServiceLocator();
   await PrefsService.init();
 
-  final themeCubit = ThemeCubit();
   final languageCubit = LanguageCubit();
+  final themeCubit = ThemeCubit();
 
   themeCubit.loadTheme();
-  languageCubit.loadSavedLanguage(); 
+  languageCubit.loadSavedLanguage();
 
   runApp(
     MultiBlocProvider(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:green_city/generated/l10n.dart';
 
-import '../../../../../core/constants.dart';
+import '../../../../../core/utils/constants.dart';
 import '../../../../../core/themes/light_theme.dart';
 import '../../../../../core/utils/text_style.dart';
 

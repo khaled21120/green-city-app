@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/errors/error.dart';
-import '../../data/models/user_model.dart';
+import '../models/user_model.dart';
 
 abstract class AuthRepo {
   Future<Either<Failures, UserModel>> signUp({
@@ -14,7 +14,7 @@ abstract class AuthRepo {
     required String email,
     required String password,
   });
-  Future saveUserDataLocal(UserModel user);
+  Future isLogin();
 
   Future<void> logOut();
 

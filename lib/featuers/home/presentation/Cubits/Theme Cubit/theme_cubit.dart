@@ -11,7 +11,7 @@ class ThemeCubit extends Cubit<ThemeState> {
   Future<void> loadTheme() async {
     int themeIndex = PrefsService.loadTheme();
     ThemeMode mode = ThemeMode.system;
-    
+
     if (themeIndex == 1) {
       mode = ThemeMode.light;
     } else if (themeIndex == 2) {
@@ -22,7 +22,8 @@ class ThemeCubit extends Cubit<ThemeState> {
 
   /// Toggle theme and save state
   Future<void> toggleTheme(ThemeMode mode) async {
-    int themeIndex = mode == ThemeMode.light ? 1 : (mode == ThemeMode.dark ? 2 : 0);
+    int themeIndex =
+        mode == ThemeMode.light ? 1 : (mode == ThemeMode.dark ? 2 : 0);
     await PrefsService.saveTheme(themeIndex);
     emit(ThemeState(mode));
   }

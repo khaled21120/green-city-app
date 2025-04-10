@@ -3,7 +3,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 
 import '../../../core/themes/light_theme.dart';
 import '../../../generated/l10n.dart';
-import 'views/Profile/profile_page.dart';
+import '../../profile/profile_page.dart';
 import 'views/chellanges/chellange_page.dart';
 import 'widgets/drawer.dart';
 import 'widgets/home_body.dart';

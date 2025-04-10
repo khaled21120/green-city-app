@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:green_city/core/utils/endpoints.dart';
 
 import '../../../data/models/user_model.dart';
-import '../../../domain/repo/auth_repo.dart';
+import '../../../data/repo/auth_repo.dart';
 
 part 'log_in_state.dart';
 
@@ -13,7 +13,11 @@ class LogInCubit extends Cubit<LogInState> {
 
   void logIn({required String email, required String password}) async {
     emit(LogInLoading());
-    final res = await authRepo.logIn(endPoint: Endpoints.login,email: email, password: password);
+    final res = await authRepo.logIn(
+      endPoint: Endpoints.login,
+      email: email,
+      password: password,
+    );
     res.fold(
       (failures) => emit(LogInError(failures.errMsg)),
       (userModel) => emit(LogInSuccess(userModel)),

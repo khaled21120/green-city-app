@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../core/utils/text_style.dart';
+import '../../../../core/utils/text_style.dart';
 
 class ProfileItem extends StatelessWidget {
   const ProfileItem({

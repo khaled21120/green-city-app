@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "about_us": MessageLookupByLibrary.simpleMessage("من نحن"),
     "activities": MessageLookupByLibrary.simpleMessage("الأنشطة"),
     "address": MessageLookupByLibrary.simpleMessage("العنوان"),
+    "all": MessageLookupByLibrary.simpleMessage("الكل"),
     "already_have_an_account": MessageLookupByLibrary.simpleMessage(
       "هل لديك حساب بالفعل؟",
     ),
@@ -67,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "language": MessageLookupByLibrary.simpleMessage("اللغة"),
     "message": MessageLookupByLibrary.simpleMessage("الرسالة"),
     "name": MessageLookupByLibrary.simpleMessage("الاسم"),
+    "notifications": MessageLookupByLibrary.simpleMessage("الاشعارات"),
     "number_of_participants": MessageLookupByLibrary.simpleMessage(
       "عدد المشاركين مكتمل",
     ),
@@ -88,7 +90,11 @@ class MessageLookup extends MessageLookupByLibrary {
       "كلمة المرور غير متطابقة",
     ),
     "phone_number": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+    "polls": MessageLookupByLibrary.simpleMessage("التصويتات"),
+    "private": MessageLookupByLibrary.simpleMessage("خاص"),
     "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
+    "public": MessageLookupByLibrary.simpleMessage("عام"),
+    "select_date": MessageLookupByLibrary.simpleMessage("اختر التاريخ"),
     "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
     "sign_in": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "sign_in_to_continue": MessageLookupByLibrary.simpleMessage(
@@ -108,9 +114,17 @@ class MessageLookup extends MessageLookupByLibrary {
       "تحديث صورة الملف الشخصي",
     ),
     "user_name": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
+    "vote": MessageLookupByLibrary.simpleMessage("تصويت"),
     "welcome": MessageLookupByLibrary.simpleMessage("مرحبًا بعودتك"),
     "welcome_message": MessageLookupByLibrary.simpleMessage(
       "مرحبًا بك في قسم تنظيف مدينة جرين سيتي",
     ),
+    "your_announcement_type": MessageLookupByLibrary.simpleMessage(
+      "نوع البلاغ الخاص بك",
+    ),
+    "your_bin_number": MessageLookupByLibrary.simpleMessage(
+      "رقم الحاوية الخاصة بك",
+    ),
+    "your_region": MessageLookupByLibrary.simpleMessage("المنطقة الخاصة بك"),
   };
 }

@@ -1,5 +1,4 @@
 abstract class Constants {
-  static const String appName = 'Green City';
   static const String _images = 'assets/images/';
   static const String _assets = 'assets/';
 
@@ -9,7 +8,6 @@ abstract class Constants {
   static const String logo = '${_images}logo.png';
   static const String logoDark = '${_images}logodark.png';
   static const String person = '${_images}person.png';
-  static const String bg = '${_images}BG.png';
   static const String themeKey = 'themeMode';
 
   static const List<Map<String, String>> faqs = [
@@ -44,7 +42,20 @@ abstract class Constants {
       'answer': 'Yes, Green City is available on multiple cities.',
     },
   ];
-
+  static const List<String> announcementTypes = [
+    'damaged bin',
+    'full bin',
+    'dengerous bin',
+    'garbage throw away',
+  ];
+  static const List<String> binNumbers = ['1', '2', '3', '4', '5'];
+  static const List<String> regions = [
+    'Port Said Shark',
+    'Port Said Gharb',
+    'Port Said Al-Zhour',
+    'Port Said Arab',
+    'Port Said Manakh',
+  ];
   static const String kUserData = 'userData';
 
   static const String kIsLogin = 'isLogin';

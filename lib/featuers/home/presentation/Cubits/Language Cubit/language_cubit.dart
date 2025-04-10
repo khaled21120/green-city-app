@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:green_city/core/services/prefs_service.dart';
-import '../../../../../core/constants.dart';
+import '../../../../../core/utils/constants.dart';
 import 'language_state.dart';
 
 class LanguageCubit extends Cubit<LanguageState> {

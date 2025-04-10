@@ -20,10 +20,7 @@ class MyListTile extends StatelessWidget {
         onTap();
         Navigator.of(context).pop();
       },
-      title: Text(
-        title,
-        style: MyStyle.title16(context),
-      ),
+      title: Text(title, style: MyStyle.title16(context)),
       leading: Icon(icon),
     );
   }

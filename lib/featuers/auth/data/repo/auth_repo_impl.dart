@@ -1,12 +1,13 @@
 import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
+import 'package:flutter/services.dart';
 
-import '../../../../core/constants.dart';
+import '../../../../core/utils/constants.dart';
 import '../../../../core/errors/error.dart';
 import '../../../../core/services/back_auth_service.dart';
 import '../../../../core/services/prefs_service.dart';
-import '../../domain/repo/auth_repo.dart';
+import 'auth_repo.dart';
 import '../models/user_model.dart';
 
 class AuthRepoImpl extends AuthRepo {
@@ -20,19 +21,27 @@ class AuthRepoImpl extends AuthRepo {
     required String password,
   }) async {
     try {
-      await backendAuthService.logIn(
-        endPoint: endPoint,
-        email: email,
-        password: password,
-      );
-      final userData = await backendAuthService.fetchUserData(
-        endPoint: endPoint,
-      );
+      // await backendAuthService.logIn(
+      //   endPoint: endPoint,
+      //   email: email,
+      //   password: password,
+      // );
+      // final userData = await backendAuthService.fetchUserData(
+      //   endPoint: endPoint,
+      // );
+      String jsonString = await rootBundle.loadString(Constants.db);
+      // Decode the JSON string
+      var jsonData = json.decode(jsonString);
+
+      final userData = jsonData['users'][4] as Map<String, dynamic>;
+
       final user = UserModel.fromJson(userData);
-      await saveUserDataLocal(user);
+      await isLogin();
       return Right(user);
-    } on Exception {
-      return Left(ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
+    } on ServerFailure catch (e) {
+      return Left(
+        ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى ${e.errMsg}'),
+      );
     }
   }
 
@@ -43,26 +52,31 @@ class AuthRepoImpl extends AuthRepo {
     String? token,
   }) async {
     try {
-      await backendAuthService.signUp(
-        user: UserModel.fromJson(data),
-        endPoint: endPoint,
-        token: token,
-      );
-      final userData = await backendAuthService.fetchUserData(
-        endPoint: endPoint,
-      );
+      // await backendAuthService.signUp(
+      //   user: UserModel.fromJson(data),
+      //   endPoint: endPoint,
+      //   token: token,
+      // );
+      String jsonString = await rootBundle.loadString(Constants.db);
+      // Decode the JSON string
+      var jsonData = json.decode(jsonString);
+
+      final userData = jsonData['users'][1] as Map<String, dynamic>;
+      // await backendAuthService.fetchUserData(
+      //   endPoint: endPoint,
+      // );
       final user = UserModel.fromJson(userData);
-      await saveUserDataLocal(user);
+      await isLogin();
       return Right(user);
-    } on Exception {
-      return Left(ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
+    } on ServerFailure catch (e) {
+      return Left(
+        ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى ${e.errMsg}'),
+      );
     }
   }
 
   @override
-  Future saveUserDataLocal(UserModel user) async {
-    final data = jsonEncode(user.toJson());
-    await PrefsService.setString(Constants.kUserData, data);
+  Future isLogin() async {
     await PrefsService.isLogIn(true);
   }
 

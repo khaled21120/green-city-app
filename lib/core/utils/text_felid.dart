@@ -22,7 +22,10 @@ class MyTextFelid extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       validator:
-          (value) => (value == null || value.isEmpty) ? '${S.of(context).enter} $label' : null,
+          (value) =>
+              (value == null || value.isEmpty)
+                  ? '${S.of(context).enter} $label'
+                  : null,
       keyboardType: keyboardType ?? TextInputType.emailAddress,
       controller: controller,
       obscureText: isPassword ?? false,

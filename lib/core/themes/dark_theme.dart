@@ -26,7 +26,7 @@ ThemeData darkThemeData = ThemeData(
     tertiary: MyColors.primaryMid,
     onTertiary: MyColors.grey,
     surface: MyColors.cardBG,
-    error: Colors.redAccent,
+    error: Colors.red,
     onPrimary: MyColors.white,
     onSecondary: MyColors.black,
     onSurface: MyColors.white,

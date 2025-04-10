@@ -34,7 +34,7 @@
   "join": "Join",
   "submit": "Submit",
   "cancel": "Cancel",
-  "enter":"Enter",
+  "enter": "Enter",
   "camera": "Camera",
   "gallery": "Gallery",
   "delete": "Delete",
@@ -52,5 +52,15 @@
   "description": "We are dedicated to keeping our city clean and green. Our mission is to provide eco-friendly waste management solutions, ensuring a healthier environment for future generations.",
   "number_of_participants": "Number of participants is complete",
   "completed": "Completed",
-  "participants": "Participants"
+  "participants": "Participants",
+  "polls": "Polls",
+  "vote": "Vote",
+  "select_date": "Select Date",
+  "your_announcement_type": "Your Announcement Type",
+  "your_bin_number": "Your Bin Number",
+  "your_region": "Your Region",
+  "notifications": "Notifications",
+  "private": "Private",
+  "public": "Public",
+  "all":"All"
 }
