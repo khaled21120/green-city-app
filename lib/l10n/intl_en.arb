@@ -62,5 +62,10 @@
   "notifications": "Notifications",
   "private": "Private",
   "public": "Public",
-  "all":"All"
+  "all": "All",
+  "assistant": "Assistant",
+  "typeMessage": "Type message...",
+  "completed_announcements": "Completed\n Announcements",
+  "completed_activities": "Completed\n Activities",
+  "completed_polls": "Completed\n Polls"
 }

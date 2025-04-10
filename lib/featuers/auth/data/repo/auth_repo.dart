@@ -14,7 +14,7 @@ abstract class AuthRepo {
     required String email,
     required String password,
   });
-  Future isLogin();
+  Future saveUserDataLocal(UserModel user);
 
   Future<void> logOut();
 

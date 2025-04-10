@@ -130,7 +130,7 @@ abstract class Helper {
     }
   }
 
-  static Future<UserModel> getUser() async{
+  static UserModel getUser() {
     final user = PrefsService.getString(Constants.kUserData);
     return UserModel.fromJson(jsonDecode(user!));
   }

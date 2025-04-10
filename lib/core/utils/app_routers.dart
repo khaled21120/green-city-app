@@ -7,6 +7,7 @@ import 'package:green_city/featuers/home/presentation/views/Notifications/notifi
 import 'package:green_city/featuers/home/presentation/views/settings/settings_page.dart';
 import 'package:green_city/featuers/splash/presentation/splash_page.dart';
 
+import '../../featuers/auth/data/models/user_model.dart';
 import '../../featuers/auth/presentation/cubits/Auth/auth_cubit.dart';
 import '../../featuers/auth/presentation/intro_page.dart';
 import '../../featuers/auth/presentation/signup_page.dart';
@@ -16,6 +17,7 @@ import '../../featuers/home/presentation/Cubits/Polls Cubit/polls_cubit.dart';
 import '../../featuers/home/presentation/Cubits/Notifications Cubit/notifications_cubit.dart';
 import '../../featuers/home/presentation/views/About Us/about_us.dart';
 import '../../featuers/home/presentation/views/Announcements/announcements.dart';
+import '../../featuers/home/presentation/views/Chat/chat_page.dart';
 import '../../featuers/home/presentation/views/FAQs/faqs_page.dart';
 import '../../featuers/home/presentation/home_page.dart';
 import '../../featuers/home/presentation/views/Polls/polls_view.dart';
@@ -84,6 +86,14 @@ abstract class AppRouters {
         path: '/aboutUs',
         name: 'aboutUs',
         builder: (_, _) => const AboutUsPage(),
+      ),
+      GoRoute(
+        path: '/assistantPage',
+        name: 'assistantPage',
+        builder: (_, state) {
+          final userModel = state.extra as UserModel;
+          return ChatPage(userModel: userModel);
+        },
       ),
       GoRoute(
         path: '/notifications',

@@ -509,6 +509,51 @@ class S {
   String get all {
     return Intl.message('All', name: 'all', desc: '', args: []);
   }
+
+  /// `Assistant`
+  String get assistant {
+    return Intl.message('Assistant', name: 'assistant', desc: '', args: []);
+  }
+
+  /// `Type message...`
+  String get typeMessage {
+    return Intl.message(
+      'Type message...',
+      name: 'typeMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Completed\n Announcements`
+  String get completed_announcements {
+    return Intl.message(
+      'Completed\n Announcements',
+      name: 'completed_announcements',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Completed\n Activities`
+  String get completed_activities {
+    return Intl.message(
+      'Completed\n Activities',
+      name: 'completed_activities',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Completed\n Polls`
+  String get completed_polls {
+    return Intl.message(
+      'Completed\n Polls',
+      name: 'completed_polls',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

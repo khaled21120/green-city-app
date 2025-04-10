@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Already have an account?",
     ),
     "announcements": MessageLookupByLibrary.simpleMessage("Announcements"),
+    "assistant": MessageLookupByLibrary.simpleMessage("Assistant"),
     "camera": MessageLookupByLibrary.simpleMessage("Camera"),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "change_address": MessageLookupByLibrary.simpleMessage("Change Address"),
@@ -37,6 +38,15 @@ class MessageLookup extends MessageLookupByLibrary {
       "Change Phone Number",
     ),
     "completed": MessageLookupByLibrary.simpleMessage("Completed"),
+    "completed_activities": MessageLookupByLibrary.simpleMessage(
+      "Completed\n Activities",
+    ),
+    "completed_announcements": MessageLookupByLibrary.simpleMessage(
+      "Completed\n Announcements",
+    ),
+    "completed_polls": MessageLookupByLibrary.simpleMessage(
+      "Completed\n Polls",
+    ),
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "Confirm Password",
     ),
@@ -103,6 +113,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Sign up to continue",
     ),
     "submit": MessageLookupByLibrary.simpleMessage("Submit"),
+    "typeMessage": MessageLookupByLibrary.simpleMessage("Type message..."),
     "update": MessageLookupByLibrary.simpleMessage("Update"),
     "update_profile_picture": MessageLookupByLibrary.simpleMessage(
       "Update Your Profile Picture",

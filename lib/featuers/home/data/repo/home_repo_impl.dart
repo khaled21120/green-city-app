@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
 import 'package:green_city/featuers/home/data/models/activities_model.dart';
@@ -60,8 +59,6 @@ class HomeRepoImpl extends HomeRepo {
       var jsonData = json.decode(jsonString);
 
       final userData = jsonData[endPoint][4] as Map<String, dynamic>;
-      log(userData.toString());
-
       final user = UserModel.fromJson(userData);
       await saveUserDataLocal(user);
       return Right(user);

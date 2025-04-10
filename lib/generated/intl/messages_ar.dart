@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "هل لديك حساب بالفعل؟",
     ),
     "announcements": MessageLookupByLibrary.simpleMessage("الإعلانات"),
+    "assistant": MessageLookupByLibrary.simpleMessage("المساعدة"),
     "camera": MessageLookupByLibrary.simpleMessage("الكاميرا"),
     "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
     "change_address": MessageLookupByLibrary.simpleMessage("تغيير العنوان"),
@@ -37,6 +38,15 @@ class MessageLookup extends MessageLookupByLibrary {
       "تغيير رقم الهاتف",
     ),
     "completed": MessageLookupByLibrary.simpleMessage("مكتمل"),
+    "completed_activities": MessageLookupByLibrary.simpleMessage(
+      "الانشطة\n المكتملة",
+    ),
+    "completed_announcements": MessageLookupByLibrary.simpleMessage(
+      "البلاغات\n المكتملة",
+    ),
+    "completed_polls": MessageLookupByLibrary.simpleMessage(
+      "التصويتات\n المكتملة",
+    ),
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
     ),
@@ -109,6 +119,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "سجّل حسابًا جديدًا للمتابعة",
     ),
     "submit": MessageLookupByLibrary.simpleMessage("إرسال"),
+    "typeMessage": MessageLookupByLibrary.simpleMessage("اكتب رسالة....."),
     "update": MessageLookupByLibrary.simpleMessage("تحديث"),
     "update_profile_picture": MessageLookupByLibrary.simpleMessage(
       "تحديث صورة الملف الشخصي",

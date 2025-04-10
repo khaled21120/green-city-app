@@ -36,7 +36,7 @@ class AuthRepoImpl extends AuthRepo {
       final userData = jsonData['users'][4] as Map<String, dynamic>;
 
       final user = UserModel.fromJson(userData);
-      await isLogin();
+      await saveUserDataLocal(user);
       return Right(user);
     } on ServerFailure catch (e) {
       return Left(
@@ -61,12 +61,12 @@ class AuthRepoImpl extends AuthRepo {
       // Decode the JSON string
       var jsonData = json.decode(jsonString);
 
-      final userData = jsonData['users'][1] as Map<String, dynamic>;
+      final userData = jsonData['users'][4] as Map<String, dynamic>;
       // await backendAuthService.fetchUserData(
       //   endPoint: endPoint,
       // );
       final user = UserModel.fromJson(userData);
-      await isLogin();
+      await saveUserDataLocal(user);
       return Right(user);
     } on ServerFailure catch (e) {
       return Left(
@@ -76,7 +76,9 @@ class AuthRepoImpl extends AuthRepo {
   }
 
   @override
-  Future isLogin() async {
+  Future saveUserDataLocal(UserModel user) async {
+    final data = jsonEncode(user.toJson());
+    await PrefsService.setString(Constants.kUserData, data);
     await PrefsService.isLogIn(true);
   }
 

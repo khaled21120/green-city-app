@@ -14,17 +14,17 @@ class ProfileStats extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         _statItem(
-          title: S.of(context).polls,
+          title: S.of(context).completed_polls,
           context: context,
           count: user.numOfCompletedPollsCount ?? 0,
         ),
         _statItem(
           context: context,
-          title: S.of(context).activities,
+          title: S.of(context).completed_activities,
           count: user.numOfCompletedActivitiesCount ?? 0,
         ),
         _statItem(
-          title: S.of(context).announcements,
+          title: S.of(context).completed_announcements,
           context: context,
           count: user.numOfAcceptedAnnouncementsCount ?? 0,
         ),
@@ -43,7 +43,11 @@ Widget _statItem({
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
-          Text(title, style: MyStyle.title14(context)),
+          Text(
+            title,
+            style: MyStyle.title14(context),
+            textAlign: TextAlign.center,
+          ),
           Text(count.toString(), style: MyStyle.title16(context)),
         ],
       ),

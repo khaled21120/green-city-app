@@ -62,5 +62,10 @@
   "notifications": "الاشعارات",
   "private": "خاص",
   "public": "عام",
-  "all":"الكل"
+  "all": "الكل",
+  "assistant": "المساعدة",
+  "typeMessage": "اكتب رسالة.....",
+  "completed_announcements": "البلاغات\n المكتملة",
+  "completed_activities": "الانشطة\n المكتملة",
+  "completed_polls": "التصويتات\n المكتملة"
 }
