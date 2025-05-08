@@ -104,17 +104,20 @@ class _LogInBottomState extends State<LogInBottom> {
                   },
                 ),
               ),
-              const SizedBox(height: 10),
-          
+              const SizedBox(height: 5),
+
               // Forgot Password
               Align(
                 alignment: Alignment.centerRight,
-                child: Text(
-                  S.of(context).forget_password,
-                  style: TextStyle(
-                    fontSize: 17,
-                    color: Theme.of(context).colorScheme.onSurface,
-                    fontWeight: FontWeight.w800,
+                child: TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    S.of(context).forget_password,
+                    style: TextStyle(
+                      fontSize: 17,
+                      color: Theme.of(context).colorScheme.primary,
+                      fontWeight: FontWeight.w800,
+                    ),
                   ),
                 ),
               ),
@@ -137,8 +140,7 @@ class _LogInBottomState extends State<LogInBottom> {
                     style: MyStyle.title16(context),
                   ),
                   TextButton(
-                    onPressed:
-                        () => GoRouter.of(context).goNamed('signup'),
+                    onPressed: () => GoRouter.of(context).goNamed('signup'),
                     child: Text(
                       S.of(context).sign_up,
                       style: TextStyle(

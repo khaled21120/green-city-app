@@ -29,7 +29,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     required dynamic data,
     required bool isImage,
   }) async {
-    emit(UpdateDataLoading());
+    emit(FetchDataLoading());
 
     final result = await homeRepo.updateUserData(
       endPoint: Endpoints.usersEndpoint,

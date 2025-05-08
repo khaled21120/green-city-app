@@ -24,7 +24,6 @@ class UpdateDataSuccess extends ProfileState {
 }
 
 class FetchDataLoading extends ProfileState {}
-class UpdateDataLoading extends ProfileState {}
 
 class FetchDataFailure extends ProfileState {
   final String errMsg;

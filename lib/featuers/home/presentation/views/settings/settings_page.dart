@@ -56,7 +56,7 @@ class SettingsPage extends StatelessWidget {
                     _buildAboutItem(
                       context,
                       title: S.of(context).version,
-                      value: "1.0.0",
+                      value: "ⅴ1.0.0",
                     ),
                     _buildAboutItem(
                       context,

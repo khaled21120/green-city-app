@@ -70,7 +70,7 @@ class _ProfileViewState extends State<ProfileView> {
           _addressController.text = user.address ?? '';
         }
         return ModalProgressHUD(
-          inAsyncCall: state is FetchDataLoading || state is UpdateDataLoading,
+          inAsyncCall: state is FetchDataLoading,
           opacity: 0.4,
           progressIndicator: const CircularProgressIndicator(
             strokeWidth: 2,
