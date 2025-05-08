@@ -22,8 +22,13 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "about_app": MessageLookupByLibrary.simpleMessage("حول التطبيق"),
     "about_us": MessageLookupByLibrary.simpleMessage("من نحن"),
+    "accepted_announcements": MessageLookupByLibrary.simpleMessage(
+      "الإعلانات \nالمقبولة",
+    ),
     "activities": MessageLookupByLibrary.simpleMessage("الأنشطة"),
+    "add_report": MessageLookupByLibrary.simpleMessage("إضافة تقرير"),
     "address": MessageLookupByLibrary.simpleMessage("العنوان"),
     "all": MessageLookupByLibrary.simpleMessage("الكل"),
     "already_have_an_account": MessageLookupByLibrary.simpleMessage(
@@ -54,12 +59,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "contact_us_description": MessageLookupByLibrary.simpleMessage(
       "📍 123 شارع جرين سيتي، إيكو تاون\n📧 support@greencity.com\n📞 +1 234 567 890",
     ),
+    "copyright": MessageLookupByLibrary.simpleMessage("حقوق النشر"),
     "create_account": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "dark_mode": MessageLookupByLibrary.simpleMessage("الوضع الداكن"),
     "delete": MessageLookupByLibrary.simpleMessage("حذف"),
     "description": MessageLookupByLibrary.simpleMessage(
       "نحن ملتزمون بالحفاظ على نظافة مدينتنا وخضرتها. مهمتنا هي توفير حلول إدارة نفايات صديقة للبيئة، مما يضمن بيئة أكثر صحة للأجيال القادمة.",
     ),
+    "developed_by": MessageLookupByLibrary.simpleMessage("مطور بواسطة"),
     "dont_have_an_account": MessageLookupByLibrary.simpleMessage(
       "ليس لديك حساب؟",
     ),
@@ -100,10 +107,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "كلمة المرور غير متطابقة",
     ),
     "phone_number": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+    "please_select": MessageLookupByLibrary.simpleMessage("يرجى تحديد"),
     "polls": MessageLookupByLibrary.simpleMessage("التصويتات"),
     "private": MessageLookupByLibrary.simpleMessage("خاص"),
     "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "public": MessageLookupByLibrary.simpleMessage("عام"),
+    "quick_actions": MessageLookupByLibrary.simpleMessage("إجراءات سريعة"),
+    "report_location": MessageLookupByLibrary.simpleMessage("الإبلاغ عن موقع"),
     "select_date": MessageLookupByLibrary.simpleMessage("اختر التاريخ"),
     "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
     "sign_in": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
@@ -119,16 +129,26 @@ class MessageLookup extends MessageLookupByLibrary {
       "سجّل حسابًا جديدًا للمتابعة",
     ),
     "submit": MessageLookupByLibrary.simpleMessage("إرسال"),
+    "submit_feedback": MessageLookupByLibrary.simpleMessage("إرسال ملاحظة"),
     "typeMessage": MessageLookupByLibrary.simpleMessage("اكتب رسالة....."),
     "update": MessageLookupByLibrary.simpleMessage("تحديث"),
     "update_profile_picture": MessageLookupByLibrary.simpleMessage(
       "تحديث صورة الملف الشخصي",
     ),
     "user_name": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
+    "version": MessageLookupByLibrary.simpleMessage("الإصدار"),
+    "view_announcements": MessageLookupByLibrary.simpleMessage("عرض الإعلانات"),
     "vote": MessageLookupByLibrary.simpleMessage("تصويت"),
     "welcome": MessageLookupByLibrary.simpleMessage("مرحبًا بعودتك"),
+    "welcome_back": MessageLookupByLibrary.simpleMessage("مرحبًا بعودتك!"),
     "welcome_message": MessageLookupByLibrary.simpleMessage(
       "مرحبًا بك في قسم تنظيف مدينة جرين سيتي",
+    ),
+    "welcome_subtitle": MessageLookupByLibrary.simpleMessage(
+      "انضم إلى مجتمعنا لجعل مدينتك أكثر نظافة واخضرارًا كل يوم",
+    ),
+    "welcome_title": MessageLookupByLibrary.simpleMessage(
+      "مرحبًا بكم في جرين سيتي",
     ),
     "your_announcement_type": MessageLookupByLibrary.simpleMessage(
       "نوع البلاغ الخاص بك",

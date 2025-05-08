@@ -8,12 +8,15 @@ abstract class DatabaseService {
     required String endPoint,
     String? uId,
   });
+  Future<Map<String, dynamic>> fetchUserData({
+    required String endPoint,
+  });
   Future<List<dynamic>> fetchListData({required String endPoint, String? uId});
   Future<bool> checkIfUserExist({required String endPoint, String? uId});
-  Future<void> deleteData({required String endPoint, String? uId});
+  Future<void> deleteData({required String endPoint});
   Future<bool> updateData({
+    required bool isImage,
     required String endPoint,
-    required Map<String, dynamic> data,
-    String? uId,
+    required dynamic data,
   });
 }

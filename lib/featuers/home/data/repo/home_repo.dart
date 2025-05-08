@@ -11,7 +11,8 @@ abstract class HomeRepo {
   Future<Either<Failures, UserModel>> fetchUserData({required String endPoint});
   Future<Either<Failures, UserModel>> updateUserData({
     required String endPoint,
-    required Map<String, dynamic> data,
+    required dynamic data,
+    required bool isImage,
   });
   Future updateData({
     required String endPoint,

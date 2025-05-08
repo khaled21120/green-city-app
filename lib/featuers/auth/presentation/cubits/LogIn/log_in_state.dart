@@ -17,6 +17,6 @@ final class LogInError extends LogInState {
 }
 
 final class LogInSuccess extends LogInState {
-  final UserModel userApiModel;
-  const LogInSuccess(this.userApiModel);
+  final UserModel userModel;
+  const LogInSuccess(this.userModel);
 }

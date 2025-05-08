@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:green_city/core/functions/helper.dart';
 import 'package:green_city/generated/l10n.dart';
 
 import '../../../../core/utils/text_style.dart';
@@ -59,15 +58,6 @@ class MyDrawer extends StatelessWidget {
                 title: S.of(context).about_us,
                 icon: Icons.info_rounded,
                 onTap: () => GoRouter.of(context).pushNamed('aboutUs'),
-              ),
-
-              MyListTile(
-                title: S.of(context).assistant,
-                icon: Icons.chat,
-                onTap:
-                    () => GoRouter.of(
-                      context,
-                    ).pushNamed('assistantPage', extra: Helper.getUser()),
               ),
 
               // Logout

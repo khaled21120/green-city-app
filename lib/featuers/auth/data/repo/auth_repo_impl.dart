@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
-import 'package:flutter/services.dart';
+import 'package:green_city/core/utils/endpoints.dart';
 
 import '../../../../core/utils/constants.dart';
 import '../../../../core/errors/error.dart';
@@ -11,8 +11,8 @@ import 'auth_repo.dart';
 import '../models/user_model.dart';
 
 class AuthRepoImpl extends AuthRepo {
-  AuthRepoImpl({required this.backendAuthService});
-  final BackendAuthService backendAuthService;
+  AuthRepoImpl({required this.apiAuthService});
+  final ApiAuthService apiAuthService;
 
   @override
   Future<Either<Failures, UserModel>> logIn({
@@ -21,20 +21,14 @@ class AuthRepoImpl extends AuthRepo {
     required String password,
   }) async {
     try {
-      // await backendAuthService.logIn(
-      //   endPoint: endPoint,
-      //   email: email,
-      //   password: password,
-      // );
-      // final userData = await backendAuthService.fetchUserData(
-      //   endPoint: endPoint,
-      // );
-      String jsonString = await rootBundle.loadString(Constants.db);
-      // Decode the JSON string
-      var jsonData = json.decode(jsonString);
-
-      final userData = jsonData['users'][4] as Map<String, dynamic>;
-
+      await apiAuthService.logIn(
+        endPoint: endPoint,
+        email: email,
+        password: password,
+      );
+      final userData = await apiAuthService.fetchUserData(
+        endPoint: Endpoints.usersEndpoint,
+      );
       final user = UserModel.fromJson(userData);
       await saveUserDataLocal(user);
       return Right(user);
@@ -49,22 +43,12 @@ class AuthRepoImpl extends AuthRepo {
   Future<Either<Failures, UserModel>> signUp({
     required Map<String, dynamic> data,
     required String endPoint,
-    String? token,
   }) async {
     try {
-      // await backendAuthService.signUp(
-      //   user: UserModel.fromJson(data),
-      //   endPoint: endPoint,
-      //   token: token,
-      // );
-      String jsonString = await rootBundle.loadString(Constants.db);
-      // Decode the JSON string
-      var jsonData = json.decode(jsonString);
-
-      final userData = jsonData['users'][4] as Map<String, dynamic>;
-      // await backendAuthService.fetchUserData(
-      //   endPoint: endPoint,
-      // );
+      await apiAuthService.signUp(user: data, endPoint: endPoint);
+      final userData = await apiAuthService.fetchUserData(
+        endPoint: Endpoints.usersEndpoint,
+      );
       final user = UserModel.fromJson(userData);
       await saveUserDataLocal(user);
       return Right(user);
@@ -85,11 +69,11 @@ class AuthRepoImpl extends AuthRepo {
   @override
   Future<void> deleteAccount({required String endPoint}) async {
     await PrefsService.clear();
-    await backendAuthService.deleteUser(endPoint: endPoint);
+    await apiAuthService.deleteUser(endPoint: endPoint);
   }
 
   @override
   Future<void> logOut() async {
-    await backendAuthService.logOut();
+    await apiAuthService.logOut();
   }
 }

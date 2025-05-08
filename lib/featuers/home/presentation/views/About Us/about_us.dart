@@ -12,7 +12,6 @@ class AboutUsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
       appBar: AppBar(
@@ -21,7 +20,7 @@ class AboutUsPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(10.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -30,8 +29,7 @@ class AboutUsPage extends StatelessWidget {
                 PrefsService.loadTheme() == 1
                     ? Constants.logoDark
                     : Constants.logo,
-                height: height * 0.3,
-                width: width * 0.5,
+                width: width * 0.6,
               ),
 
               // 🏙️ Title & Subtitle

@@ -20,20 +20,18 @@ class HomeRepoImpl extends HomeRepo {
   @override
   Future<Either<Failures, UserModel>> updateUserData({
     required String endPoint,
-    required Map<String, dynamic> data,
+    required dynamic data,
+    required bool isImage,
   }) async {
     try {
       final isUpdated = await databaseService.updateData(
         endPoint: endPoint,
         data: data,
+        isImage: isImage,
       );
       if (isUpdated) {
-        final res = await databaseService.fetchMapData(endPoint: endPoint);
+        final res = await databaseService.fetchUserData(endPoint: endPoint);
         final userData = UserModel.fromJson(res);
-        await PrefsService.setString(
-          Constants.kUserData,
-          jsonEncode(userData.toJson()),
-        );
         await saveUserDataLocal(userData);
         return Right(userData);
       } else {
@@ -43,22 +41,13 @@ class HomeRepoImpl extends HomeRepo {
       return Left(ServerFailure(e.toString()));
     }
   }
-
   @override
   Future<Either<Failures, UserModel>> fetchUserData({
     required String endPoint,
     String? uId,
   }) async {
     try {
-      // final user = await databaseService.fetchData(
-      //   endPoint: endPoint,
-      //   uId: uId,
-      // );
-      String jsonString = await rootBundle.loadString(Constants.db);
-      // Decode the JSON string
-      var jsonData = json.decode(jsonString);
-
-      final userData = jsonData[endPoint][4] as Map<String, dynamic>;
+      final userData = await databaseService.fetchUserData(endPoint: endPoint);
       final user = UserModel.fromJson(userData);
       await saveUserDataLocal(user);
       return Right(user);
@@ -104,16 +93,8 @@ class HomeRepoImpl extends HomeRepo {
     required String endPoint,
   }) async {
     try {
-      // final activitiesList = await databaseService.fetchListData(
-      //   endPoint: endPoint,
-      // );
-      String jsonString = await rootBundle.loadString(Constants.db);
-      // Decode the JSON string
-      var jsonData = json.decode(jsonString);
-
-      final userData = jsonData[endPoint] as List<dynamic>;
-      final activities = userData.map((e) => PollsModel.fromJson(e)).toList();
-
+      final polls = await databaseService.fetchListData(endPoint: endPoint);
+      final activities = polls.map((e) => PollsModel.fromJson(e)).toList();
       return Right(activities);
     } on ServerFailure catch (e) {
       return Left(
@@ -139,7 +120,7 @@ class HomeRepoImpl extends HomeRepo {
     required String endPoint,
   }) async {
     try {
-      // final activitiesList = await databaseService.fetchListData(
+      // final notification = await databaseService.fetchListData(
       //   endPoint: endPoint,
       // );
       String jsonString = await rootBundle.loadString(Constants.db);
@@ -147,10 +128,10 @@ class HomeRepoImpl extends HomeRepo {
       var jsonData = json.decode(jsonString);
 
       final userData = jsonData[endPoint] as List<dynamic>;
-      final activities =
+      final notification =
           userData.map((e) => UserNotifiyModel.fromJson(e)).toList();
 
-      return Right(activities);
+      return Right(notification);
     } on ServerFailure catch (e) {
       return Left(
         ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى ${e.errMsg}'),
@@ -164,7 +145,11 @@ class HomeRepoImpl extends HomeRepo {
     required Map<String, dynamic> data,
   }) async {
     try {
-      await databaseService.updateData(endPoint: endPoint, data: data);
+      await databaseService.updateData(
+        endPoint: endPoint,
+        data: data,
+        isImage: false,
+      );
     } on ServerFailure catch (e) {
       throw ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى ${e.errMsg}');
     }
@@ -175,7 +160,7 @@ class HomeRepoImpl extends HomeRepo {
     required String endPoint,
   }) async {
     try {
-      // final activitiesList = await databaseService.fetchListData(
+      // final notification = await databaseService.fetchListData(
       //   endPoint: endPoint,
       // );
       String jsonString = await rootBundle.loadString(Constants.db);
@@ -183,9 +168,9 @@ class HomeRepoImpl extends HomeRepo {
       var jsonData = json.decode(jsonString);
 
       final userData = jsonData[endPoint] as List<dynamic>;
-      final activities =
+      final notification =
           userData.map((e) => PublicNotifiyModel.fromJson(e)).toList();
-      return Right(activities);
+      return Right(notification);
     } on ServerFailure catch (e) {
       return Left(
         ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى ${e.errMsg}'),

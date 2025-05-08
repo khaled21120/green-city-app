@@ -1,35 +1,30 @@
-import 'package:dio/dio.dart';
+import 'dart:developer';
 
-import '../../featuers/auth/data/models/user_model.dart';
+import 'package:dio/dio.dart';
+import 'package:green_city/core/utils/constants.dart';
+
 import '../errors/error.dart';
 import 'prefs_service.dart';
 
-class BackendAuthService {
-  BackendAuthService({required this.dio});
+class ApiAuthService {
+  ApiAuthService({required this.dio});
   final Dio dio;
 
   Future<void> logIn({
     required String endPoint,
     required String email,
     required String password,
-    String? token,
   }) async {
     try {
       final res = await dio.post(
         endPoint,
-        data: {'email': email, 'password': password},
-        options: Options(
-          headers: {
-            if (token != null)
-              'Authorization': 'Bearer $token', // Only if provided
-          },
-        ),
+        data: {'emailAddress': email, 'password': password},
+        options: Options(headers: {'Content-Type': 'application/json'}),
       );
       if (res.statusCode == 200) {
         final userData = res.data as Map<String, dynamic>;
-        if (userData['token'] != null) {
-          await PrefsService.setToken(userData['token']);
-        }
+        log(userData.toString());
+        await PrefsService.setToken(userData[Constants.kToken]);
       } else {
         throw Exception('Login failed with status code: ${res.statusCode}');
       }
@@ -41,26 +36,19 @@ class BackendAuthService {
   }
 
   Future<void> signUp({
-    required UserModel user,
+    required Map<String, dynamic> user,
     required String endPoint,
-    String? token,
   }) async {
     try {
+      FormData formData = FormData.fromMap(user);
       final res = await dio.post(
         endPoint,
-        data: user.toJson(),
-        options: Options(
-          headers: {
-            if (token != null)
-              'Authorization': 'Bearer $token', // Only if provided
-          },
-        ),
+        data: formData,
+        options: Options(headers: {'Content-Type': 'multipart/form-data'}),
       );
       if (res.statusCode == 200 || res.statusCode == 201) {
         final userData = res.data as Map<String, dynamic>;
-        if (userData['token'] != null) {
-          await PrefsService.setToken(userData['token']);
-        }
+        await PrefsService.setToken(userData[Constants.kToken]);
       } else {
         throw Exception('Signup failed with status code: ${res.statusCode}');
       }

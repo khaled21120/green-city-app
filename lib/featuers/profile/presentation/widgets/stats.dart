@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:green_city/core/themes/light_theme.dart';
 import 'package:green_city/generated/l10n.dart';
 
 import '../../../../core/utils/text_style.dart';
@@ -24,7 +25,7 @@ class ProfileStats extends StatelessWidget {
           count: user.numOfCompletedActivitiesCount ?? 0,
         ),
         _statItem(
-          title: S.of(context).completed_announcements,
+          title: S.of(context).accepted_announcements,
           context: context,
           count: user.numOfAcceptedAnnouncementsCount ?? 0,
         ),
@@ -40,15 +41,26 @@ Widget _statItem({
 }) {
   return Card(
     child: Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(16.0), // Padding around the content
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             title,
-            style: MyStyle.title14(context),
+            style: MyStyle.title14(context).copyWith(
+              fontWeight: FontWeight.bold, // Bold title
+            ),
             textAlign: TextAlign.center,
           ),
-          Text(count.toString(), style: MyStyle.title16(context)),
+          const SizedBox(height: 10),
+          Text(
+            '$count',
+            style: MyStyle.title16(context).copyWith(
+              fontWeight: FontWeight.bold, // Bold for count
+              fontSize: 20, // Larger font for better emphasis
+              color: MyColors.primary, // Use the primary color for emphasis
+            ),
+          ),
         ],
       ),
     ),

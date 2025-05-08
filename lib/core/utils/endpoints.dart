@@ -1,12 +1,13 @@
 abstract class Endpoints {
-  static const String baseUrl = 'https://gorest.co.in/public/v2/';
-  static const String Gemini_API = 'AIzaSyC30i9_OIYrWzVAxOLhRDeEdNmlfUeWNLA';
+  static const String baseUrl =
+      'https://greencityapitest-abgugdhahqgjf4fp.uaenorth-01.azurewebsites.net/';
+  static const String geminiAPI = 'AIzaSyC30i9_OIYrWzVAxOLhRDeEdNmlfUeWNLA';
 
-  static const String usersEndpoint = 'users';
-  static const String login = 'users/login';
-  static const String register = 'users/register';
+  static const String usersEndpoint = 'api/Users/me';
+  static const String login = 'api/Auth/Login';
+  static const String register = 'api/Auth/RegisterUser';
   static const String activities = 'CommunityActivities';
-  static const String polls = 'Polls';
+  static const String polls = 'api/Polls';
   static const String announcements = 'Announcements';
   static const String userNotifications = 'UserNotifications';
   static const String publicNotifications = 'PublicNotifications';

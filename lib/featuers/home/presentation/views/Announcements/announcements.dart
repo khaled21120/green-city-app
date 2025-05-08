@@ -212,7 +212,7 @@ class _AnnouncementsPageState extends State<AnnouncementsPage> {
       child: DropdownButtonFormField<String>(
         validator: (value) {
           if (value == null) {
-            return 'Please select $label';
+            return '${S.of(context).please_select} $label';
           }
           return null;
         },

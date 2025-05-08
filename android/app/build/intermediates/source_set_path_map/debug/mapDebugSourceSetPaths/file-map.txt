@@ -1,0 +1,63 @@
+com.example.green_city.app-debug-0 C:\Users\HiTech\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_facebook_auth-7.1.1\android\build\intermediates\packaged_res\debug\packageDebugResources
+com.example.green_city.app-debug-1 C:\Users\HiTech\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_plugin_android_lifecycle-2.0.27\android\build\intermediates\packaged_res\debug\packageDebugResources
+com.example.green_city.app-debug-2 C:\Users\HiTech\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_secure_storage-9.2.4\android\build\intermediates\packaged_res\debug\packageDebugResources
+com.example.green_city.app-debug-3 C:\Users\HiTech\AppData\Local\Pub\Cache\hosted\pub.dev\google_sign_in_android-6.2.0\android\build\intermediates\packaged_res\debug\packageDebugResources
+com.example.green_city.app-debug-4 C:\Users\HiTech\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.12+22\android\build\intermediates\packaged_res\debug\packageDebugResources
+com.example.green_city.app-debug-5 C:\Users\HiTech\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_android-2.2.16\android\build\intermediates\packaged_res\debug\packageDebugResources
+com.example.green_city.app-debug-6 C:\Users\HiTech\AppData\Local\Pub\Cache\hosted\pub.dev\shared_preferences_android-2.4.8\android\build\intermediates\packaged_res\debug\packageDebugResources
+com.example.green_city.app-debug-7 C:\Users\HiTech\AppData\Local\Pub\Cache\hosted\pub.dev\sqflite_android-2.4.1\android\build\intermediates\packaged_res\debug\packageDebugResources
+com.example.green_city.app-debug-8 C:\Users\HiTech\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_android-6.3.15\android\build\intermediates\packaged_res\debug\packageDebugResources
+com.example.green_city.app-debug-9 C:\Users\HiTech\AppData\Local\Pub\Cache\hosted\pub.dev\video_player_android-2.8.2\android\build\intermediates\packaged_res\debug\packageDebugResources
+com.example.green_city.app-google-services-10 D:\FCI\Graduation project\green_city\android\app\build\generated\res\google-services\debug
+com.example.green_city.app-pngs-11 D:\FCI\Graduation project\green_city\android\app\build\generated\res\pngs\debug
+com.example.green_city.app-resValues-12 D:\FCI\Graduation project\green_city\android\app\build\generated\res\resValues\debug
+com.example.green_city.app-packageDebugResources-13 D:\FCI\Graduation project\green_city\android\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.example.green_city.app-packageDebugResources-14 D:\FCI\Graduation project\green_city\android\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.example.green_city.app-debug-15 D:\FCI\Graduation project\green_city\android\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.example.green_city.app-debug-16 D:\FCI\Graduation project\green_city\android\app\src\debug\res
+com.example.green_city.app-main-17 D:\FCI\Graduation project\green_city\android\app\src\main\res
+com.example.green_city.app-jetified-core-ktx-1.13.1-18 D:\programs\Android\.gradle\caches\8.10.2\transforms\0c0cee97997780af0650d838bd40e868\transformed\jetified-core-ktx-1.13.1\res
+com.example.green_city.app-jetified-annotation-experimental-1.4.0-19 D:\programs\Android\.gradle\caches\8.10.2\transforms\11bd9e309abbd333eda4d80db27cfb8d\transformed\jetified-annotation-experimental-1.4.0\res
+com.example.green_city.app-jetified-play-services-base-18.0.1-20 D:\programs\Android\.gradle\caches\8.10.2\transforms\2dd2d37f1a220f90f20d877a2bd7fee1\transformed\jetified-play-services-base-18.0.1\res
+com.example.green_city.app-lifecycle-livedata-core-2.7.0-21 D:\programs\Android\.gradle\caches\8.10.2\transforms\2f00358edc71bfb829cdb72e6941d012\transformed\lifecycle-livedata-core-2.7.0\res
+com.example.green_city.app-jetified-savedstate-ktx-1.2.1-22 D:\programs\Android\.gradle\caches\8.10.2\transforms\341ef4902390b0bd02c5f600cc0c787b\transformed\jetified-savedstate-ktx-1.2.1\res
+com.example.green_city.app-preference-1.2.1-23 D:\programs\Android\.gradle\caches\8.10.2\transforms\34aea82e78382054716537589f9e352c\transformed\preference-1.2.1\res
+com.example.green_city.app-recyclerview-1.0.0-24 D:\programs\Android\.gradle\caches\8.10.2\transforms\36a76eb3b6c2de6e097e86dba9888c81\transformed\recyclerview-1.0.0\res
+com.example.green_city.app-transition-1.4.1-25 D:\programs\Android\.gradle\caches\8.10.2\transforms\381fcd8128421780233c52f33932986b\transformed\transition-1.4.1\res
+com.example.green_city.app-appcompat-1.1.0-26 D:\programs\Android\.gradle\caches\8.10.2\transforms\3a0c7ba07e0be98f2b72970b32820252\transformed\appcompat-1.1.0\res
+com.example.green_city.app-core-1.13.1-27 D:\programs\Android\.gradle\caches\8.10.2\transforms\3b5d051e7b18b26d8a9dcbd13d0997dd\transformed\core-1.13.1\res
+com.example.green_city.app-lifecycle-viewmodel-2.7.0-28 D:\programs\Android\.gradle\caches\8.10.2\transforms\3f20b18e79e23598c03e91b3f5bcef35\transformed\lifecycle-viewmodel-2.7.0\res
+com.example.green_city.app-jetified-facebook-login-18.0.3-29 D:\programs\Android\.gradle\caches\8.10.2\transforms\41af495ce01335690e0855f5022d7ba3\transformed\jetified-facebook-login-18.0.3\res
+com.example.green_city.app-jetified-security-crypto-1.1.0-alpha06-30 D:\programs\Android\.gradle\caches\8.10.2\transforms\473f381c99b739a6dc490cf1ed1c58d2\transformed\jetified-security-crypto-1.1.0-alpha06\res
+com.example.green_city.app-jetified-facebook-common-18.0.3-31 D:\programs\Android\.gradle\caches\8.10.2\transforms\49ca84cc419eee48fd766d96d44f4f13\transformed\jetified-facebook-common-18.0.3\res
+com.example.green_city.app-jetified-datastore-release-32 D:\programs\Android\.gradle\caches\8.10.2\transforms\4bdb976703500b89615b7f52ab66930e\transformed\jetified-datastore-release\res
+com.example.green_city.app-jetified-activity-1.9.3-33 D:\programs\Android\.gradle\caches\8.10.2\transforms\501d1062ab56e397712e8e8dca235198\transformed\jetified-activity-1.9.3\res
+com.example.green_city.app-jetified-fragment-ktx-1.7.1-34 D:\programs\Android\.gradle\caches\8.10.2\transforms\5231ec6310c07d3430577a3fe79827f3\transformed\jetified-fragment-ktx-1.7.1\res
+com.example.green_city.app-browser-1.8.0-35 D:\programs\Android\.gradle\caches\8.10.2\transforms\5a26b0bd635f782bcc18edb2de7059d7\transformed\browser-1.8.0\res
+com.example.green_city.app-core-runtime-2.2.0-36 D:\programs\Android\.gradle\caches\8.10.2\transforms\5c31c882e6fa40931fe5df9ca8286e87\transformed\core-runtime-2.2.0\res
+com.example.green_city.app-jetified-datastore-core-release-37 D:\programs\Android\.gradle\caches\8.10.2\transforms\6163b83f49976e7bc0bdb8d7e479acd4\transformed\jetified-datastore-core-release\res
+com.example.green_city.app-cardview-1.0.0-38 D:\programs\Android\.gradle\caches\8.10.2\transforms\6b0612517dbb6daf7e86e9de13ae7856\transformed\cardview-1.0.0\res
+com.example.green_city.app-lifecycle-runtime-2.7.0-39 D:\programs\Android\.gradle\caches\8.10.2\transforms\6d3d81690a34cfaec4de1779b53b996c\transformed\lifecycle-runtime-2.7.0\res
+com.example.green_city.app-slidingpanelayout-1.2.0-40 D:\programs\Android\.gradle\caches\8.10.2\transforms\78f5a879e637981902e8ab710931187f\transformed\slidingpanelayout-1.2.0\res
+com.example.green_city.app-jetified-lifecycle-viewmodel-savedstate-2.7.0-41 D:\programs\Android\.gradle\caches\8.10.2\transforms\7ea522010a5fc1e93c49d9cc8254cea5\transformed\jetified-lifecycle-viewmodel-savedstate-2.7.0\res
+com.example.green_city.app-jetified-facebook-core-18.0.3-42 D:\programs\Android\.gradle\caches\8.10.2\transforms\7f0f5fa99f74893d82b6cea6b1614c73\transformed\jetified-facebook-core-18.0.3\res
+com.example.green_city.app-jetified-window-1.2.0-43 D:\programs\Android\.gradle\caches\8.10.2\transforms\8198fa34f0dab08d78d35c13504c5692\transformed\jetified-window-1.2.0\res
+com.example.green_city.app-jetified-savedstate-1.2.1-44 D:\programs\Android\.gradle\caches\8.10.2\transforms\8934e0813947585f5d41c28391fb4181\transformed\jetified-savedstate-1.2.1\res
+com.example.green_city.app-coordinatorlayout-1.0.0-45 D:\programs\Android\.gradle\caches\8.10.2\transforms\8c9268aa777407e5f89d876fea338e19\transformed\coordinatorlayout-1.0.0\res
+com.example.green_city.app-jetified-lifecycle-runtime-ktx-2.7.0-46 D:\programs\Android\.gradle\caches\8.10.2\transforms\92c7f19d4b7b50b08981275393b17df8\transformed\jetified-lifecycle-runtime-ktx-2.7.0\res
+com.example.green_city.app-jetified-appcompat-resources-1.1.0-47 D:\programs\Android\.gradle\caches\8.10.2\transforms\97d3304d6f1c6aae06833063cfd2a03a\transformed\jetified-appcompat-resources-1.1.0\res
+com.example.green_city.app-jetified-play-services-auth-21.0.0-48 D:\programs\Android\.gradle\caches\8.10.2\transforms\98e01f36d3c4c9eccea55f0138a891da\transformed\jetified-play-services-auth-21.0.0\res
+com.example.green_city.app-media-1.0.0-49 D:\programs\Android\.gradle\caches\8.10.2\transforms\b50a635127957582606084466a962d02\transformed\media-1.0.0\res
+com.example.green_city.app-jetified-play-services-basement-18.2.0-50 D:\programs\Android\.gradle\caches\8.10.2\transforms\bbc796cfa03b3a839759495d709a6cee\transformed\jetified-play-services-basement-18.2.0\res
+com.example.green_city.app-jetified-core-1.0.0-51 D:\programs\Android\.gradle\caches\8.10.2\transforms\bff82014b2d916f12106363688dbbb8c\transformed\jetified-core-1.0.0\res
+com.example.green_city.app-jetified-window-java-1.2.0-52 D:\programs\Android\.gradle\caches\8.10.2\transforms\c34e76133825b73a58e8b2abe6c7a191\transformed\jetified-window-java-1.2.0\res
+com.example.green_city.app-jetified-lifecycle-viewmodel-ktx-2.7.0-53 D:\programs\Android\.gradle\caches\8.10.2\transforms\d6a99d288b758811040a3251abdfcfd7\transformed\jetified-lifecycle-viewmodel-ktx-2.7.0\res
+com.example.green_city.app-jetified-tracing-1.2.0-54 D:\programs\Android\.gradle\caches\8.10.2\transforms\da498ac528cbc59551599abc4698523c\transformed\jetified-tracing-1.2.0\res
+com.example.green_city.app-jetified-startup-runtime-1.1.1-55 D:\programs\Android\.gradle\caches\8.10.2\transforms\dbe8cab0b0b93fb937c1336ed465486a\transformed\jetified-startup-runtime-1.1.1\res
+com.example.green_city.app-jetified-datastore-preferences-release-56 D:\programs\Android\.gradle\caches\8.10.2\transforms\dbf0a9b3de12b657238c8b3ce3b10e39\transformed\jetified-datastore-preferences-release\res
+com.example.green_city.app-jetified-lifecycle-livedata-core-ktx-2.7.0-57 D:\programs\Android\.gradle\caches\8.10.2\transforms\e0b1e0c9c95699d070fb16a8c0454869\transformed\jetified-lifecycle-livedata-core-ktx-2.7.0\res
+com.example.green_city.app-fragment-1.7.1-58 D:\programs\Android\.gradle\caches\8.10.2\transforms\e9cd98060655ac19015848aa266338b1\transformed\fragment-1.7.1\res
+com.example.green_city.app-jetified-lifecycle-process-2.7.0-59 D:\programs\Android\.gradle\caches\8.10.2\transforms\ea3eb144a17ae8e529f6c51b47ecd001\transformed\jetified-lifecycle-process-2.7.0\res
+com.example.green_city.app-jetified-profileinstaller-1.3.1-60 D:\programs\Android\.gradle\caches\8.10.2\transforms\f7d1898f5654f5ecd0a2f0e7d6a0fcee\transformed\jetified-profileinstaller-1.3.1\res
+com.example.green_city.app-jetified-media3-exoplayer-1.4.1-61 D:\programs\Android\.gradle\caches\8.10.2\transforms\fb45b8a3e3a40702955d84bed786def2\transformed\jetified-media3-exoplayer-1.4.1\res
+com.example.green_city.app-jetified-activity-ktx-1.9.3-62 D:\programs\Android\.gradle\caches\8.10.2\transforms\fe7271587580d82fdc04e7bf2cc4501c\transformed\jetified-activity-ktx-1.9.3\res

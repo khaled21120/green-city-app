@@ -49,7 +49,7 @@ class _LogInBottomState extends State<LogInBottom> {
       autovalidateMode: autovalidateMode,
       child: Container(
         width: MediaQuery.sizeOf(context).width,
-        height: MediaQuery.sizeOf(context).height * 0.6,
+        height: MediaQuery.sizeOf(context).height * 0.55,
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
@@ -65,9 +65,15 @@ class _LogInBottomState extends State<LogInBottom> {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+          padding: const EdgeInsets.only(
+            left: 20,
+            right: 20,
+            top: 20,
+            bottom: 10,
+          ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            spacing: 8,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Header Text
@@ -76,7 +82,6 @@ class _LogInBottomState extends State<LogInBottom> {
                 S.of(context).sign_in_to_continue,
                 style: MyStyle.title16(context),
               ),
-              const SizedBox(height: 20),
 
               // Email and Password
               MyTextFelid(
@@ -100,7 +105,7 @@ class _LogInBottomState extends State<LogInBottom> {
                 ),
               ),
               const SizedBox(height: 10),
-
+          
               // Forgot Password
               Align(
                 alignment: Alignment.centerRight,
@@ -113,8 +118,8 @@ class _LogInBottomState extends State<LogInBottom> {
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
 
+              const Spacer(),
               // Log In Button
               Center(
                 child: MyButton(
@@ -122,7 +127,6 @@ class _LogInBottomState extends State<LogInBottom> {
                   onTap: () => signIn(context),
                 ),
               ),
-              const SizedBox(height: 20),
 
               // Don't have an account
               Row(
@@ -134,7 +138,7 @@ class _LogInBottomState extends State<LogInBottom> {
                   ),
                   TextButton(
                     onPressed:
-                        () => GoRouter.of(context).pushReplacement('/signup'),
+                        () => GoRouter.of(context).goNamed('signup'),
                     child: Text(
                       S.of(context).sign_up,
                       style: TextStyle(

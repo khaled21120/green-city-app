@@ -67,5 +67,19 @@
   "typeMessage": "Type message...",
   "completed_announcements": "Completed\n Announcements",
   "completed_activities": "Completed\n Activities",
-  "completed_polls": "Completed\n Polls"
+  "completed_polls": "Completed\n Polls",
+  "accepted_announcements": "Accepted\n Announcements",
+  "welcome_back": "Welcome back!",
+  "quick_actions": "Quick Actions",
+  "submit_feedback": "Submit Feedback",
+  "view_announcements": "View Announcements",
+  "report_location": "Report Location",
+  "add_report": "Add Report",
+  "please_select": "Please select",
+  "welcome_title": "Welcome to GreenCity",
+  "welcome_subtitle": "Join our community to make your city cleaner and greener every day",
+  "about_app": "About App",
+  "version": "Version",
+  "copyright": "Copyright",
+  "developed_by": "Developed By"
 }

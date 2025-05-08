@@ -55,7 +55,7 @@ ThemeData lightThemeData = ThemeData(
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-      elevation: 3,
+      elevation: 2,
       side: const BorderSide(color: MyColors.black),
       backgroundColor: MyColors.primary,
       foregroundColor: MyColors.white,

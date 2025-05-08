@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ic_launcher_background">#ffffff</color>
+    <string name="app_name">green_city</string>
+    <string name="facebook_app_id">989018676501125</string>
+    <string name="facebook_client_token">6912424e82da204bf67dc65990188460</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="gcm_defaultSenderId" translatable="false">69806751354</string>
+    <string name="google_api_key" translatable="false">AIzaSyCVvaFktM57qvFyfcu6KlQ1-OsxLTWeaP8</string>
+    <string name="google_app_id" translatable="false">1:69806751354:android:f7533509943472d64445c3</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCVvaFktM57qvFyfcu6KlQ1-OsxLTWeaP8</string>
+    <string name="google_storage_bucket" translatable="false">chat-b6488.appspot.com</string>
+    <string name="project_id" translatable="false">chat-b6488</string>
+    <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        
+        <item name="android:windowBackground">@drawable/launch_background</item>
+    </style>
+    <style name="NormalTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:windowBackground">?android:colorBackground</item>
+    </style>
+</resources>

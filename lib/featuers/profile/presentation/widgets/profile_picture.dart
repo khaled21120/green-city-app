@@ -1,11 +1,15 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:green_city/core/utils/constants.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../../../../core/functions/helper.dart';
 import '../../../../core/themes/light_theme.dart';
+import '../../cubit/profile_cubit.dart';
 
 class ProfilePicture extends StatefulWidget {
   const ProfilePicture({super.key, this.imageUrl});
@@ -17,6 +21,7 @@ class ProfilePicture extends StatefulWidget {
 
 class _ProfilePictureState extends State<ProfilePicture> {
   bool isLoading = false;
+  File? imageFile;
 
   Future<void> showImage(bool isCamera) async {
     try {
@@ -24,6 +29,8 @@ class _ProfilePictureState extends State<ProfilePicture> {
       final file = await Helper.pickImage(isCamera: isCamera);
       Navigator.pop(context);
       if (file != null) {
+        context.read<ProfileCubit>().updateData(data: file, isImage: true);
+        setState(() => imageFile = file);
       } else {
         Helper.showSnackBar(context: context, message: 'No image selected');
       }
@@ -38,10 +45,17 @@ class _ProfilePictureState extends State<ProfilePicture> {
   Widget build(BuildContext context) {
     return ModalProgressHUD(
       inAsyncCall: isLoading,
+      opacity: 0.4,
+      progressIndicator: const CircularProgressIndicator(
+        strokeWidth: 2,
+        valueColor: AlwaysStoppedAnimation<Color>(MyColors.primary),
+      ),
       child: CircleAvatar(
         radius: 70,
         backgroundImage:
-            widget.imageUrl != null && widget.imageUrl!.isNotEmpty
+            imageFile != null
+                ? FileImage(imageFile!) as ImageProvider
+                : widget.imageUrl != null && widget.imageUrl!.isNotEmpty
                 ? CachedNetworkImageProvider(widget.imageUrl!)
                 : const AssetImage(Constants.person),
         backgroundColor: MyColors.white,

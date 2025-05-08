@@ -554,6 +554,126 @@ class S {
       args: [],
     );
   }
+
+  /// `Accepted\n Announcements`
+  String get accepted_announcements {
+    return Intl.message(
+      'Accepted\n Announcements',
+      name: 'accepted_announcements',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome back!`
+  String get welcome_back {
+    return Intl.message(
+      'Welcome back!',
+      name: 'welcome_back',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quick Actions`
+  String get quick_actions {
+    return Intl.message(
+      'Quick Actions',
+      name: 'quick_actions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submit Feedback`
+  String get submit_feedback {
+    return Intl.message(
+      'Submit Feedback',
+      name: 'submit_feedback',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View Announcements`
+  String get view_announcements {
+    return Intl.message(
+      'View Announcements',
+      name: 'view_announcements',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Report Location`
+  String get report_location {
+    return Intl.message(
+      'Report Location',
+      name: 'report_location',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Report`
+  String get add_report {
+    return Intl.message('Add Report', name: 'add_report', desc: '', args: []);
+  }
+
+  /// `Please select`
+  String get please_select {
+    return Intl.message(
+      'Please select',
+      name: 'please_select',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome to GreenCity`
+  String get welcome_title {
+    return Intl.message(
+      'Welcome to GreenCity',
+      name: 'welcome_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Join our community to make your city cleaner and greener every day`
+  String get welcome_subtitle {
+    return Intl.message(
+      'Join our community to make your city cleaner and greener every day',
+      name: 'welcome_subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About App`
+  String get about_app {
+    return Intl.message('About App', name: 'about_app', desc: '', args: []);
+  }
+
+  /// `Version`
+  String get version {
+    return Intl.message('Version', name: 'version', desc: '', args: []);
+  }
+
+  /// `Copyright`
+  String get copyright {
+    return Intl.message('Copyright', name: 'copyright', desc: '', args: []);
+  }
+
+  /// `Developed By`
+  String get developed_by {
+    return Intl.message(
+      'Developed By',
+      name: 'developed_by',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -81,7 +81,7 @@ class _ChatPageState extends State<ChatPage> {
 
     model = GenerativeModel(
       model: 'gemini-1.5-pro',
-      apiKey: Endpoints.Gemini_API,
+      apiKey: Endpoints.geminiAPI,
     );
 
     chat = model.startChat(history: [Content.text(Constants.appDescription)]);

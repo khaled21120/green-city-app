@@ -3,7 +3,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 
 import '../../../core/themes/light_theme.dart';
 import '../../../generated/l10n.dart';
-import '../../profile/profile_page.dart';
+import '../../profile/presentation/profile_page.dart';
 import 'views/chellanges/chellange_page.dart';
 import 'widgets/drawer.dart';
 import 'widgets/home_body.dart';
@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final pageController = PageController();
     List<Widget> pages = [
-      const HomeBody(),
+      const UserHomeScreen(),
       const ChellangePage(),
       const ProfilePage(),
     ];
@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
         color: MyColors.black, // Contrast for active tab,
         activeColor: MyColors.white, // Contrast for active tab
         gap: 5,
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(15),
         onTabChange: (idx) => pageController.jumpToPage(idx),
         tabs: [
           GButton(icon: Icons.home, text: S.of(context).home),

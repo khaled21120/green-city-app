@@ -67,5 +67,19 @@
   "typeMessage": "اكتب رسالة.....",
   "completed_announcements": "البلاغات\n المكتملة",
   "completed_activities": "الانشطة\n المكتملة",
-  "completed_polls": "التصويتات\n المكتملة"
+  "completed_polls": "التصويتات\n المكتملة",
+  "accepted_announcements": "الإعلانات \nالمقبولة",
+  "welcome_back": "مرحبًا بعودتك!",
+  "quick_actions": "إجراءات سريعة",
+  "submit_feedback": "إرسال ملاحظة",
+  "view_announcements": "عرض الإعلانات",
+  "report_location": "الإبلاغ عن موقع",
+  "add_report": "إضافة تقرير",
+  "please_select": "يرجى تحديد",
+  "welcome_title": "مرحبًا بكم في جرين سيتي",
+  "welcome_subtitle": "انضم إلى مجتمعنا لجعل مدينتك أكثر نظافة واخضرارًا كل يوم",
+  "about_app": "حول التطبيق",
+  "version": "الإصدار",
+  "copyright": "حقوق النشر",
+  "developed_by": "مطور بواسطة"
 }

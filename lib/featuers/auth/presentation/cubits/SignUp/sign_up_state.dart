@@ -12,8 +12,8 @@ final class SignUpInitial extends SignUpState {}
 final class SignUpLoading extends SignUpState {}
 
 final class SignUpSuccess extends SignUpState {
-  final UserModel userApiModel;
-  const SignUpSuccess(this.userApiModel);
+  final UserModel userModel;
+  const SignUpSuccess(this.userModel);
 }
 
 final class SignUpError extends SignUpState {

@@ -1,0 +1,70 @@
+[
+    {
+        "merged": "com.example.green_city.app-profile-15:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.example.green_city.app-main-16:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.green_city.app-profile-15:/mipmap-xxhdpi_green_city_icon.png.flat",
+        "source": "com.example.green_city.app-main-16:/mipmap-xxhdpi/green_city_icon.png"
+    },
+    {
+        "merged": "com.example.green_city.app-profile-15:/mipmap-mdpi_green_city_icon.png.flat",
+        "source": "com.example.green_city.app-main-16:/mipmap-mdpi/green_city_icon.png"
+    },
+    {
+        "merged": "com.example.green_city.app-profile-15:/drawable-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.green_city.app-main-16:/drawable-xxxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.example.green_city.app-profile-15:/drawable-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.green_city.app-main-16:/drawable-xxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.example.green_city.app-profile-15:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.example.green_city.app-main-16:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.green_city.app-profile-15:/mipmap-xxxhdpi_green_city_icon.png.flat",
+        "source": "com.example.green_city.app-main-16:/mipmap-xxxhdpi/green_city_icon.png"
+    },
+    {
+        "merged": "com.example.green_city.app-profile-15:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.example.green_city.app-main-16:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.green_city.app-profile-15:/drawable-mdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.green_city.app-main-16:/drawable-mdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.example.green_city.app-profile-15:/drawable-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.green_city.app-main-16:/drawable-xhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.example.green_city.app-profile-15:/mipmap-xhdpi_green_city_icon.png.flat",
+        "source": "com.example.green_city.app-main-16:/mipmap-xhdpi/green_city_icon.png"
+    },
+    {
+        "merged": "com.example.green_city.app-profile-15:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.example.green_city.app-main-16:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.green_city.app-profile-15:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.example.green_city.app-main-16:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.green_city.app-profile-15:/drawable-hdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.green_city.app-main-16:/drawable-hdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.example.green_city.app-profile-15:/mipmap-hdpi_green_city_icon.png.flat",
+        "source": "com.example.green_city.app-main-16:/mipmap-hdpi/green_city_icon.png"
+    },
+    {
+        "merged": "com.example.green_city.app-profile-15:/mipmap-anydpi-v26_green_city_icon.xml.flat",
+        "source": "com.example.green_city.app-main-16:/mipmap-anydpi-v26/green_city_icon.xml"
+    },
+    {
+        "merged": "com.example.green_city.app-profile-15:/drawable-v21_launch_background.xml.flat",
+        "source": "com.example.green_city.app-main-16:/drawable-v21/launch_background.xml"
+    }
+]

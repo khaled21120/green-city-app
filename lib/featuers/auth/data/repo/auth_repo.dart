@@ -7,7 +7,6 @@ abstract class AuthRepo {
   Future<Either<Failures, UserModel>> signUp({
     required Map<String, dynamic> data,
     required String endPoint,
-    String? token,
   });
   Future<Either<Failures, UserModel>> logIn({
     required String endPoint,

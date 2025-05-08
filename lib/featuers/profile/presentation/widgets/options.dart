@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -34,7 +36,9 @@ class ProfileOptions extends StatelessWidget {
                 if (phoneController.text.isNotEmpty) {
                   await getIt<ProfileCubit>().updateData(
                     data: {'Phone': phoneController.text},
+                    isImage: false,
                   );
+                  Navigator.pop(context);
                 }
                 phoneController.clear();
               },
@@ -53,7 +57,9 @@ class ProfileOptions extends StatelessWidget {
                 if (addressController.text.isNotEmpty) {
                   await getIt<ProfileCubit>().updateData(
                     data: {'Address': addressController.text},
+                    isImage: false,
                   );
+                  Navigator.pop(context);
                 }
                 addressController.clear();
               },

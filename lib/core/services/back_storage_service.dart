@@ -1,12 +1,16 @@
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:green_city/core/services/data_base_service.dart';
+import 'package:green_city/core/services/prefs_service.dart';
 
 import '../errors/error.dart';
 
-class BackendStorageService extends DatabaseService {
+class ApiStorageService extends DatabaseService {
   final Dio dio;
 
-  BackendStorageService({required this.dio});
+  ApiStorageService({required this.dio});
   @override
   Future<void> sendData({
     required String endPoint,
@@ -61,10 +65,34 @@ class BackendStorageService extends DatabaseService {
   }
 
   @override
-  Future<void> deleteData({required String endPoint, String? uId}) async {
+  Future<Map<String, dynamic>> fetchUserData({required String endPoint}) async {
     try {
-      // ignore: unused_local_variable
-      final res = await dio.delete('$endPoint$uId');
+      final token = PrefsService.getToken();
+      final res = await dio.get(
+        endPoint,
+        options: Options(headers: {'Authorization': 'Bearer $token'}),
+      );
+
+      if (res.statusCode == 200) {
+        return res.data as Map<String, dynamic>;
+      } else {
+        throw Exception('Unexpected status code: ${res.statusCode}');
+      }
+    } on DioException catch (dioError) {
+      throw ServerFailure.fromDioException(
+        dioError,
+      ); // Use Failure class for clear errors
+    }
+  }
+
+  @override
+  Future<void> deleteData({required String endPoint}) async {
+    try {
+      final token = PrefsService.getToken();
+      await dio.delete(
+        endPoint,
+        options: Options(headers: {'Authorization': 'Bearer $token'}),
+      );
     } on DioException catch (dioError) {
       throw ServerFailure.fromDioException(dioError);
     }
@@ -72,19 +100,39 @@ class BackendStorageService extends DatabaseService {
 
   @override
   Future<bool> updateData({
+    required bool isImage,
     required String endPoint,
-    required Map<String, dynamic> data,
-    String? uId,
+    required dynamic data,
   }) async {
     try {
-      final res = await dio.put('$endPoint$uId', data: data);
-      if (res.statusCode == 200) {
-        return true; // Success
+      final token = PrefsService.getToken();
+      late FormData formData;
+      if (isImage && data is File) {
+        formData = FormData.fromMap({
+          'profileImage': await MultipartFile.fromFile(
+            data.path,
+            filename: data.path.split('/').last,
+          ),
+        });
+      } else {
+        formData = FormData.fromMap(data as Map<String, dynamic>);
+      }
+      final res = await dio.put(
+        endPoint,
+        data: formData,
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $token',
+            'Content-Type': 'multipart/form-data',
+          },
+        ),
+      );
+      if (res.statusCode == 200 || res.statusCode == 204) {
+        return true;
       } else {
         return false;
       }
-    } on DioException catch (dioError) {
-      ServerFailure.fromDioException(dioError);
+    } on ServerFailure {
       return false;
     } catch (e) {
       return false;
@@ -97,7 +145,12 @@ class BackendStorageService extends DatabaseService {
     String? uId,
   }) async {
     try {
-      final res = await dio.get(endPoint);
+      final token = PrefsService.getToken();
+      log(token!);
+      final res = await dio.get(
+        endPoint,
+        options: Options(headers: {'Authorization': 'Bearer $token'}),
+      );
       if (res.statusCode == 200) {
         return res.data as List<dynamic>;
       } else {

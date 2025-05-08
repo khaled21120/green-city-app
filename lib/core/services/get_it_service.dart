@@ -30,16 +30,16 @@ void setupServiceLocator() {
     ),
   );
   getIt.registerSingleton<DatabaseService>(
-    BackendStorageService(dio: getIt.get<Dio>()),
+    ApiStorageService(dio: getIt.get<Dio>()),
   );
-  getIt.registerSingleton<BackendAuthService>(
-    BackendAuthService(dio: getIt.get<Dio>()),
+  getIt.registerSingleton<ApiAuthService>(
+    ApiAuthService(dio: getIt.get<Dio>()),
   );
   getIt.registerSingleton<HomeRepo>(
     HomeRepoImpl(databaseService: getIt.get<DatabaseService>()),
   );
   getIt.registerSingleton<AuthRepo>(
-    AuthRepoImpl(backendAuthService: getIt.get<BackendAuthService>()),
+    AuthRepoImpl(apiAuthService: getIt.get<ApiAuthService>()),
   );
   getIt.registerFactory<AuthCubit>(() => AuthCubit());
   getIt.registerFactory<LogInCubit>(() => LogInCubit(getIt<AuthRepo>()));

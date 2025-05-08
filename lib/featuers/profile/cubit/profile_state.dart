@@ -1,31 +1,43 @@
 part of 'profile_cubit.dart';
 
-sealed class ProfileState {}
+abstract class ProfileState extends Equatable {
+  @override
+  List<Object?> get props => [];
+}
 
-final class ProfileStateInitial extends ProfileState {}
+class ProfileStateInitial extends ProfileState {}
 
-final class FetchDataSuccess extends ProfileState {
+class FetchDataSuccess extends ProfileState {
   final UserModel userModel;
   FetchDataSuccess(this.userModel);
+
+  @override
+  List<Object?> get props => [userModel];
 }
 
-final class ProfileLoading extends ProfileState {}
-
-final class ProfileLogOut extends ProfileState {}
-
-final class ProfileDeleteAccount extends ProfileState {}
-
-final class ProfileUpdateDataSuccess extends ProfileState {
+class UpdateDataSuccess extends ProfileState {
   final UserModel userModel;
-  ProfileUpdateDataSuccess(this.userModel);
+  UpdateDataSuccess(this.userModel);
+
+  @override
+  List<Object?> get props => [userModel];
 }
 
-final class ProfileUpdateDataFailure extends ProfileState {
+class FetchDataLoading extends ProfileState {}
+class UpdateDataLoading extends ProfileState {}
+
+class FetchDataFailure extends ProfileState {
   final String errMsg;
-  ProfileUpdateDataFailure(this.errMsg);
+  FetchDataFailure(this.errMsg);
+
+  @override
+  List<Object?> get props => [errMsg];
 }
 
-final class ProfileFetchDataFailure extends ProfileState {
+class UpdateDataFailure extends ProfileState {
   final String errMsg;
-  ProfileFetchDataFailure(this.errMsg);
+  UpdateDataFailure(this.errMsg);
+
+  @override
+  List<Object?> get props => [errMsg];
 }

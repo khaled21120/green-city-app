@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:green_city/generated/l10n.dart';
 
-import '../../../../core/functions/helper.dart';
 import '../../../../core/utils/text_style.dart';
 import '../../../../core/utils/button.dart';
 import '../../../../core/utils/text_felid.dart';
@@ -20,23 +19,19 @@ class _SignUpBottomState extends State<SignUpBottom> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final nameController = TextEditingController();
-  final cnPasswordController = TextEditingController();
+  final phoneController = TextEditingController();
+  final addressController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
   bool visibility = true;
   void signUp(BuildContext context) {
     if (_formKey.currentState!.validate()) {
-      if (passwordController.text != cnPasswordController.text) {
-        Helper.showSnackBar(
-          context: context,
-          message: S.of(context).password_not_match,
-        );
-        return;
-      }
       context.read<SignUpCubit>().signUp(
         email: emailController.text,
         password: passwordController.text,
+        address: addressController.text,
+        phone: phoneController.text,
         name: nameController.text,
       );
     } else {
@@ -50,7 +45,8 @@ class _SignUpBottomState extends State<SignUpBottom> {
   void dispose() {
     emailController.dispose();
     nameController.dispose();
-    cnPasswordController.dispose();
+    phoneController.dispose();
+    addressController.dispose();
     passwordController.dispose();
     super.dispose();
   }
@@ -78,9 +74,15 @@ class _SignUpBottomState extends State<SignUpBottom> {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+          padding: const EdgeInsets.only(
+            left: 20,
+            right: 20,
+            top: 15,
+            bottom: 10,
+          ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            spacing: 8,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Header Text
@@ -92,13 +94,26 @@ class _SignUpBottomState extends State<SignUpBottom> {
                 S.of(context).sign_up_to_continue,
                 style: MyStyle.title16(context),
               ),
-              const SizedBox(height: 20),
 
               // Name Text Felid
               MyTextFelid(
                 label: S.of(context).name,
                 controller: nameController,
                 keyboardType: TextInputType.name,
+              ),
+
+              // Phone Text Felid
+              MyTextFelid(
+                label: S.of(context).phone_number,
+                controller: phoneController,
+                keyboardType: TextInputType.phone,
+              ),
+
+              // Address Text Felid
+              MyTextFelid(
+                label: S.of(context).address,
+                controller: addressController,
+                keyboardType: TextInputType.text,
               ),
 
               // Email Text Felid
@@ -125,25 +140,7 @@ class _SignUpBottomState extends State<SignUpBottom> {
                 ),
               ),
 
-              //Confirm Password Text Felid
-              MyTextFelid(
-                label: S.of(context).confirm_password,
-                controller: cnPasswordController,
-                isPassword: visibility,
-                icon: IconButton(
-                  icon:
-                      visibility
-                          ? const Icon(Icons.visibility_sharp)
-                          : const Icon(Icons.visibility_off_sharp),
-                  onPressed: () {
-                    setState(() {
-                      visibility = !visibility;
-                    });
-                  },
-                ),
-              ),
-              const SizedBox(height: 30),
-
+              const Spacer(),
               // Sign Up Button
               Center(
                 child: MyButton(
@@ -151,7 +148,6 @@ class _SignUpBottomState extends State<SignUpBottom> {
                   onTap: () => signUp(context),
                 ),
               ),
-              const SizedBox(height: 20),
 
               // Already have an account
               Row(
@@ -163,7 +159,7 @@ class _SignUpBottomState extends State<SignUpBottom> {
                   ),
                   TextButton(
                     onPressed:
-                        () => GoRouter.of(context).pushReplacement('/login'),
+                        () => GoRouter.of(context).goNamed('login'),
                     child: Text(
                       S.of(context).sign_in,
                       style: TextStyle(

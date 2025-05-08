@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/utils/constants.dart';
 import '../../../../core/themes/light_theme.dart';
 
 class GradientBG extends StatelessWidget {
@@ -20,13 +19,6 @@ class GradientBG extends StatelessWidget {
           colors: [MyColors.gradient1, MyColors.gradient2],
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
-        ),
-      ),
-      child: SafeArea(
-        child: Image.asset(
-          Constants.logo,
-          height: height * 0.32,
-          width: width * 0.5,
         ),
       ),
     );

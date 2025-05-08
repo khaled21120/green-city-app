@@ -19,7 +19,6 @@ dependencies:
   google_nav_bar: ^5.0.7
   expandable: ^5.0.1
   image_picker: ^1.1.2
-  flutter_bloc: ^9.1.0
   equatable: ^2.0.7
   dartz: ^0.10.1
   get_it: ^8.0.3
@@ -40,6 +39,8 @@ dependencies:
   url_launcher: ^6.3.1
   dash_chat_2: ^0.0.21
   google_generative_ai: ^0.4.6
+  flutter_bloc: ^9.1.0
+  flutter_plugin_android_lifecycle: ^2.0.27
 
 dev_dependencies:
   flutter_test:
@@ -49,6 +50,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  generate: true
 
   assets:
     - assets/images/

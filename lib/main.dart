@@ -16,7 +16,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setupServiceLocator();
   await PrefsService.init();
-
   final languageCubit = LanguageCubit();
   final themeCubit = ThemeCubit();
 
@@ -44,6 +43,7 @@ class MyApp extends StatelessWidget {
         return BlocBuilder<LanguageCubit, LanguageState>(
           builder: (context, langState) {
             return MaterialApp.router(
+              debugShowCheckedModeBanner: false,
               locale: langState.locale, // Use language cubit's locale
               localizationsDelegates: const [
                 S.delegate,

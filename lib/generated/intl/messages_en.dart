@@ -22,8 +22,13 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "about_app": MessageLookupByLibrary.simpleMessage("About App"),
     "about_us": MessageLookupByLibrary.simpleMessage("About Us"),
+    "accepted_announcements": MessageLookupByLibrary.simpleMessage(
+      "Accepted\n Announcements",
+    ),
     "activities": MessageLookupByLibrary.simpleMessage("Activities"),
+    "add_report": MessageLookupByLibrary.simpleMessage("Add Report"),
     "address": MessageLookupByLibrary.simpleMessage("Address"),
     "all": MessageLookupByLibrary.simpleMessage("All"),
     "already_have_an_account": MessageLookupByLibrary.simpleMessage(
@@ -54,12 +59,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "contact_us_description": MessageLookupByLibrary.simpleMessage(
       "📍 123 Green City Street, EcoTown\n📧 support@greencity.com\n📞 +1 234 567 890",
     ),
+    "copyright": MessageLookupByLibrary.simpleMessage("Copyright"),
     "create_account": MessageLookupByLibrary.simpleMessage("Create Account"),
     "dark_mode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
     "delete": MessageLookupByLibrary.simpleMessage("Delete"),
     "description": MessageLookupByLibrary.simpleMessage(
       "We are dedicated to keeping our city clean and green. Our mission is to provide eco-friendly waste management solutions, ensuring a healthier environment for future generations.",
     ),
+    "developed_by": MessageLookupByLibrary.simpleMessage("Developed By"),
     "dont_have_an_account": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
     ),
@@ -96,10 +103,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "Password does not match",
     ),
     "phone_number": MessageLookupByLibrary.simpleMessage("Phone Number"),
+    "please_select": MessageLookupByLibrary.simpleMessage("Please select"),
     "polls": MessageLookupByLibrary.simpleMessage("Polls"),
     "private": MessageLookupByLibrary.simpleMessage("Private"),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "public": MessageLookupByLibrary.simpleMessage("Public"),
+    "quick_actions": MessageLookupByLibrary.simpleMessage("Quick Actions"),
+    "report_location": MessageLookupByLibrary.simpleMessage("Report Location"),
     "select_date": MessageLookupByLibrary.simpleMessage("Select Date"),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "sign_in": MessageLookupByLibrary.simpleMessage("Sign in"),
@@ -113,16 +123,28 @@ class MessageLookup extends MessageLookupByLibrary {
       "Sign up to continue",
     ),
     "submit": MessageLookupByLibrary.simpleMessage("Submit"),
+    "submit_feedback": MessageLookupByLibrary.simpleMessage("Submit Feedback"),
     "typeMessage": MessageLookupByLibrary.simpleMessage("Type message..."),
     "update": MessageLookupByLibrary.simpleMessage("Update"),
     "update_profile_picture": MessageLookupByLibrary.simpleMessage(
       "Update Your Profile Picture",
     ),
     "user_name": MessageLookupByLibrary.simpleMessage("User Name"),
+    "version": MessageLookupByLibrary.simpleMessage("Version"),
+    "view_announcements": MessageLookupByLibrary.simpleMessage(
+      "View Announcements",
+    ),
     "vote": MessageLookupByLibrary.simpleMessage("Vote"),
     "welcome": MessageLookupByLibrary.simpleMessage("Welcome Back"),
+    "welcome_back": MessageLookupByLibrary.simpleMessage("Welcome back!"),
     "welcome_message": MessageLookupByLibrary.simpleMessage(
       "Welcome to Green City Cleaning Department",
+    ),
+    "welcome_subtitle": MessageLookupByLibrary.simpleMessage(
+      "Join our community to make your city cleaner and greener every day",
+    ),
+    "welcome_title": MessageLookupByLibrary.simpleMessage(
+      "Welcome to GreenCity",
     ),
     "your_announcement_type": MessageLookupByLibrary.simpleMessage(
       "Your Announcement Type",

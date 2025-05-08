@@ -14,17 +14,19 @@ class PollsItem extends StatelessWidget {
     return Stack(
       children: [
         // Background Image
-        Positioned.fill(
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: CachedNetworkImageProvider(pollsModel.imgFile!),
+        pollsModel.imgFile == null
+            ? const SizedBox.shrink()
+            : Positioned.fill(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: CachedNetworkImageProvider(pollsModel.imgFile!),
+                  ),
+                ),
               ),
             ),
-          ),
-        ),
 
         // Dark overlay for readability
         Positioned.fill(
@@ -49,7 +51,7 @@ class PollsItem extends StatelessWidget {
               ),
               Text(
                 pollsModel.pollDesc!,
-                maxLines: 2,
+                maxLines: 3,
                 overflow: TextOverflow.ellipsis,
                 style: MyStyle.title14(context).copyWith(color: Colors.white70),
                 textAlign: TextAlign.center,

@@ -13,12 +13,20 @@ class SignUpCubit extends Cubit<SignUpState> {
 
   void signUp({
     required String email,
+    required String phone,
+    required String address,
     required String password,
     required String name,
   }) async {
     emit(SignUpLoading());
     final res = await authRepo.signUp(
-      data: {'name': name, 'email': email, 'password': password},
+      data: {
+        'Name': name,
+        'Email': email,
+        'Password': password,
+        'Phone': phone,
+        'Address': address,
+      },
       endPoint: Endpoints.register,
     );
     res.fold(

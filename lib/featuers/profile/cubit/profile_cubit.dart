@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/utils/endpoints.dart';
 import '../../auth/data/models/user_model.dart';
@@ -13,30 +14,37 @@ class ProfileCubit extends Cubit<ProfileState> {
   UserModel? _currentUser;
   UserModel? get currentUser => _currentUser;
 
-  Future<void> getUserData() async {
-    emit(ProfileLoading());
+  Future<void> fetchUserData() async {
+    emit(FetchDataLoading());
     final result = await homeRepo.fetchUserData(
       endPoint: Endpoints.usersEndpoint,
     );
-    result.fold((error) => emit(ProfileUpdateDataFailure(error.errMsg)), (
-      user,
-    ) {
+    result.fold((error) => emit(FetchDataFailure(error.errMsg)), (user) {
       _currentUser = user;
       emit(FetchDataSuccess(user));
     });
   }
 
-  Future<void> updateData({required Map<String, dynamic> data}) async {
-    emit(ProfileLoading());
+  Future<void> updateData({
+    required dynamic data,
+    required bool isImage,
+  }) async {
+    emit(UpdateDataLoading());
+
     final result = await homeRepo.updateUserData(
       endPoint: Endpoints.usersEndpoint,
       data: data,
+      isImage: isImage,
     );
-    result.fold((error) => emit(ProfileUpdateDataFailure(error.errMsg)), (
-      user,
-    ) {
-      _currentUser = user;
-      emit(ProfileUpdateDataSuccess(user));
-    });
+
+    result.fold(
+      (error) {
+        emit(UpdateDataFailure(error.errMsg));
+      },
+      (user) {
+        _currentUser = user;
+        emit(UpdateDataSuccess(user));
+      },
+    );
   }
 }
