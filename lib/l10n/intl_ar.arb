@@ -81,5 +81,21 @@
   "about_app": "حول التطبيق",
   "version": "الإصدار",
   "copyright": "حقوق النشر",
-  "developed_by": "مطور بواسطة"
+  "developed_by": "مطور بواسطة",
+  "edit_profile": "تعديل الملف الشخصي",
+  "selectInstitution": "اختر المؤسسة",
+  "institutionName": "اسم المؤسسة",
+  "contactNumber": "رقم الاتصال",
+  "locationAddress": "عنوان الموقع",
+  "additionalNotes": "ملاحظات إضافية",
+  "wasteType": "نوع النفايات",
+  "selectType": "اختر النوع",
+  "estimatedQuantity": "الكمية المقدرة",
+  "selectTime": "اختر الوقت",
+  "paymentInformation": "معلومات الدفع",
+  "estimatedCost": "التكلفة المقدرة:",
+  "paymentMethod": "طريقة الدفع",
+  "for_Institutions": "للمؤسسات",
+  "for_Individuals": "للأفراد",
+  "my_announcements": "بلاغاتي"
 }

@@ -46,13 +46,6 @@ class MyDrawer extends StatelessWidget {
                 onTap: () => GoRouter.of(context).pushNamed('polls'),
               ),
 
-              // Notifications
-              MyListTile(
-                title: S.of(context).notifications,
-                icon: Icons.notifications_rounded,
-                onTap: () => GoRouter.of(context).pushNamed('notifications'),
-              ),
-
               // About Us
               MyListTile(
                 title: S.of(context).about_us,

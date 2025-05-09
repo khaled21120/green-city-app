@@ -10,9 +10,7 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).settings),
-      ),
+      appBar: AppBar(title: Text(S.of(context).settings)),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
@@ -41,9 +39,9 @@ class SettingsPage extends StatelessWidget {
               alignment: AlignmentDirectional.centerStart,
               child: Text(
                 S.of(context).about_app,
-                style: MyStyle.title18(context).copyWith(
-                  color: Theme.of(context).colorScheme.primary,
-                ),
+                style: MyStyle.title18(
+                  context,
+                ).copyWith(color: Theme.of(context).colorScheme.primary),
               ),
             ),
             const SizedBox(height: 8),

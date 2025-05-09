@@ -30,6 +30,6 @@ class UserNotifiyModel extends Equatable {
 
   @override
   List<Object?> get props {
-    return [id, notificationContent, notificationDate,  userId];
+    return [id, notificationContent, notificationDate, userId];
   }
 }

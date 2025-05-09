@@ -1,10 +1,12 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:green_city/featuers/auth/presentation/cubits/LogIn/log_in_cubit.dart';
 import 'package:green_city/featuers/auth/presentation/cubits/SignUp/sign_up_cubit.dart';
 import 'package:green_city/featuers/auth/presentation/login_page.dart';
 import 'package:green_city/featuers/home/presentation/views/Notifications/notifications_view.dart';
-import 'package:green_city/featuers/home/presentation/views/settings/settings_page.dart';
+import 'package:green_city/featuers/profile/cubit/profile_cubit.dart';
+import 'package:green_city/featuers/profile/presentation/settings/settings_page.dart';
 import 'package:green_city/featuers/splash/presentation/splash_page.dart';
 
 import '../../featuers/auth/data/models/user_model.dart';
@@ -16,12 +18,14 @@ import '../../featuers/home/presentation/Cubits/Announs Cubit/announs_cubit.dart
 import '../../featuers/home/presentation/Cubits/Polls Cubit/polls_cubit.dart';
 import '../../featuers/home/presentation/Cubits/Notifications Cubit/notifications_cubit.dart';
 import '../../featuers/home/presentation/views/About Us/about_us.dart';
-import '../../featuers/home/presentation/views/Announcements/announcements.dart';
+import '../../featuers/home/presentation/views/Announcements/announs_view.dart';
+import '../../featuers/home/presentation/views/Announcements/my_announs_view.dart';
 import '../../featuers/home/presentation/views/Chat/chat_page.dart';
 import '../../featuers/home/presentation/views/FAQs/faqs_page.dart';
 import '../../featuers/home/presentation/home_page.dart';
 import '../../featuers/home/presentation/views/Polls/polls_view.dart';
 import '../../featuers/home/presentation/views/chellanges/widgets/details.dart';
+import '../../featuers/profile/presentation/edit/edit_profile_view.dart';
 import '../services/get_it_service.dart';
 
 abstract class AppRouters {
@@ -112,8 +116,31 @@ abstract class AppRouters {
         builder:
             (_, _) => BlocProvider(
               create: (context) => getIt<AnnounsCubit>(),
-              child: const AnnouncementsPage(),
+              child: const AnnounsView(),
             ),
+      ),
+      GoRoute(
+        path: '/editProfile',
+        name: 'editProfile',
+        builder: (_, state) {
+          final data = state.extra as Map<String, dynamic>;
+          final user = data['user'] as UserModel;
+          final nameController =
+              data['nameController'] as TextEditingController;
+          final phoneController =
+              data['phoneController'] as TextEditingController;
+          final addressController =
+              data['addressController'] as TextEditingController;
+          return BlocProvider(
+            create: (context) => getIt<ProfileCubit>(),
+            child: EditProfileView(
+              user: user,
+              phoneController: phoneController,
+              addressController: addressController,
+              nameController: nameController,
+            ),
+          );
+        },
       ),
       GoRoute(
         path: '/polls',
@@ -122,6 +149,15 @@ abstract class AppRouters {
             (_, _) => BlocProvider(
               create: (context) => getIt<PollsCubit>()..getPolls(),
               child: const PollsView(),
+            ),
+      ),
+      GoRoute(
+        path: '/myAnnouncements',
+        name: 'myAnnouncements',
+        builder:
+            (_, _) => BlocProvider(
+              create: (context) => getIt<AnnounsCubit>()..fetchAnnouncements(),
+              child: const MyAnnounsView(),
             ),
       ),
     ],

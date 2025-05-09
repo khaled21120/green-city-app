@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
           builder: (context, langState) {
             return MaterialApp.router(
               debugShowCheckedModeBanner: false,
-              locale: langState.locale, 
+              locale: langState.locale,
               localizationsDelegates: const [
                 S.delegate,
                 GlobalMaterialLocalizations.delegate,

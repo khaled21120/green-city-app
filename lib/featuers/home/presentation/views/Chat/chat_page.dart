@@ -117,6 +117,7 @@ class _ChatPageState extends State<ChatPage> {
           currentUserTextColor: MyColors.white,
           containerColor: MyColors.darkGrey,
           textColor: MyColors.white,
+          timeTextColor: MyColors.primary,
           timeFormat: DateFormat.jm(),
           showTime: true,
         ),

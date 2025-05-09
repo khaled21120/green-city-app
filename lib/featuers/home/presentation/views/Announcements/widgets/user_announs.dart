@@ -1,47 +1,56 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:green_city/core/utils/button.dart';
 import 'package:green_city/core/utils/constants.dart';
 import 'package:green_city/core/utils/text_felid.dart';
-import 'package:green_city/featuers/home/data/models/announs_model.dart';
 import 'package:green_city/generated/l10n.dart';
 import 'package:intl/intl.dart';
 
-import '../../../../../core/utils/text_style.dart';
-import '../../Cubits/Announs Cubit/announs_cubit.dart';
+import '../../../../../../core/functions/helper.dart';
+import '../../../../../../core/utils/text_style.dart';
+import '../../../Cubits/Announs Cubit/announs_cubit.dart';
 
-class AnnouncementsPage extends StatefulWidget {
-  const AnnouncementsPage({super.key});
+class UserAnnouns extends StatefulWidget {
+  const UserAnnouns({super.key});
 
   @override
-  State<AnnouncementsPage> createState() => _AnnouncementsPageState();
+  State<UserAnnouns> createState() => _UserAnnounsState();
 }
 
-class _AnnouncementsPageState extends State<AnnouncementsPage> {
-  final nameController = TextEditingController();
-  final emailController = TextEditingController();
+class _UserAnnounsState extends State<UserAnnouns> {
   final messageController = TextEditingController();
   final addressController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   DateTime selectedDate = DateTime.now();
   String? binNumber, announcementType, region;
+  File? data;
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-  void submitForm() {
-    // Handle form submission logic
+  void submitForm() async {
+    // if (data == null) {
+    //   return;
+    // }
     if (_formKey.currentState!.validate()) {
-      final announsModel = AnnounsModel(
-        userName: nameController.text,
-        email: emailController.text,
-        announcementType: announcementType,
-        announcementDescription: messageController.text,
-        binNumber: binNumber,
-        region: region,
-        siteLocation: addressController.text,
-        todayDate: DateFormat.yMd('en').format(selectedDate),
+      final user = Helper.getUser();
+      context.read<AnnounsCubit>().sendAnnouncements(
+        announcementType: announcementType!,
+        binNumber: binNumber!,
+        selectedDate: selectedDate,
+        address: addressController.text,
+        message: messageController.text,
+        user: user,
+        image: data,
       );
-      context.read<AnnounsCubit>().sendAnnouncements(announsModel);
+      messageController.clear();
+      addressController.clear();
+      setState(() {
+        binNumber = null;
+        announcementType = null;
+        region = null;
+        data = null;
+      });
     } else {
-      // Form is invalid, show error messages
       setState(() {
         autovalidateMode = AutovalidateMode.always;
       });
@@ -50,8 +59,6 @@ class _AnnouncementsPageState extends State<AnnouncementsPage> {
 
   @override
   void dispose() {
-    nameController.dispose();
-    emailController.dispose();
     addressController.dispose();
     messageController.dispose();
     super.dispose();
@@ -59,33 +66,23 @@ class _AnnouncementsPageState extends State<AnnouncementsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(S.of(context).announcements)),
-      body: SingleChildScrollView(
+    return BlocListener<AnnounsCubit, AnnounsState>(
+      listener: (context, state) {
+        if (state is AnnounsSend) {
+          Helper.showSnackBar(context: context, message: state.message);
+        } else if (state is AnnounsError) {
+          Helper.showSnackBar(context: context, message: state.message);
+        }
+      },
+      child: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
           child: Form(
             key: _formKey,
             autovalidateMode: autovalidateMode,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 24),
-
-                // 👤 Name & Email
-                MyTextFelid(
-                  controller: nameController,
-                  label: S.of(context).name,
-                  icon: const Icon(Icons.person),
-                ),
-                const SizedBox(height: 12),
-                MyTextFelid(
-                  controller: emailController,
-                  label: S.of(context).email,
-                  icon: const Icon(Icons.email),
-                ),
-                const SizedBox(height: 12),
-
                 // 📍 Address & 📩 Message
                 MyTextFelid(
                   controller: addressController,
@@ -133,6 +130,7 @@ class _AnnouncementsPageState extends State<AnnouncementsPage> {
                   ],
                 ),
                 const SizedBox(height: 20),
+                const Divider(),
 
                 // 📦 Dropdowns
                 Wrap(
@@ -219,7 +217,7 @@ class _AnnouncementsPageState extends State<AnnouncementsPage> {
         value: value,
         decoration: InputDecoration(
           labelText: label,
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+          border: const UnderlineInputBorder(),
           contentPadding: const EdgeInsets.symmetric(
             horizontal: 12,
             vertical: 10,

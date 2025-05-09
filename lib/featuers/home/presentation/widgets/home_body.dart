@@ -48,7 +48,20 @@ class UserHomeScreen extends StatelessWidget {
                       icon: features[i]['icon'] as IconData,
                       label: features[i]['title']!,
                       onTap: () {
-                        // Add routing logic here
+                        switch (i) {
+                          case 0:
+                            GoRouter.of(context).pushNamed('feedbackPage');
+                            break;
+                          case 1:
+                            GoRouter.of(context).pushNamed('myAnnouncements');
+                            break;
+                          case 2:
+                            GoRouter.of(context).pushNamed('reportLocationPage');
+                            break;
+                          case 3:
+                            GoRouter.of(context).pushNamed('assistantPage');
+                            break;
+                        }
                       },
                     ),
               ),

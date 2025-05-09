@@ -630,10 +630,10 @@ class S {
     );
   }
 
-  /// `Welcome to GreenCity`
+  /// `Welcome to Green City`
   String get welcome_title {
     return Intl.message(
-      'Welcome to GreenCity',
+      'Welcome to Green City',
       name: 'welcome_title',
       desc: '',
       args: [],
@@ -670,6 +670,151 @@ class S {
     return Intl.message(
       'Developed By',
       name: 'developed_by',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Profile`
+  String get edit_profile {
+    return Intl.message(
+      'Edit Profile',
+      name: 'edit_profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Institution`
+  String get selectInstitution {
+    return Intl.message(
+      'Select Institution',
+      name: 'selectInstitution',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Institution Name`
+  String get institutionName {
+    return Intl.message(
+      'Institution Name',
+      name: 'institutionName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact Number`
+  String get contactNumber {
+    return Intl.message(
+      'Contact Number',
+      name: 'contactNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location Address`
+  String get locationAddress {
+    return Intl.message(
+      'Location Address',
+      name: 'locationAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Additional Notes`
+  String get additionalNotes {
+    return Intl.message(
+      'Additional Notes',
+      name: 'additionalNotes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Waste Type`
+  String get wasteType {
+    return Intl.message('Waste Type', name: 'wasteType', desc: '', args: []);
+  }
+
+  /// `Select type`
+  String get selectType {
+    return Intl.message('Select type', name: 'selectType', desc: '', args: []);
+  }
+
+  /// `Estimated Quantity`
+  String get estimatedQuantity {
+    return Intl.message(
+      'Estimated Quantity',
+      name: 'estimatedQuantity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Time`
+  String get selectTime {
+    return Intl.message('Select Time', name: 'selectTime', desc: '', args: []);
+  }
+
+  /// `Payment Information`
+  String get paymentInformation {
+    return Intl.message(
+      'Payment Information',
+      name: 'paymentInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Estimated Cost:`
+  String get estimatedCost {
+    return Intl.message(
+      'Estimated Cost:',
+      name: 'estimatedCost',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment Method`
+  String get paymentMethod {
+    return Intl.message(
+      'Payment Method',
+      name: 'paymentMethod',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `For Institutions`
+  String get for_Institutions {
+    return Intl.message(
+      'For Institutions',
+      name: 'for_Institutions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `For Individuals`
+  String get for_Individuals {
+    return Intl.message(
+      'For Individuals',
+      name: 'for_Individuals',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Announcements`
+  String get my_announcements {
+    return Intl.message(
+      'My Announcements',
+      name: 'my_announcements',
       desc: '',
       args: [],
     );

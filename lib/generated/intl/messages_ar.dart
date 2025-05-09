@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "activities": MessageLookupByLibrary.simpleMessage("الأنشطة"),
     "add_report": MessageLookupByLibrary.simpleMessage("إضافة تقرير"),
+    "additionalNotes": MessageLookupByLibrary.simpleMessage("ملاحظات إضافية"),
     "address": MessageLookupByLibrary.simpleMessage("العنوان"),
     "all": MessageLookupByLibrary.simpleMessage("الكل"),
     "already_have_an_account": MessageLookupByLibrary.simpleMessage(
@@ -55,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
     ),
+    "contactNumber": MessageLookupByLibrary.simpleMessage("رقم الاتصال"),
     "contact_us": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
     "contact_us_description": MessageLookupByLibrary.simpleMessage(
       "📍 123 شارع جرين سيتي، إيكو تاون\n📧 support@greencity.com\n📞 +1 234 567 890",
@@ -70,20 +72,28 @@ class MessageLookup extends MessageLookupByLibrary {
     "dont_have_an_account": MessageLookupByLibrary.simpleMessage(
       "ليس لديك حساب؟",
     ),
+    "edit_profile": MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "email_address": MessageLookupByLibrary.simpleMessage(
       "عنوان البريد الإلكتروني",
     ),
     "enter": MessageLookupByLibrary.simpleMessage("أدخل"),
+    "estimatedCost": MessageLookupByLibrary.simpleMessage("التكلفة المقدرة:"),
+    "estimatedQuantity": MessageLookupByLibrary.simpleMessage("الكمية المقدرة"),
     "faqs": MessageLookupByLibrary.simpleMessage("الأسئلة الشائعة"),
+    "for_Individuals": MessageLookupByLibrary.simpleMessage("للأفراد"),
+    "for_Institutions": MessageLookupByLibrary.simpleMessage("للمؤسسات"),
     "forget_password": MessageLookupByLibrary.simpleMessage(
       "نسيت كلمة المرور؟",
     ),
     "gallery": MessageLookupByLibrary.simpleMessage("المعرض"),
     "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+    "institutionName": MessageLookupByLibrary.simpleMessage("اسم المؤسسة"),
     "join": MessageLookupByLibrary.simpleMessage("انضم"),
     "language": MessageLookupByLibrary.simpleMessage("اللغة"),
+    "locationAddress": MessageLookupByLibrary.simpleMessage("عنوان الموقع"),
     "message": MessageLookupByLibrary.simpleMessage("الرسالة"),
+    "my_announcements": MessageLookupByLibrary.simpleMessage("بلاغاتي"),
     "name": MessageLookupByLibrary.simpleMessage("الاسم"),
     "notifications": MessageLookupByLibrary.simpleMessage("الاشعارات"),
     "number_of_participants": MessageLookupByLibrary.simpleMessage(
@@ -106,6 +116,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "password_not_match": MessageLookupByLibrary.simpleMessage(
       "كلمة المرور غير متطابقة",
     ),
+    "paymentInformation": MessageLookupByLibrary.simpleMessage("معلومات الدفع"),
+    "paymentMethod": MessageLookupByLibrary.simpleMessage("طريقة الدفع"),
     "phone_number": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "please_select": MessageLookupByLibrary.simpleMessage("يرجى تحديد"),
     "polls": MessageLookupByLibrary.simpleMessage("التصويتات"),
@@ -114,6 +126,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "public": MessageLookupByLibrary.simpleMessage("عام"),
     "quick_actions": MessageLookupByLibrary.simpleMessage("إجراءات سريعة"),
     "report_location": MessageLookupByLibrary.simpleMessage("الإبلاغ عن موقع"),
+    "selectInstitution": MessageLookupByLibrary.simpleMessage("اختر المؤسسة"),
+    "selectTime": MessageLookupByLibrary.simpleMessage("اختر الوقت"),
+    "selectType": MessageLookupByLibrary.simpleMessage("اختر النوع"),
     "select_date": MessageLookupByLibrary.simpleMessage("اختر التاريخ"),
     "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
     "sign_in": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
@@ -139,6 +154,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "version": MessageLookupByLibrary.simpleMessage("الإصدار"),
     "view_announcements": MessageLookupByLibrary.simpleMessage("عرض الإعلانات"),
     "vote": MessageLookupByLibrary.simpleMessage("تصويت"),
+    "wasteType": MessageLookupByLibrary.simpleMessage("نوع النفايات"),
     "welcome": MessageLookupByLibrary.simpleMessage("مرحبًا بعودتك"),
     "welcome_back": MessageLookupByLibrary.simpleMessage("مرحبًا بعودتك!"),
     "welcome_message": MessageLookupByLibrary.simpleMessage(

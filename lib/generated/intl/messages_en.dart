@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "activities": MessageLookupByLibrary.simpleMessage("Activities"),
     "add_report": MessageLookupByLibrary.simpleMessage("Add Report"),
+    "additionalNotes": MessageLookupByLibrary.simpleMessage("Additional Notes"),
     "address": MessageLookupByLibrary.simpleMessage("Address"),
     "all": MessageLookupByLibrary.simpleMessage("All"),
     "already_have_an_account": MessageLookupByLibrary.simpleMessage(
@@ -55,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "Confirm Password",
     ),
+    "contactNumber": MessageLookupByLibrary.simpleMessage("Contact Number"),
     "contact_us": MessageLookupByLibrary.simpleMessage("Contact Us"),
     "contact_us_description": MessageLookupByLibrary.simpleMessage(
       "📍 123 Green City Street, EcoTown\n📧 support@greencity.com\n📞 +1 234 567 890",
@@ -70,16 +72,30 @@ class MessageLookup extends MessageLookupByLibrary {
     "dont_have_an_account": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
     ),
+    "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "email_address": MessageLookupByLibrary.simpleMessage("Email Address"),
     "enter": MessageLookupByLibrary.simpleMessage("Enter"),
+    "estimatedCost": MessageLookupByLibrary.simpleMessage("Estimated Cost:"),
+    "estimatedQuantity": MessageLookupByLibrary.simpleMessage(
+      "Estimated Quantity",
+    ),
     "faqs": MessageLookupByLibrary.simpleMessage("FAQs"),
+    "for_Individuals": MessageLookupByLibrary.simpleMessage("For Individuals"),
+    "for_Institutions": MessageLookupByLibrary.simpleMessage(
+      "For Institutions",
+    ),
     "forget_password": MessageLookupByLibrary.simpleMessage("Forget Password?"),
     "gallery": MessageLookupByLibrary.simpleMessage("Gallery"),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
+    "institutionName": MessageLookupByLibrary.simpleMessage("Institution Name"),
     "join": MessageLookupByLibrary.simpleMessage("Join"),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
+    "locationAddress": MessageLookupByLibrary.simpleMessage("Location Address"),
     "message": MessageLookupByLibrary.simpleMessage("Message"),
+    "my_announcements": MessageLookupByLibrary.simpleMessage(
+      "My Announcements",
+    ),
     "name": MessageLookupByLibrary.simpleMessage("Name"),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "number_of_participants": MessageLookupByLibrary.simpleMessage(
@@ -102,6 +118,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "password_not_match": MessageLookupByLibrary.simpleMessage(
       "Password does not match",
     ),
+    "paymentInformation": MessageLookupByLibrary.simpleMessage(
+      "Payment Information",
+    ),
+    "paymentMethod": MessageLookupByLibrary.simpleMessage("Payment Method"),
     "phone_number": MessageLookupByLibrary.simpleMessage("Phone Number"),
     "please_select": MessageLookupByLibrary.simpleMessage("Please select"),
     "polls": MessageLookupByLibrary.simpleMessage("Polls"),
@@ -110,6 +130,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "public": MessageLookupByLibrary.simpleMessage("Public"),
     "quick_actions": MessageLookupByLibrary.simpleMessage("Quick Actions"),
     "report_location": MessageLookupByLibrary.simpleMessage("Report Location"),
+    "selectInstitution": MessageLookupByLibrary.simpleMessage(
+      "Select Institution",
+    ),
+    "selectTime": MessageLookupByLibrary.simpleMessage("Select Time"),
+    "selectType": MessageLookupByLibrary.simpleMessage("Select type"),
     "select_date": MessageLookupByLibrary.simpleMessage("Select Date"),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "sign_in": MessageLookupByLibrary.simpleMessage("Sign in"),
@@ -135,6 +160,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "View Announcements",
     ),
     "vote": MessageLookupByLibrary.simpleMessage("Vote"),
+    "wasteType": MessageLookupByLibrary.simpleMessage("Waste Type"),
     "welcome": MessageLookupByLibrary.simpleMessage("Welcome Back"),
     "welcome_back": MessageLookupByLibrary.simpleMessage("Welcome back!"),
     "welcome_message": MessageLookupByLibrary.simpleMessage(
@@ -144,7 +170,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Join our community to make your city cleaner and greener every day",
     ),
     "welcome_title": MessageLookupByLibrary.simpleMessage(
-      "Welcome to GreenCity",
+      "Welcome to Green City",
     ),
     "your_announcement_type": MessageLookupByLibrary.simpleMessage(
       "Your Announcement Type",

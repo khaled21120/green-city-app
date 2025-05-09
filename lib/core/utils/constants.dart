@@ -1807,7 +1807,7 @@ https://poe.com/s/yQhJZGTvZVktG8aPENka
     'dengerous bin',
     'garbage throw away',
   ];
-  static const List<String> binNumbers = ['1', '2', '3', '4', '5'];
+  static const List<String> binNumbers = ['101', '2', '3', '4', '5'];
   static const List<String> regions = [
     'Port Said Shark',
     'Port Said Gharb',

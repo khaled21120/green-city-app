@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
 import 'package:green_city/featuers/home/data/models/activities_model.dart';
+import 'package:green_city/featuers/home/data/models/announ_model.dart';
 import 'package:green_city/featuers/home/data/models/public_notifiy_model.dart';
 import 'package:green_city/featuers/home/data/models/user_notifiy_model.dart';
 
@@ -41,6 +42,7 @@ class HomeRepoImpl extends HomeRepo {
       return Left(ServerFailure(e.toString()));
     }
   }
+
   @override
   Future<Either<Failures, UserModel>> fetchUserData({
     required String endPoint,
@@ -104,12 +106,16 @@ class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  void sendAnnouncements({
+  Future<bool> sendAnnouncements({
     required String endPoint,
     required Map<String, dynamic> data,
   }) async {
     try {
-      await databaseService.sendData(endPoint: endPoint, data: data);
+      final res = await databaseService.sendData(
+        endPoint: endPoint,
+        data: data,
+      );
+      return res;
     } on ServerFailure catch (e) {
       throw ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى ${e.errMsg}');
     }
@@ -171,6 +177,24 @@ class HomeRepoImpl extends HomeRepo {
       final notification =
           userData.map((e) => PublicNotifiyModel.fromJson(e)).toList();
       return Right(notification);
+    } on ServerFailure catch (e) {
+      return Left(
+        ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى ${e.errMsg}'),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failures, List<AnnounsModel>>> fetchAnnouncements({
+    required String endPoint,
+  }) async {
+    try {
+      final anounnsList = await databaseService.fetchListData(
+        endPoint: endPoint,
+      );
+      final anounns =
+          anounnsList.map((e) => AnnounsModel.fromJson(e)).toList();
+      return Right(anounns);
     } on ServerFailure catch (e) {
       return Left(
         ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى ${e.errMsg}'),

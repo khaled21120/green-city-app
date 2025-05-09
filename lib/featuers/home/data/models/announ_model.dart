@@ -1,17 +1,15 @@
 import 'package:equatable/equatable.dart';
 
 class AnnounsModel extends Equatable {
-  final String? id;
+  final int? id;
   final String? userName;
   final String? email;
   final String? announcementType;
   final String? announcementDescription;
-  final String? region;
-  final String? binNumber;
   final String? siteLocation;
   final String? todayDate;
   final String? photoFile;
-  final String? userId;
+  final String? status;
 
   const AnnounsModel({
     this.id,
@@ -19,40 +17,34 @@ class AnnounsModel extends Equatable {
     this.email,
     this.announcementType,
     this.announcementDescription,
-    this.region,
-    this.binNumber,
     this.siteLocation,
     this.todayDate,
     this.photoFile,
-    this.userId,
+    this.status,
   });
 
   factory AnnounsModel.fromJson(Map<String, dynamic> json) => AnnounsModel(
-    id: json['id'] as String?,
+    id: json['id'] as int?,
     userName: json['userName'] as String?,
     email: json['email'] as String?,
-    announcementType: json['AnnouncementType'] as String?,
-    announcementDescription: json['AnnouncementDescription'] as String?,
-    region: json['region'] as String?,
-    binNumber: json['binNumber'] as String?,
+    announcementType: json['announcementType'] as String?,
+    announcementDescription: json['announcementDescription'] as String?,
     siteLocation: json['siteLocation'] as String?,
     todayDate: json['todayDate'] as String?,
     photoFile: json['photoFile'] as String?,
-    userId: json['userId'] as String?,
+    status: json['status'] as String?,
   );
 
   Map<String, dynamic> toJson() => {
     'id': id,
     'userName': userName,
     'email': email,
-    'AnnouncementType': announcementType,
-    'AnnouncementDescription': announcementDescription,
-    'region': region,
-    'binNumber': binNumber,
+    'announcementType': announcementType,
+    'announcementDescription': announcementDescription,
     'siteLocation': siteLocation,
     'todayDate': todayDate,
     'photoFile': photoFile,
-    'userId': userId,
+    'status': status,
   };
 
   @override
@@ -63,12 +55,10 @@ class AnnounsModel extends Equatable {
       email,
       announcementType,
       announcementDescription,
-      region,
-      binNumber,
       siteLocation,
       todayDate,
       photoFile,
-      userId,
+      status,
     ];
   }
 }

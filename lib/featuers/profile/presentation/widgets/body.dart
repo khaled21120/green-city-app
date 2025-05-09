@@ -2,10 +2,10 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:green_city/core/themes/dark_theme.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 import '../../../../core/functions/helper.dart';
+import '../../../../core/themes/dark_theme.dart';
 import '../../../auth/data/models/user_model.dart';
 import '../../cubit/profile_cubit.dart';
 import 'header.dart';
@@ -20,12 +20,14 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
+  final _nameController = TextEditingController();
   final _phoneController = TextEditingController();
   final _addressController = TextEditingController();
   final _scrollController = ScrollController();
 
   @override
   void dispose() {
+    _nameController.dispose();
     _phoneController.dispose();
     _addressController.dispose();
     _scrollController.dispose();
@@ -51,14 +53,6 @@ class _ProfileViewState extends State<ProfileView> {
         } else if (state is UpdateDataFailure) {
           Helper.showSnackBar(context: context, message: state.errMsg);
         }
-      },
-      listenWhen: (prev, current) {
-        log('''
-    🎯 State Transition:
-    ${prev.runtimeType} → ${current.runtimeType}
-    ${current is UpdateDataSuccess ? 'USER: ${(current).userModel.toString()}' : ''}
-    ''');
-        return true;
       },
       builder: (context, state) {
         log("Current state: $state");
@@ -110,6 +104,7 @@ class _ProfileViewState extends State<ProfileView> {
                   user: user,
                   phoneController: _phoneController,
                   addressController: _addressController,
+                  nameController: _nameController,
                 ),
                 const SizedBox(height: 32),
               ],

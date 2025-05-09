@@ -8,7 +8,8 @@ abstract class Endpoints {
   static const String register = 'api/Auth/RegisterUser';
   static const String activities = 'CommunityActivities';
   static const String polls = 'api/Polls';
-  static const String announcements = 'Announcements';
+  static const String sendAnnouncements = 'api/UsersAnnouncements';
+  static const String getAnnouncements = 'api/UsersAnnouncements/my-announcements';
   static const String userNotifications = 'UserNotifications';
   static const String publicNotifications = 'PublicNotifications';
 }

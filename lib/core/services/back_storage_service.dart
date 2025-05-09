@@ -12,16 +12,32 @@ class ApiStorageService extends DatabaseService {
 
   ApiStorageService({required this.dio});
   @override
-  Future<void> sendData({
+  Future<bool> sendData({
     required String endPoint,
     required Map<String, dynamic> data,
     String? uId,
   }) async {
     try {
-      // ignore: unused_local_variable
-      final res = await dio.post(endPoint, data: data);
-    } on DioException catch (dioError) {
-      throw ServerFailure.fromDioException(dioError);
+      final token = PrefsService.getToken();
+      final FormData formData = FormData.fromMap(data);
+      final res = await dio.post(
+        endPoint,
+        data: formData,
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $token',
+            'Content-Type': 'multipart/form-data',
+          },
+        ),
+      );
+
+      if (res.statusCode == 200 || res.statusCode == 201) {
+        return true;
+      } else {
+        return false;
+      }
+    } on DioException {
+      return false;
     }
   }
 

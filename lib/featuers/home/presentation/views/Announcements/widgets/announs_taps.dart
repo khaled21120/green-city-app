@@ -1,14 +1,15 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:green_city/core/themes/light_theme.dart';
+import 'package:green_city/core/utils/text_style.dart';
+import 'package:green_city/generated/l10n.dart';
 
-import '../../../../../../core/utils/text_style.dart';
-import '../../../../../../generated/l10n.dart';
+class AnnounsTabs extends StatelessWidget {
+  final TabController controller;
 
-class NotificationTabs extends StatelessWidget {
-  const NotificationTabs({super.key, required this.tabController});
-  final TabController tabController;
+  const AnnounsTabs({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,7 @@ class NotificationTabs extends StatelessWidget {
           ),
         ),
         child: TabBar(
-          controller: tabController,
+          controller: controller,
           dividerHeight: 0,
           indicator: const UnderlineTabIndicator(
             borderSide: BorderSide(width: 3, color: MyColors.white),
@@ -56,13 +57,13 @@ class NotificationTabs extends StatelessWidget {
           ),
           tabs: [
             Tab(
-              icon: const Icon(Icons.lock, size: 20),
-              text: strings.private,
+              icon: const Icon(FontAwesomeIcons.user, size: 20),
+              text: strings.for_Individuals,
               iconMargin: const EdgeInsets.only(bottom: 4),
             ),
             Tab(
-              icon: const Icon(Icons.public, size: 20),
-              text: strings.public,
+              icon: const Icon(FontAwesomeIcons.building, size: 20),
+              text: strings.for_Institutions,
               iconMargin: const EdgeInsets.only(bottom: 4),
             ),
           ],

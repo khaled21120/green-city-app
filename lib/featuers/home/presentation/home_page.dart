@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 import '../../../core/themes/light_theme.dart';
@@ -20,7 +21,16 @@ class HomePage extends StatelessWidget {
       const ProfilePage(),
     ];
     return Scaffold(
-      appBar: AppBar(title: const Text('Green City'), centerTitle: true),
+      appBar: AppBar(
+        title: const Text('Green City'),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.notifications),
+            onPressed: () => GoRouter.of(context).pushNamed('notifications'),
+          ),
+        ],
+      ),
       drawer: const MyDrawer(),
       body: PageView(
         controller: pageController,

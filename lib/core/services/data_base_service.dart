@@ -1,16 +1,13 @@
 abstract class DatabaseService {
-  Future<void> sendData({
+  Future<bool> sendData({
     required String endPoint,
     required Map<String, dynamic> data,
-    String? uId,
   });
   Future<Map<String, dynamic>> fetchMapData({
     required String endPoint,
     String? uId,
   });
-  Future<Map<String, dynamic>> fetchUserData({
-    required String endPoint,
-  });
+  Future<Map<String, dynamic>> fetchUserData({required String endPoint});
   Future<List<dynamic>> fetchListData({required String endPoint, String? uId});
   Future<bool> checkIfUserExist({required String endPoint, String? uId});
   Future<void> deleteData({required String endPoint});

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../../core/utils/text_style.dart';
-import '../../../../../../generated/l10n.dart';
-import '../../../Cubits/Language Cubit/language_cubit.dart';
-import '../../../Cubits/Language Cubit/language_state.dart';
+import '../../../../../core/utils/text_style.dart';
+import '../../../../../generated/l10n.dart';
+import '../../../../home/presentation/Cubits/Language Cubit/language_cubit.dart';
+import '../../../../home/presentation/Cubits/Language Cubit/language_state.dart';
 
 class ToggleLanguage extends StatelessWidget {
   const ToggleLanguage({super.key});

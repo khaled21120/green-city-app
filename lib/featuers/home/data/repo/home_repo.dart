@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:green_city/featuers/auth/data/models/user_model.dart';
 import 'package:green_city/featuers/home/data/models/activities_model.dart';
+import 'package:green_city/featuers/home/data/models/announ_model.dart';
 import 'package:green_city/featuers/home/data/models/polls_model.dart';
 import 'package:green_city/featuers/home/data/models/public_notifiy_model.dart';
 
@@ -25,7 +26,10 @@ abstract class HomeRepo {
   Future<Either<Failures, List<PollsModel>>> fetchPolls({
     required String endPoint,
   });
-  void sendAnnouncements({
+  Future<Either<Failures, List<AnnounsModel>>> fetchAnnouncements({
+    required String endPoint,
+  });
+  Future<bool> sendAnnouncements({
     required String endPoint,
     required Map<String, dynamic> data,
   });

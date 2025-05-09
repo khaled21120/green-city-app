@@ -16,6 +16,11 @@ final class AnnounsSend extends AnnounsState {
   const AnnounsSend(this.message);
 }
 
+final class FetchAnnounsSuccess extends AnnounsState {
+  final List<AnnounsModel> announsList;
+  const FetchAnnounsSuccess(this.announsList);
+}
+
 final class AnnounsError extends AnnounsState {
   final String message;
   const AnnounsError(this.message);

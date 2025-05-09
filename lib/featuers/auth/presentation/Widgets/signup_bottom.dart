@@ -158,8 +158,7 @@ class _SignUpBottomState extends State<SignUpBottom> {
                     style: MyStyle.title16(context),
                   ),
                   TextButton(
-                    onPressed:
-                        () => GoRouter.of(context).goNamed('login'),
+                    onPressed: () => GoRouter.of(context).goNamed('login'),
                     child: Text(
                       S.of(context).sign_in,
                       style: TextStyle(
