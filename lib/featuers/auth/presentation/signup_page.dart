@@ -8,7 +8,7 @@ import '../../../core/themes/light_theme.dart';
 import '../../../core/utils/constants.dart';
 import 'Widgets/gradient_bg.dart';
 import 'Widgets/signup_bottom.dart';
-import 'cubits/SignUp/sign_up_cubit.dart';
+import '../cubits/SignUp/sign_up_cubit.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});

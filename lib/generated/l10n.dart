@@ -210,6 +210,16 @@ class S {
     );
   }
 
+  /// `No Announcements`
+  String get no_announcements {
+    return Intl.message(
+      'No Announcements',
+      name: 'no_announcements',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `About Us`
   String get about_us {
     return Intl.message('About Us', name: 'about_us', desc: '', args: []);
@@ -745,10 +755,10 @@ class S {
     return Intl.message('Select type', name: 'selectType', desc: '', args: []);
   }
 
-  /// `Estimated Quantity`
+  /// `Quantity (kg)`
   String get estimatedQuantity {
     return Intl.message(
-      'Estimated Quantity',
+      'Quantity (kg)',
       name: 'estimatedQuantity',
       desc: '',
       args: [],
@@ -815,6 +825,51 @@ class S {
     return Intl.message(
       'My Announcements',
       name: 'my_announcements',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Image`
+  String get no_image {
+    return Intl.message('No Image', name: 'no_image', desc: '', args: []);
+  }
+
+  /// `Upload Image`
+  String get upload_image {
+    return Intl.message(
+      'Upload Image',
+      name: 'upload_image',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Account`
+  String get delete_account {
+    return Intl.message(
+      'Delete Account',
+      name: 'delete_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Warehouse`
+  String get select_warehouse {
+    return Intl.message(
+      'Select Warehouse',
+      name: 'select_warehouse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Additional Information`
+  String get additional_information {
+    return Intl.message(
+      'Additional Information',
+      name: 'additional_information',
       desc: '',
       args: [],
     );

@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:green_city/featuers/auth/presentation/cubits/Auth/auth_cubit.dart';
+import 'package:green_city/featuers/auth/cubits/Auth/auth_cubit.dart';
 
 import '../../../../core/utils/constants.dart';
 import '../../../../core/services/prefs_service.dart';

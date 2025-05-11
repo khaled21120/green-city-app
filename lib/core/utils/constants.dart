@@ -1769,6 +1769,48 @@ https://poe.com/s/yQhJZGTvZVktG8aPENka
   static const String person = '${_images}person.png';
   static const String themeKey = 'themeMode';
 
+  static const List<Map<String, dynamic>> materials = [
+    {
+      'name': 'Metal',
+      'desc':
+          'Includes aluminum cans, steel containers, copper wires, and other metallic items. Highly recyclable and valuable for reprocessing.',
+    },
+    {
+      'name': 'Plastic',
+      'desc':
+          'Various polymer types including PET bottles, HDPE containers, and plastic packaging. Requires proper sorting for effective recycling.',
+    },
+    {
+      'name': 'Glass',
+      'desc':
+          'Bottles, jars, and other glass containers. 100% recyclable without loss of quality. Should be separated by color (clear, green, brown).',
+    },
+    {
+      'name': 'Paper',
+      'desc':
+          'Includes cardboard, newspapers, office paper, and paper packaging. Recyclable but should be kept dry and clean for processing.',
+    },
+    {
+      'name': 'Organic',
+      'desc':
+          'Biodegradable waste like food scraps, yard trimmings, and plant materials. Suitable for composting to create nutrient-rich soil.',
+    },
+    {
+      'name': 'Wood',
+      'desc':
+          'Includes lumber, plywood, pallets, and untreated wood products. Can be recycled into mulch, particleboard, or biomass fuel.',
+    },
+    {
+      'name': 'Chemical',
+      'desc':
+          'Includes household chemicals, solvents, pesticides, and laboratory waste. Requires special handling due to hazardous nature.',
+    },
+    {
+      'name': 'Other',
+      'desc':
+          'Miscellaneous waste items that don\'t fit other categories. May include composite materials or items requiring special handling.',
+    },
+  ];
   static const List<Map<String, String>> faqs = [
     {
       'question': 'What is Green City?',
@@ -1815,6 +1857,12 @@ https://poe.com/s/yQhJZGTvZVktG8aPENka
     'Port Said Arab',
     'Port Said Manakh',
   ];
+  static const List<String> warehouse = [
+    'Egypt warehouse',
+    'El-Salam warehouse',
+    'Port Said warehouse',
+  ];
+
   static const String kUserData = 'userData';
 
   static const String kIsLogin = 'isLogin';

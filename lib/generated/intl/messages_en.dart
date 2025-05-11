@@ -30,6 +30,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "activities": MessageLookupByLibrary.simpleMessage("Activities"),
     "add_report": MessageLookupByLibrary.simpleMessage("Add Report"),
     "additionalNotes": MessageLookupByLibrary.simpleMessage("Additional Notes"),
+    "additional_information": MessageLookupByLibrary.simpleMessage(
+      "Additional Information",
+    ),
     "address": MessageLookupByLibrary.simpleMessage("Address"),
     "all": MessageLookupByLibrary.simpleMessage("All"),
     "already_have_an_account": MessageLookupByLibrary.simpleMessage(
@@ -65,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "create_account": MessageLookupByLibrary.simpleMessage("Create Account"),
     "dark_mode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
     "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+    "delete_account": MessageLookupByLibrary.simpleMessage("Delete Account"),
     "description": MessageLookupByLibrary.simpleMessage(
       "We are dedicated to keeping our city clean and green. Our mission is to provide eco-friendly waste management solutions, ensuring a healthier environment for future generations.",
     ),
@@ -77,9 +81,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "email_address": MessageLookupByLibrary.simpleMessage("Email Address"),
     "enter": MessageLookupByLibrary.simpleMessage("Enter"),
     "estimatedCost": MessageLookupByLibrary.simpleMessage("Estimated Cost:"),
-    "estimatedQuantity": MessageLookupByLibrary.simpleMessage(
-      "Estimated Quantity",
-    ),
+    "estimatedQuantity": MessageLookupByLibrary.simpleMessage("Quantity (kg)"),
     "faqs": MessageLookupByLibrary.simpleMessage("FAQs"),
     "for_Individuals": MessageLookupByLibrary.simpleMessage("For Individuals"),
     "for_Institutions": MessageLookupByLibrary.simpleMessage(
@@ -97,6 +99,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "My Announcements",
     ),
     "name": MessageLookupByLibrary.simpleMessage("Name"),
+    "no_announcements": MessageLookupByLibrary.simpleMessage(
+      "No Announcements",
+    ),
+    "no_image": MessageLookupByLibrary.simpleMessage("No Image"),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "number_of_participants": MessageLookupByLibrary.simpleMessage(
       "Number of participants is complete",
@@ -136,6 +142,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectTime": MessageLookupByLibrary.simpleMessage("Select Time"),
     "selectType": MessageLookupByLibrary.simpleMessage("Select type"),
     "select_date": MessageLookupByLibrary.simpleMessage("Select Date"),
+    "select_warehouse": MessageLookupByLibrary.simpleMessage(
+      "Select Warehouse",
+    ),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "sign_in": MessageLookupByLibrary.simpleMessage("Sign in"),
     "sign_in_to_continue": MessageLookupByLibrary.simpleMessage(
@@ -154,6 +163,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "update_profile_picture": MessageLookupByLibrary.simpleMessage(
       "Update Your Profile Picture",
     ),
+    "upload_image": MessageLookupByLibrary.simpleMessage("Upload Image"),
     "user_name": MessageLookupByLibrary.simpleMessage("User Name"),
     "version": MessageLookupByLibrary.simpleMessage("Version"),
     "view_announcements": MessageLookupByLibrary.simpleMessage(

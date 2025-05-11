@@ -6,7 +6,7 @@ import 'package:green_city/generated/l10n.dart';
 import '../../../../core/utils/button.dart';
 import '../../../../core/utils/text_felid.dart';
 import '../../../../core/utils/text_style.dart';
-import '../cubits/LogIn/log_in_cubit.dart';
+import '../../cubits/LogIn/log_in_cubit.dart';
 
 class LogInBottom extends StatefulWidget {
   const LogInBottom({super.key});
@@ -108,7 +108,7 @@ class _LogInBottomState extends State<LogInBottom> {
 
               // Forgot Password
               Align(
-                alignment: Alignment.centerRight,
+                alignment: AlignmentDirectional.centerEnd,
                 child: TextButton(
                   onPressed: () {},
                   child: Text(

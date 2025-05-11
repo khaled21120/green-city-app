@@ -18,7 +18,8 @@
   "sign_in_to_continue": "سجّل الدخول للمتابعة",
   "sign_up_to_continue": "سجّل حسابًا جديدًا للمتابعة",
   "faqs": "الأسئلة الشائعة",
-  "announcements": "الإعلانات",
+  "announcements": "البلاغات",
+  "no_announcements": "لا يوجد بلاغات مرسلة بعد",
   "about_us": "من نحن",
   "settings": "الإعدادات",
   "sign_out": "تسجيل الخروج",
@@ -72,7 +73,7 @@
   "welcome_back": "مرحبًا بعودتك!",
   "quick_actions": "إجراءات سريعة",
   "submit_feedback": "إرسال ملاحظة",
-  "view_announcements": "عرض الإعلانات",
+  "view_announcements": "عرض البلاغات",
   "report_location": "الإبلاغ عن موقع",
   "add_report": "إضافة تقرير",
   "please_select": "يرجى تحديد",
@@ -97,5 +98,10 @@
   "paymentMethod": "طريقة الدفع",
   "for_Institutions": "للمؤسسات",
   "for_Individuals": "للأفراد",
-  "my_announcements": "بلاغاتي"
+  "my_announcements": "بلاغاتي",
+  "no_image": "لا يوجد صورة",
+  "upload_image": "أرفع صورة",
+  "delete_account": "حذف الحساب",
+  "select_warehouse": "اختر المستودع",
+  "additional_information": "معلومات اضافية"
 }

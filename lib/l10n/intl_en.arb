@@ -19,6 +19,7 @@
   "sign_up_to_continue": "Sign up to continue",
   "faqs": "FAQs",
   "announcements": "Announcements",
+  "no_announcements": "No Announcements",
   "about_us": "About Us",
   "settings": "Settings",
   "sign_out": "Sign out",
@@ -90,12 +91,17 @@
   "additionalNotes": "Additional Notes",
   "wasteType": "Waste Type",
   "selectType": "Select type",
-  "estimatedQuantity": "Estimated Quantity",
+  "estimatedQuantity": "Quantity (kg)",
   "selectTime": "Select Time",
   "paymentInformation": "Payment Information",
   "estimatedCost": "Estimated Cost:",
   "paymentMethod": "Payment Method",
   "for_Institutions": "For Institutions",
   "for_Individuals": "For Individuals",
-  "my_announcements": "My Announcements"
+  "my_announcements": "My Announcements",
+  "no_image": "No Image",
+  "upload_image": "Upload Image",
+  "delete_account": "Delete Account",
+  "select_warehouse": "Select Warehouse",
+  "additional_information": "Additional Information"
 }

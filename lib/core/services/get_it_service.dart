@@ -1,15 +1,18 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:green_city/core/services/back_storage_service.dart';
-import 'package:green_city/featuers/auth/presentation/cubits/Auth/auth_cubit.dart';
-import 'package:green_city/featuers/auth/presentation/cubits/LogIn/log_in_cubit.dart';
-import 'package:green_city/featuers/auth/presentation/cubits/SignUp/sign_up_cubit.dart';
-import 'package:green_city/featuers/home/presentation/Cubits/Announs%20Cubit/announs_cubit.dart';
-import 'package:green_city/featuers/profile/cubit/profile_cubit.dart';
-import 'package:green_city/featuers/home/presentation/Cubits/Polls%20Cubit/polls_cubit.dart';
-import '../../featuers/home/data/repo/home_repo_impl.dart';
-import '../../featuers/home/data/repo/home_repo.dart';
-import '../../featuers/home/presentation/Cubits/Notifications Cubit/notifications_cubit.dart';
+import 'package:green_city/featuers/admin/home/cubits/cubit/reports_cubit.dart';
+import 'package:green_city/featuers/admin/home/data/repo/admin_home_repo.dart';
+import 'package:green_city/featuers/auth/cubits/Auth/auth_cubit.dart';
+import 'package:green_city/featuers/auth/cubits/LogIn/log_in_cubit.dart';
+import 'package:green_city/featuers/auth/cubits/SignUp/sign_up_cubit.dart';
+import 'package:green_city/featuers/user/home/cubits/Announs%20Cubit/announs_cubit.dart';
+import 'package:green_city/featuers/user/profile/cubit/profile_cubit.dart';
+import 'package:green_city/featuers/user/home/cubits/Polls%20Cubit/polls_cubit.dart';
+import '../../featuers/admin/home/data/repo/admin_home_repo_impl.dart';
+import '../../featuers/user/home/data/repo/user_home_repo_impl.dart';
+import '../../featuers/user/home/data/repo/user_home_repo.dart';
+import '../../featuers/user/home/cubits/Notifications Cubit/notifications_cubit.dart';
 import '../utils/endpoints.dart';
 
 import '../../featuers/auth/data/repo/auth_repo_impl.dart';
@@ -35,8 +38,11 @@ void setupServiceLocator() {
   getIt.registerSingleton<ApiAuthService>(
     ApiAuthService(dio: getIt.get<Dio>()),
   );
-  getIt.registerSingleton<HomeRepo>(
-    HomeRepoImpl(databaseService: getIt.get<DatabaseService>()),
+  getIt.registerSingleton<UserHomeRepo>(
+    UserHomeRepoImpl(databaseService: getIt.get<DatabaseService>()),
+  );
+  getIt.registerSingleton<AdminHomeRepo>(
+    AdminHomeRepoImpl(databaseService: getIt.get<DatabaseService>()),
   );
   getIt.registerSingleton<AuthRepo>(
     AuthRepoImpl(apiAuthService: getIt.get<ApiAuthService>()),
@@ -44,10 +50,17 @@ void setupServiceLocator() {
   getIt.registerFactory<AuthCubit>(() => AuthCubit());
   getIt.registerFactory<LogInCubit>(() => LogInCubit(getIt<AuthRepo>()));
   getIt.registerFactory<SignUpCubit>(() => SignUpCubit(getIt<AuthRepo>()));
-  getIt.registerFactory<ProfileCubit>(() => ProfileCubit(getIt<HomeRepo>()));
-  getIt.registerFactory<PollsCubit>(() => PollsCubit(getIt<HomeRepo>()));
-  getIt.registerFactory<AnnounsCubit>(() => AnnounsCubit(getIt<HomeRepo>()));
+  getIt.registerFactory<ReportsCubit>(
+    () => ReportsCubit(getIt<AdminHomeRepo>()),
+  );
+  getIt.registerFactory<ProfileCubit>(
+    () => ProfileCubit(getIt<UserHomeRepo>(), getIt<AuthRepo>()),
+  );
+  getIt.registerFactory<PollsCubit>(() => PollsCubit(getIt<UserHomeRepo>()));
+  getIt.registerFactory<AnnounsCubit>(
+    () => AnnounsCubit(getIt<UserHomeRepo>()),
+  );
   getIt.registerFactory<NotificationsCubit>(
-    () => NotificationsCubit(getIt<HomeRepo>()),
+    () => NotificationsCubit(getIt<UserHomeRepo>()),
   );
 }

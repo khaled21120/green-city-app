@@ -17,5 +17,5 @@ abstract class AuthRepo {
 
   Future<void> logOut();
 
-  Future<void> deleteAccount({required String endPoint});
+  Future<bool> deleteAccount({required String endPoint});
 }

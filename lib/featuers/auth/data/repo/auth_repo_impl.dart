@@ -67,9 +67,14 @@ class AuthRepoImpl extends AuthRepo {
   }
 
   @override
-  Future<void> deleteAccount({required String endPoint}) async {
-    await PrefsService.clear();
-    await apiAuthService.deleteUser(endPoint: endPoint);
+  Future<bool> deleteAccount({required String endPoint}) async {
+    try {
+      await PrefsService.clear();
+      await apiAuthService.deleteUser(endPoint: endPoint);
+      return true;
+    } on ServerFailure {
+      return false;
+    }
   }
 
   @override

@@ -1,0 +1,26 @@
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'widgets/admin_drawer.dart';
+import 'widgets/admin_home_screen.dart';
+
+class AdminHomePage extends StatelessWidget {
+  const AdminHomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Green City'),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.person),
+            onPressed: () => GoRouter.of(context).pushNamed('adminProfile'),
+          ),
+        ],
+      ),
+      drawer: const AdminDrawer(),
+      body: const AdminHomeScreen(),
+    );
+  }
+}

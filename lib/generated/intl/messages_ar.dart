@@ -30,12 +30,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "activities": MessageLookupByLibrary.simpleMessage("الأنشطة"),
     "add_report": MessageLookupByLibrary.simpleMessage("إضافة تقرير"),
     "additionalNotes": MessageLookupByLibrary.simpleMessage("ملاحظات إضافية"),
+    "additional_information": MessageLookupByLibrary.simpleMessage(
+      "معلومات اضافية",
+    ),
     "address": MessageLookupByLibrary.simpleMessage("العنوان"),
     "all": MessageLookupByLibrary.simpleMessage("الكل"),
     "already_have_an_account": MessageLookupByLibrary.simpleMessage(
       "هل لديك حساب بالفعل؟",
     ),
-    "announcements": MessageLookupByLibrary.simpleMessage("الإعلانات"),
+    "announcements": MessageLookupByLibrary.simpleMessage("البلاغات"),
     "assistant": MessageLookupByLibrary.simpleMessage("المساعدة"),
     "camera": MessageLookupByLibrary.simpleMessage("الكاميرا"),
     "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
@@ -65,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "create_account": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "dark_mode": MessageLookupByLibrary.simpleMessage("الوضع الداكن"),
     "delete": MessageLookupByLibrary.simpleMessage("حذف"),
+    "delete_account": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
     "description": MessageLookupByLibrary.simpleMessage(
       "نحن ملتزمون بالحفاظ على نظافة مدينتنا وخضرتها. مهمتنا هي توفير حلول إدارة نفايات صديقة للبيئة، مما يضمن بيئة أكثر صحة للأجيال القادمة.",
     ),
@@ -95,6 +99,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "message": MessageLookupByLibrary.simpleMessage("الرسالة"),
     "my_announcements": MessageLookupByLibrary.simpleMessage("بلاغاتي"),
     "name": MessageLookupByLibrary.simpleMessage("الاسم"),
+    "no_announcements": MessageLookupByLibrary.simpleMessage(
+      "لا يوجد بلاغات مرسلة بعد",
+    ),
+    "no_image": MessageLookupByLibrary.simpleMessage("لا يوجد صورة"),
     "notifications": MessageLookupByLibrary.simpleMessage("الاشعارات"),
     "number_of_participants": MessageLookupByLibrary.simpleMessage(
       "عدد المشاركين مكتمل",
@@ -130,6 +138,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectTime": MessageLookupByLibrary.simpleMessage("اختر الوقت"),
     "selectType": MessageLookupByLibrary.simpleMessage("اختر النوع"),
     "select_date": MessageLookupByLibrary.simpleMessage("اختر التاريخ"),
+    "select_warehouse": MessageLookupByLibrary.simpleMessage("اختر المستودع"),
     "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
     "sign_in": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "sign_in_to_continue": MessageLookupByLibrary.simpleMessage(
@@ -150,9 +159,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "update_profile_picture": MessageLookupByLibrary.simpleMessage(
       "تحديث صورة الملف الشخصي",
     ),
+    "upload_image": MessageLookupByLibrary.simpleMessage("أرفع صورة"),
     "user_name": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
     "version": MessageLookupByLibrary.simpleMessage("الإصدار"),
-    "view_announcements": MessageLookupByLibrary.simpleMessage("عرض الإعلانات"),
+    "view_announcements": MessageLookupByLibrary.simpleMessage("عرض البلاغات"),
     "vote": MessageLookupByLibrary.simpleMessage("تصويت"),
     "wasteType": MessageLookupByLibrary.simpleMessage("نوع النفايات"),
     "welcome": MessageLookupByLibrary.simpleMessage("مرحبًا بعودتك"),
