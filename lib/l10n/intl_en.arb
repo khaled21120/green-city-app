@@ -103,5 +103,6 @@
   "upload_image": "Upload Image",
   "delete_account": "Delete Account",
   "select_warehouse": "Select Warehouse",
-  "additional_information": "Additional Information"
+  "additional_information": "Additional Information",
+  "admin": "Admin"
 }

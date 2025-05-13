@@ -30,11 +30,12 @@ class IntroPage extends StatelessWidget {
               child: Image.asset(
                 Constants.logo,
                 width: size.width * 0.6,
-                fit: BoxFit.contain,
+                filterQuality: FilterQuality.high,
+                semanticLabel: 'App Logo', // Accessibility
               ),
             ),
             SizedBox(height: size.height * 0.01),
-        
+
             // Title Section
             Text(
               S.of(context).welcome_title,
@@ -53,7 +54,7 @@ class IntroPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: size.height * 0.06),
-        
+
             // Buttons Section
             Padding(
               padding: EdgeInsets.symmetric(horizontal: size.width * 0.1),
@@ -68,7 +69,7 @@ class IntroPage extends StatelessWidget {
                     borderColor: MyColors.black,
                   ),
                   const SizedBox(height: 20),
-        
+
                   // Sign Up Button
                   OutlinedButton(
                     onPressed: () => GoRouter.of(context).goNamed('signup'),

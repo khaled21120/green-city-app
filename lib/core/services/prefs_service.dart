@@ -16,17 +16,8 @@ class PrefsService {
 
   static int loadTheme() => _instance.getInt(Constants.themeKey) ?? 0;
 
-  static Future isLogIn(bool value) async =>
-      await _instance.setBool(Constants.kIsLogin, value);
-
-  static bool getBool(String key) => _instance.getBool(key) ?? false;
 
   static String? getString(String key) => _instance.getString(key);
-
-  static Future setToken(String value) async =>
-      await _instance.setString(Constants.kToken, value);
-
-  static String? getToken() => _instance.getString(Constants.kToken);
 
   static Future clear() async => await _instance.clear();
 

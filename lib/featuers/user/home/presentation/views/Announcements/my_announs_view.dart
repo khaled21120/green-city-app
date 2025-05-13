@@ -18,7 +18,7 @@ class MyAnnounsView extends StatelessWidget {
         child: BlocBuilder<AnnounsCubit, AnnounsState>(
           builder: (context, state) {
             if (state is AnnounsLoading) {
-              return const ShimmerGridItem(aspectratio: 1);
+              return const ShimmerGridItem(aspectratio: 0.8);
             } else if (state is AnnounsError) {
               return Center(child: Text(state.message));
             } else if (state is FetchAnnounsSuccess) {
@@ -31,6 +31,7 @@ class MyAnnounsView extends StatelessWidget {
                   crossAxisCount: 2,
                   crossAxisSpacing: 12,
                   mainAxisSpacing: 12,
+                  childAspectRatio: 0.8,
                 ),
                 itemBuilder: (context, index) {
                   final item = state.announsList[index];

@@ -45,7 +45,6 @@ class AdminDrawer extends StatelessWidget {
               icon: Icons.logout_rounded,
               onTap: () {
                 context.read<AuthCubit>().logOut();
-                GoRouter.of(context).goNamed('intro');
               },
             ),
           ],

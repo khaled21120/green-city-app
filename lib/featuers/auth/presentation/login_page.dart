@@ -45,7 +45,12 @@ class LoginPage extends StatelessWidget {
                 const GradientBG(),
                 Positioned(
                   top: height * 0.05,
-                  child: Image.asset(Constants.logo, width: width * 0.6),
+                  child: Image.asset(
+                    Constants.logo,
+                    width: width * 0.6,
+                    filterQuality: FilterQuality.high,
+                    semanticLabel: 'App Logo', // Accessibility
+                  ),
                 ),
                 const Positioned(bottom: 0, child: LogInBottom()),
               ],

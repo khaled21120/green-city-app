@@ -17,6 +17,7 @@ class AdminHomePage extends StatelessWidget {
             icon: const Icon(Icons.person),
             onPressed: () => GoRouter.of(context).pushNamed('adminProfile'),
           ),
+          BackButton(onPressed: () => GoRouter.of(context).pop()),
         ],
       ),
       drawer: const AdminDrawer(),

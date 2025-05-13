@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:green_city/core/services/back_auth_service.dart';
 import 'package:green_city/featuers/admin/home/admin_home_page.dart';
 import 'package:green_city/featuers/admin/home/cubits/cubit/reports_cubit.dart';
 import '../../featuers/admin/home/widgets/waste_details.dart';
@@ -10,7 +11,6 @@ import '../../featuers/auth/cubits/SignUp/sign_up_cubit.dart';
 import '../../featuers/auth/presentation/login_page.dart';
 import '../../featuers/user/home/presentation/views/Notifications/notifications_view.dart';
 import '../../featuers/user/profile/presentation/settings/settings_page.dart';
-import '../../featuers/splash/presentation/splash_page.dart';
 import '../../featuers/auth/data/models/user_model.dart';
 import '../../featuers/auth/cubits/Auth/auth_cubit.dart';
 import '../../featuers/auth/presentation/intro_page.dart';
@@ -31,16 +31,23 @@ import '../../featuers/user/profile/presentation/edit/edit_profile_view.dart';
 import '../services/get_it_service.dart';
 
 abstract class AppRouters {
+  static bool _isAuthRoute(String location) {
+    return ['/login', '/signup', '/intro'].contains(location);
+  }
+
   static final router = GoRouter(
+    redirect: (_, state) async {
+      final authService = getIt.get<ApiAuthService>();
+      final isLoggedIn = await authService.isLoggedIn();
+      final isAuthRoute = _isAuthRoute(state.matchedLocation);
+
+      if (isLoggedIn && isAuthRoute) return '/home';
+      if (!isLoggedIn && !isAuthRoute) return '/intro';
+      return null;
+    },
     routes: [
-      GoRoute(
-        path: '/',
-        builder:
-            (_, _) => BlocProvider(
-              create: (_) => AuthCubit(),
-              child: const SplashPage(),
-            ),
-      ),
+      // Intro Screen (Initial Route)
+      GoRoute(path: '/', redirect: (_, _) => '/intro'),
       GoRoute(
         path: '/login',
         name: 'login',
@@ -74,8 +81,8 @@ abstract class AppRouters {
             ),
       ),
       GoRoute(
-        path: '/homes',
-        name: 'homes',
+        path: '/adminHome',
+        name: 'adminHome',
         builder:
             (_, _) => BlocProvider(
               create: (context) => getIt.get<AuthCubit>(),

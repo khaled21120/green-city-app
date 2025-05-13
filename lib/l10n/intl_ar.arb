@@ -103,5 +103,6 @@
   "upload_image": "أرفع صورة",
   "delete_account": "حذف الحساب",
   "select_warehouse": "اختر المستودع",
-  "additional_information": "معلومات اضافية"
+  "additional_information": "معلومات اضافية",
+  "admin": "مدير"
 }

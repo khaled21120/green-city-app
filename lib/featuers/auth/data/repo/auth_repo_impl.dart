@@ -63,7 +63,6 @@ class AuthRepoImpl extends AuthRepo {
   Future saveUserDataLocal(UserModel user) async {
     final data = jsonEncode(user.toJson());
     await PrefsService.setString(Constants.kUserData, data);
-    await PrefsService.isLogIn(true);
   }
 
   @override

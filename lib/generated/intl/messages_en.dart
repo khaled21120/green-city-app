@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Additional Information",
     ),
     "address": MessageLookupByLibrary.simpleMessage("Address"),
+    "admin": MessageLookupByLibrary.simpleMessage("Admin"),
     "all": MessageLookupByLibrary.simpleMessage("All"),
     "already_have_an_account": MessageLookupByLibrary.simpleMessage(
       "Already have an account?",

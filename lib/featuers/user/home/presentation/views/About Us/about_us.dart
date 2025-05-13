@@ -30,6 +30,8 @@ class AboutUsPage extends StatelessWidget {
                     ? Constants.logoDark
                     : Constants.logo,
                 width: width * 0.6,
+                filterQuality: FilterQuality.high,
+                semanticLabel: 'App Logo',
               ),
 
               // 🏙️ Title & Subtitle

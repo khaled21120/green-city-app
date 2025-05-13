@@ -1,20 +1,17 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../core/services/prefs_service.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:green_city/core/services/back_auth_service.dart';
 
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  AuthCubit() : super(AuthInitial());
+  AuthCubit(this.apiAuthService) : super(AuthInitial());
+  final ApiAuthService apiAuthService;
+  final storage = const FlutterSecureStorage();
 
-  void isAuthenticated() {
-    final hasToken = PrefsService.getToken();
-    emit(hasToken == null ? UnAuthenticated() : Authenticated());
-  }
-
-  void logOut() {
-    PrefsService.clear();
+  void logOut() async {
+    await apiAuthService.logOut();
     emit(UnAuthenticated());
   }
 }

@@ -37,6 +37,11 @@ class UserDrawer extends StatelessWidget {
               icon: Icons.phone_android_rounded,
               onTap: () => GoRouter.of(context).pushNamed('announcements'),
             ),
+            MyListTile(
+              title: S.of(context).admin,
+              icon: Icons.admin_panel_settings,
+              onTap: () => GoRouter.of(context).pushNamed('adminHome'),
+            ),
 
             // Polls
             MyListTile(
@@ -58,10 +63,7 @@ class UserDrawer extends StatelessWidget {
             MyListTile(
               title: S.of(context).sign_out,
               icon: Icons.logout_rounded,
-              onTap: () {
-                context.read<AuthCubit>().logOut();
-                GoRouter.of(context).goNamed('intro');
-              },
+              onTap: () => context.read<AuthCubit>().logOut(),
             ),
           ],
         ),

@@ -1,6 +1,7 @@
-import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 import 'package:green_city/core/services/back_storage_service.dart';
+import 'package:green_city/core/utils/app_routers.dart';
 import 'package:green_city/featuers/admin/home/cubits/cubit/reports_cubit.dart';
 import 'package:green_city/featuers/admin/home/data/repo/admin_home_repo.dart';
 import 'package:green_city/featuers/auth/cubits/Auth/auth_cubit.dart';
@@ -13,7 +14,6 @@ import '../../featuers/admin/home/data/repo/admin_home_repo_impl.dart';
 import '../../featuers/user/home/data/repo/user_home_repo_impl.dart';
 import '../../featuers/user/home/data/repo/user_home_repo.dart';
 import '../../featuers/user/home/cubits/Notifications Cubit/notifications_cubit.dart';
-import '../utils/endpoints.dart';
 
 import '../../featuers/auth/data/repo/auth_repo_impl.dart';
 import '../../featuers/auth/data/repo/auth_repo.dart';
@@ -23,21 +23,9 @@ import 'data_base_service.dart';
 final getIt = GetIt.instance;
 
 void setupServiceLocator() {
-  getIt.registerSingleton<Dio>(
-    Dio(
-      BaseOptions(
-        baseUrl: Endpoints.baseUrl,
-        connectTimeout: const Duration(seconds: 20),
-        receiveTimeout: const Duration(seconds: 20),
-      ),
-    ),
-  );
-  getIt.registerSingleton<DatabaseService>(
-    ApiStorageService(dio: getIt.get<Dio>()),
-  );
-  getIt.registerSingleton<ApiAuthService>(
-    ApiAuthService(dio: getIt.get<Dio>()),
-  );
+  getIt.registerSingleton<GoRouter>(AppRouters.router);
+  getIt.registerSingleton<DatabaseService>(ApiStorageService());
+  getIt.registerSingleton<ApiAuthService>(ApiAuthService());
   getIt.registerSingleton<UserHomeRepo>(
     UserHomeRepoImpl(databaseService: getIt.get<DatabaseService>()),
   );
@@ -47,7 +35,7 @@ void setupServiceLocator() {
   getIt.registerSingleton<AuthRepo>(
     AuthRepoImpl(apiAuthService: getIt.get<ApiAuthService>()),
   );
-  getIt.registerFactory<AuthCubit>(() => AuthCubit());
+  getIt.registerFactory<AuthCubit>(() => AuthCubit(getIt<ApiAuthService>()));
   getIt.registerFactory<LogInCubit>(() => LogInCubit(getIt<AuthRepo>()));
   getIt.registerFactory<SignUpCubit>(() => SignUpCubit(getIt<AuthRepo>()));
   getIt.registerFactory<ReportsCubit>(

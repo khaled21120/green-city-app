@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:green_city/featuers/user/profile/cubit/profile_cubit.dart';
 
 import 'core/themes/dark_theme.dart';
@@ -14,7 +15,8 @@ import 'generated/l10n.dart';
 import 'featuers/user/home/cubits/Language Cubit/language_cubit.dart'; // Import LanguageCubit
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   setupServiceLocator();
   await PrefsService.init();
   final languageCubit = LanguageCubit();
@@ -22,6 +24,8 @@ void main() async {
 
   themeCubit.loadTheme();
   languageCubit.loadSavedLanguage();
+
+  FlutterNativeSplash.remove();
 
   runApp(
     MultiBlocProvider(

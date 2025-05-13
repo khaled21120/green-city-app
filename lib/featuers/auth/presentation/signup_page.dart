@@ -44,8 +44,9 @@ class SignUpPage extends StatelessWidget {
                   top: height * 0.01,
                   child: Image.asset(
                     Constants.logo,
-                    height: height * 0.35,
-                    width: width * 0.5,
+                    width: width * 0.6,
+                    filterQuality: FilterQuality.high,
+                    semanticLabel: 'App Logo', // Accessibility
                   ),
                 ),
                 const Positioned(bottom: 0, child: SignUpBottom()),
