@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../../core/themes/dark_theme.dart';
+import '../../../../../../../core/themes/light_theme.dart';
 
 class NotificationList extends StatelessWidget {
   final List<dynamic> notifications;

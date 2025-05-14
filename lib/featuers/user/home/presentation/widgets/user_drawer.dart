@@ -43,17 +43,10 @@ class UserDrawer extends StatelessWidget {
               onTap: () => GoRouter.of(context).pushNamed('adminHome'),
             ),
 
-            // Polls
-            MyListTile(
-              title: S.of(context).polls,
-              icon: Icons.poll_rounded,
-              onTap: () => GoRouter.of(context).pushNamed('polls'),
-            ),
-
             // About Us
             MyListTile(
-              title: S.of(context).about_us,
               icon: Icons.info_rounded,
+              title: S.of(context).about_us,
               onTap: () => GoRouter.of(context).pushNamed('aboutUs'),
             ),
             const Spacer(),

@@ -5,19 +5,18 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../../../../../core/functions/helper.dart';
 import '../../../../../core/themes/dark_theme.dart';
 import '../../../../auth/data/models/user_model.dart';
-import '../../cubit/profile_cubit.dart';
-import 'header.dart';
-import 'options.dart';
-import 'stats.dart';
+import '../../../../user/profile/cubit/profile_cubit.dart';
+import '../../../../user/profile/presentation/widgets/header.dart';
+import '../../../../user/profile/presentation/widgets/options.dart';
 
-class UserProfileView extends StatefulWidget {
-  const UserProfileView({super.key});
+class DriverProfileBody extends StatefulWidget {
+  const DriverProfileBody({super.key});
 
   @override
-  State<UserProfileView> createState() => _UserProfileViewState();
+  State<DriverProfileBody> createState() => _DriverProfileBodyState();
 }
 
-class _UserProfileViewState extends State<UserProfileView> {
+class _DriverProfileBodyState extends State<DriverProfileBody> {
   final _scrollController = ScrollController();
 
   @override
@@ -49,7 +48,6 @@ class _UserProfileViewState extends State<UserProfileView> {
       builder: (context, state) {
         final cubit = context.read<ProfileCubit>();
         final user = cubit.currentUser;
-
         return ModalProgressHUD(
           inAsyncCall: state is FetchDataLoading,
           opacity: 0.4,
@@ -84,8 +82,6 @@ class _UserProfileViewState extends State<UserProfileView> {
               const SizedBox(height: 24),
               if (user != null) ...[
                 ProfileHeader(user: user),
-                const SizedBox(height: 24),
-                ProfileStats(user: user),
                 const SizedBox(height: 24),
                 ProfileOptions(user: user),
                 const SizedBox(height: 32),

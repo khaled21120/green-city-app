@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/themes/light_theme.dart';
 import '../../../../../core/utils/text_style.dart';
 
 class MyListTile extends StatelessWidget {
@@ -21,7 +22,7 @@ class MyListTile extends StatelessWidget {
         Navigator.of(context).pop();
       },
       title: Text(title, style: MyStyle.title16(context)),
-      leading: Icon(icon),
+      leading: Icon(icon, color: MyColors.icons, size: 24),
     );
   }
 }

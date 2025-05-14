@@ -62,10 +62,10 @@ flutter_intl:
 
 flutter_native_splash:
   color: "#000000" # Dark background (black)
-  image: assets/images/logo.png
+  image: assets/images/icon.png
 
   android_12:
-    image: assets/images/logo.png
+    image: assets/images/icon.png
     color: "#000000" # Dark background for Android 12 and above
 
   android: true

@@ -1,9 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Optional: Only needed if using direct call (not DIAL intent) -->
+    <!-- <uses-permission android:name="android.permission.CALL_PHONE" /> -->
+
     <application
         android:label="Green City"
         android:name="${applicationName}"
         android:icon="@mipmap/green_city_icon">
+        
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -13,10 +17,7 @@
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize">
-            <!-- Specifies an Android theme to apply to this Activity as soon as
-                 the Android process has started. This theme is visible to the user
-                 while the Flutter UI initializes. After that, this theme continues
-                 to determine the Window background behind the Flutter UI. -->
+            
             <meta-data
                 android:name="io.flutter.embedding.android.NormalTheme"
                 android:resource="@style/NormalTheme"
@@ -27,9 +28,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.facebook.FacebookActivity"
+        <!-- Facebook Activities -->
+        <activity 
+            android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
+            
         <activity
             android:name="com.facebook.CustomTabActivity"
             android:exported="true">
@@ -41,27 +45,44 @@
             </intent-filter>
         </activity>
 
-        <!-- Don't delete the meta-data below.
-             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
+        <!-- Flutter and Facebook Meta-Data -->
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
+            
+        <meta-data 
+            android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
-        <meta-data android:name="com.facebook.sdk.ClientToken"
+            
+        <meta-data 
+            android:name="com.facebook.sdk.ClientToken"
             android:value="@string/facebook_client_token" />
-
     </application>
-    <!-- Required to query activities that can process text, see:
-         https://developer.android.com/training/package-visibility and
-         https://developer.android.com/reference/android/content/Intent#ACTION_PROCESS_TEXT.
 
-         In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin. -->
+    <!-- Consolidated Queries -->
     <queries>
+        <!-- Flutter Engine -->
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT" />
             <data android:mimeType="text/plain" />
+        </intent>
+        
+        <!-- Phone -->
+        <intent>
+            <action android:name="android.intent.action.DIAL" />
+            <data android:scheme="tel" />
+        </intent>
+        
+        <!-- Email -->
+        <intent>
+            <action android:name="android.intent.action.SENDTO" />
+            <data android:scheme="mailto" />
+        </intent>
+        
+        <!-- Maps -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
         </intent>
     </queries>
 </manifest>

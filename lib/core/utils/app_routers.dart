@@ -1,33 +1,36 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:green_city/core/services/back_auth_service.dart';
-import 'package:green_city/featuers/admin/home/admin_home_page.dart';
-import 'package:green_city/featuers/admin/home/cubits/cubit/reports_cubit.dart';
+import 'package:green_city/featuers/user/home/presentation/views/Contact%20Us/contact_us_view.dart';
+
+import '../../featuers/driver/presentation/profile/driver_profile.dart';
+import '../services/back_auth_service.dart';
+import '../../featuers/admin/home/admin_home_page.dart';
+import '../../featuers/admin/home/cubits/cubit/reports_cubit.dart';
 import '../../featuers/admin/home/widgets/waste_details.dart';
 import '../../featuers/admin/profile/admin_profile.dart';
+import '../../featuers/auth/cubits/Auth/auth_cubit.dart';
 import '../../featuers/auth/cubits/LogIn/log_in_cubit.dart';
 import '../../featuers/auth/cubits/SignUp/sign_up_cubit.dart';
-import '../../featuers/auth/presentation/login_page.dart';
-import '../../featuers/user/home/presentation/views/Notifications/notifications_view.dart';
-import '../../featuers/user/profile/presentation/settings/settings_page.dart';
 import '../../featuers/auth/data/models/user_model.dart';
-import '../../featuers/auth/cubits/Auth/auth_cubit.dart';
 import '../../featuers/auth/presentation/intro_page.dart';
+import '../../featuers/auth/presentation/login_page.dart';
 import '../../featuers/auth/presentation/signup_page.dart';
-import '../../featuers/user/home/data/models/activities_model.dart';
+import '../../featuers/driver/presentation/home/driver_home_view.dart';
 import '../../featuers/user/home/cubits/Announs Cubit/announs_cubit.dart';
-import '../../featuers/user/home/cubits/Polls Cubit/polls_cubit.dart';
 import '../../featuers/user/home/cubits/Notifications Cubit/notifications_cubit.dart';
+import '../../featuers/user/home/cubits/Polls Cubit/polls_cubit.dart';
+import '../../featuers/user/home/data/models/activities_model.dart';
+import '../../featuers/user/home/presentation/user_home_page.dart';
 import '../../featuers/user/home/presentation/views/About Us/about_us.dart';
 import '../../featuers/user/home/presentation/views/Announcements/announs_view.dart';
 import '../../featuers/user/home/presentation/views/Announcements/my_announs_view.dart';
 import '../../featuers/user/home/presentation/views/Chat/chat_page.dart';
 import '../../featuers/user/home/presentation/views/FAQs/faqs_page.dart';
-import '../../featuers/user/home/presentation/user_home_page.dart';
+import '../../featuers/user/home/presentation/views/Notifications/notifications_view.dart';
 import '../../featuers/user/home/presentation/views/Polls/polls_view.dart';
 import '../../featuers/user/home/presentation/views/chellanges/widgets/details.dart';
 import '../../featuers/user/profile/presentation/edit/edit_profile_view.dart';
+import '../../featuers/user/profile/presentation/settings/settings_page.dart';
 import '../services/get_it_service.dart';
 
 abstract class AppRouters {
@@ -49,6 +52,11 @@ abstract class AppRouters {
       // Intro Screen (Initial Route)
       GoRoute(path: '/', redirect: (_, _) => '/intro'),
       GoRoute(
+        path: '/intro',
+        name: 'intro',
+        builder: (_, _) => const IntroPage(),
+      ),
+      GoRoute(
         path: '/login',
         name: 'login',
         builder:
@@ -65,11 +73,6 @@ abstract class AppRouters {
               create: (_) => getIt.get<SignUpCubit>(),
               child: const SignUpPage(),
             ),
-      ),
-      GoRoute(
-        path: '/intro',
-        name: 'intro',
-        builder: (_, _) => const IntroPage(),
       ),
       GoRoute(
         path: '/home',
@@ -131,7 +134,17 @@ abstract class AppRouters {
       GoRoute(
         path: '/adminProfile',
         name: 'adminProfile',
-        builder: (_, __) => const AdminProfilePage(),
+        builder: (_, __) => const AdminProfileview(),
+      ),
+      GoRoute(
+        path: '/driverProfile',
+        name: 'driverProfile',
+        builder: (_, __) => const DriverProfileView(),
+      ),
+      GoRoute(
+        path: '/contactUs',
+        name: 'contactUs',
+        builder: (_, __) => const ContactUsView(),
       ),
       GoRoute(
         path: '/announcements',
@@ -146,20 +159,8 @@ abstract class AppRouters {
         path: '/editProfile',
         name: 'editProfile',
         builder: (_, state) {
-          final data = state.extra as Map<String, dynamic>;
-          final user = data['user'] as UserModel;
-          final nameController =
-              data['nameController'] as TextEditingController;
-          final phoneController =
-              data['phoneController'] as TextEditingController;
-          final addressController =
-              data['addressController'] as TextEditingController;
-          return EditProfileView(
-            user: user,
-            phoneController: phoneController,
-            addressController: addressController,
-            nameController: nameController,
-          );
+          final user = state.extra as UserModel;
+          return EditProfileView(user: user);
         },
       ),
       GoRoute(
@@ -190,6 +191,11 @@ abstract class AppRouters {
             child: WasteDetails(title: title),
           );
         },
+      ),
+      GoRoute(
+        path: '/driverHome',
+        name: 'driverHome',
+        builder: (_, state) => const DriverHomeView(),
       ),
     ],
   );

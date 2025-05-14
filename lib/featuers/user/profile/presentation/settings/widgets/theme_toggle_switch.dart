@@ -18,8 +18,8 @@ class ThemeToggleSwitch extends StatelessWidget {
           children: [
             Text(S.of(context).dark_mode, style: MyStyle.title20(context)),
             Switch.adaptive(
-              activeColor: Theme.of(context).colorScheme.secondary,
-              inactiveThumbColor: Theme.of(context).colorScheme.primary,
+              activeColor: Theme.of(context).colorScheme.primary,
+              inactiveThumbColor: Theme.of(context).colorScheme.secondary,
               value: isDarkMode,
               onChanged: (value) {
                 context.read<ThemeCubit>().toggleTheme(

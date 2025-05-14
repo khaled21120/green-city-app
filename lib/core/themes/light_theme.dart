@@ -13,8 +13,9 @@ abstract class MyColors {
   static const Color accent = Color(0xff81D4FA);
   static const Color gradient1 = Color(0xff4CAF50);
   static const Color gradient2 = Color(0xff1E88E5);
-  static const Color cardBG = Color(0xffF5F5F5);
-  static const Color icons = Color(0xff81C784);
+  static const Color cardBG = Color(0xFFF5FBF5);
+  static const Color cardBorder = Color(0x1A2E7D32);
+  static const Color icons = Color(0xFF388E3C);
 }
 
 ThemeData lightThemeData = ThemeData(
@@ -38,10 +39,13 @@ ThemeData lightThemeData = ThemeData(
   scaffoldBackgroundColor: MyColors.scaffold,
   cardTheme: CardTheme(
     color: MyColors.cardBG,
-    elevation: 5,
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    elevation: 3,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(12),
+      side: const BorderSide(color: MyColors.cardBorder, width: 0.5),
+    ),
   ),
-  drawerTheme: const DrawerThemeData(backgroundColor: MyColors.scaffold),
+  drawerTheme: const DrawerThemeData(backgroundColor: MyColors.cardBG),
   appBarTheme: const AppBarTheme(
     titleTextStyle: TextStyle(
       fontSize: 20,

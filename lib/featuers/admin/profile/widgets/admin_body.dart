@@ -9,24 +9,18 @@ import '../../../user/profile/cubit/profile_cubit.dart';
 import '../../../user/profile/presentation/widgets/header.dart';
 import '../../../user/profile/presentation/widgets/options.dart';
 
-class AdminProfileView extends StatefulWidget {
-  const AdminProfileView({super.key});
+class AdminProfileBody extends StatefulWidget {
+  const AdminProfileBody({super.key});
 
   @override
-  State<AdminProfileView> createState() => _UserProfileViewState();
+  State<AdminProfileBody> createState() => _AdminProfileBodyState();
 }
 
-class _UserProfileViewState extends State<AdminProfileView> {
-  final _nameController = TextEditingController();
-  final _phoneController = TextEditingController();
-  final _addressController = TextEditingController();
+class _AdminProfileBodyState extends State<AdminProfileBody> {
   final _scrollController = ScrollController();
 
   @override
   void dispose() {
-    _nameController.dispose();
-    _phoneController.dispose();
-    _addressController.dispose();
     _scrollController.dispose();
     super.dispose();
   }
@@ -54,12 +48,6 @@ class _UserProfileViewState extends State<AdminProfileView> {
       builder: (context, state) {
         final cubit = context.read<ProfileCubit>();
         final user = cubit.currentUser;
-
-        if (user != null) {
-          _nameController.text = user.name ?? '';
-          _phoneController.text = user.phone ?? '';
-          _addressController.text = user.address ?? '';
-        }
         return ModalProgressHUD(
           inAsyncCall: state is FetchDataLoading,
           opacity: 0.4,
@@ -95,12 +83,7 @@ class _UserProfileViewState extends State<AdminProfileView> {
               if (user != null) ...[
                 ProfileHeader(user: user),
                 const SizedBox(height: 24),
-                ProfileOptions(
-                  user: user,
-                  phoneController: _phoneController,
-                  addressController: _addressController,
-                  nameController: _nameController,
-                ),
+                ProfileOptions(user: user),
                 const SizedBox(height: 32),
               ],
             ],

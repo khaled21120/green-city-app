@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'widgets/admin_drawer.dart';
-import 'widgets/admin_home_screen.dart';
+import 'widgets/admin_home_body.dart';
 
 class AdminHomePage extends StatelessWidget {
   const AdminHomePage({super.key});
@@ -21,7 +21,7 @@ class AdminHomePage extends StatelessWidget {
         ],
       ),
       drawer: const AdminDrawer(),
-      body: const AdminHomeScreen(),
+      body: const AdminHomeBody(),
     );
   }
 }

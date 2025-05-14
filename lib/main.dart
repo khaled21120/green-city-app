@@ -25,7 +25,6 @@ void main() async {
   themeCubit.loadTheme();
   languageCubit.loadSavedLanguage();
 
-  FlutterNativeSplash.remove();
 
   runApp(
     MultiBlocProvider(
@@ -39,9 +38,21 @@ void main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(seconds: 3), () {
+      FlutterNativeSplash.remove();
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeCubit, ThemeState>(

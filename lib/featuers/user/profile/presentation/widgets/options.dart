@@ -9,17 +9,7 @@ import 'item.dart';
 
 class ProfileOptions extends StatelessWidget {
   final UserModel user;
-  final TextEditingController nameController;
-  final TextEditingController phoneController;
-  final TextEditingController addressController;
-
-  const ProfileOptions({
-    super.key,
-    required this.user,
-    required this.phoneController,
-    required this.addressController,
-    required this.nameController,
-  });
+  const ProfileOptions({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -39,15 +29,7 @@ class ProfileOptions extends StatelessWidget {
           icon: Icons.edit,
           title: S.of(context).edit_profile,
           onTap: () async {
-            await GoRouter.of(context).pushNamed(
-              'editProfile',
-              extra: {
-                'user': user,
-                'phoneController': phoneController,
-                'addressController': addressController,
-                'nameController': nameController,
-              },
-            );
+            await GoRouter.of(context).pushNamed('editProfile', extra: user);
           },
         ),
         ProfileItem(
