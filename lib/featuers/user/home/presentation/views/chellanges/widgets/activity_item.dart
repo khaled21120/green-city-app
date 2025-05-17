@@ -33,6 +33,7 @@ class ActivityItem extends StatelessWidget {
       child: Stack(
         children: [
           // Background Image
+          if(activitiesModel.imgFile != null)
           Positioned.fill(
             child: Container(
               decoration: BoxDecoration(

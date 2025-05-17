@@ -1,11 +1,15 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:green_city/featuers/user/home/presentation/views/Contact%20Us/contact_us_view.dart';
+import 'package:green_city/featuers/admin/home/cubits/cubit/admin_reports_cubit.dart';
+import 'package:green_city/featuers/user/profile/presentation/user_profile_page.dart';
 
 import '../../featuers/driver/presentation/profile/driver_profile.dart';
+import '../../featuers/user/home/cubits/Activities Cubit/activities_cubit.dart';
+import '../../featuers/user/home/cubits/User Report Cubit/user_reports_cubit.dart';
+import '../../featuers/user/home/presentation/views/Contact Us/contact_us_view.dart';
+import '../../featuers/user/home/presentation/views/chellanges/chellange_page.dart';
 import '../services/back_auth_service.dart';
 import '../../featuers/admin/home/admin_home_page.dart';
-import '../../featuers/admin/home/cubits/cubit/reports_cubit.dart';
 import '../../featuers/admin/home/widgets/waste_details.dart';
 import '../../featuers/admin/profile/admin_profile.dart';
 import '../../featuers/auth/cubits/Auth/auth_cubit.dart';
@@ -16,14 +20,13 @@ import '../../featuers/auth/presentation/intro_page.dart';
 import '../../featuers/auth/presentation/login_page.dart';
 import '../../featuers/auth/presentation/signup_page.dart';
 import '../../featuers/driver/presentation/home/driver_home_view.dart';
-import '../../featuers/user/home/cubits/Announs Cubit/announs_cubit.dart';
 import '../../featuers/user/home/cubits/Notifications Cubit/notifications_cubit.dart';
 import '../../featuers/user/home/cubits/Polls Cubit/polls_cubit.dart';
 import '../../featuers/user/home/data/models/activities_model.dart';
 import '../../featuers/user/home/presentation/user_home_page.dart';
 import '../../featuers/user/home/presentation/views/About Us/about_us.dart';
-import '../../featuers/user/home/presentation/views/Announcements/announs_view.dart';
-import '../../featuers/user/home/presentation/views/Announcements/my_announs_view.dart';
+import '../../featuers/user/home/presentation/views/Reports/reports_view.dart';
+import '../../featuers/user/home/presentation/views/Reports/my_reports_view.dart';
 import '../../featuers/user/home/presentation/views/Chat/chat_page.dart';
 import '../../featuers/user/home/presentation/views/FAQs/faqs_page.dart';
 import '../../featuers/user/home/presentation/views/Notifications/notifications_view.dart';
@@ -99,8 +102,18 @@ abstract class AppRouters {
         builder: (_, state) {
           final ActivitiesModel activitiesModel =
               state.extra as ActivitiesModel;
-          return DetailsPage(activitiesModel: activitiesModel);
+          return ActivitiesDetailsPage(activitiesModel: activitiesModel);
         },
+      ),
+      GoRoute(
+        path: '/activities',
+        name: 'activities',
+        builder:
+            (_, state) => BlocProvider(
+              create:
+                  (context) => getIt.get<ActivitiesCubit>()..getActivities(),
+              child: const ActivityiesView(),
+            ),
       ),
       GoRoute(
         path: '/settings',
@@ -147,12 +160,12 @@ abstract class AppRouters {
         builder: (_, __) => const ContactUsView(),
       ),
       GoRoute(
-        path: '/announcements',
-        name: 'announcements',
+        path: '/reports',
+        name: 'reports',
         builder:
             (_, _) => BlocProvider(
-              create: (context) => getIt<AnnounsCubit>(),
-              child: const AnnounsView(),
+              create: (context) => getIt<UserReportsCubit>(),
+              child: const ReportsView(),
             ),
       ),
       GoRoute(
@@ -164,6 +177,11 @@ abstract class AppRouters {
         },
       ),
       GoRoute(
+        path: '/userProfile',
+        name: 'userProfile',
+        builder: (_, _) => const UserProfilePage(),
+      ),
+      GoRoute(
         path: '/polls',
         name: 'polls',
         builder:
@@ -173,12 +191,12 @@ abstract class AppRouters {
             ),
       ),
       GoRoute(
-        path: '/myAnnouncements',
-        name: 'myAnnouncements',
+        path: '/myReports',
+        name: 'myReports',
         builder:
             (_, _) => BlocProvider(
-              create: (context) => getIt<AnnounsCubit>()..fetchAnnouncements(),
-              child: const MyAnnounsView(),
+              create: (context) => getIt<UserReportsCubit>()..fetchReports(),
+              child: const MyReportsView(),
             ),
       ),
       GoRoute(
@@ -187,7 +205,7 @@ abstract class AppRouters {
         builder: (_, state) {
           final title = state.extra as String;
           return BlocProvider(
-            create: (context) => getIt<ReportsCubit>(),
+            create: (context) => getIt<AdminReportsCubit>(),
             child: WasteDetails(title: title),
           );
         },
@@ -195,7 +213,11 @@ abstract class AppRouters {
       GoRoute(
         path: '/driverHome',
         name: 'driverHome',
-        builder: (_, state) => const DriverHomeView(),
+        builder:
+            (_, _) => BlocProvider(
+              create: (context) => getIt.get<AuthCubit>(),
+              child: const DriverHomeView(),
+            ),
       ),
     ],
   );

@@ -80,9 +80,7 @@ class ApiAuthService {
         throw Exception('Login failed with status code: ${res.statusCode}');
       }
     } on DioException catch (dioError) {
-      throw ServerFailure.fromDioException(
-        dioError,
-      ); // Use Failure class for clear errors
+      throw ServerFailure.fromDioException(dioError);
     }
   }
 
@@ -107,9 +105,7 @@ class ApiAuthService {
         throw Exception('Signup failed with status code: ${res.statusCode}');
       }
     } on DioException catch (dioError) {
-      throw ServerFailure.fromDioException(
-        dioError,
-      ); // Use Failure class for clear errors
+      throw ServerFailure.fromDioException(dioError);
     }
   }
 
@@ -123,9 +119,7 @@ class ApiAuthService {
         throw Exception('Unexpected status code: ${res.statusCode}');
       }
     } on DioException catch (dioError) {
-      throw ServerFailure.fromDioException(
-        dioError,
-      ); // Use Failure class for clear errors
+      throw ServerFailure.fromDioException(dioError);
     }
   }
 

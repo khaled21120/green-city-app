@@ -2,23 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:green_city/featuers/user/home/cubits/Activities%20Cubit/activities_cubit.dart';
 
-import '../../../../../../core/services/get_it_service.dart';
-import '../../../data/repo/user_home_repo.dart';
+import '../../../../../../generated/l10n.dart';
 import 'widgets/activity_item.dart';
 import '../../widgets/shimmer_grid.dart';
 
-class ChellangePage extends StatelessWidget {
-  const ChellangePage({super.key});
+class ActivityiesView extends StatelessWidget {
+  const ActivityiesView({super.key});
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
-    return BlocProvider(
-      create:
-          (context) => ActivitiesCubit(getIt<UserHomeRepo>())..getActivities(),
-      child: Padding(
+    return Scaffold(
+      appBar: AppBar(title: Text(S.of(context).activities)),
+      body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: BlocBuilder<ActivitiesCubit, ActivitiesState>(
           builder: (context, state) {
@@ -30,7 +28,7 @@ class ChellangePage extends StatelessWidget {
               // Filter available activities only
               final availableActivities =
                   state.activities
-                      .where((activity) => activity.actstate == 'متاحة')
+                      .where((activity) => activity.actstate == 'Available')
                       .toList();
 
               return GridView.builder(

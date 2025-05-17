@@ -3,8 +3,8 @@ import 'package:green_city/core/utils/button.dart';
 import 'package:green_city/generated/l10n.dart';
 import '../../../../data/models/activities_model.dart';
 
-class DetailsPage extends StatelessWidget {
-  const DetailsPage({super.key, required this.activitiesModel});
+class ActivitiesDetailsPage extends StatelessWidget {
+  const ActivitiesDetailsPage({super.key, required this.activitiesModel});
   final ActivitiesModel activitiesModel;
 
   @override

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:green_city/core/themes/light_theme.dart';
 import 'package:green_city/generated/l10n.dart';
 
-import '../../../../../core/utils/text_style.dart';
 import '../../../../auth/data/models/user_model.dart';
 
 class ProfileStats extends StatelessWidget {
@@ -11,55 +10,70 @@ class ProfileStats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        _statItem(
-          title: S.of(context).completed_polls,
-          context: context,
-          count: user.numOfCompletedPollsCount ?? 0,
-        ),
-        _statItem(
-          context: context,
-          title: S.of(context).completed_activities,
-          count: user.numOfCompletedActivitiesCount ?? 0,
-        ),
-        _statItem(
-          title: S.of(context).accepted_announcements,
-          context: context,
-          count: user.numOfAcceptedAnnouncementsCount ?? 0,
-        ),
-      ],
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          _statsItem(
+            context: context,
+            title: S.of(context).completed_polls,
+            count: user.numOfCompletedPollsCount ?? 0,
+            icon: Icons.poll_rounded,
+          ),
+          _statsItem(
+            context: context,
+            title: S.of(context).completed_activities,
+            count: user.numOfCompletedActivitiesCount ?? 0,
+            icon: Icons.eco_rounded,
+          ),
+          _statsItem(
+            context: context,
+            title: S.of(context).accepted_reports,
+            count: user.numOfAcceptedAnnouncementsCount ?? 0,
+            icon: Icons.assignment_turned_in_rounded,
+          ),
+        ],
+      ),
     );
   }
 }
 
-Widget _statItem({
+Widget _statsItem({
+  required BuildContext context,
   required String title,
   required int count,
-  required BuildContext context,
+  required IconData icon,
 }) {
   return Card(
     child: Padding(
-      padding: const EdgeInsets.all(16.0), // Padding around the content
+      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 25),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            title,
-            style: MyStyle.title14(context).copyWith(
-              fontWeight: FontWeight.bold, // Bold title
+          Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: MyColors.primary.withValues(alpha: .1),
+              shape: BoxShape.circle,
             ),
-            textAlign: TextAlign.center,
+            child: Icon(icon, size: 20, color: MyColors.primary),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 8),
           Text(
             '$count',
-            style: MyStyle.title16(context).copyWith(
-              fontWeight: FontWeight.bold, // Bold for count
-              fontSize: 20, // Larger font for better emphasis
-              color: MyColors.primary, // Use the primary color for emphasis
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: MyColors.primary,
             ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: Theme.of(
+              context,
+            ).textTheme.bodySmall?.copyWith(color: Colors.grey.shade600),
           ),
         ],
       ),

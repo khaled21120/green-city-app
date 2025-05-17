@@ -10,14 +10,14 @@ import 'header.dart';
 import 'options.dart';
 import 'stats.dart';
 
-class UserProfileView extends StatefulWidget {
-  const UserProfileView({super.key});
+class UserProfileBody extends StatefulWidget {
+  const UserProfileBody({super.key});
 
   @override
-  State<UserProfileView> createState() => _UserProfileViewState();
+  State<UserProfileBody> createState() => _UserProfileBodyState();
 }
 
-class _UserProfileViewState extends State<UserProfileView> {
+class _UserProfileBodyState extends State<UserProfileBody> {
   final _scrollController = ScrollController();
 
   @override

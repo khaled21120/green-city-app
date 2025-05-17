@@ -1,33 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:green_city/featuers/driver/presentation/home/widgets/driver_stats.dart';
-import 'package:green_city/featuers/user/home/presentation/widgets/home_card.dart';
+import 'package:green_city/featuers/driver/presentation/home/widgets/driver_drawer.dart';
+import 'package:green_city/featuers/driver/presentation/home/widgets/driver_home_body.dart';
 
-import '../../../../core/functions/helper.dart';
+import '../../../user/profile/cubit/profile_cubit.dart';
 
 class DriverHomeView extends StatelessWidget {
   const DriverHomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, dynamic>> features = [
-      {
-        'icon': FontAwesomeIcons.solidClipboard,
-        'title': 'Today\'s Tasks',
-        'color': Colors.blueAccent[400]!,
-      },
-      {
-        'icon': FontAwesomeIcons.solidHourglassHalf,
-        'title': 'Pending Tasks',
-        'color': Colors.orangeAccent[400]!,
-      },
-    ];
-    final userData = Helper.getUser();
-    final completedTasks = 40;
-    final totalTasks = 50;
-    final progressPercent = completedTasks / totalTasks;
+    context.read<ProfileCubit>().fetchUserData();
+    return BlocBuilder<ProfileCubit, ProfileState>(
+      builder: (context, state) {
+        if (state is FetchDataLoading) {
+          return _buildLoadingState();
+        } else if (state is FetchDataSuccess) {
+          return _buildSuccessState(context, state);
+        }
 
+        return _buildErrorState();
+      },
+    );
+  }
+
+  Widget _buildLoadingState() {
+    return const Scaffold(body: Center(child: CircularProgressIndicator()));
+  }
+
+  Widget _buildSuccessState(BuildContext context, FetchDataSuccess state) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Green City'),
@@ -35,47 +37,21 @@ class DriverHomeView extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.person),
-            onPressed: () => GoRouter.of(context).pushNamed('driverProfile'),
+            onPressed: () => _navigateToProfile(context),
+            tooltip: 'Profile',
           ),
+          BackButton(onPressed: () => GoRouter.of(context).pop()),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(
-              child: DriverStats(
-                completedTasks: completedTasks,
-                totalTasks: totalTasks,
-                progressPercent: progressPercent,
-                userData: userData,
-              ),
-            ),
-            SliverGrid.builder(
-              itemCount: features.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20,
-              ),
-              itemBuilder:
-                  (_, i) => HomeCard(
-                    data: features[i],
-                    onTap: () {
-                      // switch (i) {
-                      //   case 0:
-                      //     GoRouter.of(context).pushNamed('polls');
-                      //     break;
-                      //   case 1:
-                      //     GoRouter.of(context).pushNamed('myAnnouncements');
-                      //     break;
-                      // }
-                    },
-                  ),
-            ),
-          ],
-        ),
-      ),
+      drawer: DriverDrawer(userData: state.userModel),
+      body: DriverHomeBody(userData: state.userModel),
     );
   }
+
+  Widget _buildErrorState() {
+    return const Scaffold(body: Center(child: Text('Something went wrong')));
+  }
+
+  void _navigateToProfile(BuildContext context) =>
+      GoRouter.of(context).pushNamed('driverProfile');
 }

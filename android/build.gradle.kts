@@ -9,8 +9,11 @@ val newBuildDir: Directory = rootProject.layout.buildDirectory.dir("../../build"
 rootProject.layout.buildDirectory.value(newBuildDir)
 
 subprojects {
-    val newSubprojectBuildDir: Directory = newBuildDir.dir(project.name)
-    project.layout.buildDirectory.value(newSubprojectBuildDir)
+    // Only set custom buildDir for projects in your source tree
+    if (project.projectDir.absolutePath.startsWith(rootProject.projectDir.absolutePath)) {
+        val newSubprojectBuildDir: Directory = newBuildDir.dir(project.name)
+        project.layout.buildDirectory.value(newSubprojectBuildDir)
+    }
 }
 subprojects {
     project.evaluationDependsOn(":app")

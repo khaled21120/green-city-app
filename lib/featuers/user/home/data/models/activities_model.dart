@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class ActivitiesModel extends Equatable {
-  final String? id;
+  final int? id;
   final String? actName;
   final String? actDescription;
   final String? actIntervalDate;
@@ -23,14 +23,14 @@ class ActivitiesModel extends Equatable {
 
   factory ActivitiesModel.fromJson(Map<String, dynamic> json) =>
       ActivitiesModel(
-        id: json['id'] as String?,
-        actName: json['ActName'] as String?,
+        id: json['id'] as int?,
+        actName: json['actName'] as String?,
         imgFile: json['imgFile'] as String?,
-        actDescription: json['ActDescription'] as String?,
+        actDescription: json['actDescription'] as String?,
         actIntervalDate: json['actIntervalDate'] as String?,
-        actstate: json['actstate'] as String?,
-        numOfSubscribers: json['NumOfSubscribers'] as int?,
-        numOfRequiredSubscribers: json['NumOfRequiredSubscribers'] as int?,
+        actstate: json['actState'] as String?,
+        numOfSubscribers: json['numOfSubscribers'] as int?,
+        numOfRequiredSubscribers: json['numOfRequiredSubscribers'] as int?,
       );
 
   Map<String, dynamic> toJson() => {
@@ -39,7 +39,7 @@ class ActivitiesModel extends Equatable {
     'imgFile': imgFile,
     'ActDescription': actDescription,
     'actIntervalDate': actIntervalDate,
-    'actstate': actstate,
+    'actState': actstate,
     'NumOfSubscribers': numOfSubscribers,
     'NumOfRequiredSubscribers': numOfRequiredSubscribers,
   };

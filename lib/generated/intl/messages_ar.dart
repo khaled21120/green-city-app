@@ -24,8 +24,8 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "about_app": MessageLookupByLibrary.simpleMessage("حول التطبيق"),
     "about_us": MessageLookupByLibrary.simpleMessage("من نحن"),
-    "accepted_announcements": MessageLookupByLibrary.simpleMessage(
-      "الإعلانات \nالمقبولة",
+    "accepted_reports": MessageLookupByLibrary.simpleMessage(
+      "البلاغات\n المقبولة",
     ),
     "activities": MessageLookupByLibrary.simpleMessage("الأنشطة"),
     "add_report": MessageLookupByLibrary.simpleMessage("إضافة تقرير"),
@@ -39,23 +39,23 @@ class MessageLookup extends MessageLookupByLibrary {
     "already_have_an_account": MessageLookupByLibrary.simpleMessage(
       "هل لديك حساب بالفعل؟",
     ),
-    "announcements": MessageLookupByLibrary.simpleMessage("البلاغات"),
     "assistant": MessageLookupByLibrary.simpleMessage("المساعدة"),
-    "camera": MessageLookupByLibrary.simpleMessage("الكاميرا"),
+    "camera": MessageLookupByLibrary.simpleMessage("التقط صورة"),
     "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
     "change_address": MessageLookupByLibrary.simpleMessage("تغيير العنوان"),
     "change_phone_number": MessageLookupByLibrary.simpleMessage(
       "تغيير رقم الهاتف",
     ),
+    "check_tasks": MessageLookupByLibrary.simpleMessage("تحقق من المهام"),
     "completed": MessageLookupByLibrary.simpleMessage("مكتمل"),
     "completed_activities": MessageLookupByLibrary.simpleMessage(
       "الانشطة\n المكتملة",
     ),
-    "completed_announcements": MessageLookupByLibrary.simpleMessage(
-      "البلاغات\n المكتملة",
-    ),
     "completed_polls": MessageLookupByLibrary.simpleMessage(
       "التصويتات\n المكتملة",
+    ),
+    "completed_tasks": MessageLookupByLibrary.simpleMessage(
+      "لقد أكملت جميع المهام لهذا الشهر",
     ),
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
@@ -77,6 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "dont_have_an_account": MessageLookupByLibrary.simpleMessage(
       "ليس لديك حساب؟",
     ),
+    "driver": MessageLookupByLibrary.simpleMessage("سائق"),
     "edit_profile": MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "email_address": MessageLookupByLibrary.simpleMessage(
@@ -91,19 +92,23 @@ class MessageLookup extends MessageLookupByLibrary {
     "forget_password": MessageLookupByLibrary.simpleMessage(
       "نسيت كلمة المرور؟",
     ),
-    "gallery": MessageLookupByLibrary.simpleMessage("المعرض"),
+    "gallery": MessageLookupByLibrary.simpleMessage("أختر من المعرض"),
+    "good_afternoon": MessageLookupByLibrary.simpleMessage("مساء الخير"),
+    "good_evening": MessageLookupByLibrary.simpleMessage("مساء الخير"),
+    "good_morning": MessageLookupByLibrary.simpleMessage("صباح الخير"),
     "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
     "institutionName": MessageLookupByLibrary.simpleMessage("اسم المؤسسة"),
     "join": MessageLookupByLibrary.simpleMessage("انضم"),
     "language": MessageLookupByLibrary.simpleMessage("اللغة"),
     "locationAddress": MessageLookupByLibrary.simpleMessage("عنوان الموقع"),
     "message": MessageLookupByLibrary.simpleMessage("الرسالة"),
-    "my_announcements": MessageLookupByLibrary.simpleMessage("بلاغاتي"),
+    "my_reports": MessageLookupByLibrary.simpleMessage("بلاغاتي"),
     "name": MessageLookupByLibrary.simpleMessage("الاسم"),
-    "no_announcements": MessageLookupByLibrary.simpleMessage(
+    "no_image": MessageLookupByLibrary.simpleMessage("لا يوجد صورة"),
+    "no_reports": MessageLookupByLibrary.simpleMessage(
       "لا يوجد بلاغات مرسلة بعد",
     ),
-    "no_image": MessageLookupByLibrary.simpleMessage("لا يوجد صورة"),
+    "not_provided": MessageLookupByLibrary.simpleMessage("غير مقدم"),
     "notifications": MessageLookupByLibrary.simpleMessage("الاشعارات"),
     "number_of_participants": MessageLookupByLibrary.simpleMessage(
       "عدد المشاركين مكتمل",
@@ -127,14 +132,19 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "paymentInformation": MessageLookupByLibrary.simpleMessage("معلومات الدفع"),
     "paymentMethod": MessageLookupByLibrary.simpleMessage("طريقة الدفع"),
+    "pending_tasks": MessageLookupByLibrary.simpleMessage("المهام المعلقة"),
     "phone_number": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "please_select": MessageLookupByLibrary.simpleMessage("يرجى تحديد"),
-    "polls": MessageLookupByLibrary.simpleMessage("التصويتات"),
+    "polls": MessageLookupByLibrary.simpleMessage("أستطلاعات الرأي"),
     "private": MessageLookupByLibrary.simpleMessage("خاص"),
     "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "public": MessageLookupByLibrary.simpleMessage("عام"),
     "quick_actions": MessageLookupByLibrary.simpleMessage("إجراءات سريعة"),
+    "remaining_tasks": MessageLookupByLibrary.simpleMessage(
+      "المهام المتبقية لهذا الشهر",
+    ),
     "report_location": MessageLookupByLibrary.simpleMessage("الإبلاغ عن موقع"),
+    "reports": MessageLookupByLibrary.simpleMessage("البلاغات"),
     "selectInstitution": MessageLookupByLibrary.simpleMessage("اختر المؤسسة"),
     "selectTime": MessageLookupByLibrary.simpleMessage("اختر الوقت"),
     "selectType": MessageLookupByLibrary.simpleMessage("اختر النوع"),
@@ -155,6 +165,8 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "submit": MessageLookupByLibrary.simpleMessage("إرسال"),
     "submit_feedback": MessageLookupByLibrary.simpleMessage("إرسال ملاحظة"),
+    "task_progress": MessageLookupByLibrary.simpleMessage("تقدم المهام"),
+    "todays_tasks": MessageLookupByLibrary.simpleMessage("مهام اليوم"),
     "typeMessage": MessageLookupByLibrary.simpleMessage("اكتب رسالة....."),
     "update": MessageLookupByLibrary.simpleMessage("تحديث"),
     "update_profile_picture": MessageLookupByLibrary.simpleMessage(
@@ -163,7 +175,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "upload_image": MessageLookupByLibrary.simpleMessage("أرفع صورة"),
     "user_name": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
     "version": MessageLookupByLibrary.simpleMessage("الإصدار"),
-    "view_announcements": MessageLookupByLibrary.simpleMessage("عرض البلاغات"),
+    "view_my_reports": MessageLookupByLibrary.simpleMessage("عرض بلاغاتي"),
     "vote": MessageLookupByLibrary.simpleMessage("تصويت"),
     "wasteType": MessageLookupByLibrary.simpleMessage("نوع النفايات"),
     "welcome": MessageLookupByLibrary.simpleMessage("مرحبًا بعودتك"),
@@ -177,12 +189,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "welcome_title": MessageLookupByLibrary.simpleMessage(
       "مرحبًا بكم في جرين سيتي",
     ),
-    "your_announcement_type": MessageLookupByLibrary.simpleMessage(
-      "نوع البلاغ الخاص بك",
-    ),
     "your_bin_number": MessageLookupByLibrary.simpleMessage(
       "رقم الحاوية الخاصة بك",
     ),
     "your_region": MessageLookupByLibrary.simpleMessage("المنطقة الخاصة بك"),
+    "your_report_type": MessageLookupByLibrary.simpleMessage(
+      "نوع البلاغ الخاص بك",
+    ),
   };
 }

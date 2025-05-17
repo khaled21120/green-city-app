@@ -20,7 +20,4 @@ class PrefsService {
   static String? getString(String key) => _instance.getString(key);
 
   static Future clear() async => await _instance.clear();
-
-  static Future removeData({required String key}) async =>
-      await _instance.remove(key);
 }

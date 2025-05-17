@@ -23,9 +23,7 @@ class SignUpPage extends StatelessWidget {
           if (state is SignUpError) {
             Helper.showSnackBar(context: context, message: state.message);
           } else if (state is SignUpSuccess) {
-            state.userModel.role == null
-                ? GoRouter.of(context).goNamed('home')
-                : GoRouter.of(context).goNamed('admin');
+            GoRouter.of(context).goNamed('home');
           }
         },
         builder: (context, state) {

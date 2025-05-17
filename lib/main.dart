@@ -19,18 +19,17 @@ void main() async {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   setupServiceLocator();
   await PrefsService.init();
-  final languageCubit = LanguageCubit();
-  final themeCubit = ThemeCubit();
+  // final languageCubit = LanguageCubit();
+  // final themeCubit = ThemeCubit();
 
-  themeCubit.loadTheme();
-  languageCubit.loadSavedLanguage();
-
+  getIt.get<ThemeCubit>().loadTheme();
+  getIt.get<LanguageCubit>().loadSavedLanguage();
 
   runApp(
     MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => themeCubit),
-        BlocProvider(create: (context) => languageCubit),
+        BlocProvider(create: (context) => getIt.get<ThemeCubit>()),
+        BlocProvider(create: (context) => getIt.get<LanguageCubit>()),
         BlocProvider(create: (context) => getIt.get<ProfileCubit>()),
       ],
       child: const MyApp(),
@@ -49,10 +48,11 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 2), () {
       FlutterNativeSplash.remove();
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeCubit, ThemeState>(

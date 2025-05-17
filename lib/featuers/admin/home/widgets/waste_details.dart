@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:green_city/featuers/admin/home/cubits/cubit/reports_cubit.dart';
+import 'package:green_city/featuers/admin/home/cubits/cubit/admin_reports_cubit.dart';
 import 'package:intl/intl.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
@@ -70,7 +70,7 @@ class _WasteDetailsState extends State<WasteDetails> {
     setState(() => isLoading = true);
     try {
       final user = Helper.getUser();
-      context.read<ReportsCubit>().sendReport(
+      context.read<AdminReportsCubit>().sendAdminReport(
         data: {
           'warehouseManger': user.name,
           'warehouseName': warehouse,
@@ -111,11 +111,11 @@ class _WasteDetailsState extends State<WasteDetails> {
 
     return Scaffold(
       appBar: AppBar(title: Text(widget.title), centerTitle: true),
-      body: BlocListener<ReportsCubit, ReportsState>(
+      body: BlocListener<AdminReportsCubit, AdminReportsState>(
         listener: (context, state) {
-          if (state is ReportsFailure) {
+          if (state is AdminReportsFailure) {
             Helper.showSnackBar(context: context, message: state.message);
-          } else if (state is ReportsSuccess) {
+          } else if (state is AdminReportsSuccess) {
             Helper.showSnackBar(context: context, message: state.message);
           }
         },

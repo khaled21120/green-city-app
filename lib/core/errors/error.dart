@@ -10,10 +10,7 @@ class ServerFailure extends Failures {
 
   factory ServerFailure.fromDioException(DioException err) {
     if (err.response != null) {
-      return ServerFailure.fromResponse(
-        err.response!.statusCode ?? 500, // Default to 500 if null
-        err.response!.data,
-      );
+      return ServerFailure.fromResponse(err.response!.statusCode ?? 500);
     }
 
     switch (err.type) {
@@ -36,12 +33,14 @@ class ServerFailure extends Failures {
     }
   }
 
-  factory ServerFailure.fromResponse(int statusCode, dynamic response) {
+  factory ServerFailure.fromResponse(int statusCode) {
     try {
-      if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
-        final errorMessage =
-            response?['error']?['message'] ?? 'Authentication Error';
-        return ServerFailure(errorMessage);
+      if (statusCode == 400) {
+        return ServerFailure('Username or password incorrect');
+      } else if (statusCode == 401) {
+        return ServerFailure('Unauthorized');
+      } else if (statusCode == 403) {
+        return ServerFailure('Forbidden');
       } else if (statusCode == 404) {
         return ServerFailure('Your request was not found');
       } else if (statusCode == 500) {

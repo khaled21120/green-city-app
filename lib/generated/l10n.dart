@@ -200,24 +200,14 @@ class S {
     return Intl.message('FAQs', name: 'faqs', desc: '', args: []);
   }
 
-  /// `Announcements`
-  String get announcements {
-    return Intl.message(
-      'Announcements',
-      name: 'announcements',
-      desc: '',
-      args: [],
-    );
+  /// `Reports`
+  String get reports {
+    return Intl.message('Reports', name: 'reports', desc: '', args: []);
   }
 
-  /// `No Announcements`
-  String get no_announcements {
-    return Intl.message(
-      'No Announcements',
-      name: 'no_announcements',
-      desc: '',
-      args: [],
-    );
+  /// `No Reports`
+  String get no_reports {
+    return Intl.message('No Reports', name: 'no_reports', desc: '', args: []);
   }
 
   /// `About Us`
@@ -315,14 +305,19 @@ class S {
     return Intl.message('Enter', name: 'enter', desc: '', args: []);
   }
 
-  /// `Camera`
+  /// `Take photo`
   String get camera {
-    return Intl.message('Camera', name: 'camera', desc: '', args: []);
+    return Intl.message('Take photo', name: 'camera', desc: '', args: []);
   }
 
-  /// `Gallery`
+  /// `Choose from Gallery`
   String get gallery {
-    return Intl.message('Gallery', name: 'gallery', desc: '', args: []);
+    return Intl.message(
+      'Choose from Gallery',
+      name: 'gallery',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Delete`
@@ -470,11 +465,11 @@ class S {
     return Intl.message('Select Date', name: 'select_date', desc: '', args: []);
   }
 
-  /// `Your Announcement Type`
-  String get your_announcement_type {
+  /// `Your Report Type`
+  String get your_report_type {
     return Intl.message(
-      'Your Announcement Type',
-      name: 'your_announcement_type',
+      'Your Report Type',
+      name: 'your_report_type',
       desc: '',
       args: [],
     );
@@ -535,11 +530,11 @@ class S {
     );
   }
 
-  /// `Completed\n Announcements`
-  String get completed_announcements {
+  /// `Accepted\n Reports`
+  String get accepted_reports {
     return Intl.message(
-      'Completed\n Announcements',
-      name: 'completed_announcements',
+      'Accepted\n Reports',
+      name: 'accepted_reports',
       desc: '',
       args: [],
     );
@@ -560,16 +555,6 @@ class S {
     return Intl.message(
       'Completed\n Polls',
       name: 'completed_polls',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Accepted\n Announcements`
-  String get accepted_announcements {
-    return Intl.message(
-      'Accepted\n Announcements',
-      name: 'accepted_announcements',
       desc: '',
       args: [],
     );
@@ -605,11 +590,11 @@ class S {
     );
   }
 
-  /// `View Announcements`
-  String get view_announcements {
+  /// `View My Reports`
+  String get view_my_reports {
     return Intl.message(
-      'View Announcements',
-      name: 'view_announcements',
+      'View My Reports',
+      name: 'view_my_reports',
       desc: '',
       args: [],
     );
@@ -820,14 +805,9 @@ class S {
     );
   }
 
-  /// `My Announcements`
-  String get my_announcements {
-    return Intl.message(
-      'My Announcements',
-      name: 'my_announcements',
-      desc: '',
-      args: [],
-    );
+  /// `My Reports`
+  String get my_reports {
+    return Intl.message('My Reports', name: 'my_reports', desc: '', args: []);
   }
 
   /// `No Image`
@@ -878,6 +858,106 @@ class S {
   /// `Admin`
   String get admin {
     return Intl.message('Admin', name: 'admin', desc: '', args: []);
+  }
+
+  /// `You have completed all tasks for this month`
+  String get completed_tasks {
+    return Intl.message(
+      'You have completed all tasks for this month',
+      name: 'completed_tasks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task Progress`
+  String get task_progress {
+    return Intl.message(
+      'Task Progress',
+      name: 'task_progress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check Tasks`
+  String get check_tasks {
+    return Intl.message('Check Tasks', name: 'check_tasks', desc: '', args: []);
+  }
+
+  /// `Today's Tasks`
+  String get todays_tasks {
+    return Intl.message(
+      'Today\'s Tasks',
+      name: 'todays_tasks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pending Tasks`
+  String get pending_tasks {
+    return Intl.message(
+      'Pending Tasks',
+      name: 'pending_tasks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Good Morning`
+  String get good_morning {
+    return Intl.message(
+      'Good Morning',
+      name: 'good_morning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Good Afternoon`
+  String get good_afternoon {
+    return Intl.message(
+      'Good Afternoon',
+      name: 'good_afternoon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Good Evening`
+  String get good_evening {
+    return Intl.message(
+      'Good Evening',
+      name: 'good_evening',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Driver`
+  String get driver {
+    return Intl.message('Driver', name: 'driver', desc: '', args: []);
+  }
+
+  /// `Tasks Remaining for this month`
+  String get remaining_tasks {
+    return Intl.message(
+      'Tasks Remaining for this month',
+      name: 'remaining_tasks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not Provided`
+  String get not_provided {
+    return Intl.message(
+      'Not Provided',
+      name: 'not_provided',
+      desc: '',
+      args: [],
+    );
   }
 }
 

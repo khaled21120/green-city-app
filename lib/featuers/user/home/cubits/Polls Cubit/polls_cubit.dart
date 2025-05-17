@@ -3,13 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/endpoints.dart';
 import '../../data/models/polls_model.dart';
-import '../../data/repo/user_home_repo.dart';
+import '../../data/repo/user_repo.dart';
 
 part 'polls_state.dart';
 
 class PollsCubit extends Cubit<PollsState> {
   PollsCubit(this.homeRepo) : super(PollsInitial());
-  final UserHomeRepo homeRepo;
+  final UserRepo homeRepo;
 
   void getPolls() async {
     emit(PollsLoading());

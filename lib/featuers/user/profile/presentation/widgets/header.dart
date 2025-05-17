@@ -19,6 +19,7 @@ class ProfileHeader extends StatelessWidget {
           user.name ?? S.of(context).user_name,
           style: MyStyle.title25(context),
         ),
+        const SizedBox(height: 4),
         Text(
           user.email ?? S.of(context).email_address,
           style: MyStyle.title16(context),

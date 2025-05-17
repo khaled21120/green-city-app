@@ -1,66 +1,107 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:green_city/core/utils/drawer_header.dart';
 import 'package:green_city/generated/l10n.dart';
 
-import '../../../../../core/utils/text_style.dart';
 import '../../../../auth/cubits/Auth/auth_cubit.dart';
+import '../../../../auth/data/models/user_model.dart';
 import 'my_list_tile.dart';
 
 class UserDrawer extends StatelessWidget {
-  const UserDrawer({super.key});
+  const UserDrawer({super.key, required this.userData});
+  final UserModel userData;
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
-        child: Column(
-          spacing: 30,
-          children: [
-            // Drawer Header
-            DrawerHeader(
-              padding: const EdgeInsets.symmetric(vertical: 30),
-              child: Text('Green City', style: MyStyle.title30(context)),
+      child: Column(
+        children: [
+          Expanded(
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: [
+                MyDrawerHeader(userData: userData, routeName: 'userProfile'),
+                const SizedBox(height: 16),
+                ..._buildMenuItems(context),
+              ],
             ),
-
-            // FAQs
-            MyListTile(
-              title: S.of(context).faqs,
-              icon: Icons.question_mark_rounded,
-              onTap: () => GoRouter.of(context).pushNamed('FAQs'),
-            ),
-
-            // Announcements
-            MyListTile(
-              title: S.of(context).announcements,
-              icon: Icons.phone_android_rounded,
-              onTap: () => GoRouter.of(context).pushNamed('announcements'),
-            ),
-            MyListTile(
-              title: S.of(context).admin,
-              icon: Icons.admin_panel_settings,
-              onTap: () => GoRouter.of(context).pushNamed('adminHome'),
-            ),
-
-            // About Us
-            MyListTile(
-              icon: Icons.info_rounded,
-              title: S.of(context).about_us,
-              onTap: () => GoRouter.of(context).pushNamed('aboutUs'),
-            ),
-            const Spacer(),
-            const Divider(),
-
-            // Logout
-            MyListTile(
-              title: S.of(context).sign_out,
-              icon: Icons.logout_rounded,
-              onTap: () => context.read<AuthCubit>().logOut(),
-            ),
-          ],
-        ),
+          ),
+          _buildLogoutButton(context),
+        ],
       ),
     );
   }
+
+  List<Widget> _buildMenuItems(BuildContext context) {
+    return [
+      _buildMenuItem(
+        context,
+        icon: FontAwesomeIcons.circleQuestion,
+        title: S.of(context).faqs,
+        routeName: 'FAQs',
+      ),
+      _buildMenuItem(
+        context,
+        icon: FontAwesomeIcons.truckPickup,
+        title: S.of(context).driver,
+        routeName: 'driverHome',
+      ),
+      _buildMenuItem(
+        context,
+        icon: FontAwesomeIcons.userShield,
+        title: S.of(context).admin,
+        routeName: 'adminHome',
+      ),
+      _buildMenuItem(
+        context,
+        icon: FontAwesomeIcons.solidEnvelope,
+        title: S.of(context).contact_us,
+        routeName: 'contactUs',
+      ),
+      _buildMenuItem(
+        context,
+        icon: FontAwesomeIcons.info,
+        title: S.of(context).about_us,
+        routeName: 'aboutUs',
+      ),
+    ];
+  }
+
+  Widget _buildMenuItem(
+    BuildContext context, {
+    required IconData icon,
+    required String title,
+    required String routeName,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      child: MyListTile(
+        icon: icon,
+        title: title,
+        onTap: () => _navigateTo(context, routeName),
+      ),
+    );
+  }
+
+  Widget _buildLogoutButton(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        children: [
+          const Divider(),
+          const SizedBox(height: 8),
+          MyListTile(
+            icon: FontAwesomeIcons.rightFromBracket,
+            title: S.of(context).sign_out,
+            onTap: () => context.read<AuthCubit>().logOut(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _navigateTo(BuildContext context, String routeName) =>
+      GoRouter.of(context).pushNamed(routeName);
 }

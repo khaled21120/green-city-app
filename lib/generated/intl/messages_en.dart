@@ -24,8 +24,8 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "about_app": MessageLookupByLibrary.simpleMessage("About App"),
     "about_us": MessageLookupByLibrary.simpleMessage("About Us"),
-    "accepted_announcements": MessageLookupByLibrary.simpleMessage(
-      "Accepted\n Announcements",
+    "accepted_reports": MessageLookupByLibrary.simpleMessage(
+      "Accepted\n Reports",
     ),
     "activities": MessageLookupByLibrary.simpleMessage("Activities"),
     "add_report": MessageLookupByLibrary.simpleMessage("Add Report"),
@@ -39,23 +39,23 @@ class MessageLookup extends MessageLookupByLibrary {
     "already_have_an_account": MessageLookupByLibrary.simpleMessage(
       "Already have an account?",
     ),
-    "announcements": MessageLookupByLibrary.simpleMessage("Announcements"),
     "assistant": MessageLookupByLibrary.simpleMessage("Assistant"),
-    "camera": MessageLookupByLibrary.simpleMessage("Camera"),
+    "camera": MessageLookupByLibrary.simpleMessage("Take photo"),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "change_address": MessageLookupByLibrary.simpleMessage("Change Address"),
     "change_phone_number": MessageLookupByLibrary.simpleMessage(
       "Change Phone Number",
     ),
+    "check_tasks": MessageLookupByLibrary.simpleMessage("Check Tasks"),
     "completed": MessageLookupByLibrary.simpleMessage("Completed"),
     "completed_activities": MessageLookupByLibrary.simpleMessage(
       "Completed\n Activities",
     ),
-    "completed_announcements": MessageLookupByLibrary.simpleMessage(
-      "Completed\n Announcements",
-    ),
     "completed_polls": MessageLookupByLibrary.simpleMessage(
       "Completed\n Polls",
+    ),
+    "completed_tasks": MessageLookupByLibrary.simpleMessage(
+      "You have completed all tasks for this month",
     ),
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "Confirm Password",
@@ -77,6 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "dont_have_an_account": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
     ),
+    "driver": MessageLookupByLibrary.simpleMessage("Driver"),
     "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "email_address": MessageLookupByLibrary.simpleMessage("Email Address"),
@@ -89,21 +90,21 @@ class MessageLookup extends MessageLookupByLibrary {
       "For Institutions",
     ),
     "forget_password": MessageLookupByLibrary.simpleMessage("Forget Password?"),
-    "gallery": MessageLookupByLibrary.simpleMessage("Gallery"),
+    "gallery": MessageLookupByLibrary.simpleMessage("Choose from Gallery"),
+    "good_afternoon": MessageLookupByLibrary.simpleMessage("Good Afternoon"),
+    "good_evening": MessageLookupByLibrary.simpleMessage("Good Evening"),
+    "good_morning": MessageLookupByLibrary.simpleMessage("Good Morning"),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
     "institutionName": MessageLookupByLibrary.simpleMessage("Institution Name"),
     "join": MessageLookupByLibrary.simpleMessage("Join"),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
     "locationAddress": MessageLookupByLibrary.simpleMessage("Location Address"),
     "message": MessageLookupByLibrary.simpleMessage("Message"),
-    "my_announcements": MessageLookupByLibrary.simpleMessage(
-      "My Announcements",
-    ),
+    "my_reports": MessageLookupByLibrary.simpleMessage("My Reports"),
     "name": MessageLookupByLibrary.simpleMessage("Name"),
-    "no_announcements": MessageLookupByLibrary.simpleMessage(
-      "No Announcements",
-    ),
     "no_image": MessageLookupByLibrary.simpleMessage("No Image"),
+    "no_reports": MessageLookupByLibrary.simpleMessage("No Reports"),
+    "not_provided": MessageLookupByLibrary.simpleMessage("Not Provided"),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "number_of_participants": MessageLookupByLibrary.simpleMessage(
       "Number of participants is complete",
@@ -129,6 +130,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Payment Information",
     ),
     "paymentMethod": MessageLookupByLibrary.simpleMessage("Payment Method"),
+    "pending_tasks": MessageLookupByLibrary.simpleMessage("Pending Tasks"),
     "phone_number": MessageLookupByLibrary.simpleMessage("Phone Number"),
     "please_select": MessageLookupByLibrary.simpleMessage("Please select"),
     "polls": MessageLookupByLibrary.simpleMessage("Polls"),
@@ -136,7 +138,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "public": MessageLookupByLibrary.simpleMessage("Public"),
     "quick_actions": MessageLookupByLibrary.simpleMessage("Quick Actions"),
+    "remaining_tasks": MessageLookupByLibrary.simpleMessage(
+      "Tasks Remaining for this month",
+    ),
     "report_location": MessageLookupByLibrary.simpleMessage("Report Location"),
+    "reports": MessageLookupByLibrary.simpleMessage("Reports"),
     "selectInstitution": MessageLookupByLibrary.simpleMessage(
       "Select Institution",
     ),
@@ -159,6 +165,8 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "submit": MessageLookupByLibrary.simpleMessage("Submit"),
     "submit_feedback": MessageLookupByLibrary.simpleMessage("Submit Feedback"),
+    "task_progress": MessageLookupByLibrary.simpleMessage("Task Progress"),
+    "todays_tasks": MessageLookupByLibrary.simpleMessage("Today\'s Tasks"),
     "typeMessage": MessageLookupByLibrary.simpleMessage("Type message..."),
     "update": MessageLookupByLibrary.simpleMessage("Update"),
     "update_profile_picture": MessageLookupByLibrary.simpleMessage(
@@ -167,9 +175,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "upload_image": MessageLookupByLibrary.simpleMessage("Upload Image"),
     "user_name": MessageLookupByLibrary.simpleMessage("User Name"),
     "version": MessageLookupByLibrary.simpleMessage("Version"),
-    "view_announcements": MessageLookupByLibrary.simpleMessage(
-      "View Announcements",
-    ),
+    "view_my_reports": MessageLookupByLibrary.simpleMessage("View My Reports"),
     "vote": MessageLookupByLibrary.simpleMessage("Vote"),
     "wasteType": MessageLookupByLibrary.simpleMessage("Waste Type"),
     "welcome": MessageLookupByLibrary.simpleMessage("Welcome Back"),
@@ -183,10 +189,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "welcome_title": MessageLookupByLibrary.simpleMessage(
       "Welcome to Green City",
     ),
-    "your_announcement_type": MessageLookupByLibrary.simpleMessage(
-      "Your Announcement Type",
-    ),
     "your_bin_number": MessageLookupByLibrary.simpleMessage("Your Bin Number"),
     "your_region": MessageLookupByLibrary.simpleMessage("Your Region"),
+    "your_report_type": MessageLookupByLibrary.simpleMessage(
+      "Your Report Type",
+    ),
   };
 }

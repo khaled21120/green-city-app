@@ -1766,7 +1766,6 @@ https://poe.com/s/yQhJZGTvZVktG8aPENka
   static const String animation2 = '${_images}animation2.json';
   static const String logo = '${_images}logo.png';
   static const String logoDark = '${_images}logodark.png';
-  static const String person = '${_images}person.png';
   static const String themeKey = 'themeMode';
 
   static const List<Map<String, dynamic>> materials = [

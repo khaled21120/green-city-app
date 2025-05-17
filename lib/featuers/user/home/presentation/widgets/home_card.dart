@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-
-import '../../../../../core/utils/text_style.dart';
+import 'package:green_city/core/utils/text_style.dart';
 
 class HomeCard extends StatelessWidget {
   const HomeCard({super.key, required this.data, required this.onTap});
+
   final Map<String, dynamic> data;
   final VoidCallback onTap;
 
@@ -12,28 +12,45 @@ class HomeCard extends StatelessWidget {
     final title = data['title'] as String;
     final color = data['color'] as Color;
     final icon = data['icon'] as IconData;
+
     return InkWell(
+      borderRadius: BorderRadius.circular(12),
       onTap: onTap,
       child: Card(
-        margin: EdgeInsets.zero,
-        child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
           child: Column(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: color.withValues(alpha: .2),
+                  gradient: LinearGradient(
+                    colors: [
+                      color.withValues(alpha: .2),
+                      color.withValues(alpha: .4),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
                   shape: BoxShape.circle,
                 ),
-
-                child: Icon(icon, size: 40, color: color),
+                child: Icon(icon, size: 32, color: color),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 16),
               Text(
                 title,
                 textAlign: TextAlign.center,
-                style: MyStyle.title18(context),
+                style: MyStyle.title20(
+                  context,
+                ).copyWith(color: Theme.of(context).colorScheme.onSurface),
+              ),
+              const SizedBox(height: 8),
+              Icon(
+                Icons.chevron_right_rounded,
+                color: color,
+                size: 24,
               ),
             ],
           ),

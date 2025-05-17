@@ -3,14 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:green_city/featuers/auth/data/repo/auth_repo.dart';
 import '../../../../core/utils/endpoints.dart';
 import '../../../auth/data/models/user_model.dart';
-import '../../home/data/repo/user_home_repo.dart';
+import '../../home/data/repo/user_repo.dart';
 
 part 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit(this.homeRepo, this.authRepo) : super(ProfileStateInitial());
 
-  final UserHomeRepo homeRepo;
+  final UserRepo homeRepo;
   final AuthRepo authRepo;
 
   UserModel? _currentUser;

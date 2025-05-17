@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:green_city/featuers/auth/data/models/user_model.dart';
+import 'package:green_city/generated/l10n.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import '../../../../../core/themes/light_theme.dart';
@@ -19,11 +20,12 @@ class DriverStats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final remainingTasks = totalTasks - completedTasks; 
     String getTimeOfDayGreeting() {
       final hour = DateTime.now().hour;
-      if (hour < 12) return 'Morning';
-      if (hour < 17) return 'Afternoon';
-      return 'Evening';
+      if (hour < 12) return S.of(context).good_morning;
+      if (hour < 17) return S.of(context).good_afternoon;
+      return S.of(context).good_evening;
     }
 
     return Column(
@@ -31,7 +33,7 @@ class DriverStats extends StatelessWidget {
       children: [
         // Welcome Section
         Text(
-          'Good ${getTimeOfDayGreeting()},',
+          getTimeOfDayGreeting(),
           style: MyStyle.title18(context).copyWith(color: Colors.grey[600]),
         ),
         const SizedBox(height: 4),
@@ -55,7 +57,9 @@ class DriverStats extends StatelessWidget {
                   backgroundColor: MyColors.primary.withValues(alpha: .1),
                   circularStrokeCap: CircularStrokeCap.round,
                   center: Text(
-                    '${(progressPercent * 100).toInt()}%',
+                    progressPercent == 1
+                        ? '100%🥳'
+                        : '${(progressPercent * 100).toInt()}%',
                     style: const TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
@@ -70,7 +74,7 @@ class DriverStats extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Task Progress',
+                        S.of(context).task_progress,
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey[600],
@@ -79,7 +83,9 @@ class DriverStats extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                       completedTasks / totalTasks == 1 ? 'You have completed all tasks for this month' : '$completedTasks out of $totalTasks tasks completed this month.',
+                        progressPercent == 1
+                            ? S.of(context).completed_tasks
+                            : '${S.of(context).remaining_tasks}: $remainingTasks',
                         style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -94,11 +100,8 @@ class DriverStats extends StatelessWidget {
         ),
         const SizedBox(height: 30),
 
-        // Quick Stats Section
-         Text(
-          'Check Tasks',
-          style: MyStyle.title18(context),
-        ),
+        // check tasks Section
+        Text(S.of(context).check_tasks, style: MyStyle.title18(context)),
         const SizedBox(height: 15),
       ],
     );

@@ -11,7 +11,7 @@ import 'auth_repo.dart';
 import '../models/user_model.dart';
 
 class AuthRepoImpl extends AuthRepo {
-  AuthRepoImpl({required this.apiAuthService});
+  AuthRepoImpl(this.apiAuthService);
   final ApiAuthService apiAuthService;
 
   @override
@@ -33,9 +33,7 @@ class AuthRepoImpl extends AuthRepo {
       await saveUserDataLocal(user);
       return Right(user);
     } on ServerFailure catch (e) {
-      return Left(
-        ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى ${e.errMsg}'),
-      );
+      return Left(ServerFailure(e.errMsg));
     }
   }
 
@@ -53,9 +51,7 @@ class AuthRepoImpl extends AuthRepo {
       await saveUserDataLocal(user);
       return Right(user);
     } on ServerFailure catch (e) {
-      return Left(
-        ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى ${e.errMsg}'),
-      );
+      return Left(ServerFailure(e.errMsg));
     }
   }
 

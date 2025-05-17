@@ -1,91 +1,56 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 
-import '../../../../core/themes/light_theme.dart';
-import '../../../../generated/l10n.dart';
-import '../../profile/presentation/user_profile_page.dart';
-import 'views/chellanges/chellange_page.dart';
+import '../../profile/cubit/profile_cubit.dart';
 import 'widgets/user_drawer.dart';
-import 'widgets/home_body.dart';
+import 'widgets/user_home_body.dart';
 
 class UserHomePage extends StatelessWidget {
   const UserHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final pageController = PageController();
-    List<Widget> pages = [
-      const UserHomeScreen(),
-      const ChellangePage(),
-      const UserProfilePage(),
-    ];
+    context.read<ProfileCubit>().fetchUserData();
+    return BlocBuilder<ProfileCubit, ProfileState>(
+      builder: (context, state) {
+        if (state is FetchDataLoading) {
+          return _buildLoadingState();
+        } else if (state is FetchDataSuccess) {
+          return _buildSuccessState(context, state);
+        }
+
+        return _buildErrorState();
+      },
+    );
+  }
+
+  Widget _buildLoadingState() {
+    return const Scaffold(body: Center(child: CircularProgressIndicator()));
+  }
+
+  Widget _buildSuccessState(BuildContext context, FetchDataSuccess state) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Green City'),
         centerTitle: true,
         actions: [
           IconButton(
-            icon: const Icon(Icons.notifications),
-            onPressed: () => GoRouter.of(context).pushNamed('notifications'),
+            icon: const Icon(Icons.person),
+            onPressed: () => _navigateToProfile(context),
+            tooltip: 'Profile',
           ),
         ],
       ),
-      drawer: const UserDrawer(),
-      body: PageView(
-        controller: pageController,
-        physics: const NeverScrollableScrollPhysics(),
-        children: pages,
-      ),
-      bottomNavigationBar: GNav(
-        curve: Curves.easeInOut,
-        backgroundColor:
-            Theme.of(context).colorScheme.primary, // Adapts to theme
-        tabBackgroundColor:
-            Theme.of(context).colorScheme.tertiary, // Light/Dark mode aware
-        color: MyColors.black, // Contrast for active tab,
-        activeColor: MyColors.white, // Contrast for active tab
-        gap: 5,
-        padding: const EdgeInsets.all(15),
-        onTabChange: (idx) => pageController.jumpToPage(idx),
-        tabs: [
-          GButton(icon: Icons.home, text: S.of(context).home),
-          GButton(icon: Icons.event_available, text: S.of(context).activities),
-          GButton(icon: Icons.person, text: S.of(context).profile),
-        ],
-      ),
+      drawer: UserDrawer(userData: state.userModel),
+      body: UserHomeBody(userData: state.userModel),
     );
   }
-}
 
-/*  CurvedNavigationBar(
-        animationCurve: Curves.easeInOut,
-        index: 1,
-        onTap: (idx) => pageController.jumpToPage(idx),
-        backgroundColor: MyColors.scaffold,
-        animationDuration: const Duration(milliseconds: 500),
-        buttonBackgroundColor: MyColors.scaffold,
-        color: MyColors.primary,
-        items: [
-          const Icon(Icons.search),
-          const Icon(Icons.home),
-          const Icon(Icons.person),
-        ],
-      ), */
-/*GNav(
-        curve: Curves.easeInOut,
-        backgroundColor:
-            Theme.of(context).colorScheme.primary, // Adapts to theme
-        tabBackgroundColor:
-            Theme.of(context).colorScheme.tertiary, // Light/Dark mode aware
-        color: MyColors.black, // Contrast for active tab,
-        activeColor: MyColors.white, // Contrast for active tab
-        gap: 5,
-        padding: const EdgeInsets.all(20),
-        onTabChange: (idx) => pageController.jumpToPage(idx),
-        tabs: [
-          GButton(icon: Icons.home, text: S.of(context).home),
-          GButton(icon: Icons.event_available, text: S.of(context).activities),
-          GButton(icon: Icons.person, text: S.of(context).profile),
-        ],
-      ), */
+  Widget _buildErrorState() {
+    return const Scaffold(body: Center(child: Text('Something went wrong')));
+  }
+
+  void _navigateToProfile(BuildContext context) =>
+      GoRouter.of(context).pushNamed('userProfile');
+}

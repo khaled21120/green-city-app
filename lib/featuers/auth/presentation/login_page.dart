@@ -24,11 +24,14 @@ class LoginPage extends StatelessWidget {
           if (state is LogInError) {
             Helper.showSnackBar(context: context, message: state.message);
           } else if (state is LogInSuccess) {
-            state.userModel.role == null
-                ? GoRouter.of(context).goNamed('home')
-                : state.userModel.role == 'Admin'
-                ? GoRouter.of(context).goNamed('admin')
-                : GoRouter.of(context).goNamed('user');
+            if (state.userModel.role == null ||
+                state.userModel.role == 'User') {
+              GoRouter.of(context).goNamed('home');
+            } else if (state.userModel.role == 'Admin') {
+              GoRouter.of(context).goNamed('adminHome');
+            } else if (state.userModel.role == 'TruckDriver') {
+              GoRouter.of(context).goNamed('driverHome');
+            }
           }
         },
         builder: (context, state) {
@@ -49,7 +52,7 @@ class LoginPage extends StatelessWidget {
                     Constants.logo,
                     width: width * 0.6,
                     filterQuality: FilterQuality.high,
-                    semanticLabel: 'App Logo', // Accessibility
+                    semanticLabel: 'App Logo',
                   ),
                 ),
                 const Positioned(bottom: 0, child: LogInBottom()),
