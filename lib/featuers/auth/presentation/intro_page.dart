@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:green_city/core/utils/intro_button.dart';
+import 'package:green_city/core/widgets/intro_button.dart';
 import 'package:green_city/core/utils/text_style.dart';
 import 'package:green_city/generated/l10n.dart';
 import '../../../core/utils/constants.dart';

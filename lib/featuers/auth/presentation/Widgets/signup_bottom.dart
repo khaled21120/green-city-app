@@ -4,9 +4,9 @@ import 'package:go_router/go_router.dart';
 import 'package:green_city/generated/l10n.dart';
 
 import '../../../../core/utils/text_style.dart';
-import '../../../../core/utils/button.dart';
-import '../../../../core/utils/text_felid.dart';
-import '../../cubits/SignUp/sign_up_cubit.dart';
+import '../../../../core/widgets/button.dart';
+import '../../../../core/widgets/text_felid.dart';
+import '../cubits/SignUp/sign_up_cubit.dart';
 
 class SignUpBottom extends StatefulWidget {
   const SignUpBottom({super.key});

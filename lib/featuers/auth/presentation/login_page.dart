@@ -3,11 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-import '../../../core/functions/helper.dart';
+import '../../../core/utils/helper.dart';
 import '../../../core/themes/light_theme.dart';
 import '../../../core/utils/constants.dart';
 import 'Widgets/gradient_bg.dart';
-import '../cubits/LogIn/log_in_cubit.dart';
+import 'cubits/LogIn/log_in_cubit.dart';
 import 'Widgets/login_bottom.dart';
 
 class LoginPage extends StatelessWidget {

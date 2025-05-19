@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:green_city/generated/l10n.dart';
 
-import '../../../../core/utils/button.dart';
-import '../../../../core/utils/text_felid.dart';
+import '../../../../core/widgets/button.dart';
+import '../../../../core/widgets/text_felid.dart';
 import '../../../../core/utils/text_style.dart';
-import '../../cubits/LogIn/log_in_cubit.dart';
+import '../cubits/LogIn/log_in_cubit.dart';
 
 class LogInBottom extends StatefulWidget {
   const LogInBottom({super.key});
