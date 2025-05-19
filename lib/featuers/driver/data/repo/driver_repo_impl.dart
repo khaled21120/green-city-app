@@ -37,16 +37,26 @@ class DriverRepoImpl extends DriverRepo {
   }
 
   @override
-  Future updateData({
-    required String endPoint,
-    required Map<String, dynamic> data,
-  }) async {
+  Future<bool> completeTask({required String endPoint, required int id}) async {
     try {
-      await databaseService.updateData(
+      final res = await databaseService.postByID(
         endPoint: endPoint,
-        data: data,
-        isImage: false,
+        id: id.toString(),
       );
+      return res;
+    } on ServerFailure catch (e) {
+      throw ServerFailure(e.errMsg);
+    }
+  }
+
+  @override
+  Future<bool> acceptTask({required String endPoint, required int id}) async {
+    try {
+      final res = await databaseService.postByID(
+        endPoint: endPoint,
+        id: id.toString(),
+      );
+      return res;
     } on ServerFailure catch (e) {
       throw ServerFailure(e.errMsg);
     }

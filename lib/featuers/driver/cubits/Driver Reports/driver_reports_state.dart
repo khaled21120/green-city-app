@@ -20,3 +20,15 @@ final class DriverReportsFailure extends DriverReportsState {
   final String errMsg;
   const DriverReportsFailure(this.errMsg);
 }
+
+final class CompleteTaskLoading extends DriverReportsState {}
+
+final class CompleteTaskSuccess extends DriverReportsState {
+  final String message;
+  const CompleteTaskSuccess(this.message);
+}
+
+final class CompleteTaskFailure extends DriverReportsState {
+  final String message;
+  const CompleteTaskFailure(this.message);
+}

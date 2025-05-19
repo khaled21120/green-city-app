@@ -9,7 +9,6 @@ sealed class AuthState extends Equatable {
 
 final class AuthInitial extends AuthState {}
 
-
 final class AuthError extends AuthState {
   final String message;
   const AuthError(this.message);

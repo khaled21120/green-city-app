@@ -44,15 +44,9 @@ class UserDrawer extends StatelessWidget {
       ),
       _buildMenuItem(
         context,
-        icon: FontAwesomeIcons.truckPickup,
-        title: S.of(context).driver,
-        routeName: 'driverHome',
-      ),
-      _buildMenuItem(
-        context,
-        icon: FontAwesomeIcons.userShield,
-        title: S.of(context).admin,
-        routeName: 'adminHome',
+        icon: FontAwesomeIcons.solidBell,
+        title: S.of(context).notifications,
+        routeName: 'notifications',
       ),
       _buildMenuItem(
         context,

@@ -28,7 +28,6 @@ class _ProfilePictureState extends State<ProfilePicture> {
       final file = await Helper.pickImage(isCamera: isCamera);
       if (!mounted) return;
 
-      Navigator.pop(context);
       if (file != null) {
         context.read<ProfileCubit>().updateData(data: file, isImage: true);
         setState(() => imageFile = file);

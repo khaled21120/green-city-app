@@ -21,4 +21,17 @@ class ActivitiesCubit extends Cubit<ActivitiesState> {
       (data) => emit(ActivitiesLoaded(data)),
     );
   }
+
+  void joinActivity({required int activityId, required int data}) async {
+    emit(ActivitiesLoading());
+    final result = await homeRepo.updateData(
+      endPoint: '${Endpoints.activities}/$activityId',
+      data: {'numOfSubscribers': data},
+    );
+    if (result) {
+      emit(const ActivityJoined('تم الانضمام بنجاح'));
+    } else {
+      emit(const ActivityJoined('حدث خطأ ما الرجاء المحاولة مرة اخرى'));
+    }
+  }
 }

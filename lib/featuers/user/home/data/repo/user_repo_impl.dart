@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
 import 'package:green_city/featuers/user/home/data/models/activities_model.dart';
@@ -71,7 +70,6 @@ class UserRepoImpl extends UserRepo {
       final activitiesList = await databaseService.fetchListData(
         endPoint: endPoint,
       );
-      log(activitiesList.toString());
       final activities =
           activitiesList.map((e) => ActivitiesModel.fromJson(e)).toList();
 
@@ -131,16 +129,17 @@ class UserRepoImpl extends UserRepo {
   }
 
   @override
-  Future updateData({
+  Future<bool> updateData({
     required String endPoint,
     required Map<String, dynamic> data,
   }) async {
     try {
-      await databaseService.updateData(
+     final isUpdated = await databaseService.updateData(
         endPoint: endPoint,
         data: data,
         isImage: false,
       );
+      return isUpdated;
     } on ServerFailure catch (e) {
       throw ServerFailure(e.errMsg);
     }

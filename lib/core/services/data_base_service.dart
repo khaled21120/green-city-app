@@ -15,4 +15,5 @@ abstract class DatabaseService {
     required String endPoint,
     required dynamic data,
   });
+  Future<bool> postByID({required String endPoint, required String id});
 }

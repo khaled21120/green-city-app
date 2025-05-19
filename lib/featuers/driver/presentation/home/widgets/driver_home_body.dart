@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:green_city/featuers/auth/data/models/user_model.dart';
 
 import '../../../../../generated/l10n.dart';
@@ -24,7 +25,7 @@ class DriverHomeBody extends StatelessWidget {
         'color': Colors.orangeAccent[400]!,
       },
     ];
-    final completedTasks = 35;
+    final completedTasks = userData.numberOfCompletedTasks ?? 0;
     final totalTasks = 50;
     final progressPercent = completedTasks / totalTasks;
 
@@ -51,14 +52,14 @@ class DriverHomeBody extends StatelessWidget {
                 (_, i) => HomeCard(
                   data: features[i],
                   onTap: () {
-                    // switch (i) {
-                    //   case 0:
-                    //     GoRouter.of(context).pushNamed('polls');
-                    //     break;
-                    //   case 1:
-                    //     GoRouter.of(context).pushNamed('myAnnouncements');
-                    //     break;
-                    // }
+                    switch (i) {
+                      case 0:
+                        GoRouter.of(context).pushNamed('todayTasks');
+                        break;
+                      case 1:
+                        GoRouter.of(context).pushNamed('pendingTasks');
+                        break;
+                    }
                   },
                 ),
           ),

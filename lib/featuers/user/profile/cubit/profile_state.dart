@@ -24,6 +24,7 @@ class UpdateDataSuccess extends ProfileState {
 }
 
 class FetchDataLoading extends ProfileState {}
+
 class LogOutSuccess extends ProfileState {
   final bool isLogOut;
   LogOutSuccess(this.isLogOut);

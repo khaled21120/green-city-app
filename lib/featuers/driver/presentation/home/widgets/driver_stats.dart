@@ -20,7 +20,7 @@ class DriverStats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final remainingTasks = totalTasks - completedTasks; 
+    final remainingTasks = totalTasks - completedTasks;
     String getTimeOfDayGreeting() {
       final hour = DateTime.now().hour;
       if (hour < 12) return S.of(context).good_morning;

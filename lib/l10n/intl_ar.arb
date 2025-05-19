@@ -35,6 +35,8 @@
   "join": "انضم",
   "submit": "إرسال",
   "cancel": "إلغاء",
+  "send": "ارسال",
+  "accept": "قبول",
   "enter": "أدخل",
   "camera": "التقط صورة",
   "gallery": "أختر من المعرض",
@@ -114,5 +116,11 @@
   "good_evening": "مساء الخير",
   "driver": "سائق",
   "remaining_tasks": "المهام المتبقية لهذا الشهر",
-  "not_provided": "غير مقدم"
+  "not_provided": "غير مقدم",
+  "no_tasks_today": "لا يوجد مهام اليوم",
+  "retry": "اعد المحاولة",
+  "no_data_available": "لا يوجد بيانات متاحة",
+  "license_number": "رقم الرخصة",
+  "license_expiry_date": "تاريخ انتهاء الرخصة",
+  "truck_number": "رقم الشاحنة"
 }

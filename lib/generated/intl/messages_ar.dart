@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "about_app": MessageLookupByLibrary.simpleMessage("حول التطبيق"),
     "about_us": MessageLookupByLibrary.simpleMessage("من نحن"),
+    "accept": MessageLookupByLibrary.simpleMessage("قبول"),
     "accepted_reports": MessageLookupByLibrary.simpleMessage(
       "البلاغات\n المقبولة",
     ),
@@ -100,13 +101,23 @@ class MessageLookup extends MessageLookupByLibrary {
     "institutionName": MessageLookupByLibrary.simpleMessage("اسم المؤسسة"),
     "join": MessageLookupByLibrary.simpleMessage("انضم"),
     "language": MessageLookupByLibrary.simpleMessage("اللغة"),
+    "license_expiry_date": MessageLookupByLibrary.simpleMessage(
+      "تاريخ انتهاء الرخصة",
+    ),
+    "license_number": MessageLookupByLibrary.simpleMessage("رقم الرخصة"),
     "locationAddress": MessageLookupByLibrary.simpleMessage("عنوان الموقع"),
     "message": MessageLookupByLibrary.simpleMessage("الرسالة"),
     "my_reports": MessageLookupByLibrary.simpleMessage("بلاغاتي"),
     "name": MessageLookupByLibrary.simpleMessage("الاسم"),
+    "no_data_available": MessageLookupByLibrary.simpleMessage(
+      "لا يوجد بيانات متاحة",
+    ),
     "no_image": MessageLookupByLibrary.simpleMessage("لا يوجد صورة"),
     "no_reports": MessageLookupByLibrary.simpleMessage(
       "لا يوجد بلاغات مرسلة بعد",
+    ),
+    "no_tasks_today": MessageLookupByLibrary.simpleMessage(
+      "لا يوجد مهام اليوم",
     ),
     "not_provided": MessageLookupByLibrary.simpleMessage("غير مقدم"),
     "notifications": MessageLookupByLibrary.simpleMessage("الاشعارات"),
@@ -145,11 +156,13 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "report_location": MessageLookupByLibrary.simpleMessage("الإبلاغ عن موقع"),
     "reports": MessageLookupByLibrary.simpleMessage("البلاغات"),
+    "retry": MessageLookupByLibrary.simpleMessage("اعد المحاولة"),
     "selectInstitution": MessageLookupByLibrary.simpleMessage("اختر المؤسسة"),
     "selectTime": MessageLookupByLibrary.simpleMessage("اختر الوقت"),
     "selectType": MessageLookupByLibrary.simpleMessage("اختر النوع"),
     "select_date": MessageLookupByLibrary.simpleMessage("اختر التاريخ"),
     "select_warehouse": MessageLookupByLibrary.simpleMessage("اختر المستودع"),
+    "send": MessageLookupByLibrary.simpleMessage("ارسال"),
     "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
     "sign_in": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "sign_in_to_continue": MessageLookupByLibrary.simpleMessage(
@@ -167,6 +180,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "submit_feedback": MessageLookupByLibrary.simpleMessage("إرسال ملاحظة"),
     "task_progress": MessageLookupByLibrary.simpleMessage("تقدم المهام"),
     "todays_tasks": MessageLookupByLibrary.simpleMessage("مهام اليوم"),
+    "truck_number": MessageLookupByLibrary.simpleMessage("رقم الشاحنة"),
     "typeMessage": MessageLookupByLibrary.simpleMessage("اكتب رسالة....."),
     "update": MessageLookupByLibrary.simpleMessage("تحديث"),
     "update_profile_picture": MessageLookupByLibrary.simpleMessage(

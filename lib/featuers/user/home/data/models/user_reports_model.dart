@@ -7,6 +7,8 @@ class UserReportsModel extends Equatable {
   final String? announcementType;
   final String? announcementDescription;
   final String? siteLocation;
+  final String? binNumber;
+  final String? region;
   final String? todayDate;
   final String? photoFile;
   final String? status;
@@ -15,6 +17,8 @@ class UserReportsModel extends Equatable {
     this.id,
     this.userName,
     this.email,
+    this.binNumber,
+    this.region,
     this.announcementType,
     this.announcementDescription,
     this.siteLocation,
@@ -28,6 +32,8 @@ class UserReportsModel extends Equatable {
         id: json['id'] as int?,
         userName: json['userName'] as String?,
         email: json['email'] as String?,
+        binNumber: json['binNumber'] as String?,
+        region: json['regionName'] as String?,
         announcementType: json['announcementType'] as String?,
         announcementDescription: json['announcementDescription'] as String?,
         siteLocation: json['siteLocation'] as String?,
@@ -37,15 +43,15 @@ class UserReportsModel extends Equatable {
       );
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'userName': userName,
-    'email': email,
-    'announcementType': announcementType,
-    'announcementDescription': announcementDescription,
-    'siteLocation': siteLocation,
-    'todayDate': todayDate,
-    'photoFile': photoFile,
-    'status': status,
+    'regionName': region,
+    'UserName': userName,
+    'Email': email,
+    'AnnouncementType': announcementType,
+    'AnnouncementDescription': announcementDescription,
+    'BinNumber': binNumber,
+    'SiteLocation': siteLocation,
+    'TodayDate': todayDate,
+    'PhotoFile': photoFile,
   };
 
   @override
@@ -55,6 +61,8 @@ class UserReportsModel extends Equatable {
       userName,
       email,
       announcementType,
+      binNumber,
+      region,
       announcementDescription,
       siteLocation,
       todayDate,

@@ -22,4 +22,17 @@ class DriverReportsCubit extends Cubit<DriverReportsState> {
       emit(const DriverReportsFailure('حدث خطأ ما الرجاء المحاولة مرة اخرى'));
     }
   }
+
+  void completeTask({required int id}) async {
+    emit(CompleteTaskLoading());
+    final result = await driverRepo.completeTask(
+      endPoint: Endpoints.completeDriverTask,
+      id: id,
+    );
+    if (result) {
+      emit(const CompleteTaskSuccess('تم اكمال المهمة بنجاح'));
+    } else {
+      emit(const CompleteTaskFailure('حدث خطأ ما الرجاء المحاولة مرة اخرى'));
+    }
+  }
 }

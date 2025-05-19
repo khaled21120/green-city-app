@@ -16,7 +16,6 @@ class PrefsService {
 
   static int loadTheme() => _instance.getInt(Constants.themeKey) ?? 0;
 
-
   static String? getString(String key) => _instance.getString(key);
 
   static Future clear() async => await _instance.clear();

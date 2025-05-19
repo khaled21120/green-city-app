@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:green_city/featuers/user/home/cubits/Activities%20Cubit/activities_cubit.dart';
 
+import '../../../../../../core/utils/error_widget.dart';
 import '../../../../../../generated/l10n.dart';
 import 'widgets/activity_item.dart';
 import '../../widgets/shimmer_grid.dart';
@@ -23,7 +24,11 @@ class ActivityiesView extends StatelessWidget {
             if (state is ActivitiesLoading) {
               return ShimmerGridItem(aspectratio: width / (height / 1.5));
             } else if (state is ActivitiesError) {
-              return Center(child: Text(state.message));
+              return ErrorsWidget(
+                message: state.message,
+                onPressed:
+                    () async => context.read<ActivitiesCubit>().getActivities(),
+              );
             } else if (state is ActivitiesLoaded) {
               // Filter available activities only
               final availableActivities =

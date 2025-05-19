@@ -1,8 +1,15 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:green_city/core/functions/helper.dart';
 import 'package:green_city/featuers/admin/home/cubits/cubit/admin_reports_cubit.dart';
+import 'package:green_city/featuers/driver/cubits/Driver%20Reports/driver_reports_cubit.dart';
+import 'package:green_city/featuers/driver/cubits/Driver%20Tasks/driver_tasks_cubit.dart';
+import 'package:green_city/featuers/driver/presentation/home/views/Pending%20Tasks/pending_tasks_view.dart';
+import 'package:green_city/featuers/driver/presentation/profile/edit/edit_driver_profile_view.dart';
 import 'package:green_city/featuers/user/profile/presentation/user_profile_page.dart';
 
+import '../../featuers/driver/presentation/home/views/Confirm Task/confirm_task_view.dart';
+import '../../featuers/driver/presentation/home/views/Today Tasks/today_tasks_view.dart';
 import '../../featuers/driver/presentation/profile/driver_profile.dart';
 import '../../featuers/user/home/cubits/Activities Cubit/activities_cubit.dart';
 import '../../featuers/user/home/cubits/User Report Cubit/user_reports_cubit.dart';
@@ -32,7 +39,7 @@ import '../../featuers/user/home/presentation/views/FAQs/faqs_page.dart';
 import '../../featuers/user/home/presentation/views/Notifications/notifications_view.dart';
 import '../../featuers/user/home/presentation/views/Polls/polls_view.dart';
 import '../../featuers/user/home/presentation/views/chellanges/widgets/details.dart';
-import '../../featuers/user/profile/presentation/edit/edit_profile_view.dart';
+import '../../featuers/user/profile/presentation/edit/edit_user_profile_view.dart';
 import '../../featuers/user/profile/presentation/settings/settings_page.dart';
 import '../services/get_it_service.dart';
 
@@ -47,7 +54,13 @@ abstract class AppRouters {
       final isLoggedIn = await authService.isLoggedIn();
       final isAuthRoute = _isAuthRoute(state.matchedLocation);
 
-      if (isLoggedIn && isAuthRoute) return '/home';
+      if (isLoggedIn && isAuthRoute) {
+        final role = Helper.getUser().role;
+        if (role == 'Admin') return '/adminHome';
+        if (role == 'TruckDriver') return '/driverHome';
+        return '/home';
+      }
+
       if (!isLoggedIn && !isAuthRoute) return '/intro';
       return null;
     },
@@ -102,7 +115,10 @@ abstract class AppRouters {
         builder: (_, state) {
           final ActivitiesModel activitiesModel =
               state.extra as ActivitiesModel;
-          return ActivitiesDetailsPage(activitiesModel: activitiesModel);
+          return BlocProvider(
+            create: (context) => getIt.get<ActivitiesCubit>(),
+            child: ActivitiesDetailsPage(activitiesModel: activitiesModel),
+          );
         },
       ),
       GoRoute(
@@ -173,13 +189,48 @@ abstract class AppRouters {
         name: 'editProfile',
         builder: (_, state) {
           final user = state.extra as UserModel;
-          return EditProfileView(user: user);
+          return EditUserProfileView(user: user);
+        },
+      ),
+      GoRoute(
+        path: '/editDriverProfile',
+        name: 'editDriverProfile',
+        builder: (_, state) {
+          final user = state.extra as UserModel;
+          return EditDriverProfileView(user: user);
         },
       ),
       GoRoute(
         path: '/userProfile',
         name: 'userProfile',
         builder: (_, _) => const UserProfilePage(),
+      ),
+      GoRoute(
+        path: '/todayTasks',
+        name: 'todayTasks',
+        builder:
+            (_, _) => BlocProvider(
+              create: (context) => getIt<DriverTasksCubit>()..getAllTasks(),
+              child: const TodayTasksView(),
+            ),
+      ),
+      GoRoute(
+        path: '/pendingTasks',
+        name: 'pendingTasks',
+        builder:
+            (_, _) => BlocProvider(
+              create: (context) => getIt<DriverTasksCubit>()..getDriverTasks(),
+              child: const PendingTasksView(),
+            ),
+      ),
+      GoRoute(
+        path: '/confirmTasks',
+        name: 'confirmTasks',
+        builder:
+            (_, _) => BlocProvider(
+              create: (context) => getIt<DriverReportsCubit>(),
+              child: const ConfirmTaskView(),
+            ),
       ),
       GoRoute(
         path: '/polls',

@@ -19,17 +19,17 @@ void main() async {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   setupServiceLocator();
   await PrefsService.init();
-  // final languageCubit = LanguageCubit();
-  // final themeCubit = ThemeCubit();
+  final languageCubit = LanguageCubit();
+  final themeCubit = ThemeCubit();
 
-  getIt.get<ThemeCubit>().loadTheme();
-  getIt.get<LanguageCubit>().loadSavedLanguage();
+  languageCubit.loadSavedLanguage();
+  await themeCubit.loadTheme();
 
   runApp(
     MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => getIt.get<ThemeCubit>()),
-        BlocProvider(create: (context) => getIt.get<LanguageCubit>()),
+        BlocProvider(create: (context) => themeCubit),
+        BlocProvider(create: (context) => languageCubit),
         BlocProvider(create: (context) => getIt.get<ProfileCubit>()),
       ],
       child: const MyApp(),

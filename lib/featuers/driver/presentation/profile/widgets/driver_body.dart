@@ -7,7 +7,7 @@ import '../../../../../core/themes/dark_theme.dart';
 import '../../../../auth/data/models/user_model.dart';
 import '../../../../user/profile/cubit/profile_cubit.dart';
 import '../../../../user/profile/presentation/widgets/header.dart';
-import '../../../../user/profile/presentation/widgets/options.dart';
+import 'driver_options.dart';
 
 class DriverProfileBody extends StatefulWidget {
   const DriverProfileBody({super.key});
@@ -83,7 +83,7 @@ class _DriverProfileBodyState extends State<DriverProfileBody> {
               if (user != null) ...[
                 ProfileHeader(user: user),
                 const SizedBox(height: 24),
-                ProfileOptions(user: user),
+                DriverProfileOptions(user: user),
                 const SizedBox(height: 32),
               ],
             ],

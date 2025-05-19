@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "about_app": MessageLookupByLibrary.simpleMessage("About App"),
     "about_us": MessageLookupByLibrary.simpleMessage("About Us"),
+    "accept": MessageLookupByLibrary.simpleMessage("Accept"),
     "accepted_reports": MessageLookupByLibrary.simpleMessage(
       "Accepted\n Reports",
     ),
@@ -98,12 +99,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "institutionName": MessageLookupByLibrary.simpleMessage("Institution Name"),
     "join": MessageLookupByLibrary.simpleMessage("Join"),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
+    "license_expiry_date": MessageLookupByLibrary.simpleMessage(
+      "License Expiry Date",
+    ),
+    "license_number": MessageLookupByLibrary.simpleMessage("License Number"),
     "locationAddress": MessageLookupByLibrary.simpleMessage("Location Address"),
     "message": MessageLookupByLibrary.simpleMessage("Message"),
     "my_reports": MessageLookupByLibrary.simpleMessage("My Reports"),
     "name": MessageLookupByLibrary.simpleMessage("Name"),
+    "no_data_available": MessageLookupByLibrary.simpleMessage(
+      "No data available",
+    ),
     "no_image": MessageLookupByLibrary.simpleMessage("No Image"),
     "no_reports": MessageLookupByLibrary.simpleMessage("No Reports"),
+    "no_tasks_today": MessageLookupByLibrary.simpleMessage("No tasks today"),
     "not_provided": MessageLookupByLibrary.simpleMessage("Not Provided"),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "number_of_participants": MessageLookupByLibrary.simpleMessage(
@@ -143,6 +152,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "report_location": MessageLookupByLibrary.simpleMessage("Report Location"),
     "reports": MessageLookupByLibrary.simpleMessage("Reports"),
+    "retry": MessageLookupByLibrary.simpleMessage("Retry"),
     "selectInstitution": MessageLookupByLibrary.simpleMessage(
       "Select Institution",
     ),
@@ -152,6 +162,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "select_warehouse": MessageLookupByLibrary.simpleMessage(
       "Select Warehouse",
     ),
+    "send": MessageLookupByLibrary.simpleMessage("Send"),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "sign_in": MessageLookupByLibrary.simpleMessage("Sign in"),
     "sign_in_to_continue": MessageLookupByLibrary.simpleMessage(
@@ -167,6 +178,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "submit_feedback": MessageLookupByLibrary.simpleMessage("Submit Feedback"),
     "task_progress": MessageLookupByLibrary.simpleMessage("Task Progress"),
     "todays_tasks": MessageLookupByLibrary.simpleMessage("Today\'s Tasks"),
+    "truck_number": MessageLookupByLibrary.simpleMessage("Truck Number"),
     "typeMessage": MessageLookupByLibrary.simpleMessage("Type message..."),
     "update": MessageLookupByLibrary.simpleMessage("Update"),
     "update_profile_picture": MessageLookupByLibrary.simpleMessage(

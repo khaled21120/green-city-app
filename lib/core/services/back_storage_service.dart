@@ -165,4 +165,18 @@ class ApiStorageService extends DatabaseService {
       throw ServerFailure.fromDioException(dioError);
     }
   }
+
+  @override
+  Future<bool> postByID({required String endPoint, required String id}) async {
+    try {
+      final res = await dio.post('$endPoint/$id');
+      if (res.statusCode == 200 || res.statusCode == 204) {
+        return true;
+      } else {
+        return false;
+      }
+    } on DioException catch (dioError) {
+      throw ServerFailure.fromDioException(dioError);
+    }
+  }
 }

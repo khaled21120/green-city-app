@@ -33,9 +33,7 @@ class SettingsPage extends StatelessWidget {
                       TextButton(
                         onPressed: () {
                           Navigator.pop(ctx);
-                          ctx
-                              .read<ProfileCubit>()
-                              .deleteAccount(); 
+                          ctx.read<ProfileCubit>().deleteAccount();
                         },
                         child: Text(
                           S.of(context).delete,

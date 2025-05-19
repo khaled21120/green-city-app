@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../../core/utils/error_widget.dart';
+import '../../../../../../core/utils/text_style.dart';
 import '../../../../../../generated/l10n.dart';
 import '../../../cubits/Notifications Cubit/notifications_cubit.dart';
 import 'widgets/notification_tabs.dart';
@@ -41,7 +43,14 @@ class _NotificationsViewState extends State<NotificationsView>
                 if (state is NotificationsLoading) {
                   return const Center(child: CircularProgressIndicator());
                 } else if (state is NotificationsError) {
-                  return Center(child: Text(state.message));
+                  return ErrorsWidget(
+                    message: state.message,
+                    onPressed:
+                        () async =>
+                            context
+                                .read<NotificationsCubit>()
+                                .loadAllNotifications(),
+                  );
                 } else if (state is NotificationsLoaded) {
                   return TabBarView(
                     controller: _tabController,
@@ -59,7 +68,14 @@ class _NotificationsViewState extends State<NotificationsView>
                     ],
                   );
                 }
-                return const Center(child: Text('No data'));
+                return Center(
+                  child: Text(
+                    S.of(context).no_data_available,
+                    style: MyStyle.title20(
+                      context,
+                    ).copyWith(color: Colors.grey),
+                  ),
+                );
               },
             ),
           ),

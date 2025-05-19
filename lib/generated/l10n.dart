@@ -295,6 +295,16 @@ class S {
     return Intl.message('Submit', name: 'submit', desc: '', args: []);
   }
 
+  /// `Send`
+  String get send {
+    return Intl.message('Send', name: 'send', desc: '', args: []);
+  }
+
+  /// `Accept`
+  String get accept {
+    return Intl.message('Accept', name: 'accept', desc: '', args: []);
+  }
+
   /// `Cancel`
   String get cancel {
     return Intl.message('Cancel', name: 'cancel', desc: '', args: []);
@@ -955,6 +965,61 @@ class S {
     return Intl.message(
       'Not Provided',
       name: 'not_provided',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No tasks today`
+  String get no_tasks_today {
+    return Intl.message(
+      'No tasks today',
+      name: 'no_tasks_today',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Retry`
+  String get retry {
+    return Intl.message('Retry', name: 'retry', desc: '', args: []);
+  }
+
+  /// `No data available`
+  String get no_data_available {
+    return Intl.message(
+      'No data available',
+      name: 'no_data_available',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `License Number`
+  String get license_number {
+    return Intl.message(
+      'License Number',
+      name: 'license_number',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `License Expiry Date`
+  String get license_expiry_date {
+    return Intl.message(
+      'License Expiry Date',
+      name: 'license_expiry_date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Truck Number`
+  String get truck_number {
+    return Intl.message(
+      'Truck Number',
+      name: 'truck_number',
       desc: '',
       args: [],
     );

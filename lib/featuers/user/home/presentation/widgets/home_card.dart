@@ -46,12 +46,6 @@ class HomeCard extends StatelessWidget {
                   context,
                 ).copyWith(color: Theme.of(context).colorScheme.onSurface),
               ),
-              const SizedBox(height: 8),
-              Icon(
-                Icons.chevron_right_rounded,
-                color: color,
-                size: 24,
-              ),
             ],
           ),
         ),

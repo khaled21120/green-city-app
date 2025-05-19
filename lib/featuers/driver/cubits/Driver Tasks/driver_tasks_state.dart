@@ -12,7 +12,7 @@ final class DriverTasksInitial extends DriverTasksState {}
 final class DriverTasksLoading extends DriverTasksState {}
 
 final class DriverTasksSuccess extends DriverTasksState {
-  final List<dynamic> tasks;
+  final List<UserReportsModel> tasks;
   const DriverTasksSuccess(this.tasks);
 }
 
@@ -22,7 +22,7 @@ final class DriverTasksFailure extends DriverTasksState {
 }
 
 final class AllDriversTasksSuccess extends DriverTasksState {
-  final List<dynamic> tasks;
+  final List<UserReportsModel> tasks;
   const AllDriversTasksSuccess(this.tasks);
 }
 
@@ -30,3 +30,16 @@ final class AllDriversTasksFailure extends DriverTasksState {
   final String errMsg;
   const AllDriversTasksFailure(this.errMsg);
 }
+
+final class AcceptTaskLoading extends DriverTasksState {}
+
+final class AcceptTaskSuccess extends DriverTasksState {
+  final String message;
+  const AcceptTaskSuccess(this.message);
+}
+
+final class AcceptTaskFailure extends DriverTasksState {
+  final String message;
+  const AcceptTaskFailure(this.message);
+}
+

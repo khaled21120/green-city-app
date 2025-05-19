@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:green_city/featuers/user/home/cubits/User%20Report%20Cubit/user_reports_cubit.dart';
 
+import '../../../../../../core/utils/error_widget.dart';
 import '../../../../../../generated/l10n.dart';
 import '../../widgets/shimmer_grid.dart';
 import 'widgets/reports_item.dart';
@@ -20,7 +21,11 @@ class MyReportsView extends StatelessWidget {
             if (state is ReportsLoading) {
               return const ShimmerGridItem(aspectratio: 0.75);
             } else if (state is ReportsError) {
-              return Center(child: Text(state.message));
+              return ErrorsWidget(
+                message: state.message,
+                onPressed:
+                    () async => context.read<UserReportsCubit>().fetchReports(),
+              );
             } else if (state is FetchReportsSuccess) {
               if (state.announsList.isEmpty) {
                 return Center(child: Text(S.of(context).no_reports));
@@ -55,9 +60,13 @@ Color getColor(String status) {
     case 'Approved':
       return Colors.green;
     case 'Pending':
-      return const Color.fromARGB(255, 201, 184, 24);
+      return Colors.orangeAccent;
     case 'Rejected':
       return Colors.red;
+    case 'Completed':
+      return Colors.black;
+    case 'Assigned':
+      return Colors.teal;
     default:
       return Colors.grey;
   }

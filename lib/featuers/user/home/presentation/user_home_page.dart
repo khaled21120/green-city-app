@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/utils/error_widget.dart';
 import '../../profile/cubit/profile_cubit.dart';
 import 'widgets/user_drawer.dart';
 import 'widgets/user_home_body.dart';
@@ -16,6 +17,11 @@ class UserHomePage extends StatelessWidget {
       builder: (context, state) {
         if (state is FetchDataLoading) {
           return _buildLoadingState();
+        } else if (state is FetchDataFailure) {
+          return ErrorsWidget(
+            message: state.errMsg,
+            onPressed: () async => context.read<ProfileCubit>().fetchUserData(),
+          );
         } else if (state is FetchDataSuccess) {
           return _buildSuccessState(context, state);
         }

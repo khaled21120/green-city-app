@@ -10,15 +10,27 @@ class UserModel extends Equatable {
   final String? password;
   final String? address;
   final String? profileImage;
+  final String? licenseNumber;
+  final String? licenseExpiryDate;
+  final String? truckNumber;
   final int? numOfAcceptedAnnouncementsCount;
   final int? numOfCompletedActivitiesCount;
   final int? numOfCompletedPollsCount;
+  final int? numberOfCompletedTasks;
+  final int? shiftId;
+  final bool? isAvailable;
 
   const UserModel({
+    this.isAvailable,
     this.id,
     this.name,
     this.email,
     this.phone,
+    this.licenseNumber,
+    this.licenseExpiryDate,
+    this.truckNumber,
+    this.numberOfCompletedTasks,
+    this.shiftId,
     this.password,
     this.role,
     this.address,
@@ -31,6 +43,12 @@ class UserModel extends Equatable {
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
       id: json['id'] as String?,
+      licenseNumber: json['licenseNumber'] as String?,
+      licenseExpiryDate: json['licenseExpiryDate'] as String?,
+      truckNumber: json['truckNumber'] as String?,
+      numberOfCompletedTasks: json['numberOfCompletedTasks'] as int?,
+      shiftId: json['shiftId'] as int?,
+      isAvailable: json['isAvailable'] as bool?,
       name: json['name'] as String?,
       email: json['email'] as String?,
       phone: json['phone'] as String?,
@@ -51,6 +69,12 @@ class UserModel extends Equatable {
     'phone': phone,
     'role': role,
     'password': password,
+    'licenseNumber': licenseNumber,
+    'licenseExpiryDate': licenseExpiryDate,
+    'truckNumber': truckNumber,
+    'numberOfCompletedTasks': numberOfCompletedTasks,
+    'shiftId': shiftId,
+    'isAvailable': isAvailable,
     'address': address,
     'profileImage': profileImage,
     'numOfAcceptedAnnouncementsCount': numOfAcceptedAnnouncementsCount,
@@ -66,6 +90,12 @@ class UserModel extends Equatable {
       email,
       phone,
       password,
+      licenseNumber,
+      licenseExpiryDate,
+      truckNumber,
+      numberOfCompletedTasks,
+      shiftId,
+      isAvailable,
       role,
       address,
       profileImage,

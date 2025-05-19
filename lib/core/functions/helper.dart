@@ -13,52 +13,6 @@ import '../utils/modern_button.dart';
 import '../utils/text_style.dart';
 
 abstract class Helper {
-  static void imagePicAlert({
-    required BuildContext context,
-    required VoidCallback leftFunc,
-    required VoidCallback rightFunc,
-  }) async {
-    await showDialog(
-      context: context,
-      builder:
-          (ctx) => Dialog(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            backgroundColor: Theme.of(context).colorScheme.surface,
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                spacing: 6,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    S.of(context).update_profile_picture,
-                    style: MyStyle.title20(context),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ModernButton(
-                        onTap: leftFunc,
-                        title: S.of(context).camera,
-                        icon: Icons.camera_alt_rounded,
-                      ),
-                      ModernButton(
-                        onTap: rightFunc,
-                        title: S.of(context).gallery,
-                        icon: Icons.photo_library_rounded,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-    );
-  }
 
   static void showAlert({
     required BuildContext context,

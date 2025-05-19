@@ -44,7 +44,7 @@ class ProfileItem extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Theme.of(
                       context,
-                    ).colorScheme.primary.withValues(alpha:.1),
+                    ).colorScheme.primary.withValues(alpha: .1),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(

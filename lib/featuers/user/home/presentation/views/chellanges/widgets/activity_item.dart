@@ -33,18 +33,18 @@ class ActivityItem extends StatelessWidget {
       child: Stack(
         children: [
           // Background Image
-          if(activitiesModel.imgFile != null)
-          Positioned.fill(
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: CachedNetworkImageProvider(activitiesModel.imgFile!),
+          if (activitiesModel.imgFile != null)
+            Positioned.fill(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: CachedNetworkImageProvider(activitiesModel.imgFile!),
+                  ),
                 ),
               ),
             ),
-          ),
 
           // Dark overlay for readability
           Positioned.fill(

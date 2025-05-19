@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:green_city/core/utils/endpoints.dart';
 import 'package:green_city/featuers/driver/data/repo/driver_repo.dart';
 
+import '../../../user/home/data/models/user_reports_model.dart';
+
 part 'driver_tasks_state.dart';
 
 class DriverTasksCubit extends Cubit<DriverTasksState> {
@@ -12,10 +14,11 @@ class DriverTasksCubit extends Cubit<DriverTasksState> {
   void getDriverTasks() async {
     emit(DriverTasksLoading());
     final result = await driverRepo.fetchTasks(endPoint: Endpoints.driverTasks);
-    result.fold(
-      (failure) => emit(DriverTasksFailure(failure.errMsg)),
-      (tasks) => emit(DriverTasksSuccess(tasks)),
-    );
+    result.fold((failure) => emit(DriverTasksFailure(failure.errMsg)), (tasks) {
+      final driverTasks =
+          tasks.map((e) => UserReportsModel.fromJson(e)).toList();
+      emit(DriverTasksSuccess(driverTasks));
+    });
   }
 
   void getAllTasks() async {
@@ -23,9 +26,27 @@ class DriverTasksCubit extends Cubit<DriverTasksState> {
     final result = await driverRepo.fetchTasks(
       endPoint: Endpoints.allDriversTasks,
     );
-    result.fold(
-      (failure) => emit(AllDriversTasksFailure(failure.errMsg)),
-      (tasks) => emit(AllDriversTasksSuccess(tasks)),
-    );
+    result.fold((failure) => emit(AllDriversTasksFailure(failure.errMsg)), (
+      tasks,
+    ) {
+      final driverTasks =
+          tasks.map((e) => UserReportsModel.fromJson(e)).toList();
+      emit(AllDriversTasksSuccess(driverTasks));
+    });
   }
+
+  void acceptTask({required int id}) async {
+    emit(AcceptTaskLoading());
+    final result = await driverRepo.acceptTask(
+      endPoint: Endpoints.acceptDriverTask,
+      id: id,
+    );
+    if (result) {
+      emit(const AcceptTaskSuccess('تم قبول المهمة بنجاح'));
+      getDriverTasks();
+    } else {
+      emit(const AcceptTaskFailure('حدث خطأ ما الرجاء المحاولة مرة اخرى'));
+    }
+  }
+
 }

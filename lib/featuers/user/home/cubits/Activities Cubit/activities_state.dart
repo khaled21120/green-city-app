@@ -20,3 +20,8 @@ final class ActivitiesError extends ActivitiesState {
 }
 
 final class ActivitiesLoading extends ActivitiesState {}
+
+final class ActivityJoined extends ActivitiesState {
+  final String message;
+  const ActivityJoined(this.message);
+}

@@ -19,11 +19,10 @@ class ModernButton extends StatelessWidget {
     double width = MediaQuery.sizeOf(context).width;
     return ElevatedButton.icon(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Theme.of(context).colorScheme.onSurface,
         foregroundColor: Theme.of(context).colorScheme.surface,
         minimumSize: Size(width * 0.1, 30),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
         textStyle: MyStyle.title14(context),
       ),
       icon: Icon(icon, size: 20, color: Theme.of(context).colorScheme.surface),

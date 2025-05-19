@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:green_city/featuers/user/home/cubits/Polls%20Cubit/polls_cubit.dart';
 import 'package:green_city/featuers/user/home/presentation/views/Polls/widgets/poll_item.dart';
 
+import '../../../../../../core/utils/error_widget.dart';
+import '../../../../../../core/utils/text_style.dart';
 import '../../../../../../generated/l10n.dart';
 import '../../widgets/shimmer_grid.dart';
 
@@ -23,7 +25,10 @@ class PollsView extends StatelessWidget {
             if (state is PollsLoading) {
               return ShimmerGridItem(aspectratio: width / (height / 1.5));
             } else if (state is PollsError) {
-              return Center(child: Text(state.message));
+              return ErrorsWidget(
+                message: state.message,
+                onPressed: () async => context.read<PollsCubit>().getPolls(),
+              );
             } else if (state is PollsLoaded) {
               return GridView.builder(
                 itemCount: state.pollsList.length,
@@ -38,7 +43,12 @@ class PollsView extends StatelessWidget {
                         PollsItem(pollsModel: state.pollsList[index]),
               );
             }
-            return const Center(child: Text('No Data'));
+            return Center(
+              child: Text(
+                S.of(context).no_data_available,
+                style: MyStyle.title20(context).copyWith(color: Colors.grey),
+              ),
+            );
           },
         ),
       ),

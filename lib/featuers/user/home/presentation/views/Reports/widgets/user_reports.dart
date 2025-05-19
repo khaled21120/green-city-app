@@ -44,6 +44,7 @@ class _UserReportsState extends State<UserReports> {
         announcementType: reportType!,
         binNumber: binNumber!,
         selectedDate: selectedDate,
+        region: region!,
         address: addressController.text,
         message: messageController.text,
         user: user,
@@ -66,9 +67,10 @@ class _UserReportsState extends State<UserReports> {
 
   Future<void> pickImage(bool isCamera) async {
     try {
-      setState(() => isLoading = true); // Show loader before picking image
+      setState(() => isLoading = true);
       final file = await Helper.pickImage(isCamera: isCamera);
-      Navigator.pop(context);
+      if (!mounted) return;
+
       if (file != null) {
         setState(() => image = file);
       } else {
@@ -77,7 +79,7 @@ class _UserReportsState extends State<UserReports> {
     } catch (e) {
       Helper.showSnackBar(context: context, message: 'Error picking image');
     } finally {
-      setState(() => isLoading = false); // Hide loader after process
+      if (mounted) setState(() => isLoading = false);
     }
   }
 
@@ -182,13 +184,7 @@ class _UserReportsState extends State<UserReports> {
                             IconButton.filled(
                               style: IconButton.styleFrom(elevation: 8),
                               icon: const Icon(FontAwesomeIcons.camera),
-                              onPressed: () {
-                                Helper.imagePicAlert(
-                                  context: context,
-                                  leftFunc: () => pickImage(true),
-                                  rightFunc: () => pickImage(false),
-                                );
-                              },
+                              onPressed: () => _showImagePickerOptions(context),
                             ),
                           ],
                         ),
@@ -272,6 +268,39 @@ class _UserReportsState extends State<UserReports> {
             }).toList(),
         onChanged: onChanged,
       ),
+    );
+  }
+
+  void _showImagePickerOptions(BuildContext context) async {
+    await showModalBottomSheet(
+      context: context,
+      builder:
+          (context) => SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ListTile(
+                    leading: const Icon(Icons.camera_alt),
+                    title: Text(S.of(context).camera),
+                    onTap: () {
+                      Navigator.pop(context);
+                      pickImage(true);
+                    },
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.photo_library),
+                    title: Text(S.of(context).gallery),
+                    onTap: () {
+                      Navigator.pop(context);
+                      pickImage(false);
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
     );
   }
 }

@@ -15,7 +15,9 @@ abstract class Endpoints {
   static const String userNotifications = 'UserNotifications';
   static const String publicNotifications = 'PublicNotifications';
   static const String warehouses = 'api/Warehouses';
-  static const String driverTasks = 'api/DriverTasks';
-  static const String allDriversTasks = 'api/DriverTasks';
+  static const String driverTasks = 'api/TruckDrivers/my-tasks';
+  static const String allDriversTasks = 'api/UsersAnnouncements/approved';
+  static const String acceptDriverTask = 'api/TruckDrivers/accept-task';
+  static const String completeDriverTask = 'api/TruckDrivers/complete-task';
   static const String sendDriverReports = 'api/DriverReports';
 }

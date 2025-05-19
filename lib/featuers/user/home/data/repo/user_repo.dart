@@ -13,7 +13,7 @@ abstract class UserRepo {
     required dynamic data,
     required bool isImage,
   });
-  Future updateData({
+  Future<bool> updateData({
     required String endPoint,
     required Map<String, dynamic> data,
   });

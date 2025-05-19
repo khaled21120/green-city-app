@@ -34,6 +34,8 @@
   "email_address": "Email Address",
   "join": "Join",
   "submit": "Submit",
+  "send": "Send",
+  "accept": "Accept",
   "cancel": "Cancel",
   "enter": "Enter",
   "camera": "Take photo",
@@ -114,5 +116,12 @@
   "good_evening": "Good Evening",
   "driver": "Driver",
   "remaining_tasks": "Tasks Remaining for this month",
-  "not_provided": "Not Provided"
+  "not_provided": "Not Provided",
+  "no_tasks_today": "No tasks today",
+  "retry": "Retry",
+  "no_data_available": "No data available",
+  "license_number": "License Number",
+  "license_expiry_date": "License Expiry Date",
+  "truck_number": "Truck Number"
+
 }

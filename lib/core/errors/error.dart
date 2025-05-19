@@ -46,10 +46,10 @@ class ServerFailure extends Failures {
       } else if (statusCode == 500) {
         return ServerFailure('Internal Server Error');
       } else {
-        return ServerFailure('Oops! There was an error. Please try again.');
+        return ServerFailure('Unexpected status code: $statusCode');
       }
     } catch (e) {
-      return ServerFailure('Error parsing server response');
+      return ServerFailure('Unexpected status code: $statusCode');
     }
   }
 }

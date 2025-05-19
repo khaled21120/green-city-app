@@ -3,10 +3,8 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/errors/error.dart';
 
 abstract class DriverRepo {
-  Future updateData({
-    required String endPoint,
-    required Map<String, dynamic> data,
-  });
+  Future<bool> acceptTask({required String endPoint, required int id});
+  Future<bool> completeTask({required String endPoint, required int id});
 
   Future<Either<Failures, List<dynamic>>> fetchTasks({
     required String endPoint,

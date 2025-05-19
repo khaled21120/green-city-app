@@ -12,9 +12,10 @@ class PollsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      alignment: AlignmentDirectional.center,
       children: [
         // Background Image
-        pollsModel.imgFile == null
+        pollsModel.photo == null
             ? const SizedBox.shrink()
             : Positioned.fill(
               child: Container(
@@ -22,7 +23,7 @@ class PollsItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: CachedNetworkImageProvider(pollsModel.imgFile!),
+                    image: CachedNetworkImageProvider(pollsModel.photo!),
                   ),
                 ),
               ),
@@ -43,6 +44,7 @@ class PollsItem extends StatelessWidget {
           padding: const EdgeInsets.all(12.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
                 pollsModel.pollName!,
@@ -62,8 +64,7 @@ class PollsItem extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               ElevatedButton(
-                onPressed:
-                    () => Helper.openUrl(context, pollsModel.pollFormLink!),
+                onPressed: () => Helper.openUrl(context, pollsModel.pollLink!),
                 child: Text(S.of(context).vote),
               ),
             ],

@@ -5,8 +5,8 @@ class PollsModel extends Equatable {
   final String? pollName;
   final String? pollDesc;
   final String? pollEndDate;
-  final String? pollFormLink;
-  final String? imgFile;
+  final String? pollLink;
+  final String? photo;
   final int? numOfSubscribers;
 
   const PollsModel({
@@ -15,8 +15,8 @@ class PollsModel extends Equatable {
     this.numOfSubscribers,
     this.pollDesc,
     this.pollEndDate,
-    this.pollFormLink,
-    this.imgFile,
+    this.pollLink,
+    this.photo,
   });
 
   factory PollsModel.fromJson(Map<String, dynamic> json) => PollsModel(
@@ -24,9 +24,9 @@ class PollsModel extends Equatable {
     pollName: json['pollName'] as String?,
     pollDesc: json['pollDesc'] as String?,
     pollEndDate: json['pollEndDate'] as String?,
-    pollFormLink: json['pollFormLink'] as String?,
+    pollLink: json['pollLink'] as String?,
     numOfSubscribers: json['NumOfSubscribers'] as int?,
-    imgFile: json['imgFile'] as String?,
+    photo: json['photo'] as String?,
   );
 
   Map<String, dynamic> toJson() => {
@@ -34,9 +34,9 @@ class PollsModel extends Equatable {
     'pollName': pollName,
     'pollDesc': pollDesc,
     'pollEndDate': pollEndDate,
-    'pollFormLink': pollFormLink,
+    'pollLink': pollLink,
     'NumOfSubscribers': numOfSubscribers,
-    'imgFile': imgFile,
+    'photo': photo,
   };
 
   @override
@@ -47,8 +47,8 @@ class PollsModel extends Equatable {
       pollDesc,
       numOfSubscribers,
       pollEndDate,
-      pollFormLink,
-      imgFile,
+      pollLink,
+      photo,
     ];
   }
 }

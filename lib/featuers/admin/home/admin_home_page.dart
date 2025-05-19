@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:green_city/featuers/admin/home/widgets/admin_drawer.dart';
 import 'package:green_city/featuers/admin/home/widgets/admin_home_body.dart';
 
+import '../../../core/utils/error_widget.dart';
 import '../../user/profile/cubit/profile_cubit.dart';
 
 class AdminHomePage extends StatelessWidget {
@@ -16,6 +17,11 @@ class AdminHomePage extends StatelessWidget {
       builder: (context, state) {
         if (state is FetchDataLoading) {
           return _buildLoadingState();
+        } else if (state is FetchDataFailure) {
+          return ErrorsWidget(
+            message: state.errMsg,
+            onPressed: () async => context.read<ProfileCubit>().fetchUserData(),
+          );
         } else if (state is FetchDataSuccess) {
           return _buildSuccessState(context, state);
         }
@@ -40,7 +46,6 @@ class AdminHomePage extends StatelessWidget {
             onPressed: () => _navigateToProfile(context),
             tooltip: 'Profile',
           ),
-          BackButton(onPressed: () => GoRouter.of(context).pop()),
         ],
       ),
       drawer: AdminDrawer(userData: state.userModel),
