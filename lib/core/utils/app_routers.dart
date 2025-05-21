@@ -1,43 +1,43 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:green_city/core/utils/helper.dart';
-import 'package:green_city/featuers/admin/presentation/cubits/cubit/admin_reports_cubit.dart';
+import 'package:green_city/featuers/admin/presentation/cubits/admin_report/admin_reports_cubit.dart';
 import 'package:green_city/featuers/driver/presentation/cubits/Driver%20Reports/driver_reports_cubit.dart';
 import 'package:green_city/featuers/driver/presentation/cubits/Driver%20Tasks/driver_tasks_cubit.dart';
-import 'package:green_city/featuers/driver/presentation/views/home/views/Pending%20Tasks/pending_tasks_view.dart';
+import 'package:green_city/featuers/driver/presentation/views/home/views/pending_tasks/pending_tasks_view.dart';
 import 'package:green_city/featuers/driver/presentation/views/profile/views/edit/edit_driver_profile_view.dart';
 import 'package:green_city/featuers/user/presentation/views/profile/user_profile_page.dart';
 
-import '../../featuers/driver/presentation/views/home/views/Confirm Task/confirm_task_view.dart';
-import '../../featuers/driver/presentation/views/home/views/Today Tasks/today_tasks_view.dart';
+import '../../featuers/driver/presentation/views/home/views/confirm_task/confirm_task_view.dart';
+import '../../featuers/driver/presentation/views/home/views/today_tasks/today_tasks_view.dart';
 import '../../featuers/driver/presentation/views/profile/driver_profile.dart';
-import '../../featuers/user/presentation/cubits/Activities Cubit/activities_cubit.dart';
-import '../../featuers/user/presentation/cubits/User Report Cubit/user_reports_cubit.dart';
-import '../../featuers/user/presentation/views/home/views/Contact Us/contact_us_view.dart';
+import '../../featuers/user/presentation/cubits/activities/activities_cubit.dart';
+import '../../featuers/user/presentation/cubits/user_report/user_reports_cubit.dart';
+import '../../featuers/user/presentation/views/home/views/contact_us/contact_us_view.dart';
 import '../../featuers/user/presentation/views/home/views/chellanges/chellange_page.dart';
 import '../services/back_auth_service.dart';
 import '../../featuers/admin/presentation/views/home/admin_home_page.dart';
 import '../../featuers/admin/presentation/views/home/widgets/waste_details.dart';
 import '../../featuers/admin/presentation/views/profile/admin_profile.dart';
-import '../../featuers/auth/presentation/cubits/Auth/auth_cubit.dart';
-import '../../featuers/auth/presentation/cubits/LogIn/log_in_cubit.dart';
-import '../../featuers/auth/presentation/cubits/SignUp/sign_up_cubit.dart';
+import '../../featuers/auth/presentation/cubits/auth/auth_cubit.dart';
+import '../../featuers/auth/presentation/cubits/log_In/log_in_cubit.dart';
+import '../../featuers/auth/presentation/cubits/sign_up/sign_up_cubit.dart';
 import '../../featuers/auth/data/models/user_model.dart';
 import '../../featuers/auth/presentation/intro_page.dart';
 import '../../featuers/auth/presentation/login_page.dart';
 import '../../featuers/auth/presentation/signup_page.dart';
 import '../../featuers/driver/presentation/views/home/driver_home_view.dart';
-import '../../featuers/user/presentation/cubits/Notifications Cubit/notifications_cubit.dart';
-import '../../featuers/user/presentation/cubits/Polls Cubit/polls_cubit.dart';
+import '../../featuers/user/presentation/cubits/notify/notify_cubit.dart';
+import '../../featuers/user/presentation/cubits/polls/polls_cubit.dart';
 import '../../featuers/user/data/models/activities_model.dart';
 import '../../featuers/user/presentation/views/home/user_home_page.dart';
-import '../../featuers/user/presentation/views/home/views/About Us/about_us.dart';
-import '../../featuers/user/presentation/views/home/views/Reports/reports_view.dart';
-import '../../featuers/user/presentation/views/home/views/Reports/my_reports_view.dart';
-import '../../featuers/user/presentation/views/home/views/Chat/chat_page.dart';
-import '../../featuers/user/presentation/views/home/views/FAQs/faqs_page.dart';
-import '../../featuers/user/presentation/views/home/views/Notifications/notifications_view.dart';
-import '../../featuers/user/presentation/views/home/views/Polls/polls_view.dart';
+import '../../featuers/user/presentation/views/home/views/about_us/about_us.dart';
+import '../../featuers/user/presentation/views/home/views/reports/reports_view.dart';
+import '../../featuers/user/presentation/views/home/views/reports/my_reports_view.dart';
+import '../../featuers/user/presentation/views/home/views/chat/chat_page.dart';
+import '../../featuers/user/presentation/views/home/views/faqs/faqs_page.dart';
+import '../../featuers/user/presentation/views/home/views/notify/notifications_view.dart';
+import '../../featuers/user/presentation/views/home/views/polls/polls_view.dart';
 import '../../featuers/user/presentation/views/home/views/chellanges/widgets/details.dart';
 import '../../featuers/user/presentation/views/profile/views/edit/edit_user_profile_view.dart';
 import '../../featuers/user/presentation/views/profile/views/settings/settings_page.dart';
@@ -128,7 +128,7 @@ abstract class AppRouters {
             (_, state) => BlocProvider(
               create:
                   (context) => getIt.get<ActivitiesCubit>()..getActivities(),
-              child: const ActivityiesView(),
+              child: const ActivitiesView(),
             ),
       ),
       GoRoute(

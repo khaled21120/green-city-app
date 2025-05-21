@@ -1,4 +1,4 @@
-part of 'notifications_cubit.dart';
+part of 'notify_cubit.dart';
 
 abstract class NotificationsState extends Equatable {
   const NotificationsState();

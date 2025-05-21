@@ -3,35 +3,29 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-import '../../../core/utils/helper.dart';
 import '../../../core/themes/light_theme.dart';
 import '../../../core/utils/constants.dart';
-import 'Widgets/gradient_bg.dart';
-import 'cubits/LogIn/log_in_cubit.dart';
-import 'Widgets/login_bottom.dart';
+import '../../../core/utils/helper.dart';
+import '../data/models/user_model.dart';
+import 'Widgets/login_form.dart';
+import 'cubits/log_In/log_in_cubit.dart';
+import 'widgets/gradient_bg.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    final size = MediaQuery.sizeOf(context);
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: BlocConsumer<LogInCubit, LogInState>(
         listener: (context, state) {
           if (state is LogInError) {
             Helper.showSnackBar(context: context, message: state.message);
           } else if (state is LogInSuccess) {
-            if (state.userModel.role == null ||
-                state.userModel.role == 'User') {
-              GoRouter.of(context).goNamed('home');
-            } else if (state.userModel.role == 'Admin') {
-              GoRouter.of(context).goNamed('adminHome');
-            } else if (state.userModel.role == 'TruckDriver') {
-              GoRouter.of(context).goNamed('driverHome');
-            }
+            _handleSuccessfulLogin(context, state.userModel);
           }
         },
         builder: (context, state) {
@@ -47,20 +41,29 @@ class LoginPage extends StatelessWidget {
               children: [
                 const GradientBG(),
                 Positioned(
-                  top: height * 0.05,
+                  top: size.height * 0.05,
                   child: Image.asset(
                     Constants.logo,
-                    width: width * 0.6,
+                    width: size.width * 0.6,
                     filterQuality: FilterQuality.high,
                     semanticLabel: 'App Logo',
                   ),
                 ),
-                const Positioned(bottom: 0, child: LogInBottom()),
+                Positioned(bottom: 0, child: LoginFormCard(size: size)),
               ],
             ),
           );
         },
       ),
     );
+  }
+
+  void _handleSuccessfulLogin(BuildContext context, UserModel user) {
+    final routeName = switch (user.role) {
+      'Admin' => 'adminHome',
+      'TruckDriver' => 'driverHome',
+      _ => 'home',
+    };
+    GoRouter.of(context).goNamed(routeName);
   }
 }

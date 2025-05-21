@@ -21,89 +21,76 @@ class DriverStats extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final remainingTasks = totalTasks - completedTasks;
-    String getTimeOfDayGreeting() {
-      final hour = DateTime.now().hour;
-      if (hour < 12) return S.of(context).good_morning;
-      if (hour < 17) return S.of(context).good_afternoon;
-      return S.of(context).good_evening;
-    }
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // Welcome Section
-        Text(
-          getTimeOfDayGreeting(),
-          style: MyStyle.title18(context).copyWith(color: Colors.grey[600]),
-        ),
-        const SizedBox(height: 4),
-        Text(userData.name ?? 'Driver', style: MyStyle.title25(context)),
-        const SizedBox(height: 30),
-
-        // Progress Card
-        Card(
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Row(
-              children: [
-                // Circular Progress
-                CircularPercentIndicator(
-                  radius: 60,
-                  lineWidth: 12,
-                  animation: true,
-                  animationDuration: 1000,
-                  percent: progressPercent,
-                  progressColor: MyColors.primary,
-                  backgroundColor: MyColors.primary.withValues(alpha: .1),
-                  circularStrokeCap: CircularStrokeCap.round,
-                  center: Text(
-                    progressPercent == 1
-                        ? '100%🥳'
-                        : '${(progressPercent * 100).toInt()}%',
-                    style: const TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
+    return Padding(
+      padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Progress Card
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Row(
+                children: [
+                  // Circular Progress
+                  CircularPercentIndicator(
+                    radius: 60,
+                    lineWidth: 12,
+                    animation: true,
+                    animationDuration: 1000,
+                    percent: progressPercent,
+                    progressColor: MyColors.primary,
+                    backgroundColor: MyColors.primary.withValues(alpha: .1),
+                    circularStrokeCap: CircularStrokeCap.round,
+                    center: Text(
+                      progressPercent == 1
+                          ? '100%🥳'
+                          : '${(progressPercent * 100).toInt()}%',
+                      style: const TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(width: 20),
-
-                // Task Info
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        S.of(context).task_progress,
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey[600],
-                          fontWeight: FontWeight.w500,
+                  const SizedBox(width: 20),
+      
+                  // Task Info
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          S.of(context).task_progress,
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[600],
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        progressPercent == 1
-                            ? S.of(context).completed_tasks
-                            : '${S.of(context).remaining_tasks}: $remainingTasks',
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                        const SizedBox(height: 8),
+                        Text(
+                          progressPercent == 1
+                              ? S.of(context).completed_tasks
+                              : '${S.of(context).remaining_tasks}: $remainingTasks',
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-        const SizedBox(height: 30),
-
-        // check tasks Section
-        Text(S.of(context).check_tasks, style: MyStyle.title18(context)),
-        const SizedBox(height: 15),
-      ],
+          const SizedBox(height: 30),
+      
+          // check tasks Section
+          Text(S.of(context).check_tasks, style: MyStyle.title18(context)),
+        ],
+      ),
     );
   }
 }

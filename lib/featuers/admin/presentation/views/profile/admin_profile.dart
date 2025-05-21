@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:green_city/generated/l10n.dart';
 
-import '../../../../user/presentation/cubits/Profile Cubit/profile_cubit.dart';
+import '../../../../user/presentation/cubits/profile/profile_cubit.dart';
 import 'widgets/admin_body.dart';
 
 class AdminProfileview extends StatelessWidget {

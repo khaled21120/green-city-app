@@ -5,7 +5,7 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../../../../../../core/utils/helper.dart';
 import '../../../../../../core/themes/dark_theme.dart';
 import '../../../../../auth/data/models/user_model.dart';
-import '../../../../../user/presentation/cubits/Profile Cubit/profile_cubit.dart';
+import '../../../../../user/presentation/cubits/profile/profile_cubit.dart';
 import '../../../../../user/presentation/views/profile/widgets/header.dart';
 import 'driver_options.dart';
 

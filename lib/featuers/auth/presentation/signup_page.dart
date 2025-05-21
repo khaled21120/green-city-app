@@ -7,8 +7,8 @@ import '../../../core/utils/helper.dart';
 import '../../../core/themes/light_theme.dart';
 import '../../../core/utils/constants.dart';
 import 'Widgets/gradient_bg.dart';
-import 'Widgets/signup_bottom.dart';
-import 'cubits/SignUp/sign_up_cubit.dart';
+import 'Widgets/signup_form.dart';
+import 'cubits/sign_up/sign_up_cubit.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
@@ -47,7 +47,7 @@ class SignUpPage extends StatelessWidget {
                     semanticLabel: 'App Logo',
                   ),
                 ),
-                const Positioned(bottom: 0, child: SignUpBottom()),
+                const Positioned(bottom: 0, child: SignUpForm()),
               ],
             ),
           );

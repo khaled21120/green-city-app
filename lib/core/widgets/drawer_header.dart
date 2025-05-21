@@ -26,7 +26,11 @@ class MyDrawerHeader extends StatelessWidget {
       borderRadius: const BorderRadius.vertical(bottom: Radius.circular(20)),
       child: Container(
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.primary,
+          gradient: LinearGradient(
+            colors: [Colors.teal.shade700, Colors.teal.shade400],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(alpha: .2),

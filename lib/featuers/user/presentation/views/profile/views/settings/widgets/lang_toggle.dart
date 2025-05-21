@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../../../core/utils/text_style.dart';
 import '../../../../../../../../generated/l10n.dart';
-import '../../../../../cubits/Language Cubit/language_cubit.dart';
-import '../../../../../cubits/Language Cubit/language_state.dart';
+import '../../../../../cubits/language/language_cubit.dart';
+import '../../../../../cubits/language/language_state.dart';
 
 class ToggleLanguage extends StatelessWidget {
   const ToggleLanguage({super.key});

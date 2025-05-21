@@ -17,14 +17,14 @@ class ProfileOptions extends StatelessWidget {
           icon: Icons.phone_rounded,
           title: S.of(context).phone_number,
           value: user.phone ?? S.of(context).not_provided,
-          onTap: () => _navigateToEditPhone(context),
+          onTap: () {},
           showTrailingIcon: false,
         ),
         ProfileItem(
           icon: Icons.location_on_rounded,
           title: S.of(context).address,
           value: user.address ?? S.of(context).not_provided,
-          onTap: () => _navigateToEditAddress(context),
+          onTap: () {},
           showTrailingIcon: false,
         ),
         const Divider(height: 24, indent: 16, endIndent: 16),
@@ -40,24 +40,6 @@ class ProfileOptions extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  void _navigateToEditPhone(BuildContext context) async {
-    final result = await GoRouter.of(
-      context,
-    ).pushNamed('editPhone', extra: user);
-    if (result == true) {
-      // Handle successful update if needed
-    }
-  }
-
-  void _navigateToEditAddress(BuildContext context) async {
-    final result = await GoRouter.of(
-      context,
-    ).pushNamed('editAddress', extra: user);
-    if (result == true) {
-      // Handle successful update if needed
-    }
   }
 
   void _navigateToEditProfile(BuildContext context) {

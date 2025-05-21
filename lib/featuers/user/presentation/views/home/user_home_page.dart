@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../../core/widgets/error_widget.dart';
-import '../../cubits/Profile Cubit/profile_cubit.dart';
-import 'widgets/user_drawer.dart';
+import '../../cubits/profile/profile_cubit.dart';
 import 'widgets/user_home_body.dart';
 
 class UserHomePage extends StatelessWidget {
@@ -36,27 +34,12 @@ class UserHomePage extends StatelessWidget {
   }
 
   Widget _buildSuccessState(BuildContext context, FetchDataSuccess state) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Green City'),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.person),
-            onPressed: () => _navigateToProfile(context),
-            tooltip: 'Profile',
-          ),
-        ],
-      ),
-      drawer: UserDrawer(userData: state.userModel),
-      body: UserHomeBody(userData: state.userModel),
-    );
+    return UserHomeBody(userData: state.userModel);
+    
   }
 
   Widget _buildErrorState() {
     return const Scaffold(body: Center(child: Text('Something went wrong')));
   }
 
-  void _navigateToProfile(BuildContext context) =>
-      GoRouter.of(context).pushNamed('userProfile');
 }

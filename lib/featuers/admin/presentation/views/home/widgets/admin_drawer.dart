@@ -4,9 +4,9 @@ import 'package:go_router/go_router.dart';
 import 'package:green_city/generated/l10n.dart';
 
 import '../../../../../../core/widgets/drawer_header.dart';
-import '../../../../../auth/presentation/cubits/Auth/auth_cubit.dart';
+import '../../../../../auth/presentation/cubits/auth/auth_cubit.dart';
 import '../../../../../auth/data/models/user_model.dart';
-import '../../../../../user/presentation/views/home/widgets/my_list_tile.dart';
+import '../../../../../../core/widgets/my_list_tile.dart';
 
 class AdminDrawer extends StatelessWidget {
   const AdminDrawer({super.key, required this.userData});

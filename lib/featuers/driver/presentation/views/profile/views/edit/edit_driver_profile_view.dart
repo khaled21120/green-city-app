@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:green_city/core/utils/helper.dart';
 import 'package:green_city/core/widgets/button.dart';
 import 'package:green_city/core/widgets/text_felid.dart';
-import 'package:green_city/featuers/user/presentation/cubits/Profile%20Cubit/profile_cubit.dart';
+import 'package:green_city/featuers/user/presentation/cubits/profile/profile_cubit.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 import '../../../../../../../core/themes/light_theme.dart';
@@ -87,33 +87,33 @@ class _EditDriverProfileViewState extends State<EditDriverProfileView> {
               child: Column(
                 children: [
                   const SizedBox(height: 24),
-                  MyTextFelid(
+                  MyTextField(
                     icon: const Icon(FontAwesomeIcons.solidUser),
                     label: S.of(context).name,
                     controller: _nameController,
                   ),
                   const SizedBox(height: 24),
-                  MyTextFelid(
+                  MyTextField(
                     icon: const Icon(FontAwesomeIcons.phone),
                     label: S.of(context).phone_number,
                     keyboardType: TextInputType.phone,
                     controller: _phoneController,
                   ),
                   const SizedBox(height: 24),
-                  MyTextFelid(
+                  MyTextField(
                     icon: const Icon(FontAwesomeIcons.locationDot),
                     label: S.of(context).address,
                     controller: _addressController,
                   ),
                   const SizedBox(height: 24),
-                  MyTextFelid(
+                  MyTextField(
                     icon: const Icon(FontAwesomeIcons.truckPickup),
                     label: S.of(context).truck_number,
                     keyboardType: TextInputType.number,
                     controller: _truckNumberController,
                   ),
                   const SizedBox(height: 24),
-                  MyTextFelid(
+                  MyTextField(
                     // ignore: deprecated_member_use
                     icon: const Icon(FontAwesomeIcons.solidDriversLicense),
                     label: S.of(context).license_number,
@@ -121,7 +121,7 @@ class _EditDriverProfileViewState extends State<EditDriverProfileView> {
                     controller: _licenseController,
                   ),
                   const SizedBox(height: 24),
-                  MyTextFelid(
+                  MyTextField(
                     icon: const Icon(FontAwesomeIcons.calendarDays),
                     label: S.of(context).license_expiry_date,
                     controller: _licenseExpiryController,

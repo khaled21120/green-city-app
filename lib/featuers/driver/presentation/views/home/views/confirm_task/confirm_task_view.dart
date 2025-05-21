@@ -34,11 +34,11 @@ class _ConfirmTaskViewState extends State<ConfirmTaskView> {
       appBar: AppBar(title: Text(S.of(context).confirm_password)),
       body: Column(
         children: [
-          MyTextFelid(label: '', controller: r),
-          MyTextFelid(label: '', controller: r),
-          MyTextFelid(label: '', controller: r),
-          MyTextFelid(label: '', controller: r),
-          MyTextFelid(label: '', controller: r),
+          MyTextField(label: '', controller: r),
+          MyTextField(label: '', controller: r),
+          MyTextField(label: '', controller: r),
+          MyTextField(label: '', controller: r),
+          MyTextField(label: '', controller: r),
           MyButton(
             text: S.of(context).send,
             onTap: () {

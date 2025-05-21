@@ -645,6 +645,16 @@ class S {
     );
   }
 
+  /// `Together, we keep our city clean and beautiful.`
+  String get welcome_description {
+    return Intl.message(
+      'Together, we keep our city clean and beautiful.',
+      name: 'welcome_description',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Join our community to make your city cleaner and greener every day`
   String get welcome_subtitle {
     return Intl.message(
@@ -1020,6 +1030,31 @@ class S {
     return Intl.message(
       'Truck Number',
       name: 'truck_number',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Features`
+  String get features {
+    return Intl.message('Features', name: 'features', desc: '', args: []);
+  }
+
+  /// `Your Contributions`
+  String get your_contributions {
+    return Intl.message(
+      'Your Contributions',
+      name: 'your_contributions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Activity Overview`
+  String get activity_overview {
+    return Intl.message(
+      'Activity Overview',
+      name: 'activity_overview',
       desc: '',
       args: [],
     );

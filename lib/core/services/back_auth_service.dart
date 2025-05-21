@@ -5,36 +5,13 @@ import 'package:green_city/core/services/get_it_service.dart';
 import 'package:green_city/core/utils/constants.dart';
 
 import '../errors/error.dart';
-import '../utils/endpoints.dart';
 import 'prefs_service.dart';
 
 class ApiAuthService {
   final Dio dio;
   final FlutterSecureStorage storage;
 
-  ApiAuthService()
-    : dio = Dio(BaseOptions(baseUrl: Endpoints.baseUrl)),
-      storage = const FlutterSecureStorage() {
-    dio.interceptors.add(
-      InterceptorsWrapper(
-        onRequest: (options, handler) async {
-          final token = await storage.read(key: Constants.kToken);
-          if (token != null) {
-            options.headers['Authorization'] = 'Bearer $token';
-          }
-          return handler.next(options);
-        },
-        onError: (error, handler) async {
-          if (error.response?.statusCode == 401 ||
-              error.response?.statusCode == 403) {
-            await _forceLogout();
-            _redirectToSignIn();
-          }
-          return handler.next(error);
-        },
-      ),
-    );
-  }
+  ApiAuthService(this.dio) : storage = const FlutterSecureStorage();
 
   Future<void> _forceLogout() async {
     await Future.wait([

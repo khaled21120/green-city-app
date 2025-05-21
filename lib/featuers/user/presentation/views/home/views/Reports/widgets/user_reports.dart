@@ -15,7 +15,7 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 import '../../../../../../../../core/utils/helper.dart';
 import '../../../../../../../../core/utils/text_style.dart';
-import '../../../../../cubits/User Report Cubit/user_reports_cubit.dart';
+import '../../../../../cubits/user_report/user_reports_cubit.dart';
 
 class UserReports extends StatefulWidget {
   const UserReports({super.key});
@@ -112,14 +112,14 @@ class _UserReportsState extends State<UserReports> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // 📍 Address & 📩 Message
-                  MyTextFelid(
+                  MyTextField(
                     controller: addressController,
                     label: S.of(context).address,
                     icon: const Icon(Icons.location_on),
                     maxLines: 2,
                   ),
                   const SizedBox(height: 12),
-                  MyTextFelid(
+                  MyTextField(
                     controller: messageController,
                     label: S.of(context).message,
                     icon: const Icon(Icons.message),

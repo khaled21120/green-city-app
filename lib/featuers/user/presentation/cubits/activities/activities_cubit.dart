@@ -22,16 +22,15 @@ class ActivitiesCubit extends Cubit<ActivitiesState> {
     );
   }
 
-  void joinActivity({required int activityId, required int data}) async {
+  void joinActivity({required int activityId}) async {
     emit(ActivitiesLoading());
-    final result = await homeRepo.updateData(
-      endPoint: '${Endpoints.activities}/$activityId',
-      data: {'numOfSubscribers': data},
+    final result = await homeRepo.joinActivity(
+      endPoint: Endpoints.activities,
+      id: activityId,
     );
-    if (result) {
-      emit(const ActivityJoined('تم الانضمام بنجاح'));
-    } else {
-      emit(const ActivityJoined('حدث خطأ ما الرجاء المحاولة مرة اخرى'));
-    }
+    result.fold(
+      (error) => emit(ActivitiesError(error.errMsg)),
+      (data) => emit(const ActivityJoined('تم الانضمام للنشاط بنجاح')),
+    );
   }
 }

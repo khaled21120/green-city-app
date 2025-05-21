@@ -1,71 +1,70 @@
+import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
-import 'package:green_city/core/services/back_storage_service.dart';
-import 'package:green_city/core/utils/app_routers.dart';
-import 'package:green_city/featuers/admin/presentation/cubits/cubit/admin_reports_cubit.dart';
-import 'package:green_city/featuers/admin/data/repo/admin_repo.dart';
-import 'package:green_city/featuers/auth/presentation/cubits/Auth/auth_cubit.dart';
-import 'package:green_city/featuers/auth/presentation/cubits/LogIn/log_in_cubit.dart';
-import 'package:green_city/featuers/auth/presentation/cubits/SignUp/sign_up_cubit.dart';
-import 'package:green_city/featuers/driver/presentation/cubits/Driver%20Reports/driver_reports_cubit.dart';
-import 'package:green_city/featuers/driver/presentation/cubits/Driver%20Tasks/driver_tasks_cubit.dart';
-import 'package:green_city/featuers/user/presentation/cubits/Activities%20Cubit/activities_cubit.dart';
-import 'package:green_city/featuers/user/presentation/cubits/Language%20Cubit/language_cubit.dart';
-import 'package:green_city/featuers/user/presentation/cubits/Profile%20Cubit/profile_cubit.dart';
+
+import '../../featuers/admin/data/repo/admin_repo.dart';
 import '../../featuers/admin/data/repo/admin_repo_impl.dart';
+import '../../featuers/admin/presentation/cubits/admin_report/admin_reports_cubit.dart';
+import '../../featuers/auth/data/repo/auth_repo.dart';
+import '../../featuers/auth/data/repo/auth_repo_impl.dart';
+import '../../featuers/auth/presentation/cubits/auth/auth_cubit.dart';
+import '../../featuers/auth/presentation/cubits/log_In/log_in_cubit.dart';
+import '../../featuers/auth/presentation/cubits/sign_up/sign_up_cubit.dart';
 import '../../featuers/driver/data/repo/driver_repo.dart';
 import '../../featuers/driver/data/repo/driver_repo_impl.dart';
-import '../../featuers/user/presentation/cubits/Polls Cubit/polls_cubit.dart';
-import '../../featuers/user/presentation/cubits/Theme Cubit/theme_cubit.dart';
-import '../../featuers/user/presentation/cubits/User Report Cubit/user_reports_cubit.dart';
-import '../../featuers/user/data/repo/user_repo_impl.dart';
+import '../../featuers/driver/presentation/cubits/Driver%20Reports/driver_reports_cubit.dart';
+import '../../featuers/driver/presentation/cubits/Driver%20Tasks/driver_tasks_cubit.dart';
 import '../../featuers/user/data/repo/user_repo.dart';
-import '../../featuers/user/presentation/cubits/Notifications Cubit/notifications_cubit.dart';
-
-import '../../featuers/auth/data/repo/auth_repo_impl.dart';
-import '../../featuers/auth/data/repo/auth_repo.dart';
+import '../../featuers/user/data/repo/user_repo_impl.dart';
+import '../../featuers/user/presentation/cubits/activities/activities_cubit.dart';
+import '../../featuers/user/presentation/cubits/language/language_cubit.dart';
+import '../../featuers/user/presentation/cubits/notify/notify_cubit.dart';
+import '../../featuers/user/presentation/cubits/polls/polls_cubit.dart';
+import '../../featuers/user/presentation/cubits/profile/profile_cubit.dart';
+import '../../featuers/user/presentation/cubits/theme/theme_cubit.dart';
+import '../../featuers/user/presentation/cubits/user_report/user_reports_cubit.dart';
+import '../network/dio_factory.dart';
+import '../utils/app_routers.dart';
 import 'back_auth_service.dart';
+import 'back_storage_service.dart';
 import 'data_base_service.dart';
 
 final getIt = GetIt.instance;
 
 void setupServiceLocator() {
-  getIt.registerSingleton<GoRouter>(AppRouters.router);
-  getIt.registerSingleton<DatabaseService>(ApiStorageService());
-  getIt.registerSingleton<ApiAuthService>(ApiAuthService());
-  getIt.registerSingleton<UserRepo>(UserRepoImpl(getIt.get<DatabaseService>()));
-  getIt.registerSingleton<DriverRepo>(
-    DriverRepoImpl(getIt.get<DatabaseService>()),
+  _registerCoreServices();
+  _registerRepos();
+  _registerCubits();
+}
+
+void _registerCoreServices() {
+  getIt.registerLazySingleton<Dio>(() => DioFactory.dio);
+  getIt.registerLazySingleton<GoRouter>(() => AppRouters.router);
+  getIt.registerLazySingleton<DatabaseService>(
+    () => ApiStorageService(getIt()),
   );
-  getIt.registerSingleton<AdminRepo>(
-    AdminRepoImpl(getIt.get<DatabaseService>()),
-  );
-  getIt.registerSingleton<AuthRepo>(AuthRepoImpl(getIt.get<ApiAuthService>()));
-  getIt.registerFactory<AuthCubit>(() => AuthCubit(getIt<ApiAuthService>()));
-  getIt.registerFactory<LogInCubit>(() => LogInCubit(getIt<AuthRepo>()));
-  getIt.registerFactory<SignUpCubit>(() => SignUpCubit(getIt<AuthRepo>()));
-  getIt.registerFactory<AdminReportsCubit>(
-    () => AdminReportsCubit(getIt<AdminRepo>()),
-  );
-  getIt.registerFactory<ProfileCubit>(
-    () => ProfileCubit(getIt<UserRepo>(), getIt<AuthRepo>()),
-  );
-  getIt.registerFactory<ActivitiesCubit>(
-    () => ActivitiesCubit(getIt<UserRepo>()),
-  );
-  getIt.registerFactory<PollsCubit>(() => PollsCubit(getIt<UserRepo>()));
+  getIt.registerLazySingleton<ApiAuthService>(() => ApiAuthService(getIt()));
+}
+
+void _registerRepos() {
+  getIt.registerLazySingleton<UserRepo>(() => UserRepoImpl(getIt()));
+  getIt.registerLazySingleton<DriverRepo>(() => DriverRepoImpl(getIt()));
+  getIt.registerLazySingleton<AdminRepo>(() => AdminRepoImpl(getIt()));
+  getIt.registerLazySingleton<AuthRepo>(() => AuthRepoImpl(getIt()));
+}
+
+void _registerCubits() {
+  getIt.registerFactory<AuthCubit>(() => AuthCubit(getIt()));
+  getIt.registerFactory<LogInCubit>(() => LogInCubit(getIt()));
+  getIt.registerFactory<SignUpCubit>(() => SignUpCubit(getIt()));
+  getIt.registerFactory<AdminReportsCubit>(() => AdminReportsCubit(getIt()));
+  getIt.registerFactory<ProfileCubit>(() => ProfileCubit(getIt(), getIt()));
+  getIt.registerFactory<ActivitiesCubit>(() => ActivitiesCubit(getIt()));
+  getIt.registerFactory<PollsCubit>(() => PollsCubit(getIt()));
   getIt.registerFactory<ThemeCubit>(() => ThemeCubit());
   getIt.registerFactory<LanguageCubit>(() => LanguageCubit());
-  getIt.registerFactory<DriverReportsCubit>(
-    () => DriverReportsCubit(getIt<DriverRepo>()),
-  );
-  getIt.registerFactory<DriverTasksCubit>(
-    () => DriverTasksCubit(getIt<DriverRepo>()),
-  );
-  getIt.registerFactory<UserReportsCubit>(
-    () => UserReportsCubit(getIt<UserRepo>()),
-  );
-  getIt.registerFactory<NotificationsCubit>(
-    () => NotificationsCubit(getIt<UserRepo>()),
-  );
+  getIt.registerFactory<DriverReportsCubit>(() => DriverReportsCubit(getIt()));
+  getIt.registerFactory<DriverTasksCubit>(() => DriverTasksCubit(getIt()));
+  getIt.registerFactory<UserReportsCubit>(() => UserReportsCubit(getIt()));
+  getIt.registerFactory<NotificationsCubit>(() => NotificationsCubit(getIt()));
 }

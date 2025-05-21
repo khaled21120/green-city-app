@@ -29,6 +29,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "البلاغات\n المقبولة",
     ),
     "activities": MessageLookupByLibrary.simpleMessage("الأنشطة"),
+    "activity_overview": MessageLookupByLibrary.simpleMessage(
+      "نظرة عامة على النشاط",
+    ),
     "add_report": MessageLookupByLibrary.simpleMessage("إضافة تقرير"),
     "additionalNotes": MessageLookupByLibrary.simpleMessage("ملاحظات إضافية"),
     "additional_information": MessageLookupByLibrary.simpleMessage(
@@ -53,7 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "الانشطة\n المكتملة",
     ),
     "completed_polls": MessageLookupByLibrary.simpleMessage(
-      "التصويتات\n المكتملة",
+      "الأستطلاعات\n المكتملة",
     ),
     "completed_tasks": MessageLookupByLibrary.simpleMessage(
       "لقد أكملت جميع المهام لهذا الشهر",
@@ -88,6 +91,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "estimatedCost": MessageLookupByLibrary.simpleMessage("التكلفة المقدرة:"),
     "estimatedQuantity": MessageLookupByLibrary.simpleMessage("الكمية المقدرة"),
     "faqs": MessageLookupByLibrary.simpleMessage("الأسئلة الشائعة"),
+    "features": MessageLookupByLibrary.simpleMessage("الشائعة"),
     "for_Individuals": MessageLookupByLibrary.simpleMessage("للأفراد"),
     "for_Institutions": MessageLookupByLibrary.simpleMessage("للمؤسسات"),
     "forget_password": MessageLookupByLibrary.simpleMessage(
@@ -194,6 +198,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "wasteType": MessageLookupByLibrary.simpleMessage("نوع النفايات"),
     "welcome": MessageLookupByLibrary.simpleMessage("مرحبًا بعودتك"),
     "welcome_back": MessageLookupByLibrary.simpleMessage("مرحبًا بعودتك!"),
+    "welcome_description": MessageLookupByLibrary.simpleMessage(
+      "معا، نحن نحفظ مدينتنا بنظافة واخضرارًا.",
+    ),
     "welcome_message": MessageLookupByLibrary.simpleMessage(
       "مرحبًا بك في قسم تنظيف مدينة جرين سيتي",
     ),
@@ -205,6 +212,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "your_bin_number": MessageLookupByLibrary.simpleMessage(
       "رقم الحاوية الخاصة بك",
+    ),
+    "your_contributions": MessageLookupByLibrary.simpleMessage(
+      "المساهمات الخاصة بك",
     ),
     "your_region": MessageLookupByLibrary.simpleMessage("المنطقة الخاصة بك"),
     "your_report_type": MessageLookupByLibrary.simpleMessage(

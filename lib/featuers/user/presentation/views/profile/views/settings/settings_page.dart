@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:green_city/core/utils/text_style.dart';
 import 'package:green_city/generated/l10n.dart';
-import '../../../../cubits/Profile Cubit/profile_cubit.dart';
+import '../../../../cubits/profile/profile_cubit.dart';
 import 'widgets/lang_toggle.dart';
 import 'widgets/theme_toggle_switch.dart';
 

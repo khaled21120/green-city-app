@@ -105,20 +105,20 @@ class _ContactUsViewState extends State<ContactUsView> {
         children: [
           Text('Send us a message', style: MyStyle.title20(context)),
           const SizedBox(height: 16),
-          MyTextFelid(
+          MyTextField(
             controller: nameController,
             label: S.of(context).name,
             icon: const Icon(Icons.person),
             keyboardType: TextInputType.name,
           ),
           const SizedBox(height: 16),
-          MyTextFelid(
+          MyTextField(
             controller: emailController,
             label: S.of(context).email,
             icon: const Icon(Icons.email),
           ),
           const SizedBox(height: 16),
-          MyTextFelid(
+          MyTextField(
             controller: messageController,
             maxLines: 5,
             label: S.of(context).message,

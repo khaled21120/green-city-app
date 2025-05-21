@@ -1,54 +1,14 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:go_router/go_router.dart';
 import 'package:green_city/core/services/data_base_service.dart';
-import 'package:green_city/core/services/get_it_service.dart';
-import 'package:green_city/core/services/prefs_service.dart';
-import 'package:green_city/core/utils/constants.dart';
-import 'package:green_city/core/utils/endpoints.dart';
 
 import '../errors/error.dart';
 
 class ApiStorageService extends DatabaseService {
   final Dio dio;
-  final FlutterSecureStorage storage;
 
-  ApiStorageService()
-    : dio = Dio(BaseOptions(baseUrl: Endpoints.baseUrl)),
-      storage = const FlutterSecureStorage() {
-    dio.interceptors.add(
-      InterceptorsWrapper(
-        onRequest: (options, handler) async {
-          final token = await storage.read(key: Constants.kToken);
-          if (token != null) {
-            options.headers['Authorization'] = 'Bearer $token';
-          }
-          return handler.next(options);
-        },
-        onError: (error, handler) async {
-          if (error.response?.statusCode == 401 ||
-              error.response?.statusCode == 403) {
-            await _forceLogout();
-            _redirectToSignIn();
-          }
-          return handler.next(error);
-        },
-      ),
-    );
-  }
-
-  Future<void> _forceLogout() async {
-    await Future.wait([
-      storage.delete(key: Constants.kToken),
-      PrefsService.clear(),
-    ]);
-  }
-
-  void _redirectToSignIn() {
-    getIt<GoRouter>().go('/login');
-  }
+  ApiStorageService(this.dio);
 
   @override
   Future<bool> sendData({

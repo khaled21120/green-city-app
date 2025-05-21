@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:green_city/core/utils/helper.dart';
 import 'package:green_city/core/widgets/button.dart';
 import 'package:green_city/core/widgets/text_felid.dart';
-import 'package:green_city/featuers/user/presentation/cubits/Profile%20Cubit/profile_cubit.dart';
+import 'package:green_city/featuers/user/presentation/cubits/profile/profile_cubit.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 import '../../../../../../../core/themes/light_theme.dart';
@@ -72,19 +72,19 @@ class _EditUserProfileViewState extends State<EditUserProfileView> {
               child: Column(
                 children: [
                   const SizedBox(height: 24),
-                  MyTextFelid(
+                  MyTextField(
                     icon: const Icon(FontAwesomeIcons.solidUser),
                     label: S.of(context).name,
                     controller: _nameController,
                   ),
                   const SizedBox(height: 24),
-                  MyTextFelid(
+                  MyTextField(
                     icon: const Icon(FontAwesomeIcons.phone),
                     label: S.of(context).phone_number,
                     controller: _phoneController,
                   ),
                   const SizedBox(height: 24),
-                  MyTextFelid(
+                  MyTextField(
                     icon: const Icon(FontAwesomeIcons.locationDot),
                     label: S.of(context).address,
                     controller: _addressController,

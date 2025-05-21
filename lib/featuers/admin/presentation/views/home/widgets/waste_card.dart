@@ -30,8 +30,6 @@ class WasteCard extends StatelessWidget {
               Text(
                 description,
                 textAlign: TextAlign.center,
-                maxLines: 4,
-                overflow: TextOverflow.ellipsis,
                 style: MyStyle.title14(context).copyWith(color: Colors.grey),
               ),
             ],

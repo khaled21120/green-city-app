@@ -4,7 +4,7 @@ import 'package:green_city/core/utils/helper.dart';
 import 'package:green_city/core/widgets/button.dart';
 import 'package:green_city/generated/l10n.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import '../../../../../cubits/Activities Cubit/activities_cubit.dart';
+import '../../../../../cubits/activities/activities_cubit.dart';
 import '../../../../../../data/models/activities_model.dart';
 
 class ActivitiesDetailsPage extends StatelessWidget {
@@ -21,6 +21,7 @@ class ActivitiesDetailsPage extends StatelessWidget {
             Helper.showSnackBar(context: context, message: state.message);
           } else if (state is ActivityJoined) {
             Helper.showSnackBar(context: context, message: state.message);
+            Navigator.pop(context);
           }
         },
         builder: (context, state) {
@@ -54,8 +55,8 @@ class ActivitiesDetailsPage extends StatelessWidget {
                     onTap: () {
                       context.read<ActivitiesCubit>().joinActivity(
                         activityId: activitiesModel.id!,
-                        data: activitiesModel.numOfSubscribers! + 1,
                       );
+                      context.read<ActivitiesCubit>().getActivities();
                     },
                   ),
                 ],

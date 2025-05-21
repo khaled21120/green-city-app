@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../generated/l10n.dart';
-import '../../cubits/Profile Cubit/profile_cubit.dart';
+import '../../cubits/profile/profile_cubit.dart';
 import 'widgets/body.dart';
 
 class UserProfilePage extends StatelessWidget {

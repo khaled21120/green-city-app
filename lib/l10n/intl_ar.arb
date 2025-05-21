@@ -70,7 +70,7 @@
   "typeMessage": "اكتب رسالة.....",
   "accepted_reports": "البلاغات\n المقبولة",
   "completed_activities": "الانشطة\n المكتملة",
-  "completed_polls": "التصويتات\n المكتملة",
+  "completed_polls": "الأستطلاعات\n المكتملة",
   "welcome_back": "مرحبًا بعودتك!",
   "quick_actions": "إجراءات سريعة",
   "submit_feedback": "إرسال ملاحظة",
@@ -79,6 +79,7 @@
   "add_report": "إضافة تقرير",
   "please_select": "يرجى تحديد",
   "welcome_title": "مرحبًا بكم في جرين سيتي",
+  "welcome_description": "معا، نحن نحفظ مدينتنا بنظافة واخضرارًا.",
   "welcome_subtitle": "انضم إلى مجتمعنا لجعل مدينتك أكثر نظافة واخضرارًا كل يوم",
   "about_app": "حول التطبيق",
   "version": "الإصدار",
@@ -122,5 +123,8 @@
   "no_data_available": "لا يوجد بيانات متاحة",
   "license_number": "رقم الرخصة",
   "license_expiry_date": "تاريخ انتهاء الرخصة",
-  "truck_number": "رقم الشاحنة"
+  "truck_number": "رقم الشاحنة",
+  "features": "الشائعة",
+  "your_contributions": "المساهمات الخاصة بك",
+  "activity_overview": "نظرة عامة على النشاط"
 }

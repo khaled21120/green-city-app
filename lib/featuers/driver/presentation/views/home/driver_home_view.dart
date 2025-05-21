@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:green_city/featuers/driver/presentation/views/home/widgets/driver_drawer.dart';
 import 'package:green_city/featuers/driver/presentation/views/home/widgets/driver_home_body.dart';
 
 import '../../../../../core/widgets/error_widget.dart';
-import '../../../../user/presentation/cubits/Profile Cubit/profile_cubit.dart';
+import '../../../../user/presentation/cubits/profile/profile_cubit.dart';
 
 class DriverHomeView extends StatelessWidget {
   const DriverHomeView({super.key});
@@ -36,27 +34,10 @@ class DriverHomeView extends StatelessWidget {
   }
 
   Widget _buildSuccessState(BuildContext context, FetchDataSuccess state) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Green City'),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.person),
-            onPressed: () => _navigateToProfile(context),
-            tooltip: 'Profile',
-          ),
-        ],
-      ),
-      drawer: DriverDrawer(userData: state.userModel),
-      body: DriverHomeBody(userData: state.userModel),
-    );
+    return DriverHomeBody(userData: state.userModel);
   }
 
   Widget _buildErrorState() {
     return const Scaffold(body: Center(child: Text('Something went wrong')));
   }
-
-  void _navigateToProfile(BuildContext context) =>
-      GoRouter.of(context).pushNamed('driverProfile');
 }

@@ -13,7 +13,6 @@ import '../widgets/modern_button.dart';
 import 'text_style.dart';
 
 abstract class Helper {
-
   static void showAlert({
     required BuildContext context,
     required VoidCallback onTap,
@@ -39,7 +38,7 @@ abstract class Helper {
                     style: MyStyle.title20(context),
                     textAlign: TextAlign.center,
                   ),
-                  MyTextFelid(controller: controller, label: title),
+                  MyTextField(controller: controller, label: title),
                   const SizedBox(height: 5),
                   ModernButton(
                     onTap: onTap,
@@ -88,4 +87,5 @@ abstract class Helper {
     final user = PrefsService.getString(Constants.kUserData);
     return UserModel.fromJson(jsonDecode(user!));
   }
+
 }

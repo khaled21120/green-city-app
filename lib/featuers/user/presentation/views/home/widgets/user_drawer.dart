@@ -5,9 +5,9 @@ import 'package:go_router/go_router.dart';
 import 'package:green_city/core/widgets/drawer_header.dart';
 import 'package:green_city/generated/l10n.dart';
 
-import '../../../../../auth/presentation/cubits/Auth/auth_cubit.dart';
+import '../../../../../auth/presentation/cubits/auth/auth_cubit.dart';
 import '../../../../../auth/data/models/user_model.dart';
-import 'my_list_tile.dart';
+import '../../../../../../core/widgets/my_list_tile.dart';
 
 class UserDrawer extends StatelessWidget {
   const UserDrawer({super.key, required this.userData});

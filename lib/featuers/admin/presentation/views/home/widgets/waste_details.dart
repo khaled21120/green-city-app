@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:green_city/featuers/admin/presentation/cubits/cubit/admin_reports_cubit.dart';
+import 'package:green_city/featuers/admin/presentation/cubits/admin_report/admin_reports_cubit.dart';
 import 'package:intl/intl.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
@@ -139,7 +139,7 @@ class _WasteDetailsState extends State<WasteDetails> {
                   _buildWasteInfoCard(context, widget.title),
 
                   // Quantity Input
-                  MyTextFelid(
+                  MyTextField(
                     controller: quantityController,
                     label: strings.estimatedQuantity,
                     icon: const Icon(FontAwesomeIcons.weightHanging),
@@ -147,7 +147,7 @@ class _WasteDetailsState extends State<WasteDetails> {
                   ),
 
                   // Description Input
-                  MyTextFelid(
+                  MyTextField(
                     controller: descController,
                     label: strings.additional_information,
                     icon: const Icon(Icons.description),

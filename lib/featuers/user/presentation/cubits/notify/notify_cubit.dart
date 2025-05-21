@@ -6,7 +6,7 @@ import 'package:green_city/featuers/user/data/repo/user_repo.dart';
 
 import '../../../../../core/utils/endpoints.dart';
 
-part 'notifications_state.dart';
+part 'notify_state.dart';
 
 class NotificationsCubit extends Cubit<NotificationsState> {
   NotificationsCubit(this.homeRepo) : super(NotificationsInitial());

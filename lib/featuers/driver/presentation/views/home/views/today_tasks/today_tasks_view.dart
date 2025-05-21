@@ -1,22 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:green_city/core/utils/helper.dart';
 import 'package:green_city/core/widgets/error_widget.dart';
 import 'package:green_city/core/utils/text_style.dart';
 import 'package:green_city/featuers/driver/presentation/cubits/Driver%20Tasks/driver_tasks_cubit.dart';
-import 'package:green_city/featuers/user/presentation/cubits/User%20Report%20Cubit/user_reports_cubit.dart';
+import 'package:green_city/featuers/user/presentation/cubits/user_report/user_reports_cubit.dart';
 import 'package:green_city/generated/l10n.dart';
 
-import 'widgets/pending_task_item.dart';
+import 'widgets/today_task_item.dart';
 
-class PendingTasksView extends StatelessWidget {
-  const PendingTasksView({super.key});
+class TodayTasksView extends StatelessWidget {
+  const TodayTasksView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(S.of(context).pending_tasks)),
-      body: BlocBuilder<DriverTasksCubit, DriverTasksState>(
+      appBar: AppBar(title: Text(S.of(context).todays_tasks)),
+      body: BlocConsumer<DriverTasksCubit, DriverTasksState>(
+        listener: (context, state) {
+          if (state is AcceptTaskFailure) {
+            Helper.showSnackBar(context: context, message: state.message);
+          } else if (state is AcceptTaskSuccess) {
+            Helper.showSnackBar(context: context, message: state.message);
+          }
+        },
         builder: (context, state) {
+          if (state is AcceptTaskLoading) {
+            return const Center(
+              child: Padding(
+                padding: EdgeInsets.all(16.0),
+                child: CircularProgressIndicator(),
+              ),
+            );
+          }
           if (state is DriverTasksLoading) {
             return const Center(
               child: Padding(
@@ -24,13 +40,13 @@ class PendingTasksView extends StatelessWidget {
                 child: CircularProgressIndicator(),
               ),
             );
-          } else if (state is DriverTasksFailure) {
+          } else if (state is AllDriversTasksFailure) {
             return ErrorsWidget(
               message: state.errMsg,
               onPressed:
                   () async => context.read<UserReportsCubit>().fetchReports(),
             );
-          } else if (state is DriverTasksSuccess) {
+          } else if (state is AllDriversTasksSuccess) {
             if (state.tasks.isEmpty) {
               return Center(
                 child: Column(
@@ -54,14 +70,14 @@ class PendingTasksView extends StatelessWidget {
             }
             return RefreshIndicator(
               onRefresh:
-                  () async => context.read<DriverTasksCubit>().getDriverTasks(),
+                  () async => context.read<DriverTasksCubit>().getAllTasks(),
               child: ListView.separated(
                 padding: const EdgeInsets.all(12),
                 itemCount: state.tasks.length,
                 separatorBuilder: (context, index) => const SizedBox(height: 8),
                 itemBuilder:
                     (context, index) =>
-                        PendingTaskItem(userReportsModel: state.tasks[index]),
+                        TodayTaskItem(userReportsModel: state.tasks[index]),
               ),
             );
           }

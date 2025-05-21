@@ -5,10 +5,9 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../../../../../../core/utils/helper.dart';
 import '../../../../../../core/themes/dark_theme.dart';
 import '../../../../../auth/data/models/user_model.dart';
-import '../../../cubits/Profile Cubit/profile_cubit.dart';
+import '../../../cubits/profile/profile_cubit.dart';
 import 'header.dart';
 import 'options.dart';
-import 'stats.dart';
 
 class UserProfileBody extends StatefulWidget {
   const UserProfileBody({super.key});
@@ -84,8 +83,6 @@ class _UserProfileBodyState extends State<UserProfileBody> {
               const SizedBox(height: 24),
               if (user != null) ...[
                 ProfileHeader(user: user),
-                const SizedBox(height: 24),
-                ProfileStats(user: user),
                 const SizedBox(height: 24),
                 ProfileOptions(user: user),
                 const SizedBox(height: 32),

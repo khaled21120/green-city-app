@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../core/themes/light_theme.dart';
-import '../../../../../../core/utils/text_style.dart';
+import '../themes/light_theme.dart';
+import '../utils/text_style.dart';
 
 class MyListTile extends StatelessWidget {
   const MyListTile({

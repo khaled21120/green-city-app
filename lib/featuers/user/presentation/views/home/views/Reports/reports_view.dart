@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:green_city/featuers/user/presentation/views/home/views/Reports/widgets/user_reports.dart';
-import 'package:green_city/featuers/user/presentation/views/home/views/Reports/widgets/institutions_reports.dart';
-import 'package:green_city/featuers/user/presentation/views/home/views/Reports/widgets/reports_taps.dart';
+import 'package:green_city/featuers/user/presentation/views/home/views/reports/widgets/user_reports.dart';
+import 'package:green_city/featuers/user/presentation/views/home/views/reports/widgets/institutions_reports.dart';
+import 'package:green_city/featuers/user/presentation/views/home/views/reports/widgets/reports_taps.dart';
 import 'package:green_city/generated/l10n.dart';
 
 class ReportsView extends StatefulWidget {

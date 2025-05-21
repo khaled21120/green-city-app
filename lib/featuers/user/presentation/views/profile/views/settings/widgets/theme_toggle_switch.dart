@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:green_city/core/utils/text_style.dart';
 import 'package:green_city/generated/l10n.dart';
 
-import '../../../../../cubits/Theme Cubit/theme_cubit.dart';
+import '../../../../../cubits/theme/theme_cubit.dart';
 
 class ThemeToggleSwitch extends StatelessWidget {
   const ThemeToggleSwitch({super.key});

@@ -134,7 +134,7 @@ class UserRepoImpl extends UserRepo {
     required Map<String, dynamic> data,
   }) async {
     try {
-     final isUpdated = await databaseService.updateData(
+      final isUpdated = await databaseService.updateData(
         endPoint: endPoint,
         data: data,
         isImage: false,
@@ -156,6 +156,38 @@ class UserRepoImpl extends UserRepo {
       final anounns =
           anounnsList.map((e) => UserReportsModel.fromJson(e)).toList();
       return Right(anounns);
+    } on ServerFailure catch (e) {
+      return Left(ServerFailure(e.errMsg));
+    }
+  }
+
+  @override
+  Future<Either<Failures, bool>> joinActivity({
+    required String endPoint,
+    required int id,
+  }) async {
+    try {
+      final res = await databaseService.postByID(
+        endPoint: endPoint,
+        id: '/$id/subscribe',
+      );
+      return Right(res);
+    } on ServerFailure catch (e) {
+      return Left(ServerFailure(e.errMsg));
+    }
+  }
+
+  @override
+  Future<Either<Failures, bool>> joinPoll({
+    required String endPoint,
+    required int id,
+  }) async {
+    try {
+      final res = await databaseService.postByID(
+        endPoint: endPoint,
+        id: '/$id/subscribe',
+      );
+      return Right(res);
     } on ServerFailure catch (e) {
       return Left(ServerFailure(e.errMsg));
     }

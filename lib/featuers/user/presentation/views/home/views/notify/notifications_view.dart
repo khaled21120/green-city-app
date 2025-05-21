@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../../core/widgets/error_widget.dart';
 import '../../../../../../../core/utils/text_style.dart';
 import '../../../../../../../generated/l10n.dart';
-import '../../../../cubits/Notifications Cubit/notifications_cubit.dart';
+import '../../../../cubits/notify/notify_cubit.dart';
 import 'widgets/notification_tabs.dart';
 import 'widgets/notifications_list.dart';
 

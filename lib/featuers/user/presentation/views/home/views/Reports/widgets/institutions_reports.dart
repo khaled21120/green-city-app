@@ -143,7 +143,7 @@ class _InstitutionsReportsState extends State<InstitutionsReports> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // Institution Information
-            MyTextFelid(
+            MyTextField(
               label: S.of(context).institutionName,
               controller: institutionNameController,
               keyboardType: TextInputType.text,
@@ -151,7 +151,7 @@ class _InstitutionsReportsState extends State<InstitutionsReports> {
             ),
 
             // Contact Information
-            MyTextFelid(
+            MyTextField(
               label: S.of(context).contactNumber,
               controller: contactNumberController,
               keyboardType: TextInputType.phone,
@@ -159,7 +159,7 @@ class _InstitutionsReportsState extends State<InstitutionsReports> {
             ),
 
             // Location Information
-            MyTextFelid(
+            MyTextField(
               label: S.of(context).locationAddress,
               controller: locationAddressController,
               keyboardType: TextInputType.text,
@@ -167,7 +167,7 @@ class _InstitutionsReportsState extends State<InstitutionsReports> {
             ),
 
             // Additional Notes
-            MyTextFelid(
+            MyTextField(
               label: S.of(context).additionalNotes,
               controller: additionalNotesController,
               keyboardType: TextInputType.text,
@@ -175,7 +175,7 @@ class _InstitutionsReportsState extends State<InstitutionsReports> {
             ),
 
             // Waste Quantity
-            MyTextFelid(
+            MyTextField(
               label: S.of(context).estimatedQuantity,
               controller: estimatedQuantityController,
               keyboardType: TextInputType.number,

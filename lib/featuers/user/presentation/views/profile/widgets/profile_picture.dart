@@ -9,7 +9,7 @@ import 'package:green_city/generated/l10n.dart';
 
 import '../../../../../../core/utils/helper.dart';
 import '../../../../../../core/themes/light_theme.dart';
-import '../../../cubits/Profile Cubit/profile_cubit.dart';
+import '../../../cubits/profile/profile_cubit.dart';
 
 class ProfilePicture extends StatefulWidget {
   const ProfilePicture({super.key, this.imageUrl});

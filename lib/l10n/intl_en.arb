@@ -79,6 +79,7 @@
   "add_report": "Add Report",
   "please_select": "Please select",
   "welcome_title": "Welcome to Green City",
+  "welcome_description": "Together, we keep our city clean and beautiful.",
   "welcome_subtitle": "Join our community to make your city cleaner and greener every day",
   "about_app": "About App",
   "version": "Version",
@@ -122,6 +123,9 @@
   "no_data_available": "No data available",
   "license_number": "License Number",
   "license_expiry_date": "License Expiry Date",
-  "truck_number": "Truck Number"
+  "truck_number": "Truck Number",
+  "features": "Features",
+  "your_contributions": "Your Contributions",
+  "activity_overview": "Activity Overview"
 
 }

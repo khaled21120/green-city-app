@@ -29,6 +29,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Accepted\n Reports",
     ),
     "activities": MessageLookupByLibrary.simpleMessage("Activities"),
+    "activity_overview": MessageLookupByLibrary.simpleMessage(
+      "Activity Overview",
+    ),
     "add_report": MessageLookupByLibrary.simpleMessage("Add Report"),
     "additionalNotes": MessageLookupByLibrary.simpleMessage("Additional Notes"),
     "additional_information": MessageLookupByLibrary.simpleMessage(
@@ -86,6 +89,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "estimatedCost": MessageLookupByLibrary.simpleMessage("Estimated Cost:"),
     "estimatedQuantity": MessageLookupByLibrary.simpleMessage("Quantity (kg)"),
     "faqs": MessageLookupByLibrary.simpleMessage("FAQs"),
+    "features": MessageLookupByLibrary.simpleMessage("Features"),
     "for_Individuals": MessageLookupByLibrary.simpleMessage("For Individuals"),
     "for_Institutions": MessageLookupByLibrary.simpleMessage(
       "For Institutions",
@@ -192,6 +196,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "wasteType": MessageLookupByLibrary.simpleMessage("Waste Type"),
     "welcome": MessageLookupByLibrary.simpleMessage("Welcome Back"),
     "welcome_back": MessageLookupByLibrary.simpleMessage("Welcome back!"),
+    "welcome_description": MessageLookupByLibrary.simpleMessage(
+      "Together, we keep our city clean and beautiful.",
+    ),
     "welcome_message": MessageLookupByLibrary.simpleMessage(
       "Welcome to Green City Cleaning Department",
     ),
@@ -202,6 +209,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Welcome to Green City",
     ),
     "your_bin_number": MessageLookupByLibrary.simpleMessage("Your Bin Number"),
+    "your_contributions": MessageLookupByLibrary.simpleMessage(
+      "Your Contributions",
+    ),
     "your_region": MessageLookupByLibrary.simpleMessage("Your Region"),
     "your_report_type": MessageLookupByLibrary.simpleMessage(
       "Your Report Type",
