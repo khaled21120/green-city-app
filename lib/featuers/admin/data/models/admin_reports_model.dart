@@ -6,7 +6,7 @@ class AdminReportsModel extends Equatable {
   final String? sendAt;
   final String? material;
   final int? quantity;
-  final int? price;
+  final double? price;
   final String? description;
 
   const AdminReportsModel({
@@ -26,7 +26,7 @@ class AdminReportsModel extends Equatable {
       sendAt: json['sendAt'] as String?,
       material: json['material'] as String?,
       quantity: json['quantity'] as int?,
-      price: json['price'] as int?,
+      price: json['price'] as double?,
       description: json['description'] as String?,
     );
   }

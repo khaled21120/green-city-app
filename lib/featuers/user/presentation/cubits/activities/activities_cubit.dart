@@ -11,16 +11,37 @@ class ActivitiesCubit extends Cubit<ActivitiesState> {
   ActivitiesCubit(this.homeRepo) : super(ActivitiesInitial());
   final UserRepo homeRepo;
 
-  void getActivities() async {
-    emit(ActivitiesLoading());
-    final userActivities = await homeRepo.fetchActivities(
-      endPoint: Endpoints.activities,
-    );
-    userActivities.fold(
-      (error) => emit(ActivitiesError(error.errMsg)),
-      (data) => emit(ActivitiesLoaded(data)),
-    );
+void getActivities() async {
+  emit(ActivitiesLoading());
+
+  final allActivitiesResult = await homeRepo.fetchActivities(
+    endPoint: Endpoints.activities,
+  );
+  final myActivitiesResult = await homeRepo.fetchActivities(
+    endPoint: Endpoints.myActivities,
+  );
+
+  if (allActivitiesResult.isLeft()) {
+    emit(ActivitiesError(allActivitiesResult.fold((l) => l.errMsg, (_) => '')));
+    return;
   }
+
+  if (myActivitiesResult.isLeft()) {
+    emit(ActivitiesError(myActivitiesResult.fold((l) => l.errMsg, (_) => '')));
+    return;
+  }
+
+  final allActivities = allActivitiesResult.getOrElse(() => []);
+  final myActivities = myActivitiesResult.getOrElse(() => []);
+
+  // Filter logic
+  final myActivityIds = myActivities.map((activity) => activity.id).toSet();
+  final notMyActivities = allActivities
+      .where((activity) => !myActivityIds.contains(activity.id))
+      .toList();
+
+  emit(ActivitiesLoaded(notMyActivities));
+}
 
   void joinActivity({required int activityId}) async {
     emit(ActivitiesLoading());

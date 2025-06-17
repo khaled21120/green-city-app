@@ -27,7 +27,7 @@ class MyDrawerHeader extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.teal.shade700, Colors.teal.shade400],
+            colors: [Colors.green.shade500, Colors.green.shade700],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),

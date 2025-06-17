@@ -35,11 +35,9 @@ class UserHomePage extends StatelessWidget {
 
   Widget _buildSuccessState(BuildContext context, FetchDataSuccess state) {
     return UserHomeBody(userData: state.userModel);
-    
   }
 
   Widget _buildErrorState() {
     return const Scaffold(body: Center(child: Text('Something went wrong')));
   }
-
 }

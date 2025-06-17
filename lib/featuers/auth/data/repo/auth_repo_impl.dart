@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:green_city/core/utils/endpoints.dart';
 
 import '../../../../core/utils/constants.dart';
@@ -13,6 +14,7 @@ import '../models/user_model.dart';
 class AuthRepoImpl extends AuthRepo {
   AuthRepoImpl(this.apiAuthService);
   final ApiAuthService apiAuthService;
+  final storage = const FlutterSecureStorage();
 
   @override
   Future<Either<Failures, UserModel>> logIn({
@@ -27,7 +29,7 @@ class AuthRepoImpl extends AuthRepo {
         password: password,
       );
       final userData = await apiAuthService.fetchUserData(
-        endPoint: Endpoints.usersEndpoint,
+        endPoint: Endpoints.getUserData,
       );
       final user = UserModel.fromJson(userData);
       await saveUserDataLocal(user);
@@ -45,7 +47,7 @@ class AuthRepoImpl extends AuthRepo {
     try {
       await apiAuthService.signUp(user: data, endPoint: endPoint);
       final userData = await apiAuthService.fetchUserData(
-        endPoint: Endpoints.usersEndpoint,
+        endPoint: Endpoints.getUserData,
       );
       final user = UserModel.fromJson(userData);
       await saveUserDataLocal(user);
@@ -65,6 +67,7 @@ class AuthRepoImpl extends AuthRepo {
   Future<bool> deleteAccount({required String endPoint}) async {
     try {
       await PrefsService.clear();
+      await storage.deleteAll();
       await apiAuthService.deleteUser(endPoint: endPoint);
       return true;
     } on ServerFailure {

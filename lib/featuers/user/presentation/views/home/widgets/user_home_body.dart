@@ -70,6 +70,7 @@ class UserHomeBody extends StatelessWidget {
           SliverAppBar(
             elevation: 0,
             expandedHeight: 120,
+            collapsedHeight: 70,
             floating: true,
             pinned: true,
             automaticallyImplyLeading: false,
@@ -142,6 +143,7 @@ class UserHomeBody extends StatelessWidget {
                 crossAxisCount: 2,
                 mainAxisSpacing: 8,
                 crossAxisSpacing: 8,
+                childAspectRatio: .9,
               ),
               delegate: SliverChildBuilderDelegate((context, index) {
                 final feature = features[index];

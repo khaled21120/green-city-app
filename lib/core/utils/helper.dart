@@ -87,5 +87,4 @@ abstract class Helper {
     final user = PrefsService.getString(Constants.kUserData);
     return UserModel.fromJson(jsonDecode(user!));
   }
-
 }

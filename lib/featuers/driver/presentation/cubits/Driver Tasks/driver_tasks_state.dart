@@ -42,4 +42,3 @@ final class AcceptTaskFailure extends DriverTasksState {
   final String message;
   const AcceptTaskFailure(this.message);
 }
-

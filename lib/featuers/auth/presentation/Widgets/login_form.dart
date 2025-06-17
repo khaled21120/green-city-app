@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:green_city/core/widgets/custom_text_field.dart';
 import 'package:green_city/generated/l10n.dart';
 
 import '../../../../core/widgets/button.dart';
-import '../../../../core/widgets/text_felid.dart';
 import '../../../../core/utils/text_style.dart';
 import '../cubits/log_In/log_in_cubit.dart';
 
@@ -93,7 +93,9 @@ class _LoginFormCardState extends State<LoginFormCard> {
         Text(
           S.of(context).sign_in_to_continue,
           style: MyStyle.title16(context).copyWith(
-            color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+            color: Theme.of(
+              context,
+            ).colorScheme.onSurface.withValues(alpha: 0.6),
           ),
         ),
       ],
@@ -101,38 +103,59 @@ class _LoginFormCardState extends State<LoginFormCard> {
   }
 
   Widget _buildEmailField() {
-    return MyTextField(
-      label: S.of(context).email,
+    return AuthTextField(
+      labelText: S.of(context).email,
       controller: _emailController,
       keyboardType: TextInputType.emailAddress,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return '${S.of(context).enter} ${S.of(context).email}';
+        }
+        if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
+          return 'Please enter a valid email';
+        }
+        return null;
+      },
     );
   }
 
   Widget _buildPasswordField() {
-    return MyTextField(
-      label: S.of(context).password,
+    return AuthTextField(
+      labelText: S.of(context).password,
       controller: _passwordController,
-      isPassword: _obscurePassword,
-      icon: IconButton(
+      obscureText: _obscurePassword,
+      suffixIcon: IconButton(
         icon: Icon(
           _obscurePassword ? Icons.visibility_off : Icons.visibility,
           color: Colors.grey,
         ),
         onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
       ),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return '${S.of(context).enter} ${S.of(context).password}';
+        }
+        if (value.length < 8) {
+          return 'Password must be at least 8 characters';
+        }
+        return null;
+      },
     );
   }
 
   Widget _buildForgotPassword(BuildContext context) {
-    return Align(
-      alignment: Alignment.centerRight,
-      child: TextButton(
-        onPressed: () => GoRouter.of(context).goNamed('forgotPassword'),
-        child: Text(
-          S.of(context).forget_password,
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.primary,
-            fontWeight: FontWeight.w600,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      child: Align(
+        alignment: Alignment.centerRight,
+        child: TextButton(
+          onPressed: () => GoRouter.of(context).goNamed('forgotPassword'),
+          child: Text(
+            S.of(context).forget_password,
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.primary,
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ),
       ),
@@ -146,21 +169,27 @@ class _LoginFormCardState extends State<LoginFormCard> {
   }
 
   Widget _buildSignUpPrompt(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(S.of(context).dont_have_an_account),
-        TextButton(
-          onPressed: () => GoRouter.of(context).goNamed('signup'),
-          child: Text(
-            S.of(context).sign_up,
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.primary,
-              fontWeight: FontWeight.w600,
-            ),
+    return Center(
+      child: TextButton(
+        onPressed: () {
+          GoRouter.of(context).goNamed('signup');
+        },
+        child: RichText(
+          text: TextSpan(
+            text: S.of(context).dont_have_an_account,
+            style: TextStyle(color: Colors.grey.shade600),
+            children: [
+              TextSpan(
+                text: ' ${S.of(context).sign_up}',
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.primary,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
           ),
         ),
-      ],
+      ),
     );
   }
 

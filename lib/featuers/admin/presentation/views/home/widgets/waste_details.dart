@@ -12,6 +12,7 @@ import '../../../../../../core/utils/constants.dart';
 import '../../../../../../core/widgets/text_felid.dart';
 import '../../../../../../core/utils/text_style.dart';
 import '../../../../../../generated/l10n.dart';
+import '../../../../data/models/admin_reports_model.dart';
 
 class WasteDetails extends StatefulWidget {
   const WasteDetails({super.key, required this.title});
@@ -70,20 +71,23 @@ class _WasteDetailsState extends State<WasteDetails> {
     setState(() => isLoading = true);
     try {
       final user = Helper.getUser();
-      context.read<AdminReportsCubit>().sendAdminReport(
-        data: {
-          'warehouseManger': user.name,
-          'warehouseName': warehouse,
-          'sendAt': DateFormat.yMd('en').format(selectedDate),
-          'material': widget.title,
-          'quantity': quantityController.text,
-          'price': calculatePrice(quantityController.text, widget.title),
-          'description': descController.text,
-        },
-      );
+      final report =
+          AdminReportsModel(
+            warehouseManger: user.name,
+            warehouseName: warehouse,
+            sendAt: DateFormat.yMd('en').format(selectedDate),
+            material: widget.title,
+            quantity: int.parse(quantityController.text),
+            price: double.parse(
+              calculatePrice(quantityController.text, widget.title),
+            ),
+            description: descController.text,
+          ).toJson();
+
+      context.read<AdminReportsCubit>().sendAdminReport(data: report);
       Helper.showSnackBar(
         context: context,
-        message: '${widget.title} waste submitted successfully!',
+        message: '${widget.title} report sent successfully!',
       );
       // Clear form after submission
       setState(() {
@@ -92,10 +96,7 @@ class _WasteDetailsState extends State<WasteDetails> {
         descController.clear();
       });
     } catch (e) {
-      Helper.showSnackBar(
-        context: context,
-        message: 'Error submitting waste details: ${e.toString()}',
-      );
+      Helper.showSnackBar(context: context, message: 'Error: ${e.toString()}');
     } finally {
       if (mounted) {
         setState(() => isLoading = false);

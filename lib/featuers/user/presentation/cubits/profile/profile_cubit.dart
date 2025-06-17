@@ -19,7 +19,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   Future<void> fetchUserData() async {
     emit(FetchDataLoading());
     final result = await homeRepo.fetchUserData(
-      endPoint: Endpoints.usersEndpoint,
+      endPoint: Endpoints.getUserData,
     );
     result.fold((error) => emit(FetchDataFailure(error.errMsg)), (user) {
       _currentUser = user;
@@ -34,7 +34,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     emit(FetchDataLoading());
 
     final result = await homeRepo.updateUserData(
-      endPoint: Endpoints.usersEndpoint,
+      endPoint: Endpoints.getUserData,
       data: data,
       isImage: isImage,
     );
@@ -53,7 +53,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   Future<void> deleteAccount() async {
     emit(FetchDataLoading());
     final result = await authRepo.deleteAccount(
-      endPoint: Endpoints.usersEndpoint,
+      endPoint: Endpoints.getUserData,
     );
     emit(LogOutSuccess(result));
   }

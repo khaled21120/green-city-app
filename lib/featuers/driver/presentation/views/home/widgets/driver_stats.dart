@@ -54,7 +54,7 @@ class DriverStats extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 20),
-      
+
                   // Task Info
                   Expanded(
                     child: Column(
@@ -86,7 +86,7 @@ class DriverStats extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 30),
-      
+
           // check tasks Section
           Text(S.of(context).check_tasks, style: MyStyle.title18(context)),
         ],

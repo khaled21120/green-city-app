@@ -17,7 +17,7 @@ class DriverProfileOptions extends StatelessWidget {
           icon: Icons.phone_rounded,
           title: S.of(context).phone_number,
           value: user.phone ?? S.of(context).not_provided,
-          onTap: () =>{},
+          onTap: () => {},
           showTrailingIcon: false,
         ),
         ProfileItem(
@@ -62,7 +62,6 @@ class DriverProfileOptions extends StatelessWidget {
       ],
     );
   }
-
 
   void _navigateToEditProfile(BuildContext context) {
     GoRouter.of(context).pushNamed('editDriverProfile', extra: user);

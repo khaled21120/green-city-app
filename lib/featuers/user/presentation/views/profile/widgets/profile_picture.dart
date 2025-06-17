@@ -99,7 +99,7 @@ class _ProfilePictureState extends State<ProfilePicture> {
 
   Widget _buildPlaceholder() {
     return Container(
-      color: Colors.grey[200],
+      color: Colors.grey[300],
       child: const Icon(Icons.person, size: 60, color: Colors.grey),
     );
   }

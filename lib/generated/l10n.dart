@@ -1059,6 +1059,61 @@ class S {
       args: [],
     );
   }
+
+  /// `Details`
+  String get details {
+    return Intl.message('Details', name: 'details', desc: '', args: []);
+  }
+
+  /// `Task Details`
+  String get task_details {
+    return Intl.message(
+      'Task Details',
+      name: 'task_details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location`
+  String get location {
+    return Intl.message('Location', name: 'location', desc: '', args: []);
+  }
+
+  /// `Type`
+  String get type {
+    return Intl.message('Type', name: 'type', desc: '', args: []);
+  }
+
+  /// `Reported By`
+  String get reported_by {
+    return Intl.message('Reported By', name: 'reported_by', desc: '', args: []);
+  }
+
+  /// `Region`
+  String get region {
+    return Intl.message('Region', name: 'region', desc: '', args: []);
+  }
+
+  /// `Date`
+  String get date {
+    return Intl.message('Date', name: 'date', desc: '', args: []);
+  }
+
+  /// `Task Report`
+  String get task_report {
+    return Intl.message('Task Report', name: 'task_report', desc: '', args: []);
+  }
+
+  /// `Take Photo`
+  String get take_photo {
+    return Intl.message('Take Photo', name: 'take_photo', desc: '', args: []);
+  }
+
+  /// `Description`
+  String get desc {
+    return Intl.message('Description', name: 'desc', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:green_city/core/utils/text_style.dart';
 import 'package:green_city/generated/l10n.dart';
 import '../../../../cubits/profile/profile_cubit.dart';
@@ -33,7 +34,10 @@ class SettingsPage extends StatelessWidget {
                       TextButton(
                         onPressed: () {
                           Navigator.pop(ctx);
-                          ctx.read<ProfileCubit>().deleteAccount();
+                          ctx.read<ProfileCubit>().deleteAccount().then(
+                            // ignore: use_build_context_synchronously
+                            (value) => GoRouter.of(context).goNamed('intro'),
+                          );
                         },
                         child: Text(
                           S.of(context).delete,

@@ -27,15 +27,12 @@ dependencies:
   google_sign_in: ^6.3.0
   flutter_facebook_auth: ^7.1.1
   shared_preferences: ^2.5.2
-  dio: ^5.8.0+1
-  intl: ^0.19.0
   percent_indicator: ^4.2.4
   flutter_launcher_icons: ^0.14.3
   rename: ^3.0.2
   shimmer: ^3.0.0
   cached_network_image: ^3.4.1
   url_launcher: ^6.3.1
-  dash_chat_2: ^0.0.21
   google_generative_ai: ^0.4.6
   flutter_bloc: ^9.1.0
   flutter_secure_storage: ^9.2.4
@@ -44,6 +41,11 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   fl_chart: ^1.0.0
+  intl: ^0.20.2
+  flutter_chat_ui: ^1.6.8
+  flutter_chat_types: ^3.6.2
+  uuid: ^4.5.1
+  dio: ^5.8.0+1
 
 dev_dependencies:
   flutter_test:
@@ -63,7 +65,7 @@ flutter_intl:
 
 flutter_native_splash:
   color: "#000000" # Dark background (black)
-  image: assets/images/icon.png
+  image: assets/images/logo.png
 
   android_12:
     image: assets/images/icon.png

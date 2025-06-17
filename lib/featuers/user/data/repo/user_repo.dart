@@ -17,10 +17,16 @@ abstract class UserRepo {
     required String endPoint,
     required Map<String, dynamic> data,
   });
-  Future<Either<Failures, bool>> joinPoll({required String endPoint, required int id});
+  Future<Either<Failures, bool>> joinPoll({
+    required String endPoint,
+    required int id,
+  });
 
-  Future<Either<Failures, bool>> joinActivity({required String endPoint, required int id});
-  
+  Future<Either<Failures, bool>> joinActivity({
+    required String endPoint,
+    required int id,
+  });
+
   Future<Either<Failures, List<ActivitiesModel>>> fetchActivities({
     required String endPoint,
   });

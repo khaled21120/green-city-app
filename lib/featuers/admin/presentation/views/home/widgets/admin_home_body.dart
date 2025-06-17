@@ -31,6 +31,7 @@ class AdminHomeBody extends StatelessWidget {
           SliverAppBar(
             elevation: 0,
             expandedHeight: 120,
+            collapsedHeight: 70,
             floating: true,
             pinned: true,
             automaticallyImplyLeading: false,

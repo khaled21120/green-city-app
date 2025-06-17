@@ -126,6 +126,15 @@
   "truck_number": "Truck Number",
   "features": "Features",
   "your_contributions": "Your Contributions",
-  "activity_overview": "Activity Overview"
-
+  "activity_overview": "Activity Overview",
+  "details": "Details",
+  "task_details": "Task Details",
+  "location": "Location",
+  "type": "Type",
+  "reported_by": "Reported By",
+  "region": "Region",
+  "date": "Date",
+  "task_report": "Task Report",
+  "take_photo": "Take Photo",
+  "desc": "Description"
 }

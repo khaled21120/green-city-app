@@ -13,14 +13,32 @@ class PollsCubit extends Cubit<PollsState> {
   PollsCubit(this._userRepo) : super(PollsInitial());
   final UserRepo _userRepo;
 
-  void getPolls() async {
-    emit(PollsLoading());
-    final result = await _userRepo.fetchPolls(endPoint: Endpoints.polls);
-    result.fold(
-      (error) => emit(PollsError(error.errMsg)),
-      (data) => emit(PollsLoaded(data)),
-    );
+void getPolls() async {
+  emit(PollsLoading());
+
+  final allPollsResult = await _userRepo.fetchPolls(endPoint: Endpoints.polls);
+  final myPollsResult = await _userRepo.fetchPolls(endPoint: Endpoints.myPolls);
+
+  if (allPollsResult.isLeft()) {
+    emit(PollsError(allPollsResult.fold((l) => l.errMsg, (_) => '')));
+    return;
   }
+
+  if (myPollsResult.isLeft()) {
+    emit(PollsError(myPollsResult.fold((l) => l.errMsg, (_) => '')));
+    return;
+  }
+
+  final allPolls = allPollsResult.getOrElse(() => []);
+  final myPolls = myPollsResult.getOrElse(() => []);
+
+  // Filter logic: exclude any poll that exists in myPolls
+  final myPollIds = myPolls.map((poll) => poll.id).toSet();
+
+  final notMyPolls = allPolls.where((poll) => !myPollIds.contains(poll.id)).toList();
+
+  emit(PollsLoaded(notMyPolls));
+}
 
   Future<void> votePoll(BuildContext context, {required int pollId}) async {
     // Only emit loading if we have existing data to preserve

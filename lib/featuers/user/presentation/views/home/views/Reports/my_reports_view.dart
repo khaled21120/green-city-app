@@ -42,7 +42,7 @@ class MyReportsView extends StatelessWidget {
     // Responsive grid configuration
     final crossAxisCount = isWideScreen ? 3 : 2;
     final childAspectRatio =
-        isWideScreen ? 0.8 : screenSize.width / (screenSize.height / 1.8);
+        isWideScreen ? 0.8 : screenSize.width / (screenSize.height / 1.2);
 
     if (state is ReportsLoading) {
       return ShimmerGridItem(aspectRatio: childAspectRatio);

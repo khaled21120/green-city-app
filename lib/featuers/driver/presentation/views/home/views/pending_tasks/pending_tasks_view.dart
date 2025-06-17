@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:green_city/core/utils/helper.dart';
 import 'package:green_city/core/widgets/error_widget.dart';
 import 'package:green_city/core/utils/text_style.dart';
 import 'package:green_city/featuers/driver/presentation/cubits/Driver%20Tasks/driver_tasks_cubit.dart';
@@ -13,6 +14,7 @@ class PendingTasksView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userData = Helper.getUser();
     return Scaffold(
       appBar: AppBar(title: Text(S.of(context).pending_tasks)),
       body: BlocBuilder<DriverTasksCubit, DriverTasksState>(
@@ -60,8 +62,11 @@ class PendingTasksView extends StatelessWidget {
                 itemCount: state.tasks.length,
                 separatorBuilder: (context, index) => const SizedBox(height: 8),
                 itemBuilder:
-                    (context, index) =>
-                        PendingTaskItem(userReportsModel: state.tasks[index]),
+                    (context, index) => PendingTaskItem(
+                      userReportsModel: state.tasks[index],
+                      userModel: userData,
+                      id: state.tasks[index].id!,
+                    ),
               ),
             );
           }

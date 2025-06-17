@@ -108,7 +108,10 @@ class TodayTaskItem extends StatelessWidget {
                         color: Theme.of(context).colorScheme.primary,
                       ),
                       const SizedBox(width: 8),
-                      Text('Task Details', style: MyStyle.title20(context)),
+                      Text(
+                        S.of(context).task_details,
+                        style: MyStyle.title20(context),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 16),
@@ -116,26 +119,34 @@ class TodayTaskItem extends StatelessWidget {
                   // Details
                   _buildDetailRow(
                     context,
-                    'Location:',
+                    '${S.of(context).location}:',
                     userReportsModel.siteLocation,
                   ),
                   _buildDetailRow(
                     context,
-                    'Type:',
+                    '${S.of(context).type}:',
                     userReportsModel.announcementType,
                   ),
                   _buildDetailRow(
                     context,
-                    'Description:',
+                    '${S.of(context).description}:',
                     userReportsModel.announcementDescription,
                   ),
                   _buildDetailRow(
                     context,
-                    'Reported by:',
+                    '${S.of(context).reported_by}:',
                     userReportsModel.userName,
                   ),
-                  _buildDetailRow(context, 'Region:', userReportsModel.region),
-                  _buildDetailRow(context, 'Date:', userReportsModel.todayDate),
+                  _buildDetailRow(
+                    context,
+                    '${S.of(context).region}:',
+                    userReportsModel.region,
+                  ),
+                  _buildDetailRow(
+                    context,
+                    '${S.of(context).date}:',
+                    userReportsModel.todayDate,
+                  ),
 
                   const SizedBox(height: 24),
 

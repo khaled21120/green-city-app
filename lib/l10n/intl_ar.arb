@@ -126,5 +126,15 @@
   "truck_number": "رقم الشاحنة",
   "features": "الشائعة",
   "your_contributions": "المساهمات الخاصة بك",
-  "activity_overview": "نظرة عامة على النشاط"
+  "activity_overview": "نظرة عامة على النشاط",
+  "details": "التفاصيل",
+  "task_details": "تفاصيل المهمة",
+  "location": "الموقع",
+  "type": "نوع",
+  "reported_by": "تبلغ بواسطة",
+  "region": "المنطقة",
+  "date": "التاريخ",
+  "task_report": "تقرير المهمة",
+  "take_photo": "اختر صورة",
+  "desc": "الوصف"
 }

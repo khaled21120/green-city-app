@@ -60,7 +60,7 @@ class LoginPage extends StatelessWidget {
 
   void _handleSuccessfulLogin(BuildContext context, UserModel user) {
     final routeName = switch (user.role) {
-      'Admin' => 'adminHome',
+      'RecylingManagemnet' => 'adminHome',
       'TruckDriver' => 'driverHome',
       _ => 'home',
     };

@@ -9,6 +9,7 @@ abstract class MyStyle {
       color: Theme.of(context).colorScheme.onSurface,
     );
   }
+
   static TextStyle title14(BuildContext context) {
     return GoogleFonts.roboto(
       fontSize: 14,

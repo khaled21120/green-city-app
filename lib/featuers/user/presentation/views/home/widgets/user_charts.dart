@@ -17,7 +17,7 @@ class UserStatsBarChart extends StatelessWidget {
     final statsData = [
       20,
       50,
-      60,
+      60
       // userData.numOfAcceptedAnnouncementsCount ?? 0,
       // userData.numOfCompletedActivitiesCount ?? 0,
       // userData.numOfCompletedPollsCount ?? 0,
@@ -66,7 +66,7 @@ class UserStatsBarChart extends StatelessWidget {
               child: BarChart(
                 BarChartData(
                   alignment: BarChartAlignment.spaceAround,
-                  maxY: maxValue * 1.2, 
+                  maxY: maxValue * 1.2,
                   minY: 0,
                   titlesData: FlTitlesData(
                     show: true,
