@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:green_city/featuers/admin/data/models/warehouses_model.dart';
 
 import '../../../../core/errors/error.dart';
 import '../../../../core/services/data_base_service.dart';
@@ -31,27 +32,23 @@ class AdminRepoImpl extends AdminRepo {
     required Map<String, dynamic> data,
   }) async {
     try {
-      await databaseService.updateData(
-        endPoint: endPoint,
-        data: data,
-        isImage: false,
-      );
+      await databaseService.updateData(endPoint: endPoint, data: data);
     } on ServerFailure catch (e) {
       throw ServerFailure(e.errMsg);
     }
   }
 
   @override
-  Future<Either<Failures, List<UserReportsModel>>> fetchWehreHouses({
+  Future<Either<Failures, List<WarehousesModel>>> fetchWehreHouses({
     required String endPoint,
   }) async {
     try {
-      final anounnsList = await databaseService.fetchListData(
+      final warehouses = await databaseService.fetchListData(
         endPoint: endPoint,
       );
-      final anounns =
-          anounnsList.map((e) => UserReportsModel.fromJson(e)).toList();
-      return Right(anounns);
+      final warehouse =
+          warehouses.map((e) => WarehousesModel.fromJson(e)).toList();
+      return Right(warehouse);
     } on ServerFailure catch (e) {
       return Left(ServerFailure(e.errMsg));
     }

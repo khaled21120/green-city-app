@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:green_city/core/widgets/button.dart';
+import 'package:green_city/core/widgets/custom_text_field.dart';
 import 'package:green_city/core/widgets/text_felid.dart';
 import 'package:green_city/core/utils/text_style.dart';
+import 'package:green_city/featuers/user/data/models/contact_us_model.dart';
 import 'package:green_city/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../../../../core/utils/helper.dart';
+import '../../../../cubits/contact_us/contact_us_cubit.dart';
 import 'widgets/contact_card.dart';
 
 class ContactUsView extends StatefulWidget {
@@ -34,22 +39,31 @@ class _ContactUsViewState extends State<ContactUsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(S.of(context).contact_us)),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Header
-            _buildHeader(context),
-            const SizedBox(height: 30),
+      body: BlocListener<ContactUsCubit, ContactUsState>(
+        listener: (context, state) {
+          if (state is ContactUsError) {
+            Helper.showSnackBar(context: context, message: state.message);
+          }
+          if (state is ContactUsSuccess) {
+            Helper.showSnackBar(context: context, message: state.message);
+          }
+        },
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            spacing: 30,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Header
+              _buildHeader(context),
 
-            // Contact Methods
-            _buildContactMethods(context),
-            const SizedBox(height: 30),
+              // Contact Methods
+              _buildContactMethods(context),
 
-            // Contact Form
-            _buildContactForm(context),
-          ],
+              // Contact Form
+              _buildContactForm(context),
+            ],
+          ),
         ),
       ),
     );
@@ -105,17 +119,37 @@ class _ContactUsViewState extends State<ContactUsView> {
         children: [
           Text('Send us a message', style: MyStyle.title20(context)),
           const SizedBox(height: 16),
-          MyTextField(
+          AuthTextField(
             controller: nameController,
-            label: S.of(context).name,
-            icon: const Icon(Icons.person),
+            labelText: S.of(context).name,
+            suffixIcon: const Icon(Icons.person),
             keyboardType: TextInputType.name,
+            validator: (String? value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter your name';
+              }
+              if (value.length < 2) {
+                return 'Name must be at least 2 characters';
+              }
+              return null;
+            },
           ),
           const SizedBox(height: 16),
-          MyTextField(
+          AuthTextField(
             controller: emailController,
-            label: S.of(context).email,
-            icon: const Icon(Icons.email),
+            labelText: S.of(context).email,
+            suffixIcon: const Icon(Icons.email),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return '${S.of(context).enter} ${S.of(context).email}';
+              }
+              if (!RegExp(
+                r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+              ).hasMatch(value)) {
+                return 'Please enter a valid email';
+              }
+              return null;
+            },
           ),
           const SizedBox(height: 16),
           MyTextField(
@@ -163,9 +197,23 @@ class _ContactUsViewState extends State<ContactUsView> {
 
   void _submitForm() {
     if (formKey.currentState!.validate()) {
-      // Form is valid, proceed with submission
+      final feedback = ContactUsModel(
+        name: nameController.text,
+        email: emailController.text,
+        message: messageController.text,
+      );
+      context.read<ContactUsCubit>().sendFeedback(feedback);
+      _resetForm();
     } else {
       setState(() => autovalidateMode = AutovalidateMode.always);
     }
+  }
+
+  void _resetForm() {
+    setState(() {
+      nameController.clear();
+      emailController.clear();
+      messageController.clear();
+    });
   }
 }

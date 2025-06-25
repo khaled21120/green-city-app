@@ -59,7 +59,7 @@ class ServerFailure extends Failures {
     try {
       message = data;
       switch (statusCode) {
-        case 307 :
+        case 307:
           message = 'Session expired. Please login again.';
         case 400:
           message =

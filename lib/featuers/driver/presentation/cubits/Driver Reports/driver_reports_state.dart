@@ -9,7 +9,6 @@ sealed class DriverReportsState extends Equatable {
 
 final class DriverReportsInitial extends DriverReportsState {}
 
-
 final class CompleteTaskLoading extends DriverReportsState {}
 
 final class CompleteTaskSuccess extends DriverReportsState {

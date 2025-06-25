@@ -113,6 +113,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "location": MessageLookupByLibrary.simpleMessage("Location"),
     "locationAddress": MessageLookupByLibrary.simpleMessage("Location Address"),
     "message": MessageLookupByLibrary.simpleMessage("Message"),
+    "my_Activities": MessageLookupByLibrary.simpleMessage("My Activities"),
     "my_reports": MessageLookupByLibrary.simpleMessage("My Reports"),
     "name": MessageLookupByLibrary.simpleMessage("Name"),
     "no_data_available": MessageLookupByLibrary.simpleMessage(

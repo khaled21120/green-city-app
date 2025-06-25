@@ -465,6 +465,16 @@ class S {
     return Intl.message('Polls', name: 'polls', desc: '', args: []);
   }
 
+  /// `My Activities`
+  String get my_Activities {
+    return Intl.message(
+      'My Activities',
+      name: 'my_Activities',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Vote`
   String get vote {
     return Intl.message('Vote', name: 'vote', desc: '', args: []);

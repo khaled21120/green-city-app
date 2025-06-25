@@ -5,6 +5,7 @@ import 'package:green_city/featuers/user/data/models/user_reports_model.dart';
 import 'package:green_city/featuers/user/data/models/polls_model.dart';
 
 import '../../../../core/errors/error.dart';
+import '../models/region_model.dart';
 
 abstract class UserRepo {
   Future<Either<Failures, UserModel>> fetchUserData({required String endPoint});
@@ -22,12 +23,16 @@ abstract class UserRepo {
     required int id,
   });
 
-  Future<Either<Failures, bool>> joinActivity({
+  Future<Either<Failures, bool>> editActivity({
     required String endPoint,
-    required int id,
+    required String id,
   });
 
   Future<Either<Failures, List<ActivitiesModel>>> fetchActivities({
+    required String endPoint,
+  });
+
+  Future<Either<Failures, List<RegionModel>>> fetchRegions({
     required String endPoint,
   });
   Future<Either<Failures, List<PollsModel>>> fetchPolls({
@@ -37,6 +42,10 @@ abstract class UserRepo {
     required String endPoint,
   });
   Future<bool> sendUserReports({
+    required String endPoint,
+    required Map<String, dynamic> data,
+  });
+  Future<bool> sendMessage({
     required String endPoint,
     required Map<String, dynamic> data,
   });

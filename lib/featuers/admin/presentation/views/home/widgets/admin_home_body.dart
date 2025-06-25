@@ -88,7 +88,7 @@ class AdminHomeBody extends StatelessWidget {
             ),
           ),
           SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            padding: const EdgeInsets.all(20),
             sliver: SliverGrid(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,

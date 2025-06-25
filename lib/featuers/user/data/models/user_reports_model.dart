@@ -7,7 +7,7 @@ class UserReportsModel extends Equatable {
   final String? announcementType;
   final String? announcementDescription;
   final String? siteLocation;
-  final String? binNumber;
+  final int? binNumber;
   final String? region;
   final String? todayDate;
   final String? photoFile;
@@ -32,7 +32,7 @@ class UserReportsModel extends Equatable {
         id: json['id'] as int?,
         userName: json['userName'] as String?,
         email: json['email'] as String?,
-        binNumber: json['binNumber'] as String?,
+        binNumber: json['binNumber'] as int?,
         region: json['regionName'] as String?,
         announcementType: json['announcementType'] as String?,
         announcementDescription: json['announcementDescription'] as String?,

@@ -36,21 +36,23 @@ class LoginPage extends StatelessWidget {
               strokeWidth: 2,
               valueColor: AlwaysStoppedAnimation<Color>(MyColors.primary),
             ),
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                const GradientBG(),
-                Positioned(
-                  top: size.height * 0.05,
-                  child: Image.asset(
-                    Constants.logo,
-                    width: size.width * 0.6,
-                    filterQuality: FilterQuality.high,
-                    semanticLabel: 'App Logo',
+            child: SingleChildScrollView(
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  const GradientBG(),
+                  Positioned(
+                    top: size.height * 0.05,
+                    child: Image.asset(
+                      Constants.logo,
+                      width: size.width * 0.6,
+                      filterQuality: FilterQuality.high,
+                      semanticLabel: 'App Logo',
+                    ),
                   ),
-                ),
-                Positioned(bottom: 0, child: LoginFormCard(size: size)),
-              ],
+                  Positioned(bottom: 0, child: LoginFormCard(size: size)),
+                ],
+              ),
             ),
           );
         },

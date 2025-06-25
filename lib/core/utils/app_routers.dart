@@ -4,15 +4,17 @@ import 'package:green_city/core/utils/helper.dart';
 import 'package:green_city/featuers/admin/presentation/cubits/admin_report/admin_reports_cubit.dart';
 import 'package:green_city/featuers/driver/presentation/cubits/Driver%20Tasks/driver_tasks_cubit.dart';
 import 'package:green_city/featuers/driver/presentation/views/home/views/pending_tasks/pending_tasks_view.dart';
-import 'package:green_city/featuers/driver/presentation/views/profile/views/edit/edit_driver_profile_view.dart';
+import 'package:green_city/featuers/user/presentation/views/home/views/activities/my_activities_view.dart';
 import 'package:green_city/featuers/user/presentation/views/profile/user_profile_page.dart';
 
+import '../../featuers/driver/presentation/cubits/Driver Reports/driver_reports_cubit.dart';
 import '../../featuers/driver/presentation/views/home/views/today_tasks/today_tasks_view.dart';
 import '../../featuers/driver/presentation/views/profile/driver_profile.dart';
 import '../../featuers/user/presentation/cubits/activities/activities_cubit.dart';
+import '../../featuers/user/presentation/cubits/contact_us/contact_us_cubit.dart';
 import '../../featuers/user/presentation/cubits/user_report/user_reports_cubit.dart';
 import '../../featuers/user/presentation/views/home/views/contact_us/contact_us_view.dart';
-import '../../featuers/user/presentation/views/home/views/chellanges/chellange_page.dart';
+import '../../featuers/user/presentation/views/home/views/activities/chellange_page.dart';
 import '../services/back_auth_service.dart';
 import '../../featuers/admin/presentation/views/home/admin_home_page.dart';
 import '../../featuers/admin/presentation/views/home/widgets/waste_details.dart';
@@ -36,7 +38,7 @@ import '../../featuers/user/presentation/views/home/views/chat/chat_page.dart';
 import '../../featuers/user/presentation/views/home/views/faqs/faqs_page.dart';
 import '../../featuers/user/presentation/views/home/views/notify/notifications_view.dart';
 import '../../featuers/user/presentation/views/home/views/polls/polls_view.dart';
-import '../../featuers/user/presentation/views/home/views/chellanges/widgets/details.dart';
+import '../../featuers/user/presentation/views/home/views/activities/widgets/details.dart';
 import '../../featuers/user/presentation/views/profile/views/edit/edit_user_profile_view.dart';
 import '../../featuers/user/presentation/views/profile/views/settings/settings_page.dart';
 import '../services/get_it_service.dart';
@@ -124,8 +126,18 @@ abstract class AppRouters {
         builder:
             (_, state) => BlocProvider(
               create:
-                  (context) => getIt.get<ActivitiesCubit>()..getActivities(),
+                  (context) => getIt.get<ActivitiesCubit>()..getAllActivities(),
               child: const ActivitiesView(),
+            ),
+      ),
+      GoRoute(
+        path: '/myActivities',
+        name: 'myActivities',
+        builder:
+            (_, state) => BlocProvider(
+              create:
+                  (context) => getIt.get<ActivitiesCubit>()..getMyActivities(),
+              child: const MyActivitiesView(),
             ),
       ),
       GoRoute(
@@ -170,14 +182,18 @@ abstract class AppRouters {
       GoRoute(
         path: '/contactUs',
         name: 'contactUs',
-        builder: (_, __) => const ContactUsView(),
+        builder:
+            (_, __) => BlocProvider(
+              create: (context) => getIt<ContactUsCubit>(),
+              child: const ContactUsView(),
+            ),
       ),
       GoRoute(
         path: '/reports',
         name: 'reports',
         builder:
             (_, _) => BlocProvider(
-              create: (context) => getIt<UserReportsCubit>(),
+              create: (context) => getIt<UserReportsCubit>()..fetchRegions(),
               child: const ReportsView(),
             ),
       ),
@@ -187,14 +203,6 @@ abstract class AppRouters {
         builder: (_, state) {
           final user = state.extra as UserModel;
           return EditUserProfileView(user: user);
-        },
-      ),
-      GoRoute(
-        path: '/editDriverProfile',
-        name: 'editDriverProfile',
-        builder: (_, state) {
-          final user = state.extra as UserModel;
-          return EditDriverProfileView(user: user);
         },
       ),
       GoRoute(
@@ -215,8 +223,14 @@ abstract class AppRouters {
         path: '/pendingTasks',
         name: 'pendingTasks',
         builder:
-            (_, _) => BlocProvider(
-              create: (context) => getIt<DriverTasksCubit>()..getDriverTasks(),
+            (_, _) => MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create:
+                      (context) => getIt<DriverTasksCubit>()..getDriverTasks(),
+                ),
+                BlocProvider(create: (context) => getIt<DriverReportsCubit>()),
+              ],
               child: const PendingTasksView(),
             ),
       ),
@@ -244,7 +258,7 @@ abstract class AppRouters {
         builder: (_, state) {
           final title = state.extra as String;
           return BlocProvider(
-            create: (context) => getIt<AdminReportsCubit>(),
+            create: (context) => getIt<AdminReportsCubit>()..fetchWarehouses(),
             child: WasteDetails(title: title),
           );
         },

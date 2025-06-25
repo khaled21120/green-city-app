@@ -31,7 +31,6 @@ class _WasteDetailsState extends State<WasteDetails> {
   String? warehouse;
   bool isLoading = false;
 
-  // Waste type pricing information
   static const Map<String, double> wastePrices = {
     'Plastic': 100,
     'Chemical': 150,
@@ -63,7 +62,7 @@ class _WasteDetailsState extends State<WasteDetails> {
     return (quantityValue * pricePerKg).toStringAsFixed(2);
   }
 
-  Future<void> submitForm() async {
+  void submitForm() async {
     if (!_formKey.currentState!.validate()) {
       setState(() => autovalidateMode = AutovalidateMode.always);
       return;
@@ -71,20 +70,19 @@ class _WasteDetailsState extends State<WasteDetails> {
     setState(() => isLoading = true);
     try {
       final user = Helper.getUser();
-      final report =
-          AdminReportsModel(
-            warehouseManger: user.name,
-            warehouseName: warehouse,
-            sendAt: DateFormat.yMd('en').format(selectedDate),
-            material: widget.title,
-            quantity: int.parse(quantityController.text),
-            price: double.parse(
-              calculatePrice(quantityController.text, widget.title),
-            ),
-            description: descController.text,
-          ).toJson();
+      final report = AdminReportsModel(
+        warehouseManger: user.name,
+        warehouseName: warehouse,
+        sendAt: DateFormat.yMd('en').format(selectedDate),
+        material: widget.title,
+        quantity: int.parse(quantityController.text),
+        price: double.parse(
+          calculatePrice(quantityController.text, widget.title),
+        ),
+        description: descController.text,
+      );
 
-      context.read<AdminReportsCubit>().sendAdminReport(data: report);
+      context.read<AdminReportsCubit>().sendAdminReport(report);
       Helper.showSnackBar(
         context: context,
         message: '${widget.title} report sent successfully!',
@@ -95,6 +93,7 @@ class _WasteDetailsState extends State<WasteDetails> {
         quantityController.clear();
         descController.clear();
       });
+      Navigator.pop(context);
     } catch (e) {
       Helper.showSnackBar(context: context, message: 'Error: ${e.toString()}');
     } finally {
@@ -112,7 +111,7 @@ class _WasteDetailsState extends State<WasteDetails> {
 
     return Scaffold(
       appBar: AppBar(title: Text(widget.title), centerTitle: true),
-      body: BlocListener<AdminReportsCubit, AdminReportsState>(
+      body: BlocConsumer<AdminReportsCubit, AdminReportsState>(
         listener: (context, state) {
           if (state is AdminReportsFailure) {
             Helper.showSnackBar(context: context, message: state.message);
@@ -120,90 +119,102 @@ class _WasteDetailsState extends State<WasteDetails> {
             Helper.showSnackBar(context: context, message: state.message);
           }
         },
-        child: ModalProgressHUD(
-          inAsyncCall: isLoading,
-          opacity: 0.4,
-          progressIndicator: const CircularProgressIndicator(
-            strokeWidth: 2,
-            valueColor: AlwaysStoppedAnimation<Color>(MyColors.primary),
-          ),
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-            child: Form(
-              key: _formKey,
-              autovalidateMode: autovalidateMode,
-              child: Column(
-                spacing: 20,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Waste Type Info Card
-                  _buildWasteInfoCard(context, widget.title),
+        builder:
+            (context, state) => ModalProgressHUD(
+              inAsyncCall: state is AdminReportsLoading || isLoading,
+              opacity: 0.4,
+              progressIndicator: const CircularProgressIndicator(
+                strokeWidth: 2,
+                valueColor: AlwaysStoppedAnimation<Color>(MyColors.primary),
+              ),
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 20,
+                ),
+                child: Form(
+                  key: _formKey,
+                  autovalidateMode: autovalidateMode,
+                  child: Column(
+                    spacing: 20,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Waste Type Info Card
+                      _buildWasteInfoCard(context, widget.title),
 
-                  // Quantity Input
-                  MyTextField(
-                    controller: quantityController,
-                    label: strings.estimatedQuantity,
-                    icon: const Icon(FontAwesomeIcons.weightHanging),
-                    keyboardType: TextInputType.number,
-                  ),
+                      // Quantity Input
+                      MyTextField(
+                        controller: quantityController,
+                        label: strings.estimatedQuantity,
+                        icon: const Icon(FontAwesomeIcons.weightHanging),
+                        keyboardType: TextInputType.number,
+                      ),
 
-                  // Description Input
-                  MyTextField(
-                    controller: descController,
-                    label: strings.additional_information,
-                    icon: const Icon(Icons.description),
-                    maxLines: 3,
-                  ),
+                      // Description Input
+                      MyTextField(
+                        controller: descController,
+                        label: strings.additional_information,
+                        icon: const Icon(Icons.description),
+                        maxLines: 3,
+                      ),
 
-                  // Warehouse Selection
-                  _buildDropdown(
-                    label: strings.select_warehouse,
-                    value: warehouse,
-                    items: Constants.warehouse,
-                    onChanged: (val) => setState(() => warehouse = val),
-                  ),
-                  const SizedBox(height: 4),
+                      // Warehouse Selection
+                      _buildDropdown(
+                        label: strings.select_warehouse,
+                        value: warehouse,
+                        items:
+                            context
+                                .read<AdminReportsCubit>()
+                                .warehouses
+                                .map((e) => e.warehouseName!)
+                                .toList(),
+                        onChanged: (val) => setState(() => warehouse = val),
+                      ),
+                      const SizedBox(height: 4),
 
-                  // Price Calculation
-                  Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      // ignore: deprecated_member_use
-                      color: theme.colorScheme.primary.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Builder(
-                      builder: (context) {
-                        return Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              strings.paymentInformation,
-                              style: MyStyle.title18(context),
-                            ),
-                            Text(
-                              '$price EGP',
-                              style: MyStyle.title18(context).copyWith(
-                                fontWeight: FontWeight.bold,
-                                color: theme.colorScheme.primary,
-                              ),
-                            ),
-                          ],
-                        );
-                      },
-                    ),
-                  ),
-                  const SizedBox(height: 12),
+                      // Price Calculation
+                      Container(
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          // ignore: deprecated_member_use
+                          color: theme.colorScheme.primary.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Builder(
+                          builder: (context) {
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  strings.paymentInformation,
+                                  style: MyStyle.title18(context),
+                                ),
+                                Text(
+                                  '$price EGP',
+                                  style: MyStyle.title18(context).copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    color: theme.colorScheme.primary,
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+                      ),
+                      const SizedBox(height: 12),
 
-                  // Submit Button
-                  Center(
-                    child: MyButton(text: strings.submit, onTap: submitForm),
+                      // Submit Button
+                      Center(
+                        child: MyButton(
+                          text: strings.submit,
+                          onTap: submitForm,
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
-          ),
-        ),
       ),
     );
   }
@@ -254,7 +265,7 @@ class _WasteDetailsState extends State<WasteDetails> {
   }) {
     return DropdownButtonFormField<String>(
       decoration: InputDecoration(
-        labelText: label,
+        labelText: value,
         border: const UnderlineInputBorder(),
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 16,

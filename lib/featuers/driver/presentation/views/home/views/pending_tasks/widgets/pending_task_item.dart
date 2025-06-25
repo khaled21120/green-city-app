@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:green_city/core/widgets/text_felid.dart';
 import 'package:green_city/featuers/user/data/models/user_reports_model.dart';
 import 'package:green_city/generated/l10n.dart';
@@ -404,12 +405,14 @@ class _PendingTaskItemState extends State<PendingTaskItem> {
             final image = _imageNotifier.value;
             Navigator.pop(dialogContext);
             context.read<DriverReportsCubit>().completeTask(
+              id: widget.id,
               name: widget.userModel.name ?? 'User',
               desc: _noteController.text,
-              sentAt: DateFormat.yMd().format(DateTime.now()),
+              sentAt: DateFormat.yMd('en').format(DateTime.now()),
               announcementsID: widget.id,
               photoFile: image!,
             );
+            if (mounted) GoRouter.of(context).pushNamed('driverHome');
           },
           child: Text(S.of(context).submit),
         ),

@@ -13,8 +13,8 @@ class DriverReportsCubit extends Cubit<DriverReportsState> {
   DriverReportsCubit(this.driverRepo) : super(DriverReportsInitial());
   final DriverRepo driverRepo;
 
-
   void completeTask({
+    required int id,
     required String name,
     required String desc,
     required String sentAt,
@@ -27,7 +27,7 @@ class DriverReportsCubit extends Cubit<DriverReportsState> {
       filename: photoFile.path.split('/').last,
     );
     final result = await driverRepo.completeTask(
-      endPoint: Endpoints.completeDriverTask,
+      endPoint: '${Endpoints.completeDriverTask}/$id',
       data: {
         'driverName': name,
         'reportDESC': desc,

@@ -50,6 +50,12 @@ class UserDrawer extends StatelessWidget {
       ),
       _buildMenuItem(
         context,
+        icon: FontAwesomeIcons.solidCalendar,
+        title: S.of(context).my_Activities,
+        routeName: 'myActivities',
+      ),
+      _buildMenuItem(
+        context,
         icon: FontAwesomeIcons.solidEnvelope,
         title: S.of(context).contact_us,
         routeName: 'contactUs',

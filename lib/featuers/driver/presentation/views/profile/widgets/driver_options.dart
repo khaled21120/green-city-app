@@ -64,7 +64,7 @@ class DriverProfileOptions extends StatelessWidget {
   }
 
   void _navigateToEditProfile(BuildContext context) {
-    GoRouter.of(context).pushNamed('editDriverProfile', extra: user);
+    GoRouter.of(context).pushNamed('editProfile', extra: user);
   }
 
   void _navigateToSettings(BuildContext context) {

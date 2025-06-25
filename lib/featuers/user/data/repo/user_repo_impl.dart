@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
 import 'package:green_city/featuers/user/data/models/activities_model.dart';
+import 'package:green_city/featuers/user/data/models/region_model.dart';
 import 'package:green_city/featuers/user/data/models/user_reports_model.dart';
 
 import '../../../../core/utils/constants.dart';
@@ -26,10 +27,9 @@ class UserRepoImpl extends UserRepo {
       final isUpdated = await databaseService.updateData(
         endPoint: endPoint,
         data: data,
-        isImage: isImage,
       );
       if (isUpdated) {
-        final res = await databaseService.fetchUserData(endPoint: endPoint);
+        final res = await databaseService.fetchMapData(endPoint: endPoint);
         final userData = UserModel.fromJson(res);
         await saveUserDataLocal(userData);
         return Right(userData);
@@ -44,10 +44,9 @@ class UserRepoImpl extends UserRepo {
   @override
   Future<Either<Failures, UserModel>> fetchUserData({
     required String endPoint,
-    String? uId,
   }) async {
     try {
-      final userData = await databaseService.fetchUserData(endPoint: endPoint);
+      final userData = await databaseService.fetchMapData(endPoint: endPoint);
       final user = UserModel.fromJson(userData);
       await saveUserDataLocal(user);
       return Right(user);
@@ -84,9 +83,9 @@ class UserRepoImpl extends UserRepo {
     required String endPoint,
   }) async {
     try {
-      final polls = await databaseService.fetchListData(endPoint: endPoint);
-      final activities = polls.map((e) => PollsModel.fromJson(e)).toList();
-      return Right(activities);
+      final pollsList = await databaseService.fetchListData(endPoint: endPoint);
+      final polls = pollsList.map((e) => PollsModel.fromJson(e)).toList();
+      return Right(polls);
     } on ServerFailure catch (e) {
       return Left(ServerFailure(e.errMsg));
     }
@@ -137,7 +136,6 @@ class UserRepoImpl extends UserRepo {
       final isUpdated = await databaseService.updateData(
         endPoint: endPoint,
         data: data,
-        isImage: false,
       );
       return isUpdated;
     } on ServerFailure catch (e) {
@@ -162,15 +160,27 @@ class UserRepoImpl extends UserRepo {
   }
 
   @override
-  Future<Either<Failures, bool>> joinActivity({
+  Future<Either<Failures, List<RegionModel>>> fetchRegions({
     required String endPoint,
-    required int id,
   }) async {
     try {
-      final res = await databaseService.postByID(
+      final regionsList = await databaseService.fetchListData(
         endPoint: endPoint,
-        id: '/$id/subscribe',
       );
+      final regions = regionsList.map((e) => RegionModel.fromJson(e)).toList();
+      return Right(regions);
+    } on ServerFailure catch (e) {
+      return Left(ServerFailure(e.errMsg));
+    }
+  }
+
+  @override
+  Future<Either<Failures, bool>> editActivity({
+    required String endPoint,
+    required String id,
+  }) async {
+    try {
+      final res = await databaseService.postByID(endPoint: endPoint, id: id);
       return Right(res);
     } on ServerFailure catch (e) {
       return Left(ServerFailure(e.errMsg));
@@ -190,6 +200,19 @@ class UserRepoImpl extends UserRepo {
       return Right(res);
     } on ServerFailure catch (e) {
       return Left(ServerFailure(e.errMsg));
+    }
+  }
+
+  @override
+  Future<bool> sendMessage({
+    required String endPoint,
+    required Map<String, dynamic> data,
+  }) {
+    try {
+      final res = databaseService.sendData(endPoint: endPoint, data: data);
+      return res;
+    } on ServerFailure catch (e) {
+      throw ServerFailure(e.errMsg);
     }
   }
 }

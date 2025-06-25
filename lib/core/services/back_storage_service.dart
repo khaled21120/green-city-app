@@ -14,10 +14,9 @@ class ApiStorageService extends DatabaseService {
   Future<bool> sendData({
     required String endPoint,
     required Map<String, dynamic> data,
-    String? uId,
   }) async {
     try {
-      final FormData formData = FormData.fromMap(data);
+      final formData = FormData.fromMap(data);
       final res = await dio.post(
         endPoint,
         data: formData,
@@ -27,32 +26,15 @@ class ApiStorageService extends DatabaseService {
       if (res.statusCode == 200 || res.statusCode == 201) {
         return true;
       } else {
-        return false;
-      }
-    } on DioException {
-      return false;
-    }
-  }
-
-  @override
-  Future<Map<String, dynamic>> fetchMapData({
-    required String endPoint,
-    String? uId,
-  }) async {
-    try {
-      final res = await dio.get(endPoint);
-      if (res.statusCode == 200) {
-        return res.data as Map<String, dynamic>;
-      } else {
         throw Exception('Unexpected status code: ${res.statusCode}');
       }
-    } on DioException catch (dioError) {
-      throw ServerFailure.fromDioException(dioError);
+    } on DioException catch (e) {
+      throw ServerFailure.fromDioException(e);
     }
   }
 
   @override
-  Future<Map<String, dynamic>> fetchUserData({required String endPoint}) async {
+  Future<Map<String, dynamic>> fetchMapData({required String endPoint}) async {
     try {
       final res = await dio.get(endPoint);
       if (res.statusCode == 200) {
@@ -75,14 +57,10 @@ class ApiStorageService extends DatabaseService {
   }
 
   @override
-  Future<bool> updateData({
-    required bool isImage,
-    required String endPoint,
-    required dynamic data,
-  }) async {
+  Future<bool> updateData({required String endPoint, required data}) async {
     try {
       late FormData formData;
-      if (isImage && data is File) {
+      if (data is File) {
         formData = FormData.fromMap({
           'profileImage': await MultipartFile.fromFile(
             data.path,
@@ -100,20 +78,15 @@ class ApiStorageService extends DatabaseService {
       if (res.statusCode == 200 || res.statusCode == 204) {
         return true;
       } else {
-        return false;
+        throw Exception('Unexpected status code: ${res.statusCode}');
       }
-    } on ServerFailure {
-      return false;
-    } catch (e) {
-      return false;
+    } on DioException catch (dioError) {
+      throw ServerFailure.fromDioException(dioError);
     }
   }
 
   @override
-  Future<List<dynamic>> fetchListData({
-    required String endPoint,
-    String? uId,
-  }) async {
+  Future<List<dynamic>> fetchListData({required String endPoint}) async {
     try {
       final res = await dio.get(endPoint);
       if (res.statusCode == 200) {
@@ -133,7 +106,7 @@ class ApiStorageService extends DatabaseService {
       if (res.statusCode == 200 || res.statusCode == 204) {
         return true;
       } else {
-        return false;
+        throw Exception('Unexpected status code: ${res.statusCode}');
       }
     } on DioException catch (dioError) {
       throw ServerFailure.fromDioException(dioError);

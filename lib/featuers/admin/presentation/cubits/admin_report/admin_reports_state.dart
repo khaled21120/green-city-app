@@ -20,3 +20,13 @@ final class AdminReportsFailure extends AdminReportsState {
   final String message;
   const AdminReportsFailure(this.message);
 }
+
+final class FetchWarehousesFailure extends AdminReportsState {
+  final String message;
+  const FetchWarehousesFailure(this.message);
+}
+
+final class FetchWarehousesSuccess extends AdminReportsState {
+  final List<WarehousesModel> warehousesList;
+  const FetchWarehousesSuccess(this.warehousesList);
+}

@@ -23,7 +23,10 @@ class TodayTaskItem extends StatelessWidget {
                 angle: 3.14 / 2 * 3,
                 child: TextButton(
                   onPressed: () => _showDialog(context: context),
-                  child: Text('Details', style: MyStyle.title14(context)),
+                  child: Text(
+                    S.of(context).details,
+                    style: MyStyle.title14(context),
+                  ),
                 ),
               ),
               VerticalDivider(color: Colors.grey[400], thickness: 2),
@@ -66,6 +69,7 @@ class TodayTaskItem extends StatelessWidget {
                   context.read<DriverTasksCubit>().acceptTask(
                     id: userReportsModel.id!,
                   );
+                  context.read<DriverTasksCubit>().getAllTasks();
                 },
                 child: Text(
                   S.of(context).accept,
@@ -129,7 +133,7 @@ class TodayTaskItem extends StatelessWidget {
                   ),
                   _buildDetailRow(
                     context,
-                    '${S.of(context).description}:',
+                    '${S.of(context).desc}:',
                     userReportsModel.announcementDescription,
                   ),
                   _buildDetailRow(

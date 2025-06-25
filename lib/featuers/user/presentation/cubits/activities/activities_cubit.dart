@@ -11,7 +11,7 @@ class ActivitiesCubit extends Cubit<ActivitiesState> {
   ActivitiesCubit(this.homeRepo) : super(ActivitiesInitial());
   final UserRepo homeRepo;
 
-void getActivities() async {
+void getAllActivities() async {
   emit(ActivitiesLoading());
 
   final allActivitiesResult = await homeRepo.fetchActivities(
@@ -42,16 +42,39 @@ void getActivities() async {
 
   emit(ActivitiesLoaded(notMyActivities));
 }
-
-  void joinActivity({required int activityId}) async {
+  void getMyActivities() async {
     emit(ActivitiesLoading());
-    final result = await homeRepo.joinActivity(
+    final myActivities = await homeRepo.fetchActivities(
+      endPoint: Endpoints.myActivities,
+    );
+    myActivities.fold(
+      (failure) => emit(ActivitiesError(failure.errMsg)),
+      (myActivities) => emit(MyActivitiesLoaded(myActivities)),
+    );
+  }
+
+  void subscribe({required int activityId}) async {
+    emit(ActivitiesLoading());
+    final result = await homeRepo.editActivity(
       endPoint: Endpoints.activities,
-      id: activityId,
+      id: '/$activityId/subscribe',
     );
     result.fold(
       (error) => emit(ActivitiesError(error.errMsg)),
       (data) => emit(const ActivityJoined('تم الانضمام للنشاط بنجاح')),
+    );
+  }
+
+  void unSubscribe({required int activityId}) async {
+    emit(ActivitiesLoading());
+    final result = await homeRepo.editActivity(
+      endPoint: Endpoints.myActivities,
+      id: '/$activityId/unsubscribe',
+    );
+    result.fold(
+      (error) => emit(ActivitiesError(error.errMsg)),
+      (data) =>
+          emit(const ActivityUnSubscribe('تم الغاء الأشتراك في النشاط بنجاح')),
     );
   }
 }

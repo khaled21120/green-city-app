@@ -3,17 +3,9 @@ abstract class DatabaseService {
     required String endPoint,
     required Map<String, dynamic> data,
   });
-  Future<Map<String, dynamic>> fetchMapData({
-    required String endPoint,
-    String? uId,
-  });
-  Future<Map<String, dynamic>> fetchUserData({required String endPoint});
-  Future<List<dynamic>> fetchListData({required String endPoint, String? uId});
+  Future<Map<String, dynamic>> fetchMapData({required String endPoint});
+  Future<List<dynamic>> fetchListData({required String endPoint});
   Future<void> deleteData({required String endPoint});
-  Future<bool> updateData({
-    required bool isImage,
-    required String endPoint,
-    required dynamic data,
-  });
+  Future<bool> updateData({required String endPoint, required data});
   Future<bool> postByID({required String endPoint, required String id});
 }

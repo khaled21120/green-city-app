@@ -45,6 +45,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       },
       (user) {
         _currentUser = user;
+        emit(FetchDataSuccess(user));
         emit(UpdateDataSuccess(user));
       },
     );

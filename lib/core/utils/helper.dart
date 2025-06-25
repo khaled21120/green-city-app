@@ -87,4 +87,7 @@ abstract class Helper {
     final user = PrefsService.getString(Constants.kUserData);
     return UserModel.fromJson(jsonDecode(user!));
   }
+
+  static String openPollLink({required String id}) =>
+      'https://docs.google.com/forms/d/e/$id/viewform';
 }

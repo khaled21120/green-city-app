@@ -115,6 +115,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "location": MessageLookupByLibrary.simpleMessage("الموقع"),
     "locationAddress": MessageLookupByLibrary.simpleMessage("عنوان الموقع"),
     "message": MessageLookupByLibrary.simpleMessage("الرسالة"),
+    "my_Activities": MessageLookupByLibrary.simpleMessage("أنشطتي"),
     "my_reports": MessageLookupByLibrary.simpleMessage("بلاغاتي"),
     "name": MessageLookupByLibrary.simpleMessage("الاسم"),
     "no_data_available": MessageLookupByLibrary.simpleMessage(

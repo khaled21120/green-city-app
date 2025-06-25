@@ -157,9 +157,7 @@ class UserHomeBody extends StatelessWidget {
               }, childCount: features.length),
             ),
           ),
-          const SliverToBoxAdapter(
-            child: SizedBox(height: 80), // Space for FAB
-          ),
+          const SliverToBoxAdapter(child: SizedBox(height: 80)),
         ],
       ),
     );

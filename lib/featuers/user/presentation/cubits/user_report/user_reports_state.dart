@@ -25,3 +25,13 @@ final class ReportsError extends ReportsState {
   final String message;
   const ReportsError(this.message);
 }
+
+final class FetchRegionsSuccess extends ReportsState {
+  final List<RegionModel> regionsList;
+  const FetchRegionsSuccess(this.regionsList);
+}
+
+final class FetchRegionsError extends ReportsState {
+  final String message;
+  const FetchRegionsError(this.message);
+}

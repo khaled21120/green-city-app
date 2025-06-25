@@ -14,6 +14,11 @@ final class ActivitiesLoaded extends ActivitiesState {
   const ActivitiesLoaded(this.activities);
 }
 
+final class MyActivitiesLoaded extends ActivitiesState {
+  final List<ActivitiesModel> myActivities;
+  const MyActivitiesLoaded(this.myActivities);
+}
+
 final class ActivitiesError extends ActivitiesState {
   final String message;
   const ActivitiesError(this.message);
@@ -24,4 +29,9 @@ final class ActivitiesLoading extends ActivitiesState {}
 final class ActivityJoined extends ActivitiesState {
   final String message;
   const ActivityJoined(this.message);
+}
+
+final class ActivityUnSubscribe extends ActivitiesState {
+  final String message;
+  const ActivityUnSubscribe(this.message);
 }

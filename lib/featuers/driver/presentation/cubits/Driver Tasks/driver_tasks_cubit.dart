@@ -43,7 +43,6 @@ class DriverTasksCubit extends Cubit<DriverTasksState> {
     );
     if (result) {
       emit(const AcceptTaskSuccess('تم قبول المهمة بنجاح'));
-      getDriverTasks();
     } else {
       emit(const AcceptTaskFailure('حدث خطأ ما الرجاء المحاولة مرة اخرى'));
     }

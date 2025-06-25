@@ -206,20 +206,25 @@ class _UserReportsState extends State<UserReports> {
                         onChanged: (val) => setState(() => reportType = val),
                       ),
                       _buildDropdown(
-                        label: S.of(context).your_bin_number,
-                        value: binNumber,
-                        items: Constants.binNumbers,
-                        onChanged: (val) => setState(() => binNumber = val),
-                      ),
-                      _buildDropdown(
                         label: S.of(context).your_region,
                         value: region,
-                        items: Constants.regions,
+                        items:
+                            context
+                                .read<UserReportsCubit>()
+                                .regions
+                                .map((e) => e.regionName!)
+                                .toList(),
                         onChanged: (val) => setState(() => region = val),
                       ),
+                      if (region != null)
+                        _buildDropdown(
+                          label: S.of(context).your_bin_number,
+                          value: binNumber,
+                          items: Constants.binNumbers,
+                          onChanged: (val) => setState(() => binNumber = val),
+                        ),
                     ],
                   ),
-
                   const SizedBox(height: 32),
 
                   // 📤 Submit

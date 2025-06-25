@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
+import 'package:green_city/featuers/admin/data/models/warehouses_model.dart';
 import '../../../../core/errors/error.dart';
-import '../../../user/data/models/user_reports_model.dart';
 
 abstract class AdminRepo {
   Future updateData({
@@ -8,7 +8,7 @@ abstract class AdminRepo {
     required Map<String, dynamic> data,
   });
 
-  Future<Either<Failures, List<UserReportsModel>>> fetchWehreHouses({
+  Future<Either<Failures, List<WarehousesModel>>> fetchWehreHouses({
     required String endPoint,
   });
   Future<bool> sendAdminReports({
