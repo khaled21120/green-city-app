@@ -31,7 +31,6 @@ class _UserReportsState extends State<UserReports> {
   DateTime selectedDate = DateTime.now();
   String? binNumber, reportType, region;
   File? image;
-  bool isLoading = false;
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   void submitForm() async {
     if (image == null) {
@@ -50,14 +49,6 @@ class _UserReportsState extends State<UserReports> {
         user: user,
         image: image!,
       );
-      messageController.clear();
-      addressController.clear();
-      setState(() {
-        binNumber = null;
-        reportType = null;
-        region = null;
-        image = null;
-      });
     } else {
       setState(() {
         autovalidateMode = AutovalidateMode.always;
@@ -67,7 +58,6 @@ class _UserReportsState extends State<UserReports> {
 
   Future<void> pickImage(bool isCamera) async {
     try {
-      setState(() => isLoading = true);
       final file = await Helper.pickImage(isCamera: isCamera);
       if (!mounted) return;
 
@@ -78,9 +68,19 @@ class _UserReportsState extends State<UserReports> {
       }
     } catch (e) {
       Helper.showSnackBar(context: context, message: 'Error picking image');
-    } finally {
-      if (mounted) setState(() => isLoading = false);
     }
+  }
+
+  void _resetForm() {
+    messageController.clear();
+    addressController.clear();
+    setState(() {
+      selectedDate = DateTime.now();
+      binNumber = null;
+      reportType = null;
+      region = null;
+      image = null;
+    });
   }
 
   @override
@@ -92,154 +92,158 @@ class _UserReportsState extends State<UserReports> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<UserReportsCubit, ReportsState>(
+    return BlocConsumer<UserReportsCubit, ReportsState>(
       listener: (context, state) {
         if (state is ReportsSend) {
           Helper.showSnackBar(context: context, message: state.message);
+          _resetForm();
         } else if (state is ReportsError) {
           Helper.showSnackBar(context: context, message: state.message);
         }
       },
-      child: ModalProgressHUD(
-        inAsyncCall: isLoading,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
-            child: Form(
-              key: _formKey,
-              autovalidateMode: autovalidateMode,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // 📍 Address & 📩 Message
-                  MyTextField(
-                    controller: addressController,
-                    label: S.of(context).address,
-                    icon: const Icon(Icons.location_on),
-                    maxLines: 2,
-                  ),
-                  const SizedBox(height: 12),
-                  MyTextField(
-                    controller: messageController,
-                    label: S.of(context).message,
-                    icon: const Icon(Icons.message),
-                    maxLines: 2,
-                  ),
-                  const SizedBox(height: 20),
-
-                  // Date & Image
-                  Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: MyColors.primary.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(12),
+      builder: (context, state) {
+        return ModalProgressHUD(
+          inAsyncCall: state is ReportsLoading,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+              child: Form(
+                key: _formKey,
+                autovalidateMode: autovalidateMode,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // 📍 Address & 📩 Message
+                    MyTextField(
+                      controller: addressController,
+                      label: S.of(context).address,
+                      icon: const Icon(Icons.location_on),
+                      maxLines: 2,
                     ),
-                    child: Column(
-                      spacing: 12,
+                    const SizedBox(height: 12),
+                    MyTextField(
+                      controller: messageController,
+                      label: S.of(context).message,
+                      icon: const Icon(Icons.message),
+                      maxLines: 2,
+                    ),
+                    const SizedBox(height: 20),
+
+                    // Date & Image
+                    Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: MyColors.primary.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Column(
+                        spacing: 12,
+                        children: [
+                          Row(
+                            spacing: 6,
+                            children: [
+                              Text(
+                                S.of(context).select_date,
+                                style: MyStyle.title16(context),
+                              ),
+                              const Spacer(),
+                              Text(
+                                DateFormat.yMd().format(selectedDate),
+                                style: MyStyle.title16(context),
+                              ),
+                              IconButton.filled(
+                                style: IconButton.styleFrom(elevation: 8),
+                                icon: const Icon(Icons.calendar_month),
+                                onPressed: () async {
+                                  final date = await showDatePicker(
+                                    context: context,
+                                    initialDate: selectedDate,
+                                    firstDate: DateTime(2000),
+                                    lastDate: DateTime(2100),
+                                  );
+                                  if (date != null) {
+                                    setState(() => selectedDate = date);
+                                  }
+                                },
+                              ),
+                            ],
+                          ),
+                          Row(
+                            spacing: 6,
+                            children: [
+                              Text(
+                                S.of(context).upload_image,
+                                style: MyStyle.title16(context),
+                              ),
+                              const Spacer(),
+                              Text(
+                                image == null
+                                    ? S.of(context).no_image
+                                    : image!.path.split('/').last,
+                                style: MyStyle.title16(context),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              IconButton.filled(
+                                style: IconButton.styleFrom(elevation: 8),
+                                icon: const Icon(FontAwesomeIcons.camera),
+                                onPressed:
+                                    () => _showImagePickerOptions(context),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    const Divider(),
+
+                    // 📦 Dropdowns
+                    Wrap(
+                      spacing: 13,
+                      runSpacing: 10,
                       children: [
-                        Row(
-                          spacing: 6,
-                          children: [
-                            Text(
-                              S.of(context).select_date,
-                              style: MyStyle.title16(context),
-                            ),
-                            const Spacer(),
-                            Text(
-                              DateFormat.yMd().format(selectedDate),
-                              style: MyStyle.title16(context),
-                            ),
-                            IconButton.filled(
-                              style: IconButton.styleFrom(elevation: 8),
-                              icon: const Icon(Icons.calendar_month),
-                              onPressed: () async {
-                                final date = await showDatePicker(
-                                  context: context,
-                                  initialDate: selectedDate,
-                                  firstDate: DateTime(2000),
-                                  lastDate: DateTime(2100),
-                                );
-                                if (date != null) {
-                                  setState(() => selectedDate = date);
-                                }
-                              },
-                            ),
-                          ],
+                        _buildDropdown(
+                          label: S.of(context).your_report_type,
+                          value: reportType,
+                          items: Constants.announcementTypes,
+                          onChanged: (val) => setState(() => reportType = val),
                         ),
-                        Row(
-                          spacing: 6,
-                          children: [
-                            Text(
-                              S.of(context).upload_image,
-                              style: MyStyle.title16(context),
-                            ),
-                            const Spacer(),
-                            Text(
-                              image == null
-                                  ? S.of(context).no_image
-                                  : image!.path.split('/').last,
-                              style: MyStyle.title16(context),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            IconButton.filled(
-                              style: IconButton.styleFrom(elevation: 8),
-                              icon: const Icon(FontAwesomeIcons.camera),
-                              onPressed: () => _showImagePickerOptions(context),
-                            ),
-                          ],
+                        _buildDropdown(
+                          label: S.of(context).your_region,
+                          value: region,
+                          items:
+                              context
+                                  .read<UserReportsCubit>()
+                                  .regions
+                                  .map((region) => region.regionName!)
+                                  .toList(),
+                          onChanged: (val) => setState(() => region = val),
                         ),
+                        if (region != null)
+                          _buildDropdown(
+                            label: S.of(context).your_bin_number,
+                            value: binNumber,
+                            items: Constants.binNumbers,
+                            onChanged: (val) => setState(() => binNumber = val),
+                          ),
                       ],
                     ),
-                  ),
-                  const SizedBox(height: 20),
-                  const Divider(),
+                    const SizedBox(height: 32),
 
-                  // 📦 Dropdowns
-                  Wrap(
-                    spacing: 13,
-                    runSpacing: 10,
-                    children: [
-                      _buildDropdown(
-                        label: S.of(context).your_report_type,
-                        value: reportType,
-                        items: Constants.announcementTypes,
-                        onChanged: (val) => setState(() => reportType = val),
+                    // 📤 Submit
+                    Center(
+                      child: MyButton(
+                        text: S.of(context).submit,
+                        onTap: submitForm,
                       ),
-                      _buildDropdown(
-                        label: S.of(context).your_region,
-                        value: region,
-                        items:
-                            context
-                                .read<UserReportsCubit>()
-                                .regions
-                                .map((e) => e.regionName!)
-                                .toList(),
-                        onChanged: (val) => setState(() => region = val),
-                      ),
-                      if (region != null)
-                        _buildDropdown(
-                          label: S.of(context).your_bin_number,
-                          value: binNumber,
-                          items: Constants.binNumbers,
-                          onChanged: (val) => setState(() => binNumber = val),
-                        ),
-                    ],
-                  ),
-                  const SizedBox(height: 32),
-
-                  // 📤 Submit
-                  Center(
-                    child: MyButton(
-                      text: S.of(context).submit,
-                      onTap: submitForm,
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 

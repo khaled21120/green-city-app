@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:green_city/core/widgets/error_widget.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 import '../../../../../../core/utils/helper.dart';
@@ -68,11 +69,15 @@ class _UserProfileBodyState extends State<UserProfileBody> {
     BuildContext context,
   ) {
     if (state is FetchDataFailure) {
-      return Center(child: Text(state.errMsg));
+      return ErrorsWidget(
+        message: state.errMsg,
+        onPressed:
+            () async => await context.read<ProfileCubit>().fetchUserData(),
+      );
     }
 
     return RefreshIndicator(
-      onRefresh: () async => context.read<ProfileCubit>().fetchUserData(),
+      onRefresh: () async => await context.read<ProfileCubit>().fetchUserData(),
       child: SingleChildScrollView(
         controller: _scrollController,
         physics: const AlwaysScrollableScrollPhysics(),

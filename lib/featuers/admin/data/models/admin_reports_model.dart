@@ -5,7 +5,7 @@ class AdminReportsModel extends Equatable {
   final String? warehouseName;
   final String? sendAt;
   final String? material;
-  final int? quantity;
+  final double? quantity;
   final double? price;
   final String? description;
 
@@ -25,7 +25,7 @@ class AdminReportsModel extends Equatable {
       warehouseName: json['warehouseName'] as String?,
       sendAt: json['sendAt'] as String?,
       material: json['material'] as String?,
-      quantity: json['quantity'] as int?,
+      quantity: json['quantity'] as double?,
       price: json['price'] as double?,
       description: json['description'] as String?,
     );

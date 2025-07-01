@@ -137,5 +137,14 @@
   "date": "Date",
   "task_report": "Task Report",
   "take_photo": "Take Photo",
-  "desc": "Description"
+  "desc": "Description",
+  "unsubscribe": "Unsubscribe",
+  "subscribe": "Subscribe",
+  "subscriptionType": "Subscription Type",
+  "subscriptionDuration": "Subscription Duration",
+  "price": "Price",
+  "subscription": "Subscription",
+  "subscriptionDate": "Subscription Date",
+  "subscriptionStatus": "Subscription Status",
+  "paid_tasks":"Paid Tasks"
 }

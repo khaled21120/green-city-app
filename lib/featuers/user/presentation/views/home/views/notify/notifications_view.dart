@@ -16,7 +16,7 @@ class NotificationsView extends StatefulWidget {
 
 class _NotificationsViewState extends State<NotificationsView>
     with SingleTickerProviderStateMixin {
-  late TabController _tabController;
+  late final TabController _tabController;
 
   @override
   void initState() {
@@ -28,6 +28,10 @@ class _NotificationsViewState extends State<NotificationsView>
   void dispose() {
     _tabController.dispose();
     super.dispose();
+  }
+
+  Future<void> _refresh() async {
+    context.read<NotificationsCubit>().loadAllNotifications();
   }
 
   @override
@@ -45,29 +49,27 @@ class _NotificationsViewState extends State<NotificationsView>
                 } else if (state is NotificationsError) {
                   return ErrorsWidget(
                     message: state.message,
-                    onPressed:
-                        () async =>
-                            context
-                                .read<NotificationsCubit>()
-                                .loadAllNotifications(),
+                    onPressed: _refresh,
                   );
                 } else if (state is NotificationsLoaded) {
-                  return TabBarView(
-                    controller: _tabController,
-                    children: [
-                      // Private Tab
-                      NotificationList(
-                        notifications: state.privateNotifications,
-                        onTap: () {},
-                      ),
-                      // Public Tab
-                      NotificationList(
-                        notifications: state.publicNotifications,
-                        onTap: () {},
-                      ),
-                    ],
+                  return RefreshIndicator(
+                    onRefresh: _refresh,
+                    child: TabBarView(
+                      controller: _tabController,
+                      children: [
+                        NotificationList(
+                          notifications: state.privateNotifications,
+                          isPublic: false,
+                        ),
+                        NotificationList(
+                          notifications: state.publicNotifications,
+                          isPublic: true,
+                        ),
+                      ],
+                    ),
                   );
                 }
+
                 return Center(
                   child: Text(
                     S.of(context).no_data_available,

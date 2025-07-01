@@ -50,51 +50,24 @@ class UserReportsCubit extends Cubit<ReportsState> {
           'PhotoFile': file,
         },
       );
-      if (!result) {
-        emit(const ReportsError('حدث خطأ ما. الرجاء المحاولة مرة اخرى'));
-      } else {
+      result.fold((error) => emit(ReportsError(error.errMsg)), (announs) {
         emit(const ReportsSend('تم ارسال الاعلان بنجاح'));
-      }
+      });
     } on ServerFailure catch (e) {
       emit(ReportsError(e.toString()));
     }
   }
 
-  void sendPayedReports({
-    required String announcementType,
-    required String binNumber,
-    required DateTime selectedDate,
-    required String address,
-    required String region,
-    required String message,
-    required UserModel user,
-    required File image,
-  }) async {
+  void sendPayedReports(UserReportsModel userReportsModel) async {
     emit(ReportsLoading());
     try {
-      final file = await MultipartFile.fromFile(
-        image.path,
-        filename: image.path.split('/').last,
-      );
       final result = await homeRepo.sendUserReports(
         endPoint: Endpoints.sendPayedReports,
-        data: {
-          'UserName': user.name,
-          'Email': user.email,
-          'AnnouncementType': announcementType,
-          'AnnouncementDescription': message,
-          'BinNumber': binNumber,
-          'SiteLocation': address,
-          'regionName': region,
-          'TodayDate': DateFormat.yMd('en').format(selectedDate),
-          'PhotoFile': file,
-        },
+        data: userReportsModel.toJson(),
       );
-      if (!result) {
-        emit(const ReportsError('حدث خطأ ما. الرجاء المحاولة مرة اخرى'));
-      } else {
+      result.fold((error) => emit(ReportsError(error.errMsg)), (announs) {
         emit(const ReportsSend('تم ارسال الاعلان بنجاح'));
-      }
+      });
     } on ServerFailure catch (e) {
       emit(ReportsError(e.toString()));
     }

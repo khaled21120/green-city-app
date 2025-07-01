@@ -74,7 +74,7 @@ class MyChallangesItem extends StatelessWidget {
                   context.read<ActivitiesCubit>().getMyActivities();
                 },
                 child: Text(
-                  S.of(context).accept,
+                  S.of(context).unsubscribe,
                   style: MyStyle.title14(
                     context,
                   ).copyWith(color: Colors.white, fontWeight: FontWeight.w500),
@@ -125,35 +125,19 @@ class MyChallangesItem extends StatelessWidget {
                   // Details
                   _buildDetailRow(
                     context,
-                    '${S.of(context).location}:',
+                    '${S.of(context).name}:',
                     activitiesModel.actName,
                   ),
                   _buildDetailRow(
                     context,
-                    '${S.of(context).type}:',
+                    '${S.of(context).desc}:',
                     activitiesModel.actDescription,
                   ),
                   _buildDetailRow(
                     context,
-                    '${S.of(context).description}:',
+                    '${S.of(context).date}:',
                     activitiesModel.actIntervalDate,
                   ),
-                  _buildDetailRow(
-                    context,
-                    '${S.of(context).reported_by}:',
-                    activitiesModel.actstate,
-                  ),
-                  _buildDetailRow(
-                    context,
-                    '${S.of(context).region}:',
-                    activitiesModel.numOfSubscribers.toString(),
-                  ),
-                  _buildDetailRow(
-                    context,
-                    '${S.of(context).date}:',
-                    activitiesModel.numOfRequiredSubscribers.toString(),
-                  ),
-
                   const SizedBox(height: 24),
 
                   // Close button

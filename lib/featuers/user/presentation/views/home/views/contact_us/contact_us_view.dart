@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:green_city/core/widgets/button.dart';
-import 'package:green_city/core/widgets/custom_text_field.dart';
 import 'package:green_city/core/widgets/text_felid.dart';
 import 'package:green_city/core/utils/text_style.dart';
 import 'package:green_city/featuers/user/data/models/contact_us_model.dart';
@@ -22,15 +21,11 @@ class ContactUsView extends StatefulWidget {
 
 class _ContactUsViewState extends State<ContactUsView> {
   final formKey = GlobalKey<FormState>();
-  final nameController = TextEditingController();
-  final emailController = TextEditingController();
   final messageController = TextEditingController();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
   @override
   void dispose() {
-    nameController.dispose();
-    emailController.dispose();
     messageController.dispose();
     super.dispose();
   }
@@ -119,39 +114,6 @@ class _ContactUsViewState extends State<ContactUsView> {
         children: [
           Text('Send us a message', style: MyStyle.title20(context)),
           const SizedBox(height: 16),
-          AuthTextField(
-            controller: nameController,
-            labelText: S.of(context).name,
-            suffixIcon: const Icon(Icons.person),
-            keyboardType: TextInputType.name,
-            validator: (String? value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter your name';
-              }
-              if (value.length < 2) {
-                return 'Name must be at least 2 characters';
-              }
-              return null;
-            },
-          ),
-          const SizedBox(height: 16),
-          AuthTextField(
-            controller: emailController,
-            labelText: S.of(context).email,
-            suffixIcon: const Icon(Icons.email),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return '${S.of(context).enter} ${S.of(context).email}';
-              }
-              if (!RegExp(
-                r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
-              ).hasMatch(value)) {
-                return 'Please enter a valid email';
-              }
-              return null;
-            },
-          ),
-          const SizedBox(height: 16),
           MyTextField(
             controller: messageController,
             maxLines: 5,
@@ -197,9 +159,10 @@ class _ContactUsViewState extends State<ContactUsView> {
 
   void _submitForm() {
     if (formKey.currentState!.validate()) {
+      final userData = Helper.getUser();
       final feedback = ContactUsModel(
-        name: nameController.text,
-        email: emailController.text,
+        name: userData.name,
+        email: userData.email,
         message: messageController.text,
       );
       context.read<ContactUsCubit>().sendFeedback(feedback);
@@ -211,8 +174,6 @@ class _ContactUsViewState extends State<ContactUsView> {
 
   void _resetForm() {
     setState(() {
-      nameController.clear();
-      emailController.clear();
       messageController.clear();
     });
   }

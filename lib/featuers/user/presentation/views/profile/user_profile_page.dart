@@ -10,7 +10,7 @@ class UserProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<ProfileCubit>().fetchUserData();
+    // context.read<ProfileCubit>().fetchUserData();
     return Scaffold(
       appBar: AppBar(title: Text(S.of(context).profile)),
       body: const UserProfileBody(),

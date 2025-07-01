@@ -1,6 +1,5 @@
 abstract class Constants {
   static const String _images = 'assets/images/';
-  static const String _assets = 'assets/';
   static const String appDescription = '''
 
 اسم المشروع:ai garbage network for a green city
@@ -1761,7 +1760,6 @@ https://poe.com/s/yQhJZGTvZVktG8aPENka
 لو عندك سؤال عن اي شيء عن ادارة النفايات  او شي مرتبط بها انا جاهز للمساعدة! اما بالنسبة لسؤالك
 خارج نطاق معرفتي.شكرا لتفهمك''';
 
-  static const String db = '${_assets}db.json';
   static const String animation = '${_images}animation.json';
   static const String animation2 = '${_images}animation2.json';
   static const String logo = '${_images}logo.png';
@@ -1849,19 +1847,17 @@ https://poe.com/s/yQhJZGTvZVktG8aPENka
     'garbage throw away',
   ];
   static const List<String> binNumbers = ['101', '2', '3', '4', '5'];
-  static const List<String> regions = [
-    'Port Said Shark',
-    'Port Said Gharb',
-    'Port Said Al-Zhour',
-    'Port Said Arab',
-    'Port Said Manakh',
+  static const List<String> subscriptionType = [
+    'One-time',
+    'Weekly',
+    'Monthly',
   ];
-  static const List<String> warehouse = [
-    'Egypt warehouse',
-    'El-Salam warehouse',
-    'Port Said warehouse',
+  static const List<String> subscriptionDuration = [
+    '1 month',
+    '3 month',
+    '6 month',
+    '12 month',
   ];
-
   static const String kUserData = 'userData';
 
   static const String kIsLogin = 'isLogin';

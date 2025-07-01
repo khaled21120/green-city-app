@@ -3,7 +3,6 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:green_city/core/services/get_it_service.dart';
 import 'package:green_city/core/utils/constants.dart';
-import 'package:jwt_decoder/jwt_decoder.dart';
 
 import '../errors/error.dart';
 import 'prefs_service.dart';

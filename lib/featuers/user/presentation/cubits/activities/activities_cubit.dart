@@ -11,37 +11,43 @@ class ActivitiesCubit extends Cubit<ActivitiesState> {
   ActivitiesCubit(this.homeRepo) : super(ActivitiesInitial());
   final UserRepo homeRepo;
 
-void getAllActivities() async {
-  emit(ActivitiesLoading());
+  void getAllActivities() async {
+    emit(ActivitiesLoading());
 
-  final allActivitiesResult = await homeRepo.fetchActivities(
-    endPoint: Endpoints.activities,
-  );
-  final myActivitiesResult = await homeRepo.fetchActivities(
-    endPoint: Endpoints.myActivities,
-  );
+    final allActivitiesResult = await homeRepo.fetchActivities(
+      endPoint: Endpoints.activities,
+    );
+    final myActivitiesResult = await homeRepo.fetchActivities(
+      endPoint: Endpoints.myActivities,
+    );
 
-  if (allActivitiesResult.isLeft()) {
-    emit(ActivitiesError(allActivitiesResult.fold((l) => l.errMsg, (_) => '')));
-    return;
+    if (allActivitiesResult.isLeft()) {
+      emit(
+        ActivitiesError(allActivitiesResult.fold((l) => l.errMsg, (_) => '')),
+      );
+      return;
+    }
+
+    if (myActivitiesResult.isLeft()) {
+      emit(
+        ActivitiesError(myActivitiesResult.fold((l) => l.errMsg, (_) => '')),
+      );
+      return;
+    }
+
+    final allActivities = allActivitiesResult.getOrElse(() => []);
+    final myActivities = myActivitiesResult.getOrElse(() => []);
+
+    // Filter logic
+    final myActivityIds = myActivities.map((activity) => activity.id).toSet();
+    final notMyActivities =
+        allActivities
+            .where((activity) => !myActivityIds.contains(activity.id))
+            .toList();
+
+    emit(ActivitiesLoaded(notMyActivities));
   }
 
-  if (myActivitiesResult.isLeft()) {
-    emit(ActivitiesError(myActivitiesResult.fold((l) => l.errMsg, (_) => '')));
-    return;
-  }
-
-  final allActivities = allActivitiesResult.getOrElse(() => []);
-  final myActivities = myActivitiesResult.getOrElse(() => []);
-
-  // Filter logic
-  final myActivityIds = myActivities.map((activity) => activity.id).toSet();
-  final notMyActivities = allActivities
-      .where((activity) => !myActivityIds.contains(activity.id))
-      .toList();
-
-  emit(ActivitiesLoaded(notMyActivities));
-}
   void getMyActivities() async {
     emit(ActivitiesLoading());
     final myActivities = await homeRepo.fetchActivities(
@@ -68,7 +74,7 @@ void getAllActivities() async {
   void unSubscribe({required int activityId}) async {
     emit(ActivitiesLoading());
     final result = await homeRepo.editActivity(
-      endPoint: Endpoints.myActivities,
+      endPoint: Endpoints.activities,
       id: '/$activityId/unsubscribe',
     );
     result.fold(

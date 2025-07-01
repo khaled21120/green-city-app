@@ -48,59 +48,58 @@ class _EditUserProfileViewState extends State<EditUserProfileView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(S.of(context).edit_profile)),
-      body: BlocListener<ProfileCubit, ProfileState>(
-        listenWhen: (previous, current) => current is! ProfileStateInitial,
-        listener: (context, state) {
-          if (state is UpdateDataSuccess) {
-            _handleUpdateSuccess(context);
-          } else if (state is UpdateDataFailure) {
-            _handleUpdateFailure(context, state);
-          }
-        },
-        child: ModalProgressHUD(
-          inAsyncCall: _isLoading,
-          opacity: 0.4,
-          progressIndicator: const CircularProgressIndicator(
-            strokeWidth: 2,
-            valueColor: AlwaysStoppedAnimation<Color>(MyColors.primary),
-          ),
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Form(
-              key: _formKey,
-              autovalidateMode: autovalidateMode,
-              child: Column(
-                children: [
-                  const SizedBox(height: 24),
-                  MyTextField(
-                    icon: const Icon(FontAwesomeIcons.solidUser),
-                    label: S.of(context).name,
-                    controller: _nameController,
-                  ),
-                  const SizedBox(height: 24),
-                  MyTextField(
-                    icon: const Icon(FontAwesomeIcons.phone),
-                    label: S.of(context).phone_number,
-                    controller: _phoneController,
-                  ),
-                  const SizedBox(height: 24),
-                  MyTextField(
-                    icon: const Icon(FontAwesomeIcons.locationDot),
-                    label: S.of(context).address,
-                    controller: _addressController,
-                  ),
-                  const SizedBox(height: 32),
-                  MyButton(
-                    onTap: () {
-                      _isLoading ? null : _submitForm();
-                    },
-                    text: S.of(context).update,
-                  ),
-                ],
+      body: BlocBuilder<ProfileCubit, ProfileState>(
+        buildWhen:
+            (previous, current) =>
+                current is FetchDataLoading ||
+                current is UpdateDataSuccess ||
+                current is UpdateDataFailure,
+        builder: (context, state) {
+          return ModalProgressHUD(
+            inAsyncCall: state is FetchDataLoading,
+            opacity: 0.4,
+            progressIndicator: const CircularProgressIndicator(
+              strokeWidth: 2,
+              valueColor: AlwaysStoppedAnimation<Color>(MyColors.primary),
+            ),
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Form(
+                key: _formKey,
+                autovalidateMode: autovalidateMode,
+                child: Column(
+                  children: [
+                    const SizedBox(height: 24),
+                    MyTextField(
+                      icon: const Icon(FontAwesomeIcons.solidUser),
+                      label: S.of(context).name,
+                      controller: _nameController,
+                    ),
+                    const SizedBox(height: 24),
+                    MyTextField(
+                      icon: const Icon(FontAwesomeIcons.phone),
+                      label: S.of(context).phone_number,
+                      controller: _phoneController,
+                    ),
+                    const SizedBox(height: 24),
+                    MyTextField(
+                      icon: const Icon(FontAwesomeIcons.locationDot),
+                      label: S.of(context).address,
+                      controller: _addressController,
+                    ),
+                    const SizedBox(height: 32),
+                    MyButton(
+                      onTap: () {
+                        _isLoading ? null : _submitForm();
+                      },
+                      text: S.of(context).update,
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }
@@ -113,7 +112,7 @@ class _EditUserProfileViewState extends State<EditUserProfileView> {
 
     setState(() => _isLoading = true);
 
-    await context.read<ProfileCubit>().updateData(
+    await context.read<ProfileCubit>().updateProfile(
       data: {
         'Name': _nameController.text,
         'Phone': _phoneController.text,
@@ -121,19 +120,7 @@ class _EditUserProfileViewState extends State<EditUserProfileView> {
       },
       isImage: false,
     );
-  }
-
-  void _handleUpdateSuccess(BuildContext context) {
-    setState(() => _isLoading = false);
-    Helper.showSnackBar(
-      context: context,
-      message: 'Profile updated successfully!',
-    );
+    // ignore: use_build_context_synchronously
     Navigator.pop(context);
-  }
-
-  void _handleUpdateFailure(BuildContext context, UpdateDataFailure state) {
-    setState(() => _isLoading = false);
-    Helper.showSnackBar(context: context, message: state.errMsg);
   }
 }

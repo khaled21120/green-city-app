@@ -21,7 +21,7 @@ class DriverRepoImpl extends DriverRepo {
   }
 
   @override
-  Future<bool> sendDriverReports({
+  Future<Either<Failures, bool>> sendDriverReports({
     required String endPoint,
     required Map<String, dynamic> data,
   }) async {
@@ -37,7 +37,7 @@ class DriverRepoImpl extends DriverRepo {
   }
 
   @override
-  Future<bool> completeTask({
+  Future<Either<Failures, bool>> completeTask({
     required String endPoint,
     required Map<String, dynamic> data,
   }) async {

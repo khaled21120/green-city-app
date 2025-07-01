@@ -145,6 +145,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "our_vision_description": MessageLookupByLibrary.simpleMessage(
       "أن نجعل مدينة جرين سيتي أنظف وأكثر المدن صداقة للبيئة في العالم.",
     ),
+    "paid_tasks": MessageLookupByLibrary.simpleMessage("المهام المدفوعة"),
     "participants": MessageLookupByLibrary.simpleMessage("المشاركين"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "password_not_match": MessageLookupByLibrary.simpleMessage(
@@ -156,6 +157,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "phone_number": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "please_select": MessageLookupByLibrary.simpleMessage("يرجى تحديد"),
     "polls": MessageLookupByLibrary.simpleMessage("أستطلاعات الرأي"),
+    "price": MessageLookupByLibrary.simpleMessage("السعر"),
     "private": MessageLookupByLibrary.simpleMessage("خاص"),
     "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "public": MessageLookupByLibrary.simpleMessage("عام"),
@@ -189,6 +191,14 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "submit": MessageLookupByLibrary.simpleMessage("إرسال"),
     "submit_feedback": MessageLookupByLibrary.simpleMessage("إرسال ملاحظة"),
+    "subscribe": MessageLookupByLibrary.simpleMessage("اشتراك"),
+    "subscription": MessageLookupByLibrary.simpleMessage("الاشتراك"),
+    "subscriptionDate": MessageLookupByLibrary.simpleMessage("تاريخ الاشتراك"),
+    "subscriptionDuration": MessageLookupByLibrary.simpleMessage(
+      "مدة الاشتراك",
+    ),
+    "subscriptionStatus": MessageLookupByLibrary.simpleMessage("حالة الاشتراك"),
+    "subscriptionType": MessageLookupByLibrary.simpleMessage("نوع الاشتراك"),
     "take_photo": MessageLookupByLibrary.simpleMessage("اختر صورة"),
     "task_details": MessageLookupByLibrary.simpleMessage("تفاصيل المهمة"),
     "task_progress": MessageLookupByLibrary.simpleMessage("تقدم المهام"),
@@ -197,6 +207,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "truck_number": MessageLookupByLibrary.simpleMessage("رقم الشاحنة"),
     "type": MessageLookupByLibrary.simpleMessage("نوع"),
     "typeMessage": MessageLookupByLibrary.simpleMessage("اكتب رسالة....."),
+    "unsubscribe": MessageLookupByLibrary.simpleMessage("الغاء الاشتراك"),
     "update": MessageLookupByLibrary.simpleMessage("تحديث"),
     "update_profile_picture": MessageLookupByLibrary.simpleMessage(
       "تحديث صورة الملف الشخصي",

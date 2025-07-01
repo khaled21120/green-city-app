@@ -19,22 +19,32 @@ class DriverHomeBody extends StatelessWidget {
     return S.of(context).good_evening;
   }
 
-  List<Map<String, dynamic>> _getFeatureItems(BuildContext context) {
-    return [
-      {
-        'icon': FontAwesomeIcons.solidClipboard,
-        'title': S.of(context).todays_tasks,
-        'color': Colors.blueAccent[400]!,
-        'route': 'todayTasks',
-      },
-      {
-        'icon': FontAwesomeIcons.solidHourglassHalf,
-        'title': S.of(context).pending_tasks,
-        'color': Colors.orangeAccent[400]!,
-        'route': 'pendingTasks',
-      },
-    ];
-  }
+List<Map<String, dynamic>> _getFeatureItems(BuildContext context) => [
+  {
+    'icon' : FontAwesomeIcons.calendarDay,
+    'title': S.of(context).todays_tasks,          // مهام اليوم
+    'color': Colors.blueAccent.shade400,
+    'route': 'todayTasks',
+  },
+  {
+    'icon' : FontAwesomeIcons.hourglassHalf,
+    'title': S.of(context).pending_tasks,        // المهام المعلّقة
+    'color': Colors.amber.shade600,
+    'route': 'pendingTasks',
+  },
+  {
+    'icon' : FontAwesomeIcons.sackDollar,        // or FontAwesomeIcons.moneyCheckDollar
+    'title': S.of(context).paid_tasks,           // المهام المدفوعة
+    'color': Colors.green.shade500,
+    'route': 'paidTasks',
+  },
+  {
+    'icon' : FontAwesomeIcons.handHoldingDollar, // or FontAwesomeIcons.handHoldingUsd
+    'title': S.of(context).paid_tasks,   // مدفوعة بانتظار المراجعة
+    'color': Colors.deepPurpleAccent.shade400,
+    'route': 'pendingPaidTasks',
+  },
+];
 
   @override
   Widget build(BuildContext context) {

@@ -5,7 +5,6 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:green_city/featuers/driver/data/repo/driver_repo.dart';
 
-import '../../../../../core/utils/endpoints.dart';
 
 part 'driver_reports_state.dart';
 
@@ -20,6 +19,7 @@ class DriverReportsCubit extends Cubit<DriverReportsState> {
     required String sentAt,
     required int announcementsID,
     required File photoFile,
+    required String endPoint
   }) async {
     emit(CompleteTaskLoading());
     final file = await MultipartFile.fromFile(
@@ -27,7 +27,7 @@ class DriverReportsCubit extends Cubit<DriverReportsState> {
       filename: photoFile.path.split('/').last,
     );
     final result = await driverRepo.completeTask(
-      endPoint: '${Endpoints.completeDriverTask}/$id',
+      endPoint: '$endPoint/$id',
       data: {
         'driverName': name,
         'reportDESC': desc,
@@ -36,10 +36,9 @@ class DriverReportsCubit extends Cubit<DriverReportsState> {
         'photoFile': file,
       },
     );
-    if (result) {
-      emit(const CompleteTaskSuccess('تم اكمال المهمة بنجاح'));
-    } else {
-      emit(const CompleteTaskFailure('حدث خطأ ما الرجاء المحاولة مرة اخرى'));
-    }
+    result.fold(
+      (l) => emit(CompleteTaskFailure(l.errMsg)),
+      (r) => emit(const CompleteTaskSuccess('تم اكمال المهمة بنجاح')),
+    );
   }
 }

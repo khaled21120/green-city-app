@@ -139,6 +139,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "our_vision_description": MessageLookupByLibrary.simpleMessage(
       "To make Green City the cleanest and most environmentally friendly city in the world.",
     ),
+    "paid_tasks": MessageLookupByLibrary.simpleMessage("Paid Tasks"),
     "participants": MessageLookupByLibrary.simpleMessage("Participants"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "password_not_match": MessageLookupByLibrary.simpleMessage(
@@ -152,6 +153,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "phone_number": MessageLookupByLibrary.simpleMessage("Phone Number"),
     "please_select": MessageLookupByLibrary.simpleMessage("Please select"),
     "polls": MessageLookupByLibrary.simpleMessage("Polls"),
+    "price": MessageLookupByLibrary.simpleMessage("Price"),
     "private": MessageLookupByLibrary.simpleMessage("Private"),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "public": MessageLookupByLibrary.simpleMessage("Public"),
@@ -187,6 +189,20 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "submit": MessageLookupByLibrary.simpleMessage("Submit"),
     "submit_feedback": MessageLookupByLibrary.simpleMessage("Submit Feedback"),
+    "subscribe": MessageLookupByLibrary.simpleMessage("Subscribe"),
+    "subscription": MessageLookupByLibrary.simpleMessage("Subscription"),
+    "subscriptionDate": MessageLookupByLibrary.simpleMessage(
+      "Subscription Date",
+    ),
+    "subscriptionDuration": MessageLookupByLibrary.simpleMessage(
+      "Subscription Duration",
+    ),
+    "subscriptionStatus": MessageLookupByLibrary.simpleMessage(
+      "Subscription Status",
+    ),
+    "subscriptionType": MessageLookupByLibrary.simpleMessage(
+      "Subscription Type",
+    ),
     "take_photo": MessageLookupByLibrary.simpleMessage("Take Photo"),
     "task_details": MessageLookupByLibrary.simpleMessage("Task Details"),
     "task_progress": MessageLookupByLibrary.simpleMessage("Task Progress"),
@@ -195,6 +211,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "truck_number": MessageLookupByLibrary.simpleMessage("Truck Number"),
     "type": MessageLookupByLibrary.simpleMessage("Type"),
     "typeMessage": MessageLookupByLibrary.simpleMessage("Type message..."),
+    "unsubscribe": MessageLookupByLibrary.simpleMessage("Unsubscribe"),
     "update": MessageLookupByLibrary.simpleMessage("Update"),
     "update_profile_picture": MessageLookupByLibrary.simpleMessage(
       "Update Your Profile Picture",

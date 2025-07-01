@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:green_city/core/widgets/text_felid.dart';
 import 'package:green_city/generated/l10n.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../featuers/auth/data/models/user_model.dart';
 import 'constants.dart';
@@ -73,13 +73,31 @@ abstract class Helper {
     }
   }
 
-  static void openUrl(BuildContext context, String url) async {
-    final pollLink = Uri.parse(url);
-    if (await canLaunchUrl(pollLink)) {
-      await launchUrl(pollLink);
-    } else {
+  /// Pushes a WebView route.  If the incoming [url] is missing a scheme
+  /// we automatically prefix ‘https://’.
+  static Future<void> openUrl(
+    BuildContext context,
+    String url,
+    String title,
+  ) async {
+    try {
+      Uri uri = Uri.parse(url.trim());
+
+      // Add https:// if no scheme
+      if (uri.scheme.isEmpty) {
+        uri = uri.replace(scheme: 'https');
+      }
+      if (!uri.isAbsolute) {
+        throw const FormatException('Invalid URL format');
+      }
+
+      // Wait for the WebView page to return (handy if you need to refresh later)
+      await GoRouter.of(
+        context,
+      ).pushNamed('webView', extra: {'title': title, 'url': uri.toString()});
+    } catch (e) {
       // ignore: use_build_context_synchronously
-      Helper.showSnackBar(context: context, message: 'Could not launch ');
+      Helper.showSnackBar(context: context, message: e.toString());
     }
   }
 

@@ -41,18 +41,20 @@ abstract class UserRepo {
   Future<Either<Failures, List<UserReportsModel>>> fetchUserReports({
     required String endPoint,
   });
-  Future<bool> sendUserReports({
+  Future<Either<Failures, bool>> sendUserReports({
     required String endPoint,
     required Map<String, dynamic> data,
   });
-  Future<bool> sendMessage({
+  Future<Either<Failures, bool>> sendMessage({
     required String endPoint,
     required Map<String, dynamic> data,
   });
 
   Future saveUserDataLocal(UserModel user);
 
-  Future<Either<Failures, List<dynamic>>> fetchUserNotifications({
+  Future<Either<Failures, List<dynamic>>> fetchNotifications({
     required String endPoint,
   });
+  Future<bool> deleteNotification({required String endPoint, required int id});
+  Future<bool> hideNotification({required String endPoint, required int id});
 }

@@ -92,7 +92,7 @@ class MyReportsView extends StatelessWidget {
         itemBuilder: (context, index) {
           final item = state.announsList[index];
           return AnnounsItem(
-            key: ValueKey(item.id), // Important for performance
+            key: ValueKey(item.id), 
             item: item,
             color: _getStatusColor(item.status ?? ''),
           );

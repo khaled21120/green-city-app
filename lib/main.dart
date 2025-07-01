@@ -21,7 +21,6 @@ void main() async {
   await PrefsService.init();
   final languageCubit = LanguageCubit();
   final themeCubit = ThemeCubit();
-
   languageCubit.loadSavedLanguage();
   await themeCubit.loadTheme();
 
@@ -48,9 +47,10 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 2), () {
-      FlutterNativeSplash.remove();
-    });
+    Future.delayed(
+      const Duration(seconds: 2),
+      () => FlutterNativeSplash.remove(),
+    );
   }
 
   @override

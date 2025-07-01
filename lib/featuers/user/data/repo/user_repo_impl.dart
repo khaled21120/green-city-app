@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:dartz/dartz.dart';
-import 'package:flutter/services.dart';
 import 'package:green_city/featuers/user/data/models/activities_model.dart';
 import 'package:green_city/featuers/user/data/models/region_model.dart';
 import 'package:green_city/featuers/user/data/models/user_reports_model.dart';
@@ -92,7 +91,7 @@ class UserRepoImpl extends UserRepo {
   }
 
   @override
-  Future<bool> sendUserReports({
+  Future<Either<Failures, bool>> sendUserReports({
     required String endPoint,
     required Map<String, dynamic> data,
   }) async {
@@ -108,19 +107,13 @@ class UserRepoImpl extends UserRepo {
   }
 
   @override
-  Future<Either<Failures, List<dynamic>>> fetchUserNotifications({
+  Future<Either<Failures, List<dynamic>>> fetchNotifications({
     required String endPoint,
   }) async {
     try {
-      // final notification = await databaseService.fetchListData(
-      //   endPoint: endPoint,
-      // );
-      String jsonString = await rootBundle.loadString(Constants.db);
-      // Decode the JSON string
-      var jsonData = json.decode(jsonString);
-
-      final notification = jsonData[endPoint] as List<dynamic>;
-
+      final notification = await databaseService.fetchListData(
+        endPoint: endPoint,
+      );
       return Right(notification);
     } on ServerFailure catch (e) {
       return Left(ServerFailure(e.errMsg));
@@ -204,12 +197,44 @@ class UserRepoImpl extends UserRepo {
   }
 
   @override
-  Future<bool> sendMessage({
+  Future<Either<Failures, bool>> sendMessage({
     required String endPoint,
     required Map<String, dynamic> data,
   }) {
     try {
       final res = databaseService.sendData(endPoint: endPoint, data: data);
+      return res;
+    } on ServerFailure catch (e) {
+      throw ServerFailure(e.errMsg);
+    }
+  }
+
+  @override
+  Future<bool> deleteNotification({
+    required String endPoint,
+    required int id,
+  }) async {
+    try {
+      final res = await databaseService.deleteByID(
+        endPoint: endPoint,
+        id: id.toString(),
+      );
+      return res;
+    } on ServerFailure catch (e) {
+      throw ServerFailure(e.errMsg);
+    }
+  }
+
+  @override
+  Future<bool> hideNotification({
+    required String endPoint,
+    required int id,
+  }) async {
+    try {
+      final res = await databaseService.postByID(
+        endPoint: endPoint,
+        id: id.toString(),
+      );
       return res;
     } on ServerFailure catch (e) {
       throw ServerFailure(e.errMsg);

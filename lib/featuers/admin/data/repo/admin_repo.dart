@@ -11,7 +11,7 @@ abstract class AdminRepo {
   Future<Either<Failures, List<WarehousesModel>>> fetchWehreHouses({
     required String endPoint,
   });
-  Future<bool> sendAdminReports({
+  Future<Either<Failures, bool>> sendAdminReports({
     required String endPoint,
     required Map<String, dynamic> data,
   });

@@ -8,7 +8,6 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../../../../../../core/utils/helper.dart';
 import '../../../../../../core/themes/light_theme.dart';
 import '../../../../../../core/widgets/button.dart';
-import '../../../../../../core/utils/constants.dart';
 import '../../../../../../core/widgets/text_felid.dart';
 import '../../../../../../core/utils/text_style.dart';
 import '../../../../../../generated/l10n.dart';
@@ -29,7 +28,6 @@ class _WasteDetailsState extends State<WasteDetails> {
   final _formKey = GlobalKey<FormState>();
   DateTime selectedDate = DateTime.now();
   String? warehouse;
-  bool isLoading = false;
 
   static const Map<String, double> wastePrices = {
     'Plastic': 100,
@@ -67,40 +65,26 @@ class _WasteDetailsState extends State<WasteDetails> {
       setState(() => autovalidateMode = AutovalidateMode.always);
       return;
     }
-    setState(() => isLoading = true);
-    try {
-      final user = Helper.getUser();
-      final report = AdminReportsModel(
-        warehouseManger: user.name,
-        warehouseName: warehouse,
-        sendAt: DateFormat.yMd('en').format(selectedDate),
-        material: widget.title,
-        quantity: int.parse(quantityController.text),
-        price: double.parse(
-          calculatePrice(quantityController.text, widget.title),
-        ),
-        description: descController.text,
-      );
+    final user = Helper.getUser();
+    final report = AdminReportsModel(
+      warehouseManger: user.name,
+      warehouseName: warehouse,
+      sendAt: DateFormat.yMd('en').format(selectedDate),
+      material: widget.title,
+      quantity: double.parse(quantityController.text),
+      price: double.parse(
+        calculatePrice(quantityController.text, widget.title),
+      ),
+      description: descController.text,
+    );
 
-      context.read<AdminReportsCubit>().sendAdminReport(report);
-      Helper.showSnackBar(
-        context: context,
-        message: '${widget.title} report sent successfully!',
-      );
-      // Clear form after submission
-      setState(() {
-        warehouse = null;
-        quantityController.clear();
-        descController.clear();
-      });
-      Navigator.pop(context);
-    } catch (e) {
-      Helper.showSnackBar(context: context, message: 'Error: ${e.toString()}');
-    } finally {
-      if (mounted) {
-        setState(() => isLoading = false);
-      }
-    }
+    context.read<AdminReportsCubit>().sendAdminReport(report);
+  }
+
+  void _resetForm() {
+    descController.clear();
+    quantityController.clear();
+    setState(() => warehouse = null);
   }
 
   @override
@@ -117,11 +101,13 @@ class _WasteDetailsState extends State<WasteDetails> {
             Helper.showSnackBar(context: context, message: state.message);
           } else if (state is AdminReportsSuccess) {
             Helper.showSnackBar(context: context, message: state.message);
+            _resetForm();
+            Navigator.pop(context);
           }
         },
         builder:
             (context, state) => ModalProgressHUD(
-              inAsyncCall: state is AdminReportsLoading || isLoading,
+              inAsyncCall: state is AdminReportsLoading,
               opacity: 0.4,
               progressIndicator: const CircularProgressIndicator(
                 strokeWidth: 2,
@@ -265,7 +251,7 @@ class _WasteDetailsState extends State<WasteDetails> {
   }) {
     return DropdownButtonFormField<String>(
       decoration: InputDecoration(
-        labelText: value,
+        labelText: label,
         border: const UnderlineInputBorder(),
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 16,

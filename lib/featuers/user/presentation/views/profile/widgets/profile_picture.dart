@@ -30,7 +30,7 @@ class _ProfilePictureState extends State<ProfilePicture> {
       if (!mounted) return;
 
       if (file != null) {
-        context.read<ProfileCubit>().updateData(data: file, isImage: true);
+        context.read<ProfileCubit>().updateProfile(data: file, isImage: true);
         setState(() => imageFile = file);
       } else {
         Helper.showSnackBar(context: context, message: 'No image selected');

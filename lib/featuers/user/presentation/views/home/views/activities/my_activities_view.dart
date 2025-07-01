@@ -49,7 +49,7 @@ class MyActivitiesView extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      S.of(context).no_tasks_today,
+                      S.of(context).no_data_available,
                       style: MyStyle.title20(
                         context,
                       ).copyWith(color: Colors.grey),

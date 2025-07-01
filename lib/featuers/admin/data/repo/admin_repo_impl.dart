@@ -3,7 +3,6 @@ import 'package:green_city/featuers/admin/data/models/warehouses_model.dart';
 
 import '../../../../core/errors/error.dart';
 import '../../../../core/services/data_base_service.dart';
-import '../../../user/data/models/user_reports_model.dart';
 import 'admin_repo.dart';
 
 class AdminRepoImpl extends AdminRepo {
@@ -11,7 +10,7 @@ class AdminRepoImpl extends AdminRepo {
   final DatabaseService databaseService;
 
   @override
-  Future<bool> sendAdminReports({
+  Future<Either<Failures, bool>> sendAdminReports({
     required String endPoint,
     required Map<String, dynamic> data,
   }) async {

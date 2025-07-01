@@ -8,17 +8,17 @@ import '../../../data/repo/user_repo.dart';
 part 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
-  ProfileCubit(this.homeRepo, this.authRepo) : super(ProfileStateInitial());
+  ProfileCubit(this._userRepo, this._authRepo) : super(ProfileStateInitial());
 
-  final UserRepo homeRepo;
-  final AuthRepo authRepo;
+  final UserRepo _userRepo;
+  final AuthRepo _authRepo;
 
   UserModel? _currentUser;
   UserModel? get currentUser => _currentUser;
 
   Future<void> fetchUserData() async {
     emit(FetchDataLoading());
-    final result = await homeRepo.fetchUserData(
+    final result = await _userRepo.fetchUserData(
       endPoint: Endpoints.getUserData,
     );
     result.fold((error) => emit(FetchDataFailure(error.errMsg)), (user) {
@@ -27,33 +27,26 @@ class ProfileCubit extends Cubit<ProfileState> {
     });
   }
 
-  Future<void> updateData({
+  Future<void> updateProfile({
     required dynamic data,
-    required bool isImage,
+    bool isImage = false,
   }) async {
     emit(FetchDataLoading());
-
-    final result = await homeRepo.updateUserData(
+    final result = await _userRepo.updateUserData(
       endPoint: Endpoints.getUserData,
       data: data,
       isImage: isImage,
     );
 
-    result.fold(
-      (error) {
-        emit(UpdateDataFailure(error.errMsg));
-      },
-      (user) {
-        _currentUser = user;
-        emit(FetchDataSuccess(user));
-        emit(UpdateDataSuccess(user));
-      },
-    );
+    result.fold((error) => emit(UpdateDataFailure(error.errMsg)), (user) {
+      _currentUser = user;
+      emit(UpdateDataSuccess(user));
+    });
   }
 
   Future<void> deleteAccount() async {
     emit(FetchDataLoading());
-    final result = await authRepo.deleteAccount(
+    final result = await _authRepo.deleteAccount(
       endPoint: Endpoints.getUserData,
     );
     emit(LogOutSuccess(result));

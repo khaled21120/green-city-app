@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:green_city/core/services/data_base_service.dart';
 
@@ -11,7 +12,7 @@ class ApiStorageService extends DatabaseService {
   ApiStorageService(this.dio);
 
   @override
-  Future<bool> sendData({
+  Future<Either<Failures, bool>> sendData({
     required String endPoint,
     required Map<String, dynamic> data,
   }) async {
@@ -24,12 +25,12 @@ class ApiStorageService extends DatabaseService {
       );
 
       if (res.statusCode == 200 || res.statusCode == 201) {
-        return true;
+        return right(true);
       } else {
-        throw Exception('Unexpected status code: ${res.statusCode}');
+        return left(ServerFailure('Unexpected status code: ${res.statusCode}'));
       }
     } on DioException catch (e) {
-      throw ServerFailure.fromDioException(e);
+      return left(ServerFailure.fromDioException(e));
     }
   }
 
@@ -103,6 +104,23 @@ class ApiStorageService extends DatabaseService {
   Future<bool> postByID({required String endPoint, required String id}) async {
     try {
       final res = await dio.post('$endPoint/$id');
+      if (res.statusCode == 200 || res.statusCode == 204) {
+        return true;
+      } else {
+        throw Exception('Unexpected status code: ${res.statusCode}');
+      }
+    } on DioException catch (dioError) {
+      throw ServerFailure.fromDioException(dioError);
+    }
+  }
+
+  @override
+  Future<bool> deleteByID({
+    required String endPoint,
+    required String id,
+  }) async {
+    try {
+      final res = await dio.delete('$endPoint/$id');
       if (res.statusCode == 200 || res.statusCode == 204) {
         return true;
       } else {

@@ -4,8 +4,8 @@ class WarehousesModel extends Equatable {
   final int? id;
   final String? warehouseName;
   final String? address;
-  final String? totalCapacity;
-  final String? currnetCapacity;
+  final int? totalCapacity;
+  final int? currnetCapacity;
 
   const WarehousesModel({
     this.id,
@@ -20,13 +20,12 @@ class WarehousesModel extends Equatable {
       id: json['id'] as int?,
       warehouseName: json['warehouseName'] as String?,
       address: json['address'] as String?,
-      totalCapacity: json['totalCapacity'] as String?,
-      currnetCapacity: json['currnetCapacity'] as String?,
+      totalCapacity: json['totalCapacity'] as int?,
+      currnetCapacity: json['currnetCapacity'] as int?,
     );
   }
 
   Map<String, dynamic> toJson() => {
-    'id': id,
     'warehouseName': warehouseName,
     'address': address,
     'totalCapacity': totalCapacity,

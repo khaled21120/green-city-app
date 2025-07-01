@@ -16,10 +16,8 @@ class ContactUsCubit extends Cubit<ContactUsState> {
       endPoint: Endpoints.contactUs,
       data: feedback.toJson(),
     );
-    if (result) {
-      emit(const ContactUsSuccess('تم الارسال بنجاح'));
-    } else {
-      emit(const ContactUsError('حدث خطأ في الارسال'));
-    }
+    result.fold((failure) => emit(ContactUsError(failure.errMsg)), (data) {
+      emit(const ContactUsSuccess('تم ارسال الاعلان بنجاح'));
+    });
   }
 }

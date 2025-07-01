@@ -137,5 +137,14 @@
   "task_report": "تقرير المهمة",
   "take_photo": "اختر صورة",
   "desc": "الوصف",
-  "my_Activities": "أنشطتي"
+  "my_Activities": "أنشطتي",
+  "unsubscribe": "الغاء الاشتراك",
+  "subscribe": "اشتراك",
+  "subscriptionType": "نوع الاشتراك",
+  "subscriptionDuration": "مدة الاشتراك",
+  "price": "السعر",
+  "subscription": "الاشتراك",
+  "subscriptionDate": "تاريخ الاشتراك",
+  "subscriptionStatus": "حالة الاشتراك",
+  "paid_tasks": "المهام المدفوعة"
 }

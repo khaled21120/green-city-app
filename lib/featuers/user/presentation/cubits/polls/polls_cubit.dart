@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
@@ -48,38 +47,35 @@ class PollsCubit extends Cubit<PollsState> {
   }
 
   Future<void> votePoll(BuildContext context, {required int pollId}) async {
-    // Only emit loading if we have existing data to preserve
-    if (state is PollsLoaded) {
-      final currentPolls = (state as PollsLoaded).pollsList;
-      emit(PollsLoaded(currentPolls)); // Maintain current data while loading
-    } else {
-      emit(PollsLoading());
-    }
+    // Preserve UI state
+    final hasData = state is PollsLoaded;
+    if (!hasData) emit(PollsLoading());
 
     final result = await _userRepo.joinPoll(
       endPoint: Endpoints.polls,
       id: pollId,
     );
 
-    result.fold((error) => emit(PollsVoteError(error.errMsg)), (isVoted) {
-      if (isVoted && state is PollsLoaded) {
-        final currentPolls = (state as PollsLoaded).pollsList;
-        emit(PollsVoted('تم التصويت بنجاح', currentPolls));
-        // Open link only after state update is complete
-        Future.delayed(Duration.zero, () {
-          final poll = currentPolls.firstWhere((p) => p.id == pollId);
-          if (poll.pollLink != null) {
-            final pollId = poll.pollLink!.split('/')[6];
-            final pollLink = Helper.openPollLink(id: pollId);
-            log('Poll link: $pollLink');
-            // ignore: use_build_context_synchronously
-            Helper.openUrl(context, pollLink);
-          }
-        });
-        getPolls();
-      } else {
+    result.fold((error) => emit(PollsVoteError(error.errMsg)), (isVoted) async {
+      if (!isVoted) {
         emit(const PollsVoteError('Failed to register vote'));
+        return;
       }
+
+      // Success → update local list (optimistic) before refetch
+      final current = (state as PollsLoaded).pollsList;
+      emit(PollsVoted('تم التصويت بنجاح', current));
+
+      // 🔗 Open poll link (if present)
+      final poll = current.firstWhere((p) => p.id == pollId);
+      final rawLink = poll.pollLink;
+      if (rawLink != null && rawLink.isNotEmpty) {
+        final pollLink = Helper.openPollLink(id: rawLink.split('/')[6]);
+        await Helper.openUrl(context, pollLink, poll.pollName ?? 'Poll');
+      }
+
+      // Finally refetch to keep everything in sync
+      getPolls();
     });
   }
 }

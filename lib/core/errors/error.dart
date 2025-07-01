@@ -10,10 +10,9 @@ class ServerFailure extends Failures {
 
   factory ServerFailure.fromDioException(DioException error) {
     try {
-      // Handle response errors first
       if (error.response != null) {
         return ServerFailure.fromResponse(
-          error.response!.statusCode ?? 500,
+          error.response?.statusCode ?? 500,
           error.response?.data ?? 'Internal Server Error',
         );
       }

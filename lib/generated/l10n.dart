@@ -1124,6 +1124,76 @@ class S {
   String get desc {
     return Intl.message('Description', name: 'desc', desc: '', args: []);
   }
+
+  /// `Unsubscribe`
+  String get unsubscribe {
+    return Intl.message('Unsubscribe', name: 'unsubscribe', desc: '', args: []);
+  }
+
+  /// `Subscribe`
+  String get subscribe {
+    return Intl.message('Subscribe', name: 'subscribe', desc: '', args: []);
+  }
+
+  /// `Subscription Type`
+  String get subscriptionType {
+    return Intl.message(
+      'Subscription Type',
+      name: 'subscriptionType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subscription Duration`
+  String get subscriptionDuration {
+    return Intl.message(
+      'Subscription Duration',
+      name: 'subscriptionDuration',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price`
+  String get price {
+    return Intl.message('Price', name: 'price', desc: '', args: []);
+  }
+
+  /// `Subscription`
+  String get subscription {
+    return Intl.message(
+      'Subscription',
+      name: 'subscription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subscription Date`
+  String get subscriptionDate {
+    return Intl.message(
+      'Subscription Date',
+      name: 'subscriptionDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subscription Status`
+  String get subscriptionStatus {
+    return Intl.message(
+      'Subscription Status',
+      name: 'subscriptionStatus',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Paid Tasks`
+  String get paid_tasks {
+    return Intl.message('Paid Tasks', name: 'paid_tasks', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -25,7 +25,7 @@ class ActivitiesModel extends Equatable {
       ActivitiesModel(
         id: json['id'] as int?,
         actName: json['actName'] as String?,
-        imgFile: json['imgFile'] as String?,
+        imgFile: json['photo'] as String?,
         actDescription: json['actDescription'] as String?,
         actIntervalDate: json['actIntervalDate'] as String?,
         actstate: json['actState'] as String?,
@@ -36,7 +36,7 @@ class ActivitiesModel extends Equatable {
   Map<String, dynamic> toJson() => {
     'id': id,
     'ActName': actName,
-    'imgFile': imgFile,
+    'photo': imgFile,
     'ActDescription': actDescription,
     'actIntervalDate': actIntervalDate,
     'actState': actstate,

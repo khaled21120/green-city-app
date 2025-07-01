@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 
 class UserNotifiyModel extends Equatable {
-  final String? id;
+  final int? id;
   final String? notificationContent;
   final String? notificationDate;
-  final String? userId;
+  final int? userId;
 
   const UserNotifiyModel({
     this.id,
@@ -15,10 +15,10 @@ class UserNotifiyModel extends Equatable {
 
   factory UserNotifiyModel.fromJson(Map<String, dynamic> json) =>
       UserNotifiyModel(
-        id: json['id'] as String?,
+        id: json['id'] as int?,
         notificationContent: json['notificationContent'] as String?,
         notificationDate: json['notificationDate'] as String?,
-        userId: json['userId'] as String?,
+        userId: json['userId'] as int?,
       );
 
   Map<String, dynamic> toJson() => {

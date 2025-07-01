@@ -15,12 +15,9 @@ class UserStatsBarChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final statsData = [
-      20,
-      50,
-      60,
-      // userData.numOfAcceptedAnnouncementsCount ?? 0,
-      // userData.numOfCompletedActivitiesCount ?? 0,
-      // userData.numOfCompletedPollsCount ?? 0,
+      userData.numOfAcceptedAnnouncementsCount ?? 0,
+      userData.numOfCompletedActivitiesCount ?? 0,
+      userData.numOfCompletedPollsCount ?? 0,
     ];
 
     final maxValue = statsData.reduce((a, b) => a > b ? a : b).toDouble();

@@ -14,6 +14,7 @@ import '../../featuers/driver/data/repo/driver_repo.dart';
 import '../../featuers/driver/data/repo/driver_repo_impl.dart';
 import '../../featuers/driver/presentation/cubits/Driver%20Reports/driver_reports_cubit.dart';
 import '../../featuers/driver/presentation/cubits/Driver%20Tasks/driver_tasks_cubit.dart';
+import '../../featuers/driver/presentation/cubits/cubit/paid_tasks_cubit.dart';
 import '../../featuers/user/data/repo/user_repo.dart';
 import '../../featuers/user/data/repo/user_repo_impl.dart';
 import '../../featuers/user/presentation/cubits/activities/activities_cubit.dart';
@@ -69,4 +70,5 @@ void _registerCubits() {
   getIt.registerFactory<UserReportsCubit>(() => UserReportsCubit(getIt()));
   getIt.registerFactory<NotificationsCubit>(() => NotificationsCubit(getIt()));
   getIt.registerFactory<ContactUsCubit>(() => ContactUsCubit(getIt()));
+  getIt.registerFactory<PaidTasksCubit>(() => PaidTasksCubit(getIt()));
 }

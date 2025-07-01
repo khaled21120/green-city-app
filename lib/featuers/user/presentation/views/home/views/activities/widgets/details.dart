@@ -51,7 +51,7 @@ class ActivitiesDetailsPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   MyButton(
-                    text: S.of(context).join,
+                    text: S.of(context).subscribe,
                     onTap: () {
                       context.read<ActivitiesCubit>().subscribe(
                         activityId: activitiesModel.id!,
