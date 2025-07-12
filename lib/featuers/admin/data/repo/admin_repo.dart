@@ -8,10 +8,10 @@ abstract class AdminRepo {
     required Map<String, dynamic> data,
   });
 
-  Future<Either<Failures, List<WarehousesModel>>> fetchWehreHouses({
+  Future<Either<Failure, List<WarehousesModel>>> fetchWehreHouses({
     required String endPoint,
   });
-  Future<Either<Failures, bool>> sendAdminReports({
+  Future<Either<Failure, bool>> sendAdminReports({
     required String endPoint,
     required Map<String, dynamic> data,
   });

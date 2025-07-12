@@ -1849,6 +1849,7 @@ https://poe.com/s/yQhJZGTvZVktG8aPENka
   static const List<String> binNumbers = ['101', '2', '3', '4', '5'];
   static const List<String> subscriptionType = [
     'One-time',
+    'Daily',
     'Weekly',
     'Monthly',
   ];
@@ -1861,6 +1862,7 @@ https://poe.com/s/yQhJZGTvZVktG8aPENka
   static const String kUserData = 'userData';
 
   static const String kIsLogin = 'isLogin';
+  static const String kIsSub = 'isSub';
   static const String kToken = 'jwtToken';
   static const String kLanguage = 'language';
 }

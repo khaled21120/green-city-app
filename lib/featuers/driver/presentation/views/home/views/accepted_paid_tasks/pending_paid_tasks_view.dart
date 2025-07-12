@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:green_city/core/utils/helper.dart';
 import 'package:green_city/core/widgets/error_widget.dart';
 import 'package:green_city/core/utils/text_style.dart';
-import 'package:green_city/featuers/driver/presentation/cubits/cubit/paid_tasks_cubit.dart';
+import 'package:green_city/featuers/driver/presentation/cubits/paid_tasks/paid_tasks_cubit.dart';
 import 'package:green_city/generated/l10n.dart';
 
 import 'widgets/pending_paid_task_item.dart';

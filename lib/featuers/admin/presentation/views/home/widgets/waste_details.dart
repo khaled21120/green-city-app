@@ -71,11 +71,11 @@ class _WasteDetailsState extends State<WasteDetails> {
       warehouseName: warehouse,
       sendAt: DateFormat.yMd('en').format(selectedDate),
       material: widget.title,
-      quantity: double.parse(quantityController.text),
+      quantity: double.parse(quantityController.text.trim()),
       price: double.parse(
-        calculatePrice(quantityController.text, widget.title),
+        calculatePrice(quantityController.text.trim(), widget.title),
       ),
-      description: descController.text,
+      description: descController.text.trim(),
     );
 
     context.read<AdminReportsCubit>().sendAdminReport(report);

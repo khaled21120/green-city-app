@@ -23,8 +23,10 @@ class UserReportsModel extends Equatable {
   final String? subscriptionDuration;
   final String? additionalNotes;
   final String? institutionAddress;
+  final int? remainingDays;
 
   const UserReportsModel({
+    this.remainingDays,
     this.contactNumber,
     this.institutionName,
     this.subscriptionType,
@@ -56,6 +58,7 @@ class UserReportsModel extends Equatable {
         email: json['email'] as String?,
         binNumber: json['binNumber'] as int?,
         region: json['regionName'] as String?,
+        remainingDays: json['remainingDays'] as int?,
         announcementType: json['announcementType'] as String?,
         announcementDescription: json['announcementDescription'] as String?,
         siteLocation: json['siteLocation'] as String?,

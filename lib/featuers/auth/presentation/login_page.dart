@@ -19,7 +19,6 @@ class LoginPage extends StatelessWidget {
     final size = MediaQuery.sizeOf(context);
 
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       body: BlocConsumer<LogInCubit, LogInState>(
         listener: (context, state) {
           if (state is LogInError) {
@@ -36,23 +35,21 @@ class LoginPage extends StatelessWidget {
               strokeWidth: 2,
               valueColor: AlwaysStoppedAnimation<Color>(MyColors.primary),
             ),
-            child: SingleChildScrollView(
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  const GradientBG(),
-                  Positioned(
-                    top: size.height * 0.05,
-                    child: Image.asset(
-                      Constants.logo,
-                      width: size.width * 0.6,
-                      filterQuality: FilterQuality.high,
-                      semanticLabel: 'App Logo',
-                    ),
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                const GradientBG(),
+                Positioned(
+                  top: size.height * 0.05,
+                  child: Image.asset(
+                    Constants.logo,
+                    width: size.width * 0.6,
+                    filterQuality: FilterQuality.high,
+                    semanticLabel: 'App Logo',
                   ),
-                  Positioned(bottom: 0, child: LoginFormCard(size: size)),
-                ],
-              ),
+                ),
+                Positioned(bottom: 0, child: LoginFormCard(size: size)),
+              ],
             ),
           );
         },

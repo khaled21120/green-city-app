@@ -14,7 +14,7 @@ import 'package:intl/intl.dart';
 import '../../../../../../../../core/utils/helper.dart';
 import '../../../../../../../../core/utils/text_style.dart';
 import '../../../../../../../auth/data/models/user_model.dart';
-import '../../../../../cubits/Driver Reports/driver_reports_cubit.dart';
+import '../../../../../cubits/driver_reports/driver_reports_cubit.dart';
 
 class PendingTaskItem extends StatefulWidget {
   const PendingTaskItem({
@@ -117,7 +117,7 @@ class _PendingTaskItemState extends State<PendingTaskItem> {
         ),
         const SizedBox(height: 4),
         Text(
-          widget.userReportsModel.todayDate ?? '',
+          widget.userReportsModel.todayDate!.split('T').first,
           style: MyStyle.title14(
             context,
           ).copyWith(color: Theme.of(context).textTheme.bodySmall?.color),
@@ -218,7 +218,7 @@ class _PendingTaskItemState extends State<PendingTaskItem> {
             _buildDetailRow(
               context,
               '${S.of(context).date}:',
-              widget.userReportsModel.todayDate,
+              widget.userReportsModel.todayDate!.split('T').first,
             ),
 
             const SizedBox(height: 24),
@@ -409,7 +409,7 @@ class _PendingTaskItemState extends State<PendingTaskItem> {
               endPoint: Endpoints.completeDriverTask,
               id: widget.id,
               name: widget.userModel.name ?? 'User',
-              desc: _noteController.text,
+              desc: _noteController.text.trim(),
               sentAt: DateFormat.yMd('en').format(DateTime.now()),
               announcementsID: widget.id,
               photoFile: image!,

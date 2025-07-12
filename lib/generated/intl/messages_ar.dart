@@ -32,6 +32,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "activity_overview": MessageLookupByLibrary.simpleMessage(
       "نظرة عامة على النشاط",
     ),
+    "ad_free_experience": MessageLookupByLibrary.simpleMessage(
+      "تجربة خالية من الإعلانات",
+    ),
     "add_report": MessageLookupByLibrary.simpleMessage("إضافة تقرير"),
     "additionalNotes": MessageLookupByLibrary.simpleMessage("ملاحظات إضافية"),
     "additional_information": MessageLookupByLibrary.simpleMessage(
@@ -64,6 +67,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
     ),
+    "confirm_unsubscribe": MessageLookupByLibrary.simpleMessage(
+      "تأكيد إلغاء الاشتراك",
+    ),
     "contactNumber": MessageLookupByLibrary.simpleMessage("رقم الاتصال"),
     "contact_us": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
     "contact_us_description": MessageLookupByLibrary.simpleMessage(
@@ -73,6 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "create_account": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "dark_mode": MessageLookupByLibrary.simpleMessage("الوضع الداكن"),
     "date": MessageLookupByLibrary.simpleMessage("التاريخ"),
+    "days": MessageLookupByLibrary.simpleMessage("أيام"),
     "delete": MessageLookupByLibrary.simpleMessage("حذف"),
     "delete_account": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
     "desc": MessageLookupByLibrary.simpleMessage("الوصف"),
@@ -91,12 +98,19 @@ class MessageLookup extends MessageLookupByLibrary {
       "عنوان البريد الإلكتروني",
     ),
     "enter": MessageLookupByLibrary.simpleMessage("أدخل"),
+    "enter_email_first": MessageLookupByLibrary.simpleMessage(
+      "يرجى ادخال البريد الالكتروني اولا",
+    ),
+    "enter_new_password": MessageLookupByLibrary.simpleMessage(
+      "يرجى ادخال كلمة المرور الجديدة",
+    ),
     "estimatedCost": MessageLookupByLibrary.simpleMessage("التكلفة المقدرة:"),
     "estimatedQuantity": MessageLookupByLibrary.simpleMessage("الكمية المقدرة"),
+    "exclusive_content": MessageLookupByLibrary.simpleMessage("محتوى حصري"),
     "faqs": MessageLookupByLibrary.simpleMessage("الأسئلة الشائعة"),
     "features": MessageLookupByLibrary.simpleMessage("الشائعة"),
-    "for_Individuals": MessageLookupByLibrary.simpleMessage("للأفراد"),
-    "for_Institutions": MessageLookupByLibrary.simpleMessage("للمؤسسات"),
+    "for_Individuals": MessageLookupByLibrary.simpleMessage("الخدمه المجانية"),
+    "for_Institutions": MessageLookupByLibrary.simpleMessage("الخدمة مدفوعة"),
     "forget_password": MessageLookupByLibrary.simpleMessage(
       "نسيت كلمة المرور؟",
     ),
@@ -117,7 +131,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "message": MessageLookupByLibrary.simpleMessage("الرسالة"),
     "my_Activities": MessageLookupByLibrary.simpleMessage("أنشطتي"),
     "my_reports": MessageLookupByLibrary.simpleMessage("بلاغاتي"),
+    "my_subscription": MessageLookupByLibrary.simpleMessage("اشتراكي"),
     "name": MessageLookupByLibrary.simpleMessage("الاسم"),
+    "new_password": MessageLookupByLibrary.simpleMessage("كلمة المرور الجديدة"),
     "no_data_available": MessageLookupByLibrary.simpleMessage(
       "لا يوجد بيانات متاحة",
     ),
@@ -148,27 +164,50 @@ class MessageLookup extends MessageLookupByLibrary {
     "paid_tasks": MessageLookupByLibrary.simpleMessage("المهام المدفوعة"),
     "participants": MessageLookupByLibrary.simpleMessage("المشاركين"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+    "password_min_length": MessageLookupByLibrary.simpleMessage(
+      "كلمة المرور يجب ان تكون على الاقل 8 حروف",
+    ),
     "password_not_match": MessageLookupByLibrary.simpleMessage(
       "كلمة المرور غير متطابقة",
     ),
+    "password_reset_failed": MessageLookupByLibrary.simpleMessage(
+      "فشل تغيير كلمة المرور. يرجى المحاولة في وقت لاحق",
+    ),
+    "password_reset_success": MessageLookupByLibrary.simpleMessage(
+      "تم تغيير كلمة المرور بنجاح",
+    ),
+    "passwords_not_match": MessageLookupByLibrary.simpleMessage(
+      "كلمات المرور لا تتطابق",
+    ),
     "paymentInformation": MessageLookupByLibrary.simpleMessage("معلومات الدفع"),
     "paymentMethod": MessageLookupByLibrary.simpleMessage("طريقة الدفع"),
+    "pending_paid_tasks": MessageLookupByLibrary.simpleMessage(
+      "المهام المدفوعة المعلقة",
+    ),
     "pending_tasks": MessageLookupByLibrary.simpleMessage("المهام المعلقة"),
     "phone_number": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "please_select": MessageLookupByLibrary.simpleMessage("يرجى تحديد"),
     "polls": MessageLookupByLibrary.simpleMessage("أستطلاعات الرأي"),
     "price": MessageLookupByLibrary.simpleMessage("السعر"),
+    "priority_support": MessageLookupByLibrary.simpleMessage("دعم مميز"),
     "private": MessageLookupByLibrary.simpleMessage("خاص"),
     "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "public": MessageLookupByLibrary.simpleMessage("عام"),
     "quick_actions": MessageLookupByLibrary.simpleMessage("إجراءات سريعة"),
     "region": MessageLookupByLibrary.simpleMessage("المنطقة"),
+    "remainingDays": MessageLookupByLibrary.simpleMessage("الايام المتبقية"),
     "remaining_tasks": MessageLookupByLibrary.simpleMessage(
       "المهام المتبقية لهذا الشهر",
     ),
     "report_location": MessageLookupByLibrary.simpleMessage("الإبلاغ عن موقع"),
     "reported_by": MessageLookupByLibrary.simpleMessage("تبلغ بواسطة"),
     "reports": MessageLookupByLibrary.simpleMessage("البلاغات"),
+    "reset_link_sent": MessageLookupByLibrary.simpleMessage(
+      "تم ارسال رابط استعادة كلمة المرور الى البريد الالكتروني",
+    ),
+    "reset_password": MessageLookupByLibrary.simpleMessage(
+      "استعادة كلمة المرور",
+    ),
     "retry": MessageLookupByLibrary.simpleMessage("اعد المحاولة"),
     "selectInstitution": MessageLookupByLibrary.simpleMessage("اختر المؤسسة"),
     "selectTime": MessageLookupByLibrary.simpleMessage("اختر الوقت"),
@@ -176,6 +215,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "select_date": MessageLookupByLibrary.simpleMessage("اختر التاريخ"),
     "select_warehouse": MessageLookupByLibrary.simpleMessage("اختر المستودع"),
     "send": MessageLookupByLibrary.simpleMessage("ارسال"),
+    "set_new_password": MessageLookupByLibrary.simpleMessage(
+      "ضبط كلمة المرور الجديدة",
+    ),
     "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
     "sign_in": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "sign_in_to_continue": MessageLookupByLibrary.simpleMessage(
@@ -207,7 +249,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "truck_number": MessageLookupByLibrary.simpleMessage("رقم الشاحنة"),
     "type": MessageLookupByLibrary.simpleMessage("نوع"),
     "typeMessage": MessageLookupByLibrary.simpleMessage("اكتب رسالة....."),
+    "unlimited_reports": MessageLookupByLibrary.simpleMessage(
+      "تقارير غير محدودة",
+    ),
     "unsubscribe": MessageLookupByLibrary.simpleMessage("الغاء الاشتراك"),
+    "unsubscribe_confirmation_message": MessageLookupByLibrary.simpleMessage(
+      "هل أنت متأكد أنك تريد إلغاء الاشتراك؟ ستفقد الوصول إلى الميزات المميزة فورًا.",
+    ),
     "update": MessageLookupByLibrary.simpleMessage("تحديث"),
     "update_profile_picture": MessageLookupByLibrary.simpleMessage(
       "تحديث صورة الملف الشخصي",
@@ -232,6 +280,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "welcome_title": MessageLookupByLibrary.simpleMessage(
       "مرحبًا بكم في جرين سيتي",
     ),
+    "your_benefits": MessageLookupByLibrary.simpleMessage("مميزاتك"),
     "your_bin_number": MessageLookupByLibrary.simpleMessage(
       "رقم الحاوية الخاصة بك",
     ),

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:green_city/featuers/user/data/models/user_reports_model.dart';
 import 'package:green_city/generated/l10n.dart';
 import '../../../../../../../../core/utils/text_style.dart';
-import '../../../../../cubits/cubit/paid_tasks_cubit.dart';
+import '../../../../../cubits/paid_tasks/paid_tasks_cubit.dart';
 
 class PaidTaskItem extends StatelessWidget {
   const PaidTaskItem({super.key, required this.userReportsModel});

@@ -9,7 +9,7 @@ class DriverRepoImpl extends DriverRepo {
 
   DriverRepoImpl(this.databaseService);
   @override
-  Future<Either<Failures, List<dynamic>>> fetchTasks({
+  Future<Either<Failure, List<dynamic>>> fetchTasks({
     required String endPoint,
   }) async {
     try {
@@ -21,7 +21,7 @@ class DriverRepoImpl extends DriverRepo {
   }
 
   @override
-  Future<Either<Failures, bool>> sendDriverReports({
+  Future<Either<Failure, bool>> sendDriverReports({
     required String endPoint,
     required Map<String, dynamic> data,
   }) async {
@@ -37,7 +37,7 @@ class DriverRepoImpl extends DriverRepo {
   }
 
   @override
-  Future<Either<Failures, bool>> completeTask({
+  Future<Either<Failure, bool>> completeTask({
     required String endPoint,
     required Map<String, dynamic> data,
   }) async {

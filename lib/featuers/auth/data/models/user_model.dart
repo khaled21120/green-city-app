@@ -2,7 +2,7 @@
 import 'package:equatable/equatable.dart';
 
 class UserModel extends Equatable {
-  final String? id;
+  final int? id;
   final String? name;
   final String? email;
   final String? phone;
@@ -42,7 +42,7 @@ class UserModel extends Equatable {
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      id: json['id'] as String?,
+      id: json['id'] as int?,
       licenseNumber: json['licenseNumber'] as String?,
       licenseExpiryDate: json['licenseExpiryDate'] as String?,
       truckNumber: json['truckNumber'] as String?,

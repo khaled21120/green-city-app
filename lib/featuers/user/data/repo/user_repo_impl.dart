@@ -17,7 +17,7 @@ class UserRepoImpl extends UserRepo {
   final DatabaseService databaseService;
 
   @override
-  Future<Either<Failures, UserModel>> updateUserData({
+  Future<Either<Failure, UserModel>> updateUserData({
     required String endPoint,
     required dynamic data,
     required bool isImage,
@@ -41,7 +41,7 @@ class UserRepoImpl extends UserRepo {
   }
 
   @override
-  Future<Either<Failures, UserModel>> fetchUserData({
+  Future<Either<Failure, UserModel>> fetchUserData({
     required String endPoint,
   }) async {
     try {
@@ -61,7 +61,7 @@ class UserRepoImpl extends UserRepo {
   }
 
   @override
-  Future<Either<Failures, List<ActivitiesModel>>> fetchActivities({
+  Future<Either<Failure, List<ActivitiesModel>>> fetchActivities({
     required String endPoint,
   }) async {
     try {
@@ -78,7 +78,7 @@ class UserRepoImpl extends UserRepo {
   }
 
   @override
-  Future<Either<Failures, List<PollsModel>>> fetchPolls({
+  Future<Either<Failure, List<PollsModel>>> fetchPolls({
     required String endPoint,
   }) async {
     try {
@@ -91,7 +91,7 @@ class UserRepoImpl extends UserRepo {
   }
 
   @override
-  Future<Either<Failures, bool>> sendUserReports({
+  Future<Either<Failure, void>> sendUserReports({
     required String endPoint,
     required Map<String, dynamic> data,
   }) async {
@@ -107,7 +107,7 @@ class UserRepoImpl extends UserRepo {
   }
 
   @override
-  Future<Either<Failures, List<dynamic>>> fetchNotifications({
+  Future<Either<Failure, List<dynamic>>> fetchNotifications({
     required String endPoint,
   }) async {
     try {
@@ -137,7 +137,7 @@ class UserRepoImpl extends UserRepo {
   }
 
   @override
-  Future<Either<Failures, List<UserReportsModel>>> fetchUserReports({
+  Future<Either<Failure, List<UserReportsModel>>> fetchUserReports({
     required String endPoint,
   }) async {
     try {
@@ -153,7 +153,7 @@ class UserRepoImpl extends UserRepo {
   }
 
   @override
-  Future<Either<Failures, List<RegionModel>>> fetchRegions({
+  Future<Either<Failure, List<RegionModel>>> fetchRegions({
     required String endPoint,
   }) async {
     try {
@@ -168,36 +168,33 @@ class UserRepoImpl extends UserRepo {
   }
 
   @override
-  Future<Either<Failures, bool>> editActivity({
+  Future<Either<Failure, void>> editActivity({
     required String endPoint,
     required String id,
   }) async {
     try {
-      final res = await databaseService.postByID(endPoint: endPoint, id: id);
-      return Right(res);
+      await databaseService.postByID(endPoint: endPoint, id: id);
+      return const Right(null);
     } on ServerFailure catch (e) {
       return Left(ServerFailure(e.errMsg));
     }
   }
 
   @override
-  Future<Either<Failures, bool>> joinPoll({
+  Future<Either<Failure, void>> joinPoll({
     required String endPoint,
     required int id,
   }) async {
     try {
-      final res = await databaseService.postByID(
-        endPoint: endPoint,
-        id: '/$id/subscribe',
-      );
-      return Right(res);
+      await databaseService.postByID(endPoint: endPoint, id: '/$id/subscribe');
+      return const Right(null);
     } on ServerFailure catch (e) {
       return Left(ServerFailure(e.errMsg));
     }
   }
 
   @override
-  Future<Either<Failures, bool>> sendMessage({
+  Future<Either<Failure, void>> sendMessage({
     required String endPoint,
     required Map<String, dynamic> data,
   }) {
@@ -238,6 +235,31 @@ class UserRepoImpl extends UserRepo {
       return res;
     } on ServerFailure catch (e) {
       throw ServerFailure(e.errMsg);
+    }
+  }
+
+  @override
+  Future<Either<Failure, UserReportsModel>> fetchSubscribStatus({
+    required String endPoint,
+  }) async {
+    try {
+      final sub = await databaseService.fetchMapData(endPoint: endPoint);
+      final subStatus = UserReportsModel.fromJson(sub);
+      return Right(subStatus);
+    } on ServerFailure catch (e) {
+      return Left(ServerFailure(e.errMsg));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> cancelSubscription({
+    required String endPoint,
+  }) async {
+    try {
+      final res = await databaseService.sendData(endPoint: endPoint, data: {});
+      return res;
+    } on ServerFailure catch (e) {
+      return Left(ServerFailure(e.errMsg));
     }
   }
 }

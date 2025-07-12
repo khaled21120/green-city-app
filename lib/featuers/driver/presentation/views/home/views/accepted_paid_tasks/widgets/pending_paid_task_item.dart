@@ -13,7 +13,7 @@ import 'package:intl/intl.dart';
 import '../../../../../../../../core/utils/helper.dart';
 import '../../../../../../../../core/utils/text_style.dart';
 import '../../../../../../../auth/data/models/user_model.dart';
-import '../../../../../cubits/Driver Reports/driver_reports_cubit.dart';
+import '../../../../../cubits/driver_reports/driver_reports_cubit.dart';
 
 class PendingPaidTaskItem extends StatefulWidget {
   const PendingPaidTaskItem({
@@ -413,7 +413,7 @@ class _PendingPaidTaskItemState extends State<PendingPaidTaskItem> {
               endPoint: Endpoints.complatePayedReports,
               id: widget.id,
               name: widget.userModel.name ?? 'User',
-              desc: _noteController.text,
+              desc: _noteController.text.trim(),
               sentAt: DateFormat.yMd('en').format(DateTime.now()),
               announcementsID: widget.id,
               photoFile: image!,

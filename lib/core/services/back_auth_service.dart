@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:go_router/go_router.dart';
@@ -103,6 +105,53 @@ class ApiAuthService {
     try {
       await dio.delete(endPoint);
       _redirectToSignIn();
+    } on DioException catch (dioError) {
+      throw ServerFailure.fromDioException(dioError);
+    }
+  }
+
+  Future<void> forgetPassword({
+    required String endPoint,
+    required String email,
+    required String redirectUrl,
+  }) async {
+    try {
+      final data = {'email': email, 'redirectUrl': redirectUrl};
+      final formData = FormData.fromMap(data);
+
+      final response = await dio.post(
+        endPoint,
+        data: formData,
+        options: Options(headers: {'Content-Type': 'multipart/form-data'}),
+      );
+
+      if (response.statusCode == 200) {
+        log('Password reset email sent successfully.');
+      }
+    } on DioException catch (dioError) {
+      throw ServerFailure.fromDioException(dioError);
+    }
+  }
+
+  Future<void> resetPassword({
+    required String endPoint,
+    required String token,
+    required String email,
+    required String newPassword,
+  }) async {
+    try {
+      final data = {'token': token, 'email': email, 'newPassword': newPassword};
+      final formData = FormData.fromMap(data);
+
+      final response = await dio.post(
+        endPoint,
+        data: formData,
+        options: Options(headers: {'Content-Type': 'multipart/form-data'}),
+      );
+
+      if (response.statusCode == 200) {
+        log('Password reset successfully.');
+      }
     } on DioException catch (dioError) {
       throw ServerFailure.fromDioException(dioError);
     }

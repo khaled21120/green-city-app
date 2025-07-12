@@ -33,7 +33,7 @@ class _ChatPageState extends State<ChatPage> {
     super.initState();
 
     currentUser = types.User(
-      id: widget.userModel.id ?? '1',
+      id: widget.userModel.id.toString(),
       firstName: widget.userModel.name ?? 'User',
       imageUrl: widget.userModel.profileImage,
     );

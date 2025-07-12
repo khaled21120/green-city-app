@@ -1,4 +1,3 @@
-
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -57,11 +56,6 @@ class PollsCubit extends Cubit<PollsState> {
     );
 
     result.fold((error) => emit(PollsVoteError(error.errMsg)), (isVoted) async {
-      if (!isVoted) {
-        emit(const PollsVoteError('Failed to register vote'));
-        return;
-      }
-
       // Success → update local list (optimistic) before refetch
       final current = (state as PollsLoaded).pollsList;
       emit(PollsVoted('تم التصويت بنجاح', current));

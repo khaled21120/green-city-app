@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:green_city/core/utils/endpoints.dart';
-
 import '../../../data/models/user_model.dart';
 import '../../../data/repo/auth_repo.dart';
 
@@ -24,21 +23,41 @@ class LogInCubit extends Cubit<LogInState> {
     );
   }
 
-  // void logInWthGoogle() async {
-  //   emit(LogInLoading());
-  //   final res = await authRepo.logInWithGoogle();
-  //   res.fold(
-  //     (failure) => emit(LogInError(failure.message)),
-  //     (userEntity) => emit(LogInSuccess(userEntity)),
-  //   );
-  // }
+  Future<void> forgetPassword({required String email}) async {
+    emit(LogInLoading());
 
-  // void logInWthFaceBook() async {
-  //   emit(LogInLoading());
-  //   final res = await authRepo.logInWithFaceBook();
-  //   res.fold(
-  //     (failure) => emit(LogInError(failure.message)),
-  //     (userEntity) => emit(LogInSuccess(userEntity)),
-  //   );
-  // }
+    final res = await authRepo.forgetPassword(
+      endPoint: Endpoints.forgotPassword,
+      email: email,
+      redirectUrl: 'greencity://reset-password', 
+    );
+
+    res.fold(
+      (failure) => emit(ForgotPasswordError(failure.errMsg)),
+      (_) => emit(ForgotPasswordSuccess()),
+    );
+  }
+
+  // Add this method to LogInCubit
+  Future<void> resetPassword({
+    required String token,
+    required String email,
+    required String newPassword,
+  }) async {
+    emit(LogInLoading());
+
+    final res = await authRepo.resetPassword(
+      endPoint: Endpoints.resetPassword,
+      token: token,
+      email: email,
+      newPassword: newPassword,
+    );
+
+    res.fold(
+      (failure) => emit(LogInError(failure.errMsg)),
+      (_) => emit(
+        const ResetPasswordSuccess("Password reset successfully"),
+      ), // Modify as needed
+    );
+  }
 }

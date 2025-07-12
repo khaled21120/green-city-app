@@ -17,7 +17,7 @@ class AuthRepoImpl extends AuthRepo {
   final storage = const FlutterSecureStorage();
 
   @override
-  Future<Either<Failures, UserModel>> logIn({
+  Future<Either<Failure, UserModel>> logIn({
     required String endPoint,
     required String email,
     required String password,
@@ -40,7 +40,7 @@ class AuthRepoImpl extends AuthRepo {
   }
 
   @override
-  Future<Either<Failures, UserModel>> signUp({
+  Future<Either<Failure, UserModel>> signUp({
     required Map<String, dynamic> data,
     required String endPoint,
   }) async {
@@ -78,5 +78,43 @@ class AuthRepoImpl extends AuthRepo {
   @override
   Future<void> logOut() async {
     await apiAuthService.logOut();
+  }
+
+  @override
+  Future<Either<Failure, void>> forgetPassword({
+    required String endPoint,
+    required String email,
+    required String redirectUrl,
+  }) async {
+    try {
+      final response = await apiAuthService.forgetPassword(
+        endPoint: endPoint,
+        email: email,
+        redirectUrl: redirectUrl,
+      );
+      return Right(response);
+    } catch (e) {
+      return Left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> resetPassword({
+    required String endPoint,
+    required String token,
+    required String email,
+    required String newPassword,
+  }) async {
+    try {
+      final response = await apiAuthService.resetPassword(
+        endPoint: endPoint,
+        token: token,
+        email: email,
+        newPassword: newPassword,
+      );
+      return Right(response);
+    } catch (e) {
+      return Left(ServerFailure(e.toString()));
+    }
   }
 }

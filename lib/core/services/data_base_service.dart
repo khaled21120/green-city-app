@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:green_city/core/errors/error.dart';
 
 abstract class DatabaseService {
-  Future<Either<Failures, bool>> sendData({
+  Future<Either<Failure, bool>> sendData({
     required String endPoint,
     required Map<String, dynamic> data,
   });

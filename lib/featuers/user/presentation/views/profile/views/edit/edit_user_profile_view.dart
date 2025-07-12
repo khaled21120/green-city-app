@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:green_city/core/utils/helper.dart';
 import 'package:green_city/core/widgets/button.dart';
 import 'package:green_city/core/widgets/text_felid.dart';
 import 'package:green_city/featuers/user/presentation/cubits/profile/profile_cubit.dart';
@@ -112,15 +111,17 @@ class _EditUserProfileViewState extends State<EditUserProfileView> {
 
     setState(() => _isLoading = true);
 
-    await context.read<ProfileCubit>().updateProfile(
-      data: {
-        'Name': _nameController.text,
-        'Phone': _phoneController.text,
-        'Address': _addressController.text,
-      },
-      isImage: false,
-    );
-    // ignore: use_build_context_synchronously
-    Navigator.pop(context);
+    await context
+        .read<ProfileCubit>()
+        .updateProfile(
+          data: {
+            'Name': _nameController.text.trim(),
+            'Phone': _phoneController.text.trim(),
+            'Address': _addressController.text.trim(),
+          },
+          isImage: false,
+        )
+        // ignore: use_build_context_synchronously
+        .then((val) => Navigator.pop(context));
   }
 }

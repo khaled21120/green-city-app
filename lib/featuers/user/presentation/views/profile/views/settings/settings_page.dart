@@ -116,7 +116,7 @@ class SettingsPage extends StatelessWidget {
                     _buildAboutItem(
                       context,
                       title: S.of(context).copyright,
-                      value: "© 2023 Green City",
+                      value: "© 2025 Green City",
                     ),
                     _buildAboutItem(
                       context,

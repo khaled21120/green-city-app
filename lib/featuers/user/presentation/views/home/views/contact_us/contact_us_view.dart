@@ -163,7 +163,7 @@ class _ContactUsViewState extends State<ContactUsView> {
       final feedback = ContactUsModel(
         name: userData.name,
         email: userData.email,
-        message: messageController.text,
+        message: messageController.text.trim(),
       );
       context.read<ContactUsCubit>().sendFeedback(feedback);
       _resetForm();

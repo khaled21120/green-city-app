@@ -815,20 +815,20 @@ class S {
     );
   }
 
-  /// `For Institutions`
+  /// `Paid service`
   String get for_Institutions {
     return Intl.message(
-      'For Institutions',
+      'Paid service',
       name: 'for_Institutions',
       desc: '',
       args: [],
     );
   }
 
-  /// `For Individuals`
+  /// `Free service`
   String get for_Individuals {
     return Intl.message(
-      'For Individuals',
+      'Free service',
       name: 'for_Individuals',
       desc: '',
       args: [],
@@ -1193,6 +1193,211 @@ class S {
   /// `Paid Tasks`
   String get paid_tasks {
     return Intl.message('Paid Tasks', name: 'paid_tasks', desc: '', args: []);
+  }
+
+  /// `Pending Paid Tasks`
+  String get pending_paid_tasks {
+    return Intl.message(
+      'Pending Paid Tasks',
+      name: 'pending_paid_tasks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your email first`
+  String get enter_email_first {
+    return Intl.message(
+      'Please enter your email first',
+      name: 'enter_email_first',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password reset link sent to your email`
+  String get reset_link_sent {
+    return Intl.message(
+      'Password reset link sent to your email',
+      name: 'reset_link_sent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reset Password`
+  String get reset_password {
+    return Intl.message(
+      'Reset Password',
+      name: 'reset_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Set New Password`
+  String get set_new_password {
+    return Intl.message(
+      'Set New Password',
+      name: 'set_new_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New Password`
+  String get new_password {
+    return Intl.message(
+      'New Password',
+      name: 'new_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a new password`
+  String get enter_new_password {
+    return Intl.message(
+      'Please enter a new password',
+      name: 'enter_new_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must be at least 8 characters`
+  String get password_min_length {
+    return Intl.message(
+      'Password must be at least 8 characters',
+      name: 'password_min_length',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Passwords do not match`
+  String get passwords_not_match {
+    return Intl.message(
+      'Passwords do not match',
+      name: 'passwords_not_match',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password reset successfully!`
+  String get password_reset_success {
+    return Intl.message(
+      'Password reset successfully!',
+      name: 'password_reset_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password reset failed. Please try again later.`
+  String get password_reset_failed {
+    return Intl.message(
+      'Password reset failed. Please try again later.',
+      name: 'password_reset_failed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Subscription`
+  String get my_subscription {
+    return Intl.message(
+      'My Subscription',
+      name: 'my_subscription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remaining Days`
+  String get remainingDays {
+    return Intl.message(
+      'Remaining Days',
+      name: 'remainingDays',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Days`
+  String get days {
+    return Intl.message('Days', name: 'days', desc: '', args: []);
+  }
+
+  /// `Unlimited Reports`
+  String get unlimited_reports {
+    return Intl.message(
+      'Unlimited Reports',
+      name: 'unlimited_reports',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Priority Support`
+  String get priority_support {
+    return Intl.message(
+      'Priority Support',
+      name: 'priority_support',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exclusive Content`
+  String get exclusive_content {
+    return Intl.message(
+      'Exclusive Content',
+      name: 'exclusive_content',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ad-Free Experience`
+  String get ad_free_experience {
+    return Intl.message(
+      'Ad-Free Experience',
+      name: 'ad_free_experience',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your Benefits`
+  String get your_benefits {
+    return Intl.message(
+      'Your Benefits',
+      name: 'your_benefits',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Unsubscription`
+  String get confirm_unsubscribe {
+    return Intl.message(
+      'Confirm Unsubscription',
+      name: 'confirm_unsubscribe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to unsubscribe? You'll lose access to premium features immediately.`
+  String get unsubscribe_confirmation_message {
+    return Intl.message(
+      'Are you sure you want to unsubscribe? You\'ll lose access to premium features immediately.',
+      name: 'unsubscribe_confirmation_message',
+      desc: '',
+      args: [],
+    );
   }
 }
 

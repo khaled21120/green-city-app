@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:green_city/core/services/prefs_service.dart';
 import 'package:green_city/core/widgets/drawer_header.dart';
 import 'package:green_city/generated/l10n.dart';
 
@@ -35,6 +36,7 @@ class UserDrawer extends StatelessWidget {
   }
 
   List<Widget> _buildMenuItems(BuildContext context) {
+    final isSub = PrefsService.getSubState();
     return [
       _buildMenuItem(
         context,
@@ -48,6 +50,13 @@ class UserDrawer extends StatelessWidget {
         title: S.of(context).notifications,
         routeName: 'notifications',
       ),
+      if (isSub != null && isSub == true)
+        _buildMenuItem(
+          context,
+          icon: FontAwesomeIcons.mapLocationDot,
+          title: S.of(context).my_subscription,
+          routeName: 'mySubscription',
+        ),
       _buildMenuItem(
         context,
         icon: FontAwesomeIcons.solidCalendar,

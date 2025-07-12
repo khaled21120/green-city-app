@@ -1,16 +1,22 @@
 import 'package:dio/dio.dart';
 
-abstract class Failures {
-  Failures(this.errMsg);
+abstract class Failure {
+  Failure(this.errMsg);
   final String errMsg;
 }
 
-class ServerFailure extends Failures {
+class ServerFailure extends Failure {
   ServerFailure(super.errMsg);
 
   factory ServerFailure.fromDioException(DioException error) {
     try {
       if (error.response != null) {
+        if (error.response?.data is Map) {
+          return ServerFailure.fromResponse(
+            error.response?.statusCode ?? 500,
+            error.response?.data['message'] ?? 'Internal Server Error',
+          );
+        }
         return ServerFailure.fromResponse(
           error.response?.statusCode ?? 500,
           error.response?.data ?? 'Internal Server Error',

@@ -44,8 +44,8 @@ class _UserReportsState extends State<UserReports> {
         binNumber: binNumber!,
         selectedDate: selectedDate,
         region: region!,
-        address: addressController.text,
-        message: messageController.text,
+        address: addressController.text.trim(),
+        message: messageController.text.trim(),
         user: user,
         image: image!,
       );
@@ -179,7 +179,11 @@ class _UserReportsState extends State<UserReports> {
                               Text(
                                 image == null
                                     ? S.of(context).no_image
-                                    : image!.path.split('/').last,
+                                    : image!.path
+                                        .split('/')
+                                        .last
+                                        .split('-')
+                                        .first,
                                 style: MyStyle.title16(context),
                                 overflow: TextOverflow.ellipsis,
                               ),

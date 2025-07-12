@@ -20,3 +20,15 @@ final class LogInSuccess extends LogInState {
   final UserModel userModel;
   const LogInSuccess(this.userModel);
 }
+
+class ForgotPasswordSuccess extends LogInState {}
+
+class ForgotPasswordError extends LogInState {
+  final String message;
+  const ForgotPasswordError(this.message);
+}
+
+class ResetPasswordSuccess extends LogInState {
+  final String message;
+  const ResetPasswordSuccess(this.message);
+}

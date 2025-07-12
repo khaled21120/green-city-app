@@ -82,17 +82,29 @@ class _InstitutionsReportsState extends State<InstitutionsReports> {
     });
   }
 
-  String _calculatePrice(String? duration) {
+  String _calculatePrice(String? duration, String? type) {
     if (duration == null || duration.isEmpty) return '0';
+    if (type == null || type.isEmpty) return '';
     final months = int.tryParse(duration.split(' ').first) ?? 0;
-    return (months * 300).toString();
+    switch (type) {
+      case 'One-time':
+        return '700';
+      case 'Daily':
+        return (months * 15000).toString();
+      case 'Weekly':
+        return (months * 2600).toString();
+      case 'Monthly':
+        return (months * 700).toString();
+      default:
+        return '0';
+    }
   }
 
   Future<void> _submitForm() async {
     if (!_formKey.currentState!.validate()) return;
 
     final user = Helper.getUser();
-    final price = _calculatePrice(_subscriptionDuration);
+    final price = _calculatePrice(_subscriptionDuration, _subscriptionType);
 
     final report = UserReportsModel(
       userName: user.name,
@@ -207,21 +219,27 @@ class _InstitutionsReportsState extends State<InstitutionsReports> {
                         onChanged:
                             (val) => setState(() => _subscriptionType = val),
                       ),
-                      _DropdownField(
-                        label: S.of(context).subscriptionDuration,
-                        value: _subscriptionDuration,
-                        items: Constants.subscriptionDuration,
-                        onChanged:
-                            (val) =>
-                                setState(() => _subscriptionDuration = val),
-                      ),
+                      if (_subscriptionType != 'One-time')
+                        _DropdownField(
+                          label: S.of(context).subscriptionDuration,
+                          value: _subscriptionDuration,
+                          items: Constants.subscriptionDuration,
+                          onChanged:
+                              (val) =>
+                                  setState(() => _subscriptionDuration = val),
+                        ),
                     ],
                   ),
 
                   const SizedBox(height: 4),
 
                   // ─────────── Price ───────────
-                  _PriceCard(price: _calculatePrice(_subscriptionDuration)),
+                  _PriceCard(
+                    price: _calculatePrice(
+                      _subscriptionDuration,
+                      _subscriptionType,
+                    ),
+                  ),
 
                   const SizedBox(height: 4),
 

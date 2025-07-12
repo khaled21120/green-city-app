@@ -32,6 +32,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "activity_overview": MessageLookupByLibrary.simpleMessage(
       "Activity Overview",
     ),
+    "ad_free_experience": MessageLookupByLibrary.simpleMessage(
+      "Ad-Free Experience",
+    ),
     "add_report": MessageLookupByLibrary.simpleMessage("Add Report"),
     "additionalNotes": MessageLookupByLibrary.simpleMessage("Additional Notes"),
     "additional_information": MessageLookupByLibrary.simpleMessage(
@@ -64,6 +67,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "Confirm Password",
     ),
+    "confirm_unsubscribe": MessageLookupByLibrary.simpleMessage(
+      "Confirm Unsubscription",
+    ),
     "contactNumber": MessageLookupByLibrary.simpleMessage("Contact Number"),
     "contact_us": MessageLookupByLibrary.simpleMessage("Contact Us"),
     "contact_us_description": MessageLookupByLibrary.simpleMessage(
@@ -73,6 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "create_account": MessageLookupByLibrary.simpleMessage("Create Account"),
     "dark_mode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
     "date": MessageLookupByLibrary.simpleMessage("Date"),
+    "days": MessageLookupByLibrary.simpleMessage("Days"),
     "delete": MessageLookupByLibrary.simpleMessage("Delete"),
     "delete_account": MessageLookupByLibrary.simpleMessage("Delete Account"),
     "desc": MessageLookupByLibrary.simpleMessage("Description"),
@@ -89,14 +96,21 @@ class MessageLookup extends MessageLookupByLibrary {
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "email_address": MessageLookupByLibrary.simpleMessage("Email Address"),
     "enter": MessageLookupByLibrary.simpleMessage("Enter"),
+    "enter_email_first": MessageLookupByLibrary.simpleMessage(
+      "Please enter your email first",
+    ),
+    "enter_new_password": MessageLookupByLibrary.simpleMessage(
+      "Please enter a new password",
+    ),
     "estimatedCost": MessageLookupByLibrary.simpleMessage("Estimated Cost:"),
     "estimatedQuantity": MessageLookupByLibrary.simpleMessage("Quantity (kg)"),
+    "exclusive_content": MessageLookupByLibrary.simpleMessage(
+      "Exclusive Content",
+    ),
     "faqs": MessageLookupByLibrary.simpleMessage("FAQs"),
     "features": MessageLookupByLibrary.simpleMessage("Features"),
-    "for_Individuals": MessageLookupByLibrary.simpleMessage("For Individuals"),
-    "for_Institutions": MessageLookupByLibrary.simpleMessage(
-      "For Institutions",
-    ),
+    "for_Individuals": MessageLookupByLibrary.simpleMessage("Free service"),
+    "for_Institutions": MessageLookupByLibrary.simpleMessage("Paid service"),
     "forget_password": MessageLookupByLibrary.simpleMessage("Forget Password?"),
     "gallery": MessageLookupByLibrary.simpleMessage("Choose from Gallery"),
     "good_afternoon": MessageLookupByLibrary.simpleMessage("Good Afternoon"),
@@ -115,7 +129,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "message": MessageLookupByLibrary.simpleMessage("Message"),
     "my_Activities": MessageLookupByLibrary.simpleMessage("My Activities"),
     "my_reports": MessageLookupByLibrary.simpleMessage("My Reports"),
+    "my_subscription": MessageLookupByLibrary.simpleMessage("My Subscription"),
     "name": MessageLookupByLibrary.simpleMessage("Name"),
+    "new_password": MessageLookupByLibrary.simpleMessage("New Password"),
     "no_data_available": MessageLookupByLibrary.simpleMessage(
       "No data available",
     ),
@@ -142,29 +158,52 @@ class MessageLookup extends MessageLookupByLibrary {
     "paid_tasks": MessageLookupByLibrary.simpleMessage("Paid Tasks"),
     "participants": MessageLookupByLibrary.simpleMessage("Participants"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
+    "password_min_length": MessageLookupByLibrary.simpleMessage(
+      "Password must be at least 8 characters",
+    ),
     "password_not_match": MessageLookupByLibrary.simpleMessage(
       "Password does not match",
+    ),
+    "password_reset_failed": MessageLookupByLibrary.simpleMessage(
+      "Password reset failed. Please try again later.",
+    ),
+    "password_reset_success": MessageLookupByLibrary.simpleMessage(
+      "Password reset successfully!",
+    ),
+    "passwords_not_match": MessageLookupByLibrary.simpleMessage(
+      "Passwords do not match",
     ),
     "paymentInformation": MessageLookupByLibrary.simpleMessage(
       "Payment Information",
     ),
     "paymentMethod": MessageLookupByLibrary.simpleMessage("Payment Method"),
+    "pending_paid_tasks": MessageLookupByLibrary.simpleMessage(
+      "Pending Paid Tasks",
+    ),
     "pending_tasks": MessageLookupByLibrary.simpleMessage("Pending Tasks"),
     "phone_number": MessageLookupByLibrary.simpleMessage("Phone Number"),
     "please_select": MessageLookupByLibrary.simpleMessage("Please select"),
     "polls": MessageLookupByLibrary.simpleMessage("Polls"),
     "price": MessageLookupByLibrary.simpleMessage("Price"),
+    "priority_support": MessageLookupByLibrary.simpleMessage(
+      "Priority Support",
+    ),
     "private": MessageLookupByLibrary.simpleMessage("Private"),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "public": MessageLookupByLibrary.simpleMessage("Public"),
     "quick_actions": MessageLookupByLibrary.simpleMessage("Quick Actions"),
     "region": MessageLookupByLibrary.simpleMessage("Region"),
+    "remainingDays": MessageLookupByLibrary.simpleMessage("Remaining Days"),
     "remaining_tasks": MessageLookupByLibrary.simpleMessage(
       "Tasks Remaining for this month",
     ),
     "report_location": MessageLookupByLibrary.simpleMessage("Report Location"),
     "reported_by": MessageLookupByLibrary.simpleMessage("Reported By"),
     "reports": MessageLookupByLibrary.simpleMessage("Reports"),
+    "reset_link_sent": MessageLookupByLibrary.simpleMessage(
+      "Password reset link sent to your email",
+    ),
+    "reset_password": MessageLookupByLibrary.simpleMessage("Reset Password"),
     "retry": MessageLookupByLibrary.simpleMessage("Retry"),
     "selectInstitution": MessageLookupByLibrary.simpleMessage(
       "Select Institution",
@@ -176,6 +215,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Select Warehouse",
     ),
     "send": MessageLookupByLibrary.simpleMessage("Send"),
+    "set_new_password": MessageLookupByLibrary.simpleMessage(
+      "Set New Password",
+    ),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "sign_in": MessageLookupByLibrary.simpleMessage("Sign in"),
     "sign_in_to_continue": MessageLookupByLibrary.simpleMessage(
@@ -211,7 +253,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "truck_number": MessageLookupByLibrary.simpleMessage("Truck Number"),
     "type": MessageLookupByLibrary.simpleMessage("Type"),
     "typeMessage": MessageLookupByLibrary.simpleMessage("Type message..."),
+    "unlimited_reports": MessageLookupByLibrary.simpleMessage(
+      "Unlimited Reports",
+    ),
     "unsubscribe": MessageLookupByLibrary.simpleMessage("Unsubscribe"),
+    "unsubscribe_confirmation_message": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to unsubscribe? You\'ll lose access to premium features immediately.",
+    ),
     "update": MessageLookupByLibrary.simpleMessage("Update"),
     "update_profile_picture": MessageLookupByLibrary.simpleMessage(
       "Update Your Profile Picture",
@@ -236,6 +284,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "welcome_title": MessageLookupByLibrary.simpleMessage(
       "Welcome to Green City",
     ),
+    "your_benefits": MessageLookupByLibrary.simpleMessage("Your Benefits"),
     "your_bin_number": MessageLookupByLibrary.simpleMessage("Your Bin Number"),
     "your_contributions": MessageLookupByLibrary.simpleMessage(
       "Your Contributions",

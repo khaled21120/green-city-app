@@ -52,7 +52,7 @@ class NotificationsCubit extends Cubit<NotificationsState> {
     late bool isDeleted;
     isPublic
         ? isDeleted = await homeRepo.hideNotification(
-          endPoint: Endpoints.publicNotifications,
+          endPoint: Endpoints.hidePublicNotifications,
           id: id,
         )
         : isDeleted = await homeRepo.deleteNotification(

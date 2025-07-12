@@ -53,7 +53,7 @@ class AnnounsItem extends StatelessWidget {
               children: [
                 const Icon(Icons.date_range, size: 16, color: Colors.grey),
                 const SizedBox(width: 4),
-                Text(item.todayDate ?? '', style: MyStyle.title14(context)),
+                Text(item.todayDate!.split('T').first, style: MyStyle.title14(context)),
               ],
             ),
             Row(

@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:green_city/core/errors/error.dart';
+import 'package:green_city/core/services/prefs_service.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../../core/utils/endpoints.dart';
@@ -65,6 +66,7 @@ class UserReportsCubit extends Cubit<ReportsState> {
         endPoint: Endpoints.sendPayedReports,
         data: userReportsModel.toJson(),
       );
+      await PrefsService.isSub(true);
       result.fold((error) => emit(ReportsError(error.errMsg)), (announs) {
         emit(const ReportsSend('تم ارسال الاعلان بنجاح'));
       });
@@ -82,6 +84,36 @@ class UserReportsCubit extends Cubit<ReportsState> {
       result.fold((error) => emit(ReportsError(error.errMsg)), (announs) {
         emit(FetchReportsSuccess(announs));
       });
+    } on ServerFailure catch (e) {
+      emit(ReportsError(e.toString()));
+    }
+  }
+
+  void fetchSubscribStatus() async {
+    emit(ReportsLoading());
+    try {
+      final res = await homeRepo.fetchSubscribStatus(
+        endPoint: Endpoints.getSubscribStatus,
+      );
+      res.fold((error) => emit(ReportsError(error.errMsg)), (sub) {
+        emit(FetchSubSuccess(sub));
+      });
+    } on ServerFailure catch (e) {
+      emit(ReportsError(e.toString()));
+    }
+  }
+
+  Future<void> cancelSubscription() async {
+    emit(ReportsLoading());
+    try {
+      final res = await homeRepo.cancelSubscription(
+        endPoint: Endpoints.cancelSubscription,
+      );
+      await PrefsService.isSub(false);
+      res.fold(
+        (error) => emit(ReportsError(error.errMsg)),
+        (_) => emit(const CancelSubscription('Cancel Subscription')),
+      );
     } on ServerFailure catch (e) {
       emit(ReportsError(e.toString()));
     }

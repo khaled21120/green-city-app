@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:green_city/featuers/user/data/models/user_reports_model.dart';
 import 'package:green_city/generated/l10n.dart';
 import '../../../../../../../../core/utils/text_style.dart';
-import '../../../../../cubits/Driver Tasks/driver_tasks_cubit.dart';
+import '../../../../../cubits/driver_tasks/driver_tasks_cubit.dart';
 
 class TodayTaskItem extends StatelessWidget {
   const TodayTaskItem({super.key, required this.userReportsModel});
@@ -46,7 +46,7 @@ class TodayTaskItem extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                     Text(
-                      userReportsModel.todayDate ?? '',
+                      userReportsModel.todayDate!.split('T').first,
                       style: MyStyle.title14(context),
                     ),
                     Chip(
@@ -149,7 +149,7 @@ class TodayTaskItem extends StatelessWidget {
                   _buildDetailRow(
                     context,
                     '${S.of(context).date}:',
-                    userReportsModel.todayDate,
+                    userReportsModel.todayDate!.split('T').first,
                   ),
 
                   const SizedBox(height: 24),

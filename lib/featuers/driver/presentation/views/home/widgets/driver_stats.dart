@@ -23,7 +23,7 @@ class DriverStats extends StatelessWidget {
     final remainingTasks = totalTasks - completedTasks;
 
     return Padding(
-      padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+      padding: const EdgeInsets.only(left: 10, right: 10, top: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -88,7 +88,7 @@ class DriverStats extends StatelessWidget {
           const SizedBox(height: 30),
 
           // check tasks Section
-          Text(S.of(context).check_tasks, style: MyStyle.title18(context)),
+          Text(S.of(context).features, style: MyStyle.title30(context)),
         ],
       ),
     );

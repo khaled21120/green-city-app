@@ -44,7 +44,7 @@ class DriverProfileOptions extends StatelessWidget {
         ProfileItem(
           icon: Icons.calendar_today_rounded,
           title: S.of(context).license_expiry_date,
-          value: user.licenseExpiryDate ?? S.of(context).not_provided,
+          value: user.licenseExpiryDate!.split('T').first,
           onTap: () => {},
           showTrailingIcon: false,
         ),

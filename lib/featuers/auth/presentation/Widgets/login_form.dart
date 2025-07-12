@@ -1,9 +1,14 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:green_city/core/themes/light_theme.dart';
+import 'package:green_city/core/utils/helper.dart';
 import 'package:green_city/core/widgets/custom_text_field.dart';
 import 'package:green_city/generated/l10n.dart';
 
+import '../../../../core/errors/error.dart';
 import '../../../../core/widgets/button.dart';
 import '../../../../core/utils/text_style.dart';
 import '../cubits/log_In/log_in_cubit.dart';
@@ -20,6 +25,8 @@ class _LoginFormCardState extends State<LoginFormCard> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _confirmEmailController = TextEditingController();
+
   var _autovalidateMode = AutovalidateMode.disabled;
   var _obscurePassword = true;
 
@@ -27,6 +34,7 @@ class _LoginFormCardState extends State<LoginFormCard> {
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+    _confirmEmailController.dispose();
     super.dispose();
   }
 
@@ -104,8 +112,8 @@ class _LoginFormCardState extends State<LoginFormCard> {
 
   Widget _buildEmailField() {
     return AuthTextField(
-      labelText: S.of(context).email,
       controller: _emailController,
+      labelText: S.of(context).email,
       keyboardType: TextInputType.emailAddress,
       validator: (value) {
         if (value == null || value.isEmpty) {
@@ -143,13 +151,109 @@ class _LoginFormCardState extends State<LoginFormCard> {
     );
   }
 
+  void _handleForgotPassword(BuildContext context) async {
+    final emailController = TextEditingController();
+    final formKey = GlobalKey<FormState>();
+    bool isLoading = false;
+
+    await showDialog(
+      context: context,
+      builder: (context) {
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return AlertDialog(
+              backgroundColor: Theme.of(context).colorScheme.surface,
+              title: Text(S.of(context).enter_email_first),
+              content: Form(
+                key: formKey,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    AuthTextField(
+                      controller: emailController,
+                      labelText: S.of(context).email,
+                      keyboardType: TextInputType.emailAddress,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return '${S.of(context).enter} ${S.of(context).email}';
+                        }
+                        if (!RegExp(
+                          r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                        ).hasMatch(value)) {
+                          return 'Please enter a valid email';
+                        }
+                        return null;
+                      },
+                    ),
+                    if (isLoading) ...[
+                      const SizedBox(height: 16),
+                      const CircularProgressIndicator(
+                        strokeWidth: 2,
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                          MyColors.lightGrey,
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+              actions: [
+                TextButton(
+                  onPressed: isLoading ? null : () => Navigator.pop(context),
+                  child: Text(S.of(context).cancel),
+                ),
+                ElevatedButton(
+                  onPressed:
+                      isLoading
+                          ? null
+                          : () async {
+                            if (formKey.currentState!.validate()) {
+                              setState(() => isLoading = true);
+                              try {
+                                await context.read<LogInCubit>().forgetPassword(
+                                  email: emailController.text.trim(),
+                                );
+                                if (mounted) {
+                                  Navigator.pop(context);
+                                  Helper.showSnackBar(
+                                    context: context,
+                                    message: S.of(context).reset_link_sent,
+                                  );
+                                }
+                              } catch (error) {
+                                if (mounted) {
+                                  Helper.showSnackBar(
+                                    context: context,
+                                    message:
+                                        error is ServerFailure
+                                            ? error.errMsg
+                                            : "something went wrong",
+                                  );
+                                }
+                              } finally {
+                                if (mounted) {
+                                  setState(() => isLoading = false);
+                                }
+                              }
+                            }
+                          },
+                  child: Text(S.of(context).submit),
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
+  }
+
   Widget _buildForgotPassword(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: Align(
         alignment: Alignment.centerRight,
         child: TextButton(
-          onPressed: () => GoRouter.of(context).goNamed('forgotPassword'),
+          onPressed: () => _handleForgotPassword(context),
           child: Text(
             S.of(context).forget_password,
             style: TextStyle(
@@ -197,7 +301,7 @@ class _LoginFormCardState extends State<LoginFormCard> {
     if (_formKey.currentState!.validate()) {
       context.read<LogInCubit>().logIn(
         email: _emailController.text.trim(),
-        password: _passwordController.text,
+        password: _passwordController.text.trim(),
       );
     } else {
       setState(() => _autovalidateMode = AutovalidateMode.always);

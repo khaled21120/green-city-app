@@ -20,6 +20,14 @@ class AdminHomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+    final isWideScreen = screenSize.width > 600;
+
+    // Responsive grid configuration
+    final crossAxisCount = isWideScreen ? 3 : 2;
+    final childAspectRatio =
+        isWideScreen ? 0.8 : screenSize.width / (screenSize.height / 1.4);
+
     final scaffoldKey = GlobalKey<ScaffoldState>();
 
     return Scaffold(
@@ -90,11 +98,11 @@ class AdminHomeBody extends StatelessWidget {
           SliverPadding(
             padding: const EdgeInsets.all(20),
             sliver: SliverGrid(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: crossAxisCount,
                 mainAxisSpacing: 16,
                 crossAxisSpacing: 16,
-                childAspectRatio: 0.75,
+                childAspectRatio: childAspectRatio,
               ),
               delegate: SliverChildBuilderDelegate((context, index) {
                 final material = Constants.materials[index];

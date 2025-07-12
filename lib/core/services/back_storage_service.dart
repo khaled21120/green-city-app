@@ -12,7 +12,7 @@ class ApiStorageService extends DatabaseService {
   ApiStorageService(this.dio);
 
   @override
-  Future<Either<Failures, bool>> sendData({
+  Future<Either<Failure, bool>> sendData({
     required String endPoint,
     required Map<String, dynamic> data,
   }) async {

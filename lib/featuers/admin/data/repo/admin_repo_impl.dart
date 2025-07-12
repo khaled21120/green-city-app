@@ -10,7 +10,7 @@ class AdminRepoImpl extends AdminRepo {
   final DatabaseService databaseService;
 
   @override
-  Future<Either<Failures, bool>> sendAdminReports({
+  Future<Either<Failure, bool>> sendAdminReports({
     required String endPoint,
     required Map<String, dynamic> data,
   }) async {
@@ -38,7 +38,7 @@ class AdminRepoImpl extends AdminRepo {
   }
 
   @override
-  Future<Either<Failures, List<WarehousesModel>>> fetchWehreHouses({
+  Future<Either<Failure, List<WarehousesModel>>> fetchWehreHouses({
     required String endPoint,
   }) async {
     try {

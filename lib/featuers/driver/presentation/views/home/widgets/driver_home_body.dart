@@ -19,32 +19,35 @@ class DriverHomeBody extends StatelessWidget {
     return S.of(context).good_evening;
   }
 
-List<Map<String, dynamic>> _getFeatureItems(BuildContext context) => [
-  {
-    'icon' : FontAwesomeIcons.calendarDay,
-    'title': S.of(context).todays_tasks,          // مهام اليوم
-    'color': Colors.blueAccent.shade400,
-    'route': 'todayTasks',
-  },
-  {
-    'icon' : FontAwesomeIcons.hourglassHalf,
-    'title': S.of(context).pending_tasks,        // المهام المعلّقة
-    'color': Colors.amber.shade600,
-    'route': 'pendingTasks',
-  },
-  {
-    'icon' : FontAwesomeIcons.sackDollar,        // or FontAwesomeIcons.moneyCheckDollar
-    'title': S.of(context).paid_tasks,           // المهام المدفوعة
-    'color': Colors.green.shade500,
-    'route': 'paidTasks',
-  },
-  {
-    'icon' : FontAwesomeIcons.handHoldingDollar, // or FontAwesomeIcons.handHoldingUsd
-    'title': S.of(context).paid_tasks,   // مدفوعة بانتظار المراجعة
-    'color': Colors.deepPurpleAccent.shade400,
-    'route': 'pendingPaidTasks',
-  },
-];
+  List<Map<String, dynamic>> _getFeatureItems(BuildContext context) => [
+    {
+      'icon': FontAwesomeIcons.calendarDay,
+      'title': S.of(context).todays_tasks, // مهام اليوم
+      'color': Colors.blueAccent.shade400,
+      'route': 'todayTasks',
+    },
+    {
+      'icon': FontAwesomeIcons.hourglassHalf,
+      'title': S.of(context).pending_tasks, // المهام المعلّقة
+      'color': Colors.amber.shade600,
+      'route': 'pendingTasks',
+    },
+    {
+      'icon':
+          FontAwesomeIcons.sackDollar, // or FontAwesomeIcons.moneyCheckDollar
+      'title': S.of(context).paid_tasks, // المهام المدفوعة
+      'color': Colors.green.shade500,
+      'route': 'paidTasks',
+    },
+    {
+      'icon':
+          FontAwesomeIcons
+              .handHoldingDollar, // or FontAwesomeIcons.handHoldingUsd
+      'title': S.of(context).pending_paid_tasks, // مدفوعة بانتظار المراجعة
+      'color': Colors.deepPurpleAccent.shade400,
+      'route': 'pendingPaidTasks',
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +56,13 @@ List<Map<String, dynamic>> _getFeatureItems(BuildContext context) => [
     final completedTasks = userData.numberOfCompletedTasks ?? 0;
     final totalTasks = 50; // Consider making this dynamic if possible
     final progressPercent = completedTasks / totalTasks;
+    final screenSize = MediaQuery.of(context).size;
+    final isWideScreen = screenSize.width > 600;
+
+    // Responsive grid configuration
+    final crossAxisCount = isWideScreen ? 3 : 2;
+    final childAspectRatio =
+        isWideScreen ? 0.8 : screenSize.width / (screenSize.height / 1.6);
 
     return Scaffold(
       key: scaffoldKey,
@@ -134,10 +144,11 @@ List<Map<String, dynamic>> _getFeatureItems(BuildContext context) => [
           SliverPadding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             sliver: SliverGrid(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
+              gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: crossAxisCount,
                 mainAxisSpacing: 8,
                 crossAxisSpacing: 8,
+                childAspectRatio: childAspectRatio,
               ),
               delegate: SliverChildBuilderDelegate((context, index) {
                 final feature = features[index];

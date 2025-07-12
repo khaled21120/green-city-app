@@ -244,7 +244,7 @@ class _SignUpFormState extends State<SignUpForm> {
         phone: _phoneController.text.trim(),
         address: _addressController.text.trim(),
         email: _emailController.text.trim(),
-        password: _passwordController.text,
+        password: _passwordController.text.trim(),
       );
     } else {
       setState(() => _autovalidateMode = AutovalidateMode.always);

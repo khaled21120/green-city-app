@@ -20,10 +20,18 @@ final class FetchReportsSuccess extends ReportsState {
   final List<UserReportsModel> announsList;
   const FetchReportsSuccess(this.announsList);
 }
+final class FetchSubSuccess extends ReportsState {
+  final UserReportsModel subscribe;
+  const FetchSubSuccess(this.subscribe);
+}
 
 final class ReportsError extends ReportsState {
   final String message;
   const ReportsError(this.message);
+}
+final class CancelSubscription extends ReportsState {
+  final String message;
+  const CancelSubscription(this.message);
 }
 
 final class FetchRegionsSuccess extends ReportsState {

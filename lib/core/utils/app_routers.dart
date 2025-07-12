@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:green_city/core/utils/helper.dart';
@@ -6,15 +7,16 @@ import 'package:green_city/featuers/admin/presentation/views/home/admin_home_pag
 import 'package:green_city/featuers/admin/presentation/views/home/widgets/waste_details.dart';
 import 'package:green_city/featuers/admin/presentation/views/profile/admin_profile.dart';
 import 'package:green_city/featuers/auth/data/models/user_model.dart';
+import 'package:green_city/featuers/auth/presentation/reset_password_screen.dart';
 import 'package:green_city/featuers/auth/presentation/cubits/auth/auth_cubit.dart';
 import 'package:green_city/featuers/auth/presentation/cubits/log_In/log_in_cubit.dart';
 import 'package:green_city/featuers/auth/presentation/cubits/sign_up/sign_up_cubit.dart';
 import 'package:green_city/featuers/auth/presentation/intro_page.dart';
 import 'package:green_city/featuers/auth/presentation/login_page.dart';
 import 'package:green_city/featuers/auth/presentation/signup_page.dart';
-import 'package:green_city/featuers/driver/presentation/cubits/Driver%20Tasks/driver_tasks_cubit.dart';
-import 'package:green_city/featuers/driver/presentation/cubits/Driver%20Reports/driver_reports_cubit.dart';
-import 'package:green_city/featuers/driver/presentation/cubits/cubit/paid_tasks_cubit.dart';
+import 'package:green_city/featuers/driver/presentation/cubits/driver_tasks/driver_tasks_cubit.dart';
+import 'package:green_city/featuers/driver/presentation/cubits/driver_reports/driver_reports_cubit.dart';
+import 'package:green_city/featuers/driver/presentation/cubits/paid_tasks/paid_tasks_cubit.dart';
 import 'package:green_city/featuers/driver/presentation/views/home/driver_home_view.dart';
 import 'package:green_city/featuers/driver/presentation/views/home/views/accepted_paid_tasks/pending_paid_tasks_view.dart';
 import 'package:green_city/featuers/driver/presentation/views/home/views/all_paid_tasks/paid_tasks_view.dart';
@@ -43,8 +45,11 @@ import 'package:green_city/featuers/user/presentation/views/home/views/reports/r
 import 'package:green_city/featuers/user/presentation/views/profile/user_profile_page.dart';
 import 'package:green_city/featuers/user/presentation/views/profile/views/edit/edit_user_profile_view.dart';
 import 'package:green_city/featuers/user/presentation/views/profile/views/settings/settings_page.dart';
+import '../../featuers/user/presentation/views/home/views/subscription/my_subscription_page.dart';
 import '../services/back_auth_service.dart';
 import '../services/get_it_service.dart';
+
+final navigatorKey = GlobalKey<NavigatorState>();
 
 abstract class AppRouters {
   static bool _isAuthRoute(String location) {
@@ -52,6 +57,7 @@ abstract class AppRouters {
   }
 
   static final router = GoRouter(
+    navigatorKey: navigatorKey,
     redirect: (_, state) async {
       final authService = getIt.get<ApiAuthService>();
       final isLoggedIn = await authService.isLoggedIn();
@@ -78,44 +84,74 @@ abstract class AppRouters {
       GoRoute(
         path: '/login',
         name: 'login',
-        builder: (_, _) => BlocProvider(
-          create: (_) => getIt.get<LogInCubit>(),
-          child: const LoginPage(),
-        ),
+        builder:
+            (_, _) => BlocProvider(
+              create: (_) => getIt.get<LogInCubit>(),
+              child: const LoginPage(),
+            ),
       ),
       GoRoute(
         path: '/signup',
         name: 'signup',
-        builder: (_, state) => BlocProvider(
-          create: (_) => getIt.get<SignUpCubit>(),
-          child: const SignUpPage(),
-        ),
+        builder:
+            (_, _) => BlocProvider(
+              create: (_) => getIt.get<SignUpCubit>(),
+              child: const SignUpPage(),
+            ),
+      ),
+      GoRoute(
+        path: '/resetPassword',
+        name: 'resetPassword',
+        builder: (_, state) {
+          final args = state.extra;
+
+          if (args is! Map<String, dynamic>) {
+            return const Scaffold(body: Center(child: Text('Invalid link')));
+          }
+
+          final token = args['token'] as String?;
+          final email = args['email'] as String?;
+
+          if (token == null || email == null) {
+            return const Scaffold(
+              body: Center(child: Text('Missing token or email')),
+            );
+          }
+
+          return BlocProvider(
+            create: (_) => getIt.get<LogInCubit>(),
+            child: ResetPasswordScreen(token: token, email: email),
+          );
+        },
       ),
 
       // Main Home Routes
       GoRoute(
         path: '/home',
         name: 'home',
-        builder: (_, _) => BlocProvider(
-          create: (context) => getIt.get<AuthCubit>(),
-          child: const UserHomePage(),
-        ),
+        builder:
+            (_, _) => BlocProvider(
+              create: (_) => getIt.get<AuthCubit>(),
+              child: const UserHomePage(),
+            ),
       ),
       GoRoute(
         path: '/adminHome',
         name: 'adminHome',
-        builder: (_, _) => BlocProvider(
-          create: (context) => getIt.get<AuthCubit>(),
-          child: const AdminHomePage(),
-        ),
+        builder:
+            (_, _) => BlocProvider(
+              create: (_) => getIt.get<AuthCubit>(),
+              child: const AdminHomePage(),
+            ),
       ),
       GoRoute(
         path: '/driverHome',
         name: 'driverHome',
-        builder: (_, _) => BlocProvider(
-          create: (context) => getIt.get<AuthCubit>(),
-          child: const DriverHomeView(),
-        ),
+        builder:
+            (_, _) => BlocProvider(
+              create: (_) => getIt.get<AuthCubit>(),
+              child: const DriverHomeView(),
+            ),
       ),
 
       // Profile Routes
@@ -152,18 +188,20 @@ abstract class AppRouters {
       GoRoute(
         path: '/activities',
         name: 'activities',
-        builder: (_, state) => BlocProvider(
-          create: (context) => getIt.get<ActivitiesCubit>()..getAllActivities(),
-          child: const ActivitiesView(),
-        ),
+        builder:
+            (_, _) => BlocProvider(
+              create: (_) => getIt.get<ActivitiesCubit>()..getAllActivities(),
+              child: const ActivitiesView(),
+            ),
       ),
       GoRoute(
         path: '/myActivities',
         name: 'myActivities',
-        builder: (_, state) => BlocProvider(
-          create: (context) => getIt.get<ActivitiesCubit>()..getMyActivities(),
-          child: const MyActivitiesView(),
-        ),
+        builder:
+            (_, _) => BlocProvider(
+              create: (_) => getIt.get<ActivitiesCubit>()..getMyActivities(),
+              child: const MyActivitiesView(),
+            ),
       ),
       GoRoute(
         path: '/activityDetails',
@@ -171,72 +209,89 @@ abstract class AppRouters {
         builder: (_, state) {
           final activitiesModel = state.extra as ActivitiesModel;
           return BlocProvider(
-            create: (context) => getIt.get<ActivitiesCubit>(),
+            create: (_) => getIt.get<ActivitiesCubit>(),
             child: ActivitiesDetailsPage(activitiesModel: activitiesModel),
           );
         },
+      ),
+      GoRoute(
+        path: '/mySubscription',
+        name: 'mySubscription',
+        builder:
+            (_, _) => BlocProvider(
+              create:
+                  (_) => getIt.get<UserReportsCubit>()..fetchSubscribStatus(),
+              child: const MySubscriptionPage(),
+            ),
       ),
 
       // Task Routes (Driver)
       GoRoute(
         path: '/todayTasks',
         name: 'todayTasks',
-        builder: (_, _) => BlocProvider(
-          create: (context) => getIt<DriverTasksCubit>()..getAllTasks(),
-          child: const TodayTasksView(),
-        ),
+        builder:
+            (_, _) => BlocProvider(
+              create: (_) => getIt<DriverTasksCubit>()..getAllTasks(),
+              child: const TodayTasksView(),
+            ),
       ),
       GoRoute(
         path: '/paidTasks',
         name: 'paidTasks',
-        builder: (_, _) => BlocProvider(
-          create: (context) => getIt<PaidTasksCubit>()..getAllPaidTasks(),
-          child: const PaidTasksView(),
-        ),
+        builder:
+            (_, _) => BlocProvider(
+              create: (_) => getIt<PaidTasksCubit>()..getAllPaidTasks(),
+              child: const PaidTasksView(),
+            ),
       ),
       GoRoute(
         path: '/pendingPaidTasks',
         name: 'pendingPaidTasks',
-        builder: (_, _) => MultiBlocProvider(
-          providers: [
-            BlocProvider(
-              create: (context) => getIt<PaidTasksCubit>()..getAcceptedPaidTasks(),
+        builder:
+            (_, _) => MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create:
+                      (_) => getIt<PaidTasksCubit>()..getAcceptedPaidTasks(),
+                ),
+                BlocProvider(create: (_) => getIt<DriverReportsCubit>()),
+              ],
+              child: const PendingPaidTasksView(),
             ),
-            BlocProvider(create: (context) => getIt<DriverReportsCubit>()),
-          ],
-          child: const PendingPaidTasksView(),
-        ),
       ),
       GoRoute(
         path: '/pendingTasks',
         name: 'pendingTasks',
-        builder: (_, _) => MultiBlocProvider(
-          providers: [
-            BlocProvider(
-              create: (context) => getIt<DriverTasksCubit>()..getDriverTasks(),
+        builder:
+            (_, _) => MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (_) => getIt<DriverTasksCubit>()..getDriverTasks(),
+                ),
+                BlocProvider(create: (_) => getIt<DriverReportsCubit>()),
+              ],
+              child: const PendingTasksView(),
             ),
-            BlocProvider(create: (context) => getIt<DriverReportsCubit>()),
-          ],
-          child: const PendingTasksView(),
-        ),
       ),
 
       // Report Routes
       GoRoute(
         path: '/reports',
         name: 'reports',
-        builder: (_, _) => BlocProvider(
-          create: (context) => getIt<UserReportsCubit>()..fetchRegions(),
-          child: const ReportsView(),
-        ),
+        builder:
+            (_, _) => BlocProvider(
+              create: (_) => getIt<UserReportsCubit>()..fetchRegions(),
+              child: const ReportsView(),
+            ),
       ),
       GoRoute(
         path: '/myReports',
         name: 'myReports',
-        builder: (_, _) => BlocProvider(
-          create: (context) => getIt<UserReportsCubit>()..fetchReports(),
-          child: const MyReportsView(),
-        ),
+        builder:
+            (_, _) => BlocProvider(
+              create: (_) => getIt<UserReportsCubit>()..fetchReports(),
+              child: const MyReportsView(),
+            ),
       ),
       GoRoute(
         path: '/wasteDetails',
@@ -244,7 +299,7 @@ abstract class AppRouters {
         builder: (_, state) {
           final title = state.extra as String;
           return BlocProvider(
-            create: (context) => getIt<AdminReportsCubit>()..fetchWarehouses(),
+            create: (_) => getIt<AdminReportsCubit>()..fetchWarehouses(),
             child: WasteDetails(title: title),
           );
         },
@@ -254,10 +309,11 @@ abstract class AppRouters {
       GoRoute(
         path: '/polls',
         name: 'polls',
-        builder: (_, _) => BlocProvider(
-          create: (context) => getIt<PollsCubit>()..getPolls(),
-          child: const PollsView(),
-        ),
+        builder:
+            (_, _) => BlocProvider(
+              create: (_) => getIt<PollsCubit>()..getPolls(),
+              child: const PollsView(),
+            ),
       ),
       GoRoute(
         path: '/webView',
@@ -272,18 +328,21 @@ abstract class AppRouters {
       GoRoute(
         path: '/notifications',
         name: 'notifications',
-        builder: (_, __) => BlocProvider(
-          create: (context) => getIt<NotificationsCubit>()..loadAllNotifications(),
-          child: const NotificationsView(),
-        ),
+        builder:
+            (_, __) => BlocProvider(
+              create:
+                  (_) => getIt<NotificationsCubit>()..loadAllNotifications(),
+              child: const NotificationsView(),
+            ),
       ),
       GoRoute(
         path: '/contactUs',
         name: 'contactUs',
-        builder: (_, __) => BlocProvider(
-          create: (context) => getIt<ContactUsCubit>(),
-          child: const ContactUsView(),
-        ),
+        builder:
+            (_, __) => BlocProvider(
+              create: (_) => getIt<ContactUsCubit>(),
+              child: const ContactUsView(),
+            ),
       ),
       GoRoute(
         path: '/assistantPage',
@@ -293,11 +352,7 @@ abstract class AppRouters {
           return ChatPage(userModel: userModel);
         },
       ),
-      GoRoute(
-        path: '/FAQs',
-        name: 'FAQs',
-        builder: (_, _) => const FAQsPage(),
-      ),
+      GoRoute(path: '/FAQs', name: 'FAQs', builder: (_, _) => const FAQsPage()),
       GoRoute(
         path: '/aboutUs',
         name: 'aboutUs',

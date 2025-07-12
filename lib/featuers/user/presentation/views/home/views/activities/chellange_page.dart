@@ -43,7 +43,7 @@ class ActivitiesView extends StatelessWidget {
     // Responsive grid configuration
     final crossAxisCount = isWideScreen ? 3 : 2;
     final childAspectRatio =
-        isWideScreen ? 0.8 : screenSize.width / (screenSize.height / 1.2);
+        isWideScreen ? 0.8 : screenSize.width / (screenSize.height / 1.4);
 
     if (state is ActivitiesLoading) {
       return ShimmerGridItem(aspectRatio: childAspectRatio);

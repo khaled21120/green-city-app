@@ -44,7 +44,7 @@ class PollsView extends StatelessWidget {
     // Calculate responsive grid parameters
     final crossAxisCount = screenWidth > 600 ? 3 : 2;
     final childAspectRatio =
-        screenWidth > 600 ? 0.8 : screenWidth / (screenHeight / 1.2);
+        screenWidth > 600 ? 0.8 : screenWidth / (screenHeight / 1.5);
 
     if (state is PollsLoading) {
       return ShimmerGridItem(aspectRatio: childAspectRatio);
